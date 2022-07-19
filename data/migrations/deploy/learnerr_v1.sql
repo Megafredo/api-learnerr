@@ -2,6 +2,7 @@
 -- Deploy learnerr:learnerr_v1 to pg
 BEGIN;
 
+--~ Create domain
 --& Vérification de l'email
 CREATE DOMAIN EMAIL AS TEXT CHECK (
     VALUE ~ '^(?#email)[a-zA-Z0-9.-_]+@[\w-]+(?:\.[\w-]{2,4})$'
@@ -18,7 +19,7 @@ CREATE DOMAIN LINK_URL AS TEXT CHECK (
     VALUE ~ '(?#link_url)https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&=]*)'
 );
 
---& Creates tables
+--~ Create tables
 CREATE TABLE IF NOT EXISTS "user" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "username" TEXT NOT NULL,
@@ -86,7 +87,7 @@ CREATE TABLE IF NOT EXISTS "role" (
 
 CREATE TABLE IF NOT EXISTS "bad_word" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "word" text NOT NULL
+    "word" TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS "status" (
@@ -229,5 +230,21 @@ ADD
     ON UPDATE NO ACTION 
     ON DELETE CASCADE 
     NOT VALID;
+
+--~ Creates index
+CREATE INDEX "user_brin_idx" ON "user" 
+USING BRIN ("username", "email", "password");
+CREATE INDEX "article_brin_idx" ON "article" 
+USING BRIN ("title", "abstract", "content", "user_id");
+CREATE INDEX "error_brin_idx" ON "error" 
+USING BRIN ("title", "abstract", "content", "user_id", "error_comment_id");
+CREATE INDEX "article_comment_brin_idx" ON "article_comment" 
+USING BRIN ("content", "user_id", "article_id");
+CREATE INDEX "error_comment_brin_idx" ON "error_comment" 
+USING BRIN ("content", "user_id", "error_id");
+CREATE INDEX "bad_word_brin_idx" ON "bad_word" 
+USING BRIN ("word");
+CREATE INDEX "category_brin_idx" ON "category" 
+USING BRIN ("name");
 
 COMMIT;

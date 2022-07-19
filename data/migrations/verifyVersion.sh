@@ -3,4 +3,4 @@
 export PGUSER=postgres
 
 #* Verify version
-# sqitch verify -d learnerr learnerr_v1
+sqitch verify -d learnerr learnerr_v1
