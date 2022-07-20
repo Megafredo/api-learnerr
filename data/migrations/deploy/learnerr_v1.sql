@@ -5,19 +5,20 @@ BEGIN;
 --~ Create domain
 --& Vérification de l'email
 CREATE DOMAIN EMAIL AS TEXT CHECK (
-    VALUE ~ '^(?#email)[a-zA-Z0-9.-_]+@[\w-]+(?:\.[\w-]{2,4})$'
+    -- VALUE ~ '^(?#email)[a-zA-Z0-9.-_]+@[\w-]+(?:\.[\w-]{2,4})$'
+    VALUE ~ '^(?#email)[-a-zA-Z0-9.-_]+@[\w-]+(?:\.[\w-]{2,4})$'
 );
 
 --& Vérification du password
 -- Minimum 8 caractères - comprenant au moins un chiffre, une minuscule, une majuscule, un caractère spécial minimum
 CREATE DOMAIN PWD AS TEXT CHECK (
-    VALUE ~ '^(?#password)(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$'
+    VALUE ~ '^(?#password)(?=.*[0-9])(?=.*[-a-z])(?=.*[-A-Z]).{8,}$'
 );
 
---& Vérification de l'url
-CREATE DOMAIN LINK_URL AS TEXT CHECK (
-    VALUE ~ '(?#link_url)https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&=]*)'
-);
+-- --& Vérification de l'url
+-- CREATE DOMAIN LINK_URL AS TEXT CHECK (
+--     VALUE ~ '^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[-a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&=]*)*'
+-- );
 
 --~ Create tables
 CREATE TABLE IF NOT EXISTS "user" (
@@ -28,12 +29,12 @@ CREATE TABLE IF NOT EXISTS "user" (
     "is_active" BOOLEAN NOT NULL DEFAULT TRUE,
     "title" TEXT NULL,
     "presentation" TEXT NULL,
-    "profile_pic_url" LINK_URL NULL,
-    "linkedin_url" LINK_URL NULL,
-    "github_url" LINK_URL NULL,
-    "instagram_url" LINK_URL NULL,
-    "twitter_url" LINK_URL NULL,
-    "portfolio_url" LINK_URL NULL,
+    "profile_pic_url" TEXT NULL,
+    "linkedin_url" TEXT NULL,
+    "github_url" TEXT NULL,
+    "instagram_url" TEXT NULL,
+    "twitter_url" TEXT NULL,
+    "portfolio_url" TEXT NULL,
     "role_id" INTEGER NOT NULL DEFAULT 3,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMPTZ
@@ -52,6 +53,7 @@ CREATE TABLE IF NOT EXISTS "article" (
 
 CREATE TABLE IF NOT EXISTS "error" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "error_snippet" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "abstract" TEXT NOT NULL,
     "content" TEXT NOT NULL,
