@@ -58,7 +58,7 @@ ___
 - [Jest](https://jestjs.io/fr/)
 - [Swagger](https://swagger.io/)
 
-### NPM (Node Package Manager)
+### Sources NPM (Node Package Manager)
 
 - [Dotenv](https://www.npmjs.com/package/dotenv)
 - [Pg](https://www.npmjs.com/package/pg)
@@ -73,6 +73,8 @@ ___
 - [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
 - [Debug](https://www.npmjs.com/package/debug)
 - [@faker-js/faker](https://www.npmjs.com/package/@faker-js/faker)
+- [Bad Words List french](https://www.npmjs.com/package/french-badwords-list)
+- [Techstack](https://www.npmjs.com/package/@shiroi-shi/techstack)
 
 
 ### Extensions VSCODE et logiciel
