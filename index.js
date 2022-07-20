@@ -7,7 +7,7 @@ const app = express();
 
 //~ Import modules
 // import { router } from './app/routes/index.js';
-// import { ErrorApi } from './app/services/errorHandler.js';
+import { ErrorApi } from './app/services/errorHandler.js';
 
 
 //~ Protect API
@@ -66,9 +66,9 @@ app.use(session({
 // app.use(router);
 
 //~ Error 404 NOT Found
-// app.use((req, res)=>{
-//     throw new ErrorApi(`Page not found !`, req, res, 404);
-// });
+app.use((req, res)=>{
+    throw new ErrorApi(`Page not found !`, req, res, 404);
+});
 
 
 //~ Launch Server 

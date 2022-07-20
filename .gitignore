@@ -17,9 +17,9 @@ node_modules
 package-lock.json
 *.gz
 
-#log
-# **/*.log
-# **/*.log.*
+#logs
+# **/*.logs
+# **/*.logs.*
 
 #vscode
 .vs_code/
