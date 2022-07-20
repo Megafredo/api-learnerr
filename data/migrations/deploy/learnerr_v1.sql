@@ -15,10 +15,13 @@ CREATE DOMAIN PWD AS TEXT CHECK (
     VALUE ~ '^(?#password)(?=.*[0-9])(?=.*[-a-z])(?=.*[-A-Z]).{8,}$'
 );
 
--- --& Vérification de l'url
--- CREATE DOMAIN LINK_URL AS TEXT CHECK (
---     VALUE ~ '^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[-a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&=]*)*'
--- );
+--& Vérification de l'url
+-- Source : https://stackoverflow.com/questions/3825676/postgresql-regex-word-boundaries
+-- Postgres accepte \M pour 'boundaries end word' mais attention
+-- Regex classique \b
+CREATE DOMAIN LINK_URL AS TEXT CHECK (
+    VALUE ~ '((https?:\/\/)|(www.))[a-zA-Z0-9.@:%._+~#=]{1,}.[-a-zA-Z0-9()]{1,}\.[-a-z]{1,6}\M'
+);
 
 --~ Create tables
 CREATE TABLE IF NOT EXISTS "user" (
@@ -29,12 +32,12 @@ CREATE TABLE IF NOT EXISTS "user" (
     "is_active" BOOLEAN NOT NULL DEFAULT TRUE,
     "title" TEXT NULL,
     "presentation" TEXT NULL,
-    "profile_pic_url" TEXT NULL,
-    "linkedin_url" TEXT NULL,
-    "github_url" TEXT NULL,
-    "instagram_url" TEXT NULL,
-    "twitter_url" TEXT NULL,
-    "portfolio_url" TEXT NULL,
+    "profile_pic_url" LINK_URL NULL,
+    "linkedin_url" LINK_URL NULL,
+    "github_url" LINK_URL NULL,
+    "instagram_url" LINK_URL NULL,
+    "twitter_url" LINK_URL NULL,
+    "portfolio_url" LINK_URL NULL,
     "role_id" INTEGER NOT NULL DEFAULT 3,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMPTZ

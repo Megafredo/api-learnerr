@@ -6,7 +6,7 @@ import express from 'express';
 const app = express(); 
 
 //~ Import modules
-// import { router } from './app/routes/index.js';
+import { router } from './app/routes/index.js';
 import { ErrorApi } from './app/services/errorHandler.js';
 
 
@@ -63,7 +63,7 @@ app.use(session({
 }));
 
 //~ Router
-// app.use(router);
+app.use(router);
 
 //~ Error 404 NOT Found
 app.use((req, res)=>{
@@ -72,7 +72,7 @@ app.use((req, res)=>{
 
 
 //~ Launch Server 
-const PORT = process.env.PORT ??  3000; 
+const PORT = process.env.PORT ?? 3000; 
  
 app.listen(PORT, () => { 
 logger(`🚀\x1b[1;35m Launch server on http://localhost:${PORT}\x1b[0m`); 

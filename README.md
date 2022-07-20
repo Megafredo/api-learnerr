@@ -86,3 +86,7 @@ ___
 - Insomnia
 - Database Client
 - LiveShare
+
+### Sources SQL/PostgreSQL
+
+- [Boundaries](https://stackoverflow.com/questions/3825676/postgresql-regex-word-boundaries)
