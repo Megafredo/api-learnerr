@@ -68,13 +68,16 @@ ___
 - [Helmet](https://www.npmjs.com/package/helmet)
 - [Joi](https://www.npmjs.com/package/joi)
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
-- [Jest](https://www.npmjs.com/package/jest)
 - [swagger-jsdoc](https://www.npmjs.com/package/swagger-jsdoc)
 - [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
-- [Debug](https://www.npmjs.com/package/debug)
-- [@faker-js/faker](https://www.npmjs.com/package/@faker-js/faker)
-- [Bad Words List french](https://www.npmjs.com/package/french-badwords-list)
-- [Techstack](https://www.npmjs.com/package/@shiroi-shi/techstack)
+
+- Dépendances dev :
+
+    - [Debug](https://www.npmjs.com/package/debug)
+    - [Bad Words List french](https://www.npmjs.com/package/french-badwords-list)
+    - [@shiroi-shi/techstack](https://www.npmjs.com/package/@shiroi-shi/techstack)
+    - [@faker-js/faker](https://www.npmjs.com/package/@faker-js/faker)
+    - [Jest](https://www.npmjs.com/package/jest)
 
 
 ### Extensions VSCODE et logiciel

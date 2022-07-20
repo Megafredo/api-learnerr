@@ -1,0 +1,47 @@
+{
+  "name": "api-learnerr-v1",
+  "version": "1.0.0",
+  "description": "API Learn(Err) version 1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helene-nguyen/api-learnerr-v1.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "Yumicode & Megafredo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/helene-nguyen/api-learnerr-v1/issues"
+  },
+  "homepage": "https://github.com/helene-nguyen/api-learnerr-v1#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "helmet": "^5.1.0",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.3",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.5.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.3.0",
+    "@shiroi-shi/techstack": "^1.1.4",
+    "debug": "^4.3.4",
+    "french-badwords-list": "^1.0.5",
+    "jest": "^28.1.3"
+  },
+  "jest": {
+    "collectCoverage":true,
+    "detectOpenHandles": true
+  }
+}
