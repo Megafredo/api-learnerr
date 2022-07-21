@@ -21,7 +21,7 @@ async function fetchAllUsers(req, res) {
 async function fetchOneUser(req, res) {
   try {
     const userId = +req.params.userId;
-
+  
     const oneUser = await user.findOne(userId);
 
     res.json(oneUser);
