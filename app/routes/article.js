@@ -3,7 +3,7 @@ import { Router } from 'express';
 const router = Router();
 
 //~ Import modules
-import { createArticle, fetchAllArticles, fetchOneArticle, updateArticle, deleteArticle, fetchAllDraftsByArticle, fetchAllArticlesByCategory, fetchAllArticlesByUser, fetchLastestArticles } from '../controllers/articleController.js';
+import { createArticle, fetchAllArticles, fetchOneArticle, updateArticle, deleteArticle, sendArticleToDraft, fetchAllArticlesByCategory, fetchAllArticlesByUser, fetchLastestArticles } from '../controllers/articleController.js';
 
 
 //~ Routes
@@ -13,7 +13,7 @@ router.get('/api/v1/articles/:articleId', fetchOneArticle);
 router.patch('/api/v1/articles/:articleId', updateArticle);
 router.delete('/api/v1/articles/:articleId', deleteArticle);
 
-router.post('/api/v1/articles/:articleId/drafts', fetchAllDraftsByArticle);
+router.post('/api/v1/articles/:articleId/drafts', sendArticleToDraft);
 router.get('/api/v1/categories/:categoryId/articles', fetchAllArticlesByCategory);
 router.get('/api/v1/users/:userId/articles', fetchAllArticlesByUser);
 router.get('/api/v1/articles/last', fetchLastestArticles);

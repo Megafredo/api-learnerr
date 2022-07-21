@@ -41,7 +41,7 @@ async function deleteErrorTicket(req, res) {
         logger(err.message);
     }
 }
-async function fetchAllDraftsByErrorTicket(req, res) {
+async function sendErrorTicketToDraft(req, res) {
     try {
         
     } catch (err) {
@@ -77,4 +77,4 @@ async function searchAllErrorTickets(req, res) {
     }
 }
 
-export { createErrorTicket, fetchAllErrorTickets, fetchOneErrorTicket, updateErrorTicket, deleteErrorTicket, fetchAllDraftsByErrorTicket, fetchAllErrorTicketsByCategory, fetchAllErrorTicketsByUser, fetchLastestErrorTickets, searchAllErrorTickets }
+export { createErrorTicket, fetchAllErrorTickets, fetchOneErrorTicket, updateErrorTicket, deleteErrorTicket, sendErrorTicketToDraft, fetchAllErrorTicketsByCategory, fetchAllErrorTicketsByUser, fetchLastestErrorTickets, searchAllErrorTickets }

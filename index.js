@@ -14,11 +14,9 @@ import { ErrorApi } from './app/services/errorHandler.js';
 import helmet from 'helmet';
 app.use(helmet());
 
-// //~ Swagger JS docs
-// import expressJSDocSwagger from 'swagger-jsdoc';
-// import { options } from './app/swaggerDocs/swaggerDocs.js';
-
-// expressJSDocSwagger(app)(options);
+//~ IMPORTATION SWAGGER DOCS
+import { specs, serve, setup, cssOptions} from './app/swaggerDocs/swaggerDocs.js';
+app.use('/api-docs', serve, setup(specs, cssOptions));
 
 //~ Import Debug 
 import debug from 'debug'; 

@@ -3,7 +3,12 @@ import { Router } from 'express';
 const router = Router();
 
 //~ Import modules
-import { createArticleComment, fetchAllArticleComments, updateArticleComment, deleteArticleComment } from '../controllers/articleController.js';
+import {
+  createArticleComment,
+  fetchAllArticleComments,
+  updateArticleComment,
+  deleteArticleComment
+} from '../controllers/articleCommentController.js';
 
 //~ Routes
 router.post('/api/v1/articles/:articleId/comments', createArticleComment);

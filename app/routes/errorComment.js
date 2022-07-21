@@ -3,7 +3,7 @@ import { Router } from 'express';
 const router = Router();
 
 //~ Import modules
-import { createErrorComment, fetchAllErrorComments, updateErrorComment, deleteErrorComment, fetchAllErrorCommentsByUser, addSolutionOnErrorTicket} from '../controllers/articleController.js';
+import { createErrorComment, fetchAllErrorComments, updateErrorComment, deleteErrorComment, fetchAllErrorCommentsByUser, addSolutionOnErrorTicket} from '../controllers/errorCommentController.js';
 
 //~ Routes
 router.post('/api/v1/errors/:errorId/comments', createErrorComment);

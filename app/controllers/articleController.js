@@ -58,7 +58,7 @@ function deleteArticle(req, res) {
 
 
 
-function fetchAllDraftsByArticle(req, res) {
+function sendArticleToDraft(req, res) {
     try {
         
         
@@ -96,4 +96,4 @@ function fetchLastestArticles(req, res) {
 
 
 
-export { createArticle, fetchAllArticles, fetchOneArticle, updateArticle, deleteArticle, fetchAllDraftsByArticle, fetchAllArticlesByCategory, fetchAllArticlesByUser, fetchLastestArticles };
+export { createArticle, fetchAllArticles, fetchOneArticle, updateArticle, deleteArticle, sendArticleToDraft, fetchAllArticlesByCategory, fetchAllArticlesByUser, fetchLastestArticles };
