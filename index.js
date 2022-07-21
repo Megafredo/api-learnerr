@@ -33,7 +33,7 @@ extended: false
 //~ Cors
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,PATCH,DELETE');
 
     // res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
@@ -53,6 +53,7 @@ app.use(session({
     proxy: true,
     secret: process.env.SESSION_SECRET,
     cookie: { 
+        httpOnly:true,
         secure : true,
         sameSite: 'lax', // or 'strict'
         maxAge: 24 * 60 * 60 * 1000 //24 hours

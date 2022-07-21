@@ -1,103 +1,105 @@
 //~ Import Error
-import {ErrorApi} from '../services/errorHandler.js'
+import { ErrorApi } from '../services/errorHandler.js';
 
-//~ Import Debug 
-import debug from 'debug'; 
+//~ Import Debug
+import debug from 'debug';
 const logger = debug('mainController');
 
-
+import { article } from '../datamappers/index.js';
 
 //~ Controller
 
-function createArticle(req, res) {
-    try {
+async function createArticle(req, res) {
+  try {
+      const articleData = req.body;
+
+      const articleCreated = await article.create(articleData);
+
+      if (!articleCreated) throw new ErrorApi(`Aucune donnée trouvée`, req, res, 400);
+
+      res.status(200).json('Article créé !')
         
-        
-    } catch (err) {
-        logger(err.message);
-    }
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
+async function fetchAllArticles(req, res) {
+  try {
+    const articles = await article.findAll();
 
-function fetchAllArticles(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+    if (!articles) throw new ErrorApi(`Aucun article trouvé`, req, res, 400);
+
+    res.json(articles);
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
+async function fetchOneArticle(req, res) {
+  try {
+    const articleId = +req.params.articleId;
 
-function fetchOneArticle(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+    const oneArticle = await article.findOne(articleId);
+
+    if (!oneArticle) throw new ErrorApi(`Aucun article trouvé`, req, res, 400);
+
+    res.status(200).json(oneArticle);
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
-
-function updateArticle(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+async function updateArticle(req, res) {
+  try {
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
-
-function deleteArticle(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+async function deleteArticle(req, res) {
+  try {
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
-
-function sendArticleToDraft(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+async function sendArticleToDraft(req, res) {
+  try {
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
-
-function fetchAllArticlesByCategory(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+async function fetchAllArticlesByCategory(req, res) {
+  try {
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
-
-function fetchAllArticlesByUser(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+async function fetchAllArticlesByUser(req, res) {
+  try {
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
-
-function fetchLastestArticles(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+async function fetchLastestArticles(req, res) {
+  try {
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
-
-
-export { createArticle, fetchAllArticles, fetchOneArticle, updateArticle, deleteArticle, sendArticleToDraft, fetchAllArticlesByCategory, fetchAllArticlesByUser, fetchLastestArticles };
+export {
+  createArticle,
+  fetchAllArticles,
+  fetchOneArticle,
+  updateArticle,
+  deleteArticle,
+  sendArticleToDraft,
+  fetchAllArticlesByCategory,
+  fetchAllArticlesByUser,
+  fetchLastestArticles
+};

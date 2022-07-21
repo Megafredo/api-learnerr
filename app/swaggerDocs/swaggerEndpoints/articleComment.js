@@ -55,8 +55,8 @@ const articlesCommentsById = {
         summary: `Mise à jour des informations d'un commentaire`,
         parameters: [
             {
-                name: 'id',
-                in: 'params',
+                name: 'articleId',
+                in: 'path',
                 required: true,
                 schema: {
                     type: 'integer',
@@ -92,8 +92,8 @@ const articlesCommentsById = {
         summary: `Suppression d'un commentaire`,
         parameters: [
             {
-                name: 'id',
-                in: 'params',
+                name: 'articleId',
+                in: 'path',
                 required: true,
                 schema: {
                     type: 'integer',

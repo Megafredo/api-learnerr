@@ -12,7 +12,9 @@ async function fetchAllUsers(req, res) {
   try {
     const users = await user.findAll();
 
-    res.json(users);
+    if (!users) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+
+    res.status(200).json(users);
   } catch (err) {
     logger(err.message);
   }
@@ -20,11 +22,15 @@ async function fetchAllUsers(req, res) {
 
 async function fetchOneUser(req, res) {
   try {
+   /* A way to get the userId from the url. */
     const userId = +req.params.userId;
   
+
     const oneUser = await user.findOne(userId);
 
-    res.json(oneUser);
+    if (!oneUser) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+
+    res.status(200).json(oneUser);
   } catch (err) {
     logger(err.message);
   }
@@ -39,9 +45,7 @@ async function updateUser(req, res) {
 
 async function inactivateUser(req, res) {
   try {
-    const userId = +req.params.userId;
-      
-
+    
   } catch (err) {
     logger(err.message);
   }

@@ -55,8 +55,8 @@ const oneCategory = {
         summary: `Suppression d'une catégorie`,
         parameters: [
           {
-            name: 'id',
-            in: 'params',
+            name: 'categoryId',
+            in: 'path',
             required: true,
             schema: {
               type: 'integer',
@@ -95,6 +95,18 @@ const allCategoriesByArticle = {
 
     tags: ['Category'],
     summary: `Récupération de toutes les catégories d'un article`,
+    parameters: [
+      {
+        name: 'articleId',
+        in: 'path',
+        required: true,
+        schema: {
+          type: 'integer',
+          example: 1
+        },
+        description: `Id pour récupérer toutes les catégories d'un article`
+      }
+    ],
     responses: {
       200: {
         description: 'Requête réussie',
@@ -117,7 +129,19 @@ const allCategoriesByError = {
     //~ Fetch all categories by error ticket
     get: {
         tags: ['Category'],
-        summary: `Récupération de toutes les catégories d'un ticket d'erreur`,
+    summary: `Récupération de toutes les catégories d'un ticket d'erreur`,
+    parameters: [
+      {
+        name: 'errorId',
+        in: 'params',
+        required: true,
+        schema: {
+          type: 'integer',
+          example: 1
+        },
+        description: `Id pour récupérer toutes les catégories d'un ticket d'erreur`
+      }
+    ],
         responses: {
           200: {
             description: 'Requête réussie',

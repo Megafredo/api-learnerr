@@ -1,73 +1,62 @@
 //~ Import Error
-import {ErrorApi} from '../services/errorHandler.js'
+import { ErrorApi } from '../services/errorHandler.js';
 
-//~ Import Debug 
-import debug from 'debug'; 
-const logger = debug('mainController');
+//~ Import Debug
+import debug from 'debug';
+const logger = debug('articleCommentController');
 
-
+import { errorComment } from '../datamappers/index.js';
 
 //~ Controller
 
-function createErrorComment(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+async function createErrorComment(req, res) {
+  try {
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
+async function fetchAllErrorComments(req, res) {
+  try {
+    const errorId = +req.params.errorId;
 
-function fetchAllErrorComments(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+    const errorComments = await errorComment.findAllCommentsByErrorTicket(errorId);
+
+    if (!errorComments) throw new ErrorApi(`Aucun commentaire trouvé pour cette erreur`, req, res, 400);
+
+    res.status(200).json(errorComments);
+
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
-
-function updateErrorComment(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+async function updateErrorComment(req, res) {
+  try {
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
-
-function deleteErrorComment(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+async function deleteErrorComment(req, res) {
+  try {
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
-
-function fetchAllErrorCommentsByUser(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+async function fetchAllErrorCommentsByUser(req, res) {
+  try {
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
-
-function addSolutionOnErrorTicket(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
+async function addSolutionOnErrorTicket(req, res) {
+  try {
+  } catch (err) {
+    logger(err.message);
+  }
 }
 
-
-
-export { createErrorComment, fetchAllErrorComments, updateErrorComment, deleteErrorComment, fetchAllErrorCommentsByUser, addSolutionOnErrorTicket};
+export { createErrorComment, fetchAllErrorComments, updateErrorComment, deleteErrorComment, fetchAllErrorCommentsByUser, addSolutionOnErrorTicket };

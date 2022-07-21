@@ -5,11 +5,12 @@ import {ErrorApi} from '../services/errorHandler.js'
 import debug from 'debug'; 
 const logger = debug('mainController');
 
+import { category } from '../datamappers/index.js';
 
 
 //~ Controller
 
-function createCategory(req, res) {
+async function createCategory(req, res) {
     try {
         
         
@@ -19,7 +20,21 @@ function createCategory(req, res) {
 }
 
 
-function fetchAllCategories(req, res) {
+async function fetchAllCategories(req, res) {
+    try {
+        const categories = await category.findAll();
+
+        if (!categories) throw new ErrorApi(`Aucune catégorie trouvée`, req, res, 400);
+    
+        res.status(200).json(categories);
+        
+    } catch (err) {
+        logger(err.message);
+    }
+}
+
+
+async function deleteCategory(req, res) {
     try {
         
         
@@ -29,7 +44,9 @@ function fetchAllCategories(req, res) {
 }
 
 
-function deleteCategory(req, res) {
+
+
+async function fetchAllCategoriesByArticle(req, res) {
     try {
         
         
@@ -39,19 +56,7 @@ function deleteCategory(req, res) {
 }
 
 
-
-
-function fetchAllCategoriesByArticle(req, res) {
-    try {
-        
-        
-    } catch (err) {
-        logger(err.message);
-    }
-}
-
-
-function fetchAllCategoriesByErrorTicket(req, res) {
+async function fetchAllCategoriesByErrorTicket(req, res) {
     try {
         
         

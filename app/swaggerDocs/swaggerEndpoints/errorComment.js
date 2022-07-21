@@ -54,8 +54,8 @@ const oneCommentByErrorId = {
     summary: `Mise à jour des informations d'un commentaire`,
     parameters: [
       {
-        name: 'id',
-        in: 'params',
+        name: 'errorComment',
+        in: 'path',
         required: true,
         schema: {
           type: 'integer',
@@ -91,8 +91,8 @@ const oneCommentByErrorId = {
     summary: `Suppression d'un commentaire`,
     parameters: [
       {
-        name: 'id',
-        in: 'params',
+        name: 'errorComment',
+        in: 'path',
         required: true,
         schema: {
           type: 'integer',
@@ -153,8 +153,8 @@ const solutionOnError = {
     summary: `Mise à jour des informations d'un commentaire`,
     parameters: [
       {
-        name: 'id',
-        in: 'params',
+        name: 'errorComment',
+        in: 'path',
         required: true,
         schema: {
           type: 'integer',

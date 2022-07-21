@@ -54,8 +54,8 @@ const oneArticle = {
     summary: `Récupération de l'article par son Id`,
     parameters: [
       {
-        name: 'id',
-        in: 'params',
+        name: 'articleId',
+        in: 'path',
         required: true,
         schema: {
           type: 'integer',
@@ -88,8 +88,8 @@ const oneArticle = {
     summary: `Mise à jour d'un article par son Id`,
     parameters: [
       {
-        name: 'id',
-        in: 'params',
+        name: 'articleId',
+        in: 'path',
         required: true,
         schema: {
           type: 'integer',
@@ -125,7 +125,7 @@ const oneArticle = {
     summary: `Suppression d'un article`,
     parameters: [
       {
-        name: 'id',
+        name: 'articleId',
         in: 'params',
         required: true,
         schema: {
@@ -162,6 +162,18 @@ const articleDrafts = {
   post: {
     tags: ['Articles'],
     summary: `Enregistrement d'un article en brouillon`,
+    parameters: [
+      {
+        name: 'articleId',
+        in: 'params',
+        required: true,
+        schema: {
+          type: 'integer',
+          example: 1
+        },
+        description: 'Id pour mettre un article en brouillon'
+      }
+    ],
     responses: {
       200: {
         description: 'Requête réussie',
@@ -185,7 +197,19 @@ const articlesByCategory = {
   //~ Fetch articles by category
   get: {
     tags: ['Articles'],
-    summary: `Récupération de toutes les categories d'un article`,
+    summary: `Récupération de tous les articles d'une catégorie`,
+    parameters: [
+      {
+        name: 'categoryId',
+        in: 'params',
+        required: true,
+        schema: {
+          type: 'integer',
+          example: 1
+        },
+        description: `Id pour récupérer tous les articles d'une catégorie`
+      }
+    ],
     responses: {
       200: {
         description: 'Requête réussie',
@@ -210,6 +234,18 @@ const articlesByUser = {
   get: {
     tags: ['Articles'],
     summary: `Récupération de tous les articles d'un utilisateur`,
+    parameters: [
+      {
+        name: 'userId',
+        in: 'params',
+        required: true,
+        schema: {
+          type: 'integer',
+          example: 1
+        },
+        description: `Id pour récupérer tous les articles d'un utilisateur`
+      }
+    ],
     responses: {
       200: {
         description: 'Requête réussie',

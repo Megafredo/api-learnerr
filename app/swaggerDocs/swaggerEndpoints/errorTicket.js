@@ -8,7 +8,7 @@ const errors = {
     //~ Fetch all error tickets
     get: {
         tags: ['Errors'],
-        summary: 'Récupération des utilisateurs',
+        summary: `Récupération de tous les tickets d'erreur`,
         responses: {
             200: {
                 description: 'Requête réussie',
@@ -32,7 +32,7 @@ const errors = {
         summary: `Création d'une erreur`,
         responses: {
             201: {
-                description: 'Requête réussie et utilisateur créé',
+                description: `Requête réussie et ticket d'erreur créé`,
                 content: {
                     'application/json': {
                         schema: {
@@ -55,24 +55,36 @@ const oneError = {
         //~ Fetch one error ticket
         get: {
             tags: ['Errors'],
-            summary: 'Récupération des utilisateurs',
-            responses: {
-                200: {
-                    description: 'Requête réussie',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                type: 'object',
-                                properties: errorTicketsProperties,
-                                example: errorTicketExample
-                            }
-                        }
-                    }
+            summary: `Récupération d'un ticket d'erreur par son Id`,
+            parameters: [
+              {
+                name: 'errorId',
+                in: 'path',
+                required: true,
+                schema: {
+                  type: 'integer',
+                  example: 1
                 },
-                403: error403,
-                404: error404,
+                description: `Id pour récupérer un ticket d'erreur`,
+              }
+            ],
+            responses: {
+              200: {
+                description: 'Requête réussie',
+                content: {
+                  'application/json': {
+                    schema: {
+                      type: 'object',
+                      properties: errorTicketsProperties,
+                      example: errorTicketExample
+                    }
+                  }
+                }
+              },
+              400: error400,
+              404: error404
             }
-        },
+          },
 
  //~ Update one error ticket
  patch: {
@@ -80,14 +92,14 @@ const oneError = {
     summary: `Mise à jour des informations d'un ticket d'erreur`,
     parameters: [
         {
-            name: 'id',
-            in: 'params',
+            name: 'errorId',
+            in: 'path',
             required: true,
             schema: {
                 type: 'integer',
                 example: 1
             },
-            description: 'Id pour mettre à jour un utilisateur'
+            description: `Id pour mettre à jour un ticket d'erreur`
         }
     ],
     responses: {
@@ -117,8 +129,8 @@ delete: {
     summary: `Suppression d'un ticket d'erreur`,
     parameters: [
         {
-            name: 'id',
-            in: 'params',
+            name: 'errorId',
+            in: 'path',
             required: true,
             schema: {
                 type: 'integer',
@@ -154,6 +166,18 @@ const errorDrafts = {
     post: {
         tags: ['Errors'],
         summary: `Mettre un ticket d'erreur en brouillon`,
+        parameters: [
+            {
+                name: 'errorId',
+                in: 'path',
+                required: true,
+                schema: {
+                    type: 'integer',
+                    example: 1
+                },
+                description: `Id pour supprimer un ticket d' erreur`
+            }
+        ],
         responses: {
             200: {
                 description: 'Requête réussie',
@@ -178,6 +202,18 @@ const errorsByCategory = {
  get: {
     tags: ['Errors'],
     summary: `Récupération de tous les tickets d'erreur d'une catégorie`,
+    parameters: [
+        {
+            name: 'categoryId',
+            in: 'path',
+            required: true,
+            schema: {
+                type: 'integer',
+                example: 1
+            },
+            description: `Id pour récupérer tous les tickets d'erreur d'une catégorie`
+        }
+    ],
     responses: {
         200: {
             description: 'Requête réussie',
@@ -200,7 +236,19 @@ const errorsByUser = {
  //~ Fetch all error tickets by user
         get: {
             tags: ['Errors'],
-            summary: `Récupération tous les tickets d'erreur d'un utilisateur`,
+        summary: `Récupération tous les tickets d'erreur d'un utilisateur`,
+        parameters: [
+            {
+              name: 'userId',
+              in: 'path',
+              required: true,
+              schema: {
+                type: 'integer',
+                example: 1
+              },
+              description: `Id pour récupérer tous les tickets d'erreur d'un utilisateur`
+            }
+          ],
             responses: {
                 200: {
                     description: 'Requête réussie',

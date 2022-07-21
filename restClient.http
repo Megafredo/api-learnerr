@@ -1,5 +1,7 @@
 @entryPoint = http://localhost:4100/api/v1
 
+#* --------------------- USER
+
 ###
 GET {{entryPoint}}/users
 Content-Type: application/json
@@ -28,4 +30,111 @@ Content-Type: application/json
     "role_id": "",
     "created_at": "",
     "updated_at": "",
+}
+
+#* --------------------- ARTICLE
+
+###
+GET {{entryPoint}}/articles
+Content-Type: application/json
+###
+POST {{entryPoint}}/articles
+Content-Type: application/json
+
+{
+    "title": "test",
+    "abstract": "test",
+    "content": "test",
+    "user_id":1,
+    "status_id":1
+}
+
+###
+GET {{entryPoint}}/articles/1
+Content-Type: application/json
+
+#* --------------------- ERROR
+###
+GET {{entryPoint}}/errors
+Content-Type: application/json
+
+###
+GET {{entryPoint}}/errors/1
+Content-Type: application/json
+
+
+#* --------------------- ARTICLE COMMENT
+###
+GET {{entryPoint}}/articles/7/comments
+Content-Type: application/json
+
+
+
+#* --------------------- ERROR COMMENT
+###
+GET {{entryPoint}}/errors/3/comments
+Content-Type: application/json
+
+
+#* --------------------- CATEGORY
+###
+GET {{entryPoint}}/categories
+Content-Type: application/json
+
+###
+GET {{entryPoint}}/categories/1
+Content-Type: application/json
+
+
+
+// articles
+{
+    "id": ,
+    "title": ,
+    "abstract": ,
+    "content": ,
+    "user_id":,
+    "status_id":,
+    "created_at":,
+    "updated_at":,
+}
+
+// Error Tickets
+{
+    "id": ,
+    "error_snippet": ,
+    "title": ,
+    "abstract": ,
+    "content":,
+    "user_id":,
+    "status_id":,
+    "error_comment_id":,
+    "created_at":,
+    "updated_at"
+}
+
+// Article Comments
+{
+    "content": ,
+    "user_id": ,
+    "article_id": ,
+    "created_at": ,
+    "updated_at":,
+}
+
+// Error ticket comments
+{
+    "content": ,
+    "user_id": ,
+    "article_id": ,
+    "error_id": ,
+    "created_at":,
+    "updated_at"
+}
+
+// category
+{
+    "id":,
+    "name":,
+    "logo_svg":,
 }

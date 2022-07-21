@@ -16,10 +16,11 @@ router.post('/api/v1/signup', doSignUp);
 router.post('/api/v1/signin', doSignIn);
 router.get('/api/v1/signout', doSignOut);
 
-router.post('/api/v1/refreshtoken', refreshToken);
 
 router.get('/api/v1/users/:userId/comments', fetchAllUserComments);
 
+router.post('/api/v1/refreshtoken', refreshToken);
+//todo enlever refreshToken de userController car c'est dans service et il faudra l'importer ici
 
 //~ Export router
 export { router };

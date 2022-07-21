@@ -67,7 +67,7 @@ const options = {
 
             //~ USERS
             '/users': users,
-            '/users/{id}': oneUser,
+            '/users/{userId}': oneUser,
 
             '/users/{userId}/comments': allCommentsByUser,
             
@@ -79,9 +79,9 @@ const options = {
             
             //~ ARTICLES
             '/articles': articles,
-            '/articles/{id}': oneArticle,
+            '/articles/{articleId}': oneArticle,
             
-            '/articles/{id}/drafts': articleDrafts,
+            '/articles/{articleId}/drafts': articleDrafts,
             '/categories/{categoryId}/articles': articlesByCategory,
             '/users/{userId}/articles': articlesByUser,
             '/articles/last': lastestArticles,
