@@ -1,0 +1,31 @@
+@entryPoint = http://localhost:4100/api/v1
+
+###
+GET {{entryPoint}}/users
+Content-Type: application/json
+
+###
+GET {{entryPoint}}/users/1
+Content-Type: application/json
+
+###
+PUT {{entryPoint}}/users/10
+Content-Type: application/json
+
+{
+    "username": "",
+    "email": "",
+    "password": "",
+    "is_active": "",
+    "title": "",
+    "presentation": "",
+    "profile_pic_url": "",
+    "linkedin_url": "",
+    "github_url": "",
+    "instagram_url": "",
+    "twitter_url": "",
+    "portfolio_url": "",
+    "role_id": "",
+    "created_at": "",
+    "updated_at": "",
+}

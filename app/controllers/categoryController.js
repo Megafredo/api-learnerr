@@ -18,6 +18,7 @@ function createCategory(req, res) {
     }
 }
 
+
 function fetchAllCategories(req, res) {
     try {
         
@@ -26,6 +27,7 @@ function fetchAllCategories(req, res) {
         logger(err.message);
     }
 }
+
 
 function deleteCategory(req, res) {
     try {
@@ -47,6 +49,7 @@ function fetchAllCategoriesByArticle(req, res) {
         logger(err.message);
     }
 }
+
 
 function fetchAllCategoriesByErrorTicket(req, res) {
     try {

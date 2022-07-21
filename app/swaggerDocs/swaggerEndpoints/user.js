@@ -101,10 +101,10 @@ const oneUser = {
         }
     },
 
-    //~ Delete one user
-    delete: {
+    //~ Inactivate one user
+    put: {
         tags: ['Users'],
-        summary: `Suppression d'un utilisateur`,
+        summary: `Désactivation d'un utilisateur`,
         parameters: [
             {
                 name: 'id',
@@ -114,7 +114,7 @@ const oneUser = {
                     type: 'integer',
                     example: 1
                 },
-                description: 'Id pour supprimer un utilisateur'
+                description: 'Id pour désactiver un utilisateur'
             }
         ],
         responses: {
@@ -126,7 +126,7 @@ const oneUser = {
                             type: 'object',
                             properties: { message: { type: 'string' } },
                             example: {
-                                message: 'La donnée a bien été supprimée'
+                                message: 'La donnée a bien été modifiée'
                             }
                         }
                     }

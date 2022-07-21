@@ -18,6 +18,7 @@ function createErrorComment(req, res) {
     }
 }
 
+
 function fetchAllErrorComments(req, res) {
     try {
         
@@ -27,6 +28,7 @@ function fetchAllErrorComments(req, res) {
     }
 }
 
+
 function updateErrorComment(req, res) {
     try {
         
@@ -35,6 +37,7 @@ function updateErrorComment(req, res) {
         logger(err.message);
     }
 }
+
 
 function deleteErrorComment(req, res) {
     try {
@@ -46,9 +49,6 @@ function deleteErrorComment(req, res) {
 }
 
 
-
-
-
 function fetchAllErrorCommentsByUser(req, res) {
     try {
         
@@ -57,6 +57,7 @@ function fetchAllErrorCommentsByUser(req, res) {
         logger(err.message);
     }
 }
+
 
 function addSolutionOnErrorTicket(req, res) {
     try {

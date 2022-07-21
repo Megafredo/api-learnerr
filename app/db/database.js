@@ -9,10 +9,10 @@ import pg from 'pg';
 //   connectionString: process.env.DATABASE_URL,
 //   ssl: { rejectUnauthorized: true }
 // });
-const pool = new pg.Pool();
+const client = new pg.Pool();
 
-pool.connect()
+client.connect()
   .then( () => logger('DB connected') )
   .catch((err) => logger('DB connection failed', err));
 
-export { pool };
+export default client ;

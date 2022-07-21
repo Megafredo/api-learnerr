@@ -13,6 +13,8 @@ async function createErrorTicket(req, res) {
         logger(err.message);
     }
 }
+
+
 async function fetchAllErrorTickets(req, res) {
     try {
         
@@ -20,6 +22,8 @@ async function fetchAllErrorTickets(req, res) {
         logger(err.message);
     }
 }
+
+
 async function fetchOneErrorTicket(req, res) {
     try {
         
@@ -27,6 +31,8 @@ async function fetchOneErrorTicket(req, res) {
         logger(err.message);
     }
 }
+
+
 async function updateErrorTicket(req, res) {
     try {
         
@@ -34,6 +40,8 @@ async function updateErrorTicket(req, res) {
         logger(err.message);
     }
 }
+
+
 async function deleteErrorTicket(req, res) {
     try {
         
@@ -41,6 +49,8 @@ async function deleteErrorTicket(req, res) {
         logger(err.message);
     }
 }
+
+
 async function sendErrorTicketToDraft(req, res) {
     try {
         
@@ -48,6 +58,8 @@ async function sendErrorTicketToDraft(req, res) {
         logger(err.message);
     }
 }
+
+
 async function fetchAllErrorTicketsByCategory(req, res) {
     try {
         
@@ -55,6 +67,8 @@ async function fetchAllErrorTicketsByCategory(req, res) {
         logger(err.message);
     }
 }
+
+
 async function fetchAllErrorTicketsByUser(req, res) {
     try {
         
@@ -62,6 +76,8 @@ async function fetchAllErrorTicketsByUser(req, res) {
         logger(err.message);
     }
 }
+
+
 async function fetchLastestErrorTickets(req, res) {
     try {
         
@@ -69,6 +85,8 @@ async function fetchLastestErrorTickets(req, res) {
         logger(err.message);
     }
 }
+
+
 async function searchAllErrorTickets(req, res) {
     try {
         

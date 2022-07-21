@@ -16,6 +16,7 @@ function createArticleComment(req, res) {
     }
 }
 
+
 function fetchAllArticleComments(req, res) {
     try {
         
@@ -24,6 +25,7 @@ function fetchAllArticleComments(req, res) {
         logger(err.message);
     }
 }
+
 
 function updateArticleComment(req, res) {
     try {
@@ -34,6 +36,7 @@ function updateArticleComment(req, res) {
     }
 }
 
+
 function deleteArticleComment(req, res) {
     try {
         
@@ -42,5 +45,6 @@ function deleteArticleComment(req, res) {
         logger(err.message);
     }
 }
+
 
 export { createArticleComment, fetchAllArticleComments, updateArticleComment, deleteArticleComment };

@@ -18,6 +18,7 @@ function createArticle(req, res) {
     }
 }
 
+
 function fetchAllArticles(req, res) {
     try {
         
@@ -26,6 +27,7 @@ function fetchAllArticles(req, res) {
         logger(err.message);
     }
 }
+
 
 function fetchOneArticle(req, res) {
     try {
@@ -36,6 +38,7 @@ function fetchOneArticle(req, res) {
     }
 }
 
+
 function updateArticle(req, res) {
     try {
         
@@ -44,6 +47,7 @@ function updateArticle(req, res) {
         logger(err.message);
     }
 }
+
 
 function deleteArticle(req, res) {
     try {
@@ -55,9 +59,6 @@ function deleteArticle(req, res) {
 }
 
 
-
-
-
 function sendArticleToDraft(req, res) {
     try {
         
@@ -66,6 +67,7 @@ function sendArticleToDraft(req, res) {
         logger(err.message);
     }
 }
+
 
 function fetchAllArticlesByCategory(req, res) {
     try {
@@ -76,6 +78,7 @@ function fetchAllArticlesByCategory(req, res) {
     }
 }
 
+
 function fetchAllArticlesByUser(req, res) {
     try {
         
@@ -84,6 +87,7 @@ function fetchAllArticlesByUser(req, res) {
         logger(err.message);
     }
 }
+
 
 function fetchLastestArticles(req, res) {
     try {
