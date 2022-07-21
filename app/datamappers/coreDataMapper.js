@@ -1,7 +1,8 @@
 //~ Core Data Mapper
 class CoreDataMapper {
   tableName;
-  functionName;
+  createFunctionName;
+  updateFunctionName;
 
   constructor(client) {
     this.client = client;
@@ -37,27 +38,26 @@ class CoreDataMapper {
 
   //& Create
   async create(inputData) {
-    const json = JSON.stringify(inputData);
 
     const preparedQuery = {
-      text: `SELECT (vue($1))`,
+      text: `SELECT * FROM ${this.createFunctionName}($1);`,
       values: [inputData]
     };
 
     const result = await this.client.query(preparedQuery);
-    return result.rowCount;
+    return result.rows;
   }
 
   //& Update
   async update(inputData) {
-    const json = JSON.stringify(inputData);
-
+    
     const preparedQuery = {
-      text: `SELECT (vue($1))`,
-      values: [inputData]
+        text: `SELECT * FROM ${this.updateFunctionName}($1);`,
+        values: [inputData]
     };
-    const result = await this.client.query(preparedQuery);
-    return result.rowCount;
+      const result = await this.client.query(preparedQuery);
+      
+    return result.rows;
   }
 
   //& Delete

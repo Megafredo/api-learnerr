@@ -5,7 +5,8 @@ import client from '../db/database.js';
 
 class ArticleComment extends CoreDataMapper {
     tableName = 'article_comment';
-    // functionName = ;
+    createFunctionName = 'create_article_comment';
+    updateFunctionName = 'update_article_comment';
 }
 
 const articleComment = new ArticleComment(client);

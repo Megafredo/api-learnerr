@@ -5,7 +5,8 @@ import client from '../db/database.js';
 
 class ErrorTicket extends CoreDataMapper {
     tableName = 'error';
-    // functionName = ;
+    createFunctionName = 'create_error';
+    updateFunctionName = 'update_error';
 }
 
 const errorTicket = new ErrorTicket(client);

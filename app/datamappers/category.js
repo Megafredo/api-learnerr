@@ -5,7 +5,8 @@ import client from '../db/database.js';
 
 class Category extends CoreDataMapper {
     tableName = 'category';
-    // functionName = ;
+    createFunctionName = 'create_category';
+    updateFunctionName = 'update_category';
 }
 
 const category = new Category(client);

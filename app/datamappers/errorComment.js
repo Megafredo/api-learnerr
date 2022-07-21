@@ -5,7 +5,8 @@ import client from '../db/database.js';
 
 class ErrorComment extends CoreDataMapper {
     tableName = 'error_comment';
-    // functionName = ;
+    createFunctionName = 'create_error_comment';
+    updateFunctionName = 'update_error_comment';
 }
 
 const errorComment = new ErrorComment(client);
