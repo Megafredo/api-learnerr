@@ -7,6 +7,7 @@ class ErrorCommentDataMapper extends CoreDataMapper {
     tableName = 'error_comment';
     createFunctionName = 'create_error_comment';
     updateFunctionName = 'update_error_comment';
+    columns = '*';
 
     //& Find all comments for 1 error
   async findAllCommentsByErrorTicket(errorId) {

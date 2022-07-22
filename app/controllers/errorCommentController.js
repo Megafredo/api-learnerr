@@ -25,7 +25,7 @@ async function fetchAllErrorComments(req, res) {
 
     if (!errorComments) throw new ErrorApi(`Aucun commentaire trouvé pour cette erreur`, req, res, 400);
 
-    res.status(200).json(errorComments);
+    return res.status(200).json(errorComments);
 
   } catch (err) {
     logger(err.message);

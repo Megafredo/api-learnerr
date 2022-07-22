@@ -90,3 +90,7 @@ ___
 ### Sources SQL/PostgreSQL
 
 - [Boundaries](https://stackoverflow.com/questions/3825676/postgresql-regex-word-boundaries)
+
+### Sources Javascript
+
+- [Destructuring](https://ultimatecourses.com/blog/remove-object-properties-destructuring)

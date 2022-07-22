@@ -21,6 +21,35 @@ Content-Type: application/json
 }
 
 ###
+POST {{entryPoint}}/signup
+Content-Type: application/json
+
+{
+    "username": "Coucou_Heleneeeeeeeeee",
+    "email": "Helene.Little89@yahoo.com",
+    "password": "N6y$Ozddzt=1aa",
+    "passwordConfirm": "N6y$Ozddzt=1aa"
+}
+
+###
+POST {{entryPoint}}/signin
+Content-Type: application/json
+
+{
+    "email": "Helene.Little89@yahoo.com",
+    "password": "N6y$Ozddzt=1aa"
+}
+
+###
+POST {{entryPoint}}/refreshToken
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSGVsZW5lLkxpdHRsZTg5QHlhaG9vLmNvbSIsImlhdCI6MTY1ODQ5NzYwMCwiZXhwIjoxNjU4NDk4ODAwfQ.8oEFNRlVJ_AomfczcuZLw5fMtXZlxt0OzFo-lfdRF0g
+
+{
+    "email": "Helene.Little89@yahoo.com"
+}
+
+###
 PATCH {{entryPoint}}/users/2
 Content-Type: application/json
 
@@ -39,6 +68,8 @@ Content-Type: application/json
 ###
 GET {{entryPoint}}/articles
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSGVsZW5lLkxpdHRsZTgfff5QHlhaG9vLmNvbSIsImlhdCI6MTY1ODQ5ODMyMSwiZXhwIjoxNjU4NTg0NzIxfQ.MuV7qKZBRbdBDBSFeICuzsbeOnVyEUw_VkjmsTdZ3Bk
+
 ###
 POST {{entryPoint}}/articles
 Content-Type: application/json
@@ -54,6 +85,7 @@ Content-Type: application/json
 ###
 GET {{entryPoint}}/articles/1
 Content-Type: application/json
+
 
 #* --------------------- ERROR
 ###

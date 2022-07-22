@@ -6,6 +6,7 @@ class ArticleCommentDataMapper extends CoreDataMapper {
   tableName = 'article_comment';
   createFunctionName = 'create_article_comment';
   updateFunctionName = 'update_article_comment';
+  columns = '*';
 
   //& Find all comments for 1 article
   async findAllCommentsByArticle(articleId) {

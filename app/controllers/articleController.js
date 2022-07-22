@@ -18,7 +18,7 @@ async function createArticle(req, res) {
 
       if (!articleCreated) throw new ErrorApi(`Aucune donnée trouvée`, req, res, 400);
 
-      res.status(200).json('Article créé !')
+      return res.status(200).json('Article créé !')
         
   } catch (err) {
     logger(err.message);
@@ -28,10 +28,10 @@ async function createArticle(req, res) {
 async function fetchAllArticles(req, res) {
   try {
     const articles = await Article.findAll();
-
+ 
     if (!articles) throw new ErrorApi(`Aucun article trouvé`, req, res, 400);
 
-    res.json(articles);
+   return res.status(200).json(articles);
   } catch (err) {
     logger(err.message);
   }
@@ -45,7 +45,7 @@ async function fetchOneArticle(req, res) {
 
     if (!oneArticle) throw new ErrorApi(`Aucun article trouvé`, req, res, 400);
 
-    res.status(200).json(oneArticle);
+    return res.status(200).json(oneArticle);
   } catch (err) {
     logger(err.message);
   }

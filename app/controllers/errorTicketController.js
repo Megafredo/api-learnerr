@@ -8,6 +8,7 @@ const logger = debug('mainController');
 import { ErrorTicket } from '../datamappers/index.js';
 
 //~ Controllers
+
 async function createErrorTicket(req, res) {
   try {
   } catch (err) {
@@ -15,17 +16,21 @@ async function createErrorTicket(req, res) {
   }
 }
 
+
+
 async function fetchAllErrorTickets(req, res) {
   try {
     const errorTickets = await ErrorTicket.findAll();
 
     if (!errorTickets) throw new ErrorApi(`Aucun ticket d'erreur trouvé`, req, res, 400);
 
-    res.status(200).json(errorTickets);
+    return res.status(200).json(errorTickets);
   } catch (err) {
     logger(err.message);
   }
 }
+
+
 
 async function fetchOneErrorTicket(req, res) {
   try {
@@ -35,11 +40,13 @@ async function fetchOneErrorTicket(req, res) {
 
     if (!oneError) throw new ErrorApi(`Aucun ticket d'erreur trouvé`, req, res, 400);
 
-    res.status(200).json(oneError);
+    return res.status(200).json(oneError);
   } catch (err) {
     logger(err.message);
   }
 }
+
+
 
 async function updateErrorTicket(req, res) {
   try {
@@ -48,12 +55,16 @@ async function updateErrorTicket(req, res) {
   }
 }
 
+
+
 async function deleteErrorTicket(req, res) {
   try {
   } catch (err) {
     logger(err.message);
   }
 }
+
+
 
 async function sendErrorTicketToDraft(req, res) {
   try {
@@ -62,12 +73,16 @@ async function sendErrorTicketToDraft(req, res) {
   }
 }
 
+
+
 async function fetchAllErrorTicketsByCategory(req, res) {
   try {
   } catch (err) {
     logger(err.message);
   }
 }
+
+
 
 async function fetchAllErrorTicketsByUser(req, res) {
   try {
@@ -76,6 +91,8 @@ async function fetchAllErrorTicketsByUser(req, res) {
   }
 }
 
+
+
 async function fetchLastestErrorTickets(req, res) {
   try {
   } catch (err) {
@@ -83,12 +100,16 @@ async function fetchLastestErrorTickets(req, res) {
   }
 }
 
+
+
 async function searchAllErrorTickets(req, res) {
   try {
   } catch (err) {
     logger(err.message);
   }
 }
+
+
 
 export {
   createErrorTicket,

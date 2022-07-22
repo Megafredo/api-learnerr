@@ -4,7 +4,7 @@ const router = Router();
 
 //~ Import modules
 import { fetchAllUsers, fetchOneUser, updateUser, inactivateUser, doSignUp, doSignIn, doSignOut, fetchAllUserComments } from '../controllers/userController.js';
-// import { refreshToken } from '../services/jsonWebToken.js';
+import { refreshToken } from '../services/jsonWebToken.js';
 
 //~ Import schema
 import { validation } from '../services/validation.js';
@@ -22,8 +22,7 @@ router.get('/api/v1/signout', doSignOut);
 
 router.get('/api/v1/users/:userId/comments', fetchAllUserComments);
 
-// router.post('/api/v1/refreshtoken', refreshToken);
-//todo enlever refreshToken de userController car c'est dans service et il faudra l'importer ici
+router.post('/api/v1/refreshtoken', refreshToken);
 
 //~ Export router
 export { router };

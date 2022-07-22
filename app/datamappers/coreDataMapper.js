@@ -20,6 +20,7 @@ class CoreDataMapper {
     return result.rows;
   }
 
+
   //& FindOne
   async findOne(id) {
     const preparedQuery = {

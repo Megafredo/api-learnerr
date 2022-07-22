@@ -7,6 +7,7 @@ class ArticleDataMapper extends CoreDataMapper {
     tableName = 'article';
     createFunctionName = 'create_article';
     updateFunctionName = 'update_article';
+    columns = '*';
 }
 
 const Article = new ArticleDataMapper(client);

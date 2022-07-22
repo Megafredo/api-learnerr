@@ -5,6 +5,8 @@ const router = Router();
 //~ Import modules
 import { createArticle, fetchAllArticles, fetchOneArticle, updateArticle, deleteArticle, sendArticleToDraft, fetchAllArticlesByCategory, fetchAllArticlesByUser, fetchLastestArticles } from '../controllers/articleController.js';
 
+import { validateToken } from '../middlewares/validateToken.js';
+
 
 //~ Routes
 router.post('/api/v1/articles', createArticle);

@@ -27,7 +27,7 @@ async function fetchAllCategories(req, res) {
 
         if (!categories) throw new ErrorApi(`Aucune catégorie trouvée`, req, res, 400);
     
-        res.status(200).json(categories);
+        return res.status(200).json(categories);
         
     } catch (err) {
         logger(err.message);

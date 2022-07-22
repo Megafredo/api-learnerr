@@ -7,6 +7,7 @@ class ErrorTicketDataMapper extends CoreDataMapper {
     tableName = 'error';
     createFunctionName = 'create_error';
     updateFunctionName = 'update_error';
+    columns = '*';
 }
 
 const ErrorTicket = new ErrorTicketDataMapper(client);
