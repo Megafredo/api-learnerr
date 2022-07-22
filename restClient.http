@@ -2,34 +2,36 @@
 
 #* --------------------- USER
 
+#& ---- All User
 ###
 GET {{entryPoint}}/users
 Content-Type: application/json
 
 ###
-GET {{entryPoint}}/users/1
+GET {{entryPoint}}/users/3
 Content-Type: application/json
 
 ###
-PATCH {{entryPoint}}/users/10
+PUT {{entryPoint}}/users/3
 Content-Type: application/json
 
 {
-    "username": "",
-    "email": "",
-    "password": "",
-    "is_active": "",
-    "title": "",
-    "presentation": "",
-    "profile_pic_url": "",
-    "linkedin_url": "",
-    "github_url": "",
-    "instagram_url": "",
-    "twitter_url": "",
-    "portfolio_url": "",
-    "role_id": "",
-    "created_at": "",
-    "updated_at": "",
+    "username": "ADMIN",
+    "is_active": false
+}
+
+###
+PATCH {{entryPoint}}/users/2
+Content-Type: application/json
+
+{
+    "username": "Coucou_Heleneeeeeeeeee",
+    "email": "bridget.Hu@gmail.com",
+    "password": "N6y$Ozddzt=1aa",
+    "passwordConfirm": "N6y$Ozddzt=1aa",
+    "profile_pic_url":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/940.jpg",
+    "linkedin_url":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/745.jpg",
+    "id": 2
 }
 
 #* --------------------- ARTICLE
@@ -85,7 +87,25 @@ Content-Type: application/json
 GET {{entryPoint}}/categories/1
 Content-Type: application/json
 
-
+// Utilisateur
+{
+    "id": ,
+    "username": "",
+    "email": "",
+    "password": "",
+    "is_active": "",
+    "title": "",
+    "presentation": "",
+    "profile_pic_url": "",
+    "linkedin_url": "",
+    "github_url": "",
+    "instagram_url": "",
+    "twitter_url": "",
+    "portfolio_url": "",
+    "role_id": "",
+    "created_at": "",
+    "updated_at": "",
+}
 
 // articles
 {
@@ -115,6 +135,7 @@ Content-Type: application/json
 
 // Article Comments
 {
+    "id": ,
     "content": ,
     "user_id": ,
     "article_id": ,
@@ -124,6 +145,7 @@ Content-Type: application/json
 
 // Error ticket comments
 {
+    "id": ,
     "content": ,
     "user_id": ,
     "article_id": ,

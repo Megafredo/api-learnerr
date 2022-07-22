@@ -3,6 +3,7 @@ class CoreDataMapper {
   tableName;
   createFunctionName;
   updateFunctionName;
+  columns;
 
   constructor(client) {
     this.client = client;
@@ -11,7 +12,7 @@ class CoreDataMapper {
   //& FindAll
   async findAll() {
     const preparedQuery = {
-      text: `SELECT * FROM "${this.tableName}";`
+      text: `SELECT ${this.columns} FROM "${this.tableName}";`
     };
 
     const result = await this.client.query(preparedQuery);
@@ -23,7 +24,7 @@ class CoreDataMapper {
   async findOne(id) {
     const preparedQuery = {
       text: `
-            SELECT * FROM "${this.tableName}"
+            SELECT ${this.columns} FROM "${this.tableName}"
             WHERE "id" = $1;
             `,
       values: [id]
@@ -50,7 +51,7 @@ class CoreDataMapper {
 
   //& Update
   async update(inputData) {
-    
+      
     const preparedQuery = {
         text: `SELECT * FROM ${this.updateFunctionName}($1);`,
         values: [inputData]

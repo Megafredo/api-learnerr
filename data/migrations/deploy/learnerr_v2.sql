@@ -10,7 +10,7 @@ RETURNS TABLE (inserted_user TEXT) AS $$
 
 BEGIN
 INSERT INTO
-    public."user" (
+        "user" (
         "username",
         "email",
         "password"

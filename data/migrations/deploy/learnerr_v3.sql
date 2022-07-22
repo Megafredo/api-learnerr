@@ -15,6 +15,7 @@ SET
     "username" = COALESCE(($1 ->> 'username')::TEXT, "username"),
     "email" = COALESCE(($1 ->> 'email')::EMAIL, "email"),
     "password" = COALESCE(($1 ->> 'password')::PWD,  "password"),
+    "is_active" = COALESCE(($1 ->> 'is_active')::BOOLEAN,  "is_active"),
     "title" = COALESCE(($1 ->> 'title')::TEXT, title),
     "presentation" = COALESCE(($1 ->> 'presentation')::TEXT, presentation),
     "profile_pic_url" = COALESCE(($1 ->> 'profile_pic_url')::LINK_URL, profile_pic_url),
