@@ -11,7 +11,7 @@ GET {{entryPoint}}/users/1
 Content-Type: application/json
 
 ###
-PUT {{entryPoint}}/users/10
+PATCH {{entryPoint}}/users/10
 Content-Type: application/json
 
 {

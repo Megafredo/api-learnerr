@@ -25,7 +25,6 @@ async function fetchOneUser(req, res) {
   try {
    /* A way to get the userId from the url. */
     const userId = +req.params.userId;
-  
 
     const oneUser = await User.findOne(userId);
 
@@ -39,6 +38,15 @@ async function fetchOneUser(req, res) {
 
 async function updateUser(req, res) {
   try {
+
+    const userId = +req.params.userId;
+    if (isNaN(userId)) throw new ErrorApi(`L'id doit être un nombre`, req, res,400);
+    
+    const user = await User.findOne(userId);
+    if(!user) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+
+    
+
   } catch (err) {
     logger(err.message);
   }
@@ -73,13 +81,6 @@ async function doSignOut(req, res) {
   }
 }
 
-async function refreshToken(req, res) {
-  try {
-  } catch (err) {
-    logger(err.message);
-  }
-}
-
 async function fetchAllUserComments(req, res) {
   try {
   } catch (err) {
@@ -87,4 +88,4 @@ async function fetchAllUserComments(req, res) {
   }
 }
 
-export { fetchAllUsers, fetchOneUser, updateUser, inactivateUser, doSignUp, doSignIn, doSignOut, refreshToken, fetchAllUserComments };
+export { fetchAllUsers, fetchOneUser, updateUser, inactivateUser, doSignUp, doSignIn, doSignOut, fetchAllUserComments };
