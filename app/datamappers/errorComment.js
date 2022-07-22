@@ -3,7 +3,7 @@ import { CoreDataMapper } from "./coreDataMapper.js";
 import client from '../db/database.js';
 
 
-class ErrorComment extends CoreDataMapper {
+class ErrorCommentDataMapper extends CoreDataMapper {
     tableName = 'error_comment';
     createFunctionName = 'create_error_comment';
     updateFunctionName = 'update_error_comment';
@@ -26,6 +26,6 @@ class ErrorComment extends CoreDataMapper {
   }
 }
 
-const errorComment = new ErrorComment(client);
+const ErrorComment = new ErrorCommentDataMapper(client);
 
-export { errorComment };
+export { ErrorComment };

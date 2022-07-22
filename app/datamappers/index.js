@@ -1,8 +1,8 @@
-import { user } from './user.js';
-import { article } from './article.js';
-import { articleComment } from './articleComment.js';
-import { errorComment } from './errorComment.js';
-import { errorTicket } from './errorTicket.js';
-import { category } from './category.js';
+import { User } from './user.js';
+import { Article } from './article.js';
+import { ArticleComment } from './articleComment.js';
+import { ErrorComment } from './errorComment.js';
+import { ErrorTicket } from './errorTicket.js';
+import { Category } from './category.js';
 
-export { user, article, articleComment, errorComment, errorTicket, category };
+export { User, Article, ArticleComment, ErrorComment, ErrorTicket, Category };

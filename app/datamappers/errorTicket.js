@@ -3,12 +3,12 @@ import { CoreDataMapper } from "./coreDataMapper.js";
 import client from '../db/database.js';
 
 
-class ErrorTicket extends CoreDataMapper {
+class ErrorTicketDataMapper extends CoreDataMapper {
     tableName = 'error';
     createFunctionName = 'create_error';
     updateFunctionName = 'update_error';
 }
 
-const errorTicket = new ErrorTicket(client);
+const ErrorTicket = new ErrorTicketDataMapper(client);
 
-export { errorTicket };
+export { ErrorTicket };

@@ -2,7 +2,7 @@
 import { CoreDataMapper } from './coreDataMapper.js';
 import client from '../db/database.js';
 
-class ArticleComment extends CoreDataMapper {
+class ArticleCommentDataMapper extends CoreDataMapper {
   tableName = 'article_comment';
   createFunctionName = 'create_article_comment';
   updateFunctionName = 'update_article_comment';
@@ -25,5 +25,5 @@ class ArticleComment extends CoreDataMapper {
   }
 }
 
-const articleComment = new ArticleComment(client);
-export { articleComment };
+const ArticleComment = new ArticleCommentDataMapper(client);
+export { ArticleComment };

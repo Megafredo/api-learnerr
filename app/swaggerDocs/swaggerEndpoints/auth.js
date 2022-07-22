@@ -3,7 +3,7 @@ import { usersProperties, userExample } from '../swaggerUtils/swaggerExamples.js
 import { error400, error403, error404 } from '../swaggerUtils/swaggerStatus.js';
 
 const signup = {
-       //~ Create user
+    //~ Create user
     post: {
         tags: ['Identification'],
         summary: `Création d'un utilisateur`,
@@ -26,7 +26,7 @@ const signup = {
 };
 
 const signin = {
-       //~ Auth user
+    //~ Auth user
     post: {
         tags: ['Identification'],
         summary: `Authentification d'un utilisateur`,
@@ -49,7 +49,7 @@ const signin = {
 };
 
 const signout = {
-       //~ Disconnect user
+    //~ Disconnect user
     get: {
         tags: ['Identification'],
         summary: `Déconnexion d'un utilisateur`,

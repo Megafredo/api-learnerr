@@ -4,13 +4,14 @@ import { ErrorApi } from '../services/errorHandler.js';
 import debug from 'debug';
 const logger = debug('mainController');
 
-import { user } from '../datamappers/index.js';
+//~ Import Datamapper
+import { User } from '../datamappers/index.js';
 
 //~ Controllers
 
 async function fetchAllUsers(req, res) {
   try {
-    const users = await user.findAll();
+    const users = await User.findAll();
 
     if (!users) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
@@ -26,7 +27,7 @@ async function fetchOneUser(req, res) {
     const userId = +req.params.userId;
   
 
-    const oneUser = await user.findOne(userId);
+    const oneUser = await User.findOne(userId);
 
     if (!oneUser) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 

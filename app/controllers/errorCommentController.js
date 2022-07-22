@@ -5,7 +5,8 @@ import { ErrorApi } from '../services/errorHandler.js';
 import debug from 'debug';
 const logger = debug('articleCommentController');
 
-import { errorComment } from '../datamappers/index.js';
+//~ Import Datamapper
+import { ErrorComment } from '../datamappers/index.js';
 
 //~ Controller
 
@@ -20,7 +21,7 @@ async function fetchAllErrorComments(req, res) {
   try {
     const errorId = +req.params.errorId;
 
-    const errorComments = await errorComment.findAllCommentsByErrorTicket(errorId);
+    const errorComments = await ErrorComment.findAllCommentsByErrorTicket(errorId);
 
     if (!errorComments) throw new ErrorApi(`Aucun commentaire trouvé pour cette erreur`, req, res, 400);
 

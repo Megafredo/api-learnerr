@@ -5,7 +5,8 @@ import { ErrorApi } from '../services/errorHandler.js';
 import debug from 'debug';
 const logger = debug('mainController');
 
-import { article } from '../datamappers/index.js';
+//~ Import Datamapper
+import { Article } from '../datamappers/index.js';
 
 //~ Controller
 
@@ -13,7 +14,7 @@ async function createArticle(req, res) {
   try {
       const articleData = req.body;
 
-      const articleCreated = await article.create(articleData);
+      const articleCreated = await Article.create(articleData);
 
       if (!articleCreated) throw new ErrorApi(`Aucune donnée trouvée`, req, res, 400);
 
@@ -26,7 +27,7 @@ async function createArticle(req, res) {
 
 async function fetchAllArticles(req, res) {
   try {
-    const articles = await article.findAll();
+    const articles = await Article.findAll();
 
     if (!articles) throw new ErrorApi(`Aucun article trouvé`, req, res, 400);
 
@@ -40,7 +41,7 @@ async function fetchOneArticle(req, res) {
   try {
     const articleId = +req.params.articleId;
 
-    const oneArticle = await article.findOne(articleId);
+    const oneArticle = await Article.findOne(articleId);
 
     if (!oneArticle) throw new ErrorApi(`Aucun article trouvé`, req, res, 400);
 

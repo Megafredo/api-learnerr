@@ -5,7 +5,8 @@ import {ErrorApi} from '../services/errorHandler.js'
 import debug from 'debug'; 
 const logger = debug('mainController');
 
-import { category } from '../datamappers/index.js';
+//~ Import Datamapper
+import { Category } from '../datamappers/index.js';
 
 
 //~ Controller
@@ -22,7 +23,7 @@ async function createCategory(req, res) {
 
 async function fetchAllCategories(req, res) {
     try {
-        const categories = await category.findAll();
+        const categories = await Category.findAll();
 
         if (!categories) throw new ErrorApi(`Aucune catégorie trouvée`, req, res, 400);
     

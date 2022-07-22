@@ -2,12 +2,23 @@
 import { articleCommentsProperties, articleCommentExample } from '../swaggerUtils/swaggerExamples.js';
 import { error400, error403, error404 } from '../swaggerUtils/swaggerStatus.js';
 
-
 const articleComments = {
     //~ Fetch all comments
     get: {
         tags: ['Article comments'],
         summary: 'Récupération de tous les commentaires',
+        parameters: [
+            {
+                name: 'articleId',
+                in: 'path',
+                required: true,
+                schema: {
+                    type: 'integer',
+                    example: 1
+                },
+                description: `Identifiant d'un article`
+            }
+        ],
         responses: {
             200: {
                 description: 'Requête réussie',
@@ -29,6 +40,18 @@ const articleComments = {
     post: {
         tags: ['Article comments'],
         summary: `Création d'un commentaire`,
+        parameters: [
+            {
+                name: 'articleId',
+                in: 'path',
+                required: true,
+                schema: {
+                    type: 'integer',
+                    example: 1
+                },
+                description: `Identifiant d'un article`
+            }
+        ],
         responses: {
             201: {
                 description: 'Requête réussie et commentaire créé',
@@ -49,7 +72,7 @@ const articleComments = {
 };
 
 const articlesCommentsById = {
-    //~ Update comment 
+    //~ Update comment
     patch: {
         tags: ['Article comments'],
         summary: `Mise à jour des informations d'un commentaire`,
@@ -62,7 +85,17 @@ const articlesCommentsById = {
                     type: 'integer',
                     example: 1
                 },
-                description: 'Id pour mettre à jour un commentaire'
+                description: `Identifiant d'un article`
+            },
+            {
+                name: 'commentId',
+                in: 'path',
+                required: true,
+                schema: {
+                    type: 'integer',
+                    example: 1
+                },
+                description: `Identifiant d'un commentaire`
             }
         ],
         responses: {
@@ -99,7 +132,17 @@ const articlesCommentsById = {
                     type: 'integer',
                     example: 1
                 },
-                description: 'Id pour supprimer un commentaire'
+                description: `Identifiant d'un article`
+            },
+            {
+                name: 'commentId',
+                in: 'path',
+                required: true,
+                schema: {
+                    type: 'integer',
+                    example: 1
+                },
+                description: `Identifiant d'un commentaire`
             }
         ],
         responses: {

@@ -1,10 +1,11 @@
-//~Import modules
+//~ Import modules
 import { ErrorApi } from '../services/errorHandler.js';
 //~ Import Debug
 import debug from 'debug';
 const logger = debug('mainController');
 
-import { errorTicket } from '../datamappers/index.js';
+//~ Import Datamapper
+import { ErrorTicket } from '../datamappers/index.js';
 
 //~ Controllers
 async function createErrorTicket(req, res) {
@@ -16,7 +17,7 @@ async function createErrorTicket(req, res) {
 
 async function fetchAllErrorTickets(req, res) {
   try {
-    const errorTickets = await errorTicket.findAll();
+    const errorTickets = await ErrorTicket.findAll();
 
     if (!errorTickets) throw new ErrorApi(`Aucun ticket d'erreur trouvé`, req, res, 400);
 
@@ -29,9 +30,8 @@ async function fetchAllErrorTickets(req, res) {
 async function fetchOneErrorTicket(req, res) {
   try {
     const errorId = +req.params.errorId;
-    console.log("req.params.errorId: ", req.params.errorId);
 
-    const oneError = await errorTicket.findOne(errorId);
+    const oneError = await ErrorTicket.findOne(errorId);
 
     if (!oneError) throw new ErrorApi(`Aucun ticket d'erreur trouvé`, req, res, 400);
 
