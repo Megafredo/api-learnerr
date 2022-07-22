@@ -122,10 +122,10 @@ async function doSignUp(req, res) {
 
 async function doSignIn(req, res) {
     try {
-        // let { email, password, role } = req.body;
+        let { email, password } = req.body;
 
         //~ User already exist ?
-        // const userExist = await User.findUser(email);
+        const userExist = await User.findUserIdentity({email});
 
         if (!userExist) throw new ErrorApi(`L'utilisateur n'existe pas !`, req, res, 401);
 
@@ -134,14 +134,12 @@ async function doSignIn(req, res) {
 
         if (!validPwd) throw new ErrorApi(`L'email ou le mot de passe n'est pas valide`, req, res, 401);
 
-        // const { ['password', 'id']: remove, ...user } = userExist;
+        const { ['password']: remove, ...user } = userExist;
 
         //~ Authorization JWT
-        req.session.user = user;
-        // req.session.role = role;
 
-        const accessToken = generateAccessToken({ user });
-        const refreshToken = generateRefreshToken({ user }, req);
+        const accessToken = generateAccessToken({ identity : user });
+        const refreshToken = generateRefreshToken({ identity : user }, req);
 
         return res.status(200).json( {message : 'Utilisateur connecté', accessToken, refreshToken });
     } catch (err) {

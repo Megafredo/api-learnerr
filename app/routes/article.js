@@ -6,11 +6,11 @@ const router = Router();
 import { createArticle, fetchAllArticles, fetchOneArticle, updateArticle, deleteArticle, sendArticleToDraft, fetchAllArticlesByCategory, fetchAllArticlesByUser, fetchLastestArticles } from '../controllers/articleController.js';
 
 import { validateToken } from '../middlewares/validateToken.js';
-
+import { auth } from '../middlewares/auth.js';
 
 //~ Routes
 router.post('/api/v1/articles', createArticle);
-router.get('/api/v1/articles', fetchAllArticles);
+router.get('/api/v1/articles', [validateToken, auth],fetchAllArticles);
 router.get('/api/v1/articles/:articleId', fetchOneArticle);
 router.patch('/api/v1/articles/:articleId', updateArticle);
 router.delete('/api/v1/articles/:articleId', deleteArticle);

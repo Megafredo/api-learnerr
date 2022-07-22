@@ -9,16 +9,16 @@ import {ErrorApi} from './errorHandler.js';
 
 
 //~  Jwt Access_Token
-function generateAccessToken(user) {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' }); // 1d => one day, 60m => 60 minutes
+function generateAccessToken(identity) {
+    return jwt.sign(identity, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' }); // 1d => one day, 60m => 60 minutes
 }
   
-function generateRefreshToken(user, req) {
+function generateRefreshToken(identity, req) {
     //* -- register refresh tokens
     req.session.refreshToken = [];
     const token = req.session.refreshToken;
   
-    const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '20m' }); // 1d => one day, 60m => 60 minutes
+    const refreshToken = jwt.sign(identity, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '20m' }); // 1d => one day, 60m => 60 minutes
   
     token.push(refreshToken);
   

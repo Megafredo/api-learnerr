@@ -7,6 +7,7 @@ class UserDataMapper extends CoreDataMapper {
     tableName = 'user';
     createFunctionName = 'create_user' ;
     updateFunctionName = 'update_user';
+    userIdentity = 'user_identity' ;
     columns = `"id","username","title", "presentation", "profile_pic_url", "linkedin_url","github_url","instagram_url","twitter_url","portfolio_url"`;
     
   //& Find user
@@ -29,9 +30,20 @@ class UserDataMapper extends CoreDataMapper {
 
 
   //& Find identity
-  //todo récupération d'une nouvelle function plus adapté
 
+  async findUserIdentity(email) {
+    const preparedQuery = {
+        text: `
+              SELECT * FROM "${this.userIdentity}"($1);
+              `,
+        values: [email]
+      };
+  
+      const result = await this.client.query(preparedQuery);
+      if (!result.rows[0]) return null;
+      return result.rows[0];
 
+  }
 
 }
 

@@ -43,7 +43,7 @@ Content-Type: application/json
 ###
 POST {{entryPoint}}/refreshToken
 Content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSGVsZW5lLkxpdHRsZTg5QHlhaG9vLmNvbSIsImlhdCI6MTY1ODQ5NzYwMCwiZXhwIjoxNjU4NDk4ODAwfQ.8oEFNRlVJ_AomfczcuZLw5fMtXZlxt0OzFo-lfdRF0g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSGVsZW5lLkxpdHRsZTg5QHlhaG9vLmNvbSIsImlhdCI6MTY1ODUwMTU0NCwiZXhwIjoxNjU4NTAyNzQ0fQ.UTzR18BqVm5FqWhUIwE-9hV44bQ4n2AQqNLwcO3zfbM
 
 {
     "email": "Helene.Little89@yahoo.com"
@@ -68,7 +68,7 @@ Content-Type: application/json
 ###
 GET {{entryPoint}}/articles
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSGVsZW5lLkxpdHRsZTgfff5QHlhaG9vLmNvbSIsImlhdCI6MTY1ODQ5ODMyMSwiZXhwIjoxNjU4NTg0NzIxfQ.MuV7qKZBRbdBDBSFeICuzsbeOnVyEUw_VkjmsTdZ3Bk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwiZW1haWwiOiJIZWxlbmUuTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4NTAyNjY1LCJleHAiOjE2NTg1ODkwNjV9.L87n8PHMCXXrmWAeE3mhYazVE7Pec57B1NY6XCjxB0Q
 
 ###
 POST {{entryPoint}}/articles
