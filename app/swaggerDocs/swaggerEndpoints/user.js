@@ -135,6 +135,43 @@ const oneUser = {
             404: error404,
             403: error403
         }
+    },
+
+     //~ Delete one User
+     delete: {
+        tags: ['Users'],
+        summary: `Suppression d'un utilisateur`,
+        parameters: [
+            {
+                name: 'userId',
+                in: 'path',
+                required: true,
+                schema: {
+                    type: 'integer',
+                    example: 1
+                },
+                description: 'Id pour supprimer un utilisateur'
+            }
+        ],
+        responses: {
+            200: {
+                description: 'Requête réussie',
+                content: {
+                    'application/json': {
+                        schema: {
+                            type: 'object',
+                            properties: { message: { type: 'string' } },
+                            example: {
+                                message: 'La donnée a bien été supprimée'
+                            }
+                        }
+                    }
+                }
+            },
+            400: error400,
+            403: error403,
+            404: error404
+        }
     }
 };
 

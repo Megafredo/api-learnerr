@@ -9,15 +9,15 @@ Content-Type: application/json
 Authorization: Bearer 
 
 ###
-GET {{entryPoint}}/users/3
+GET {{entryPoint}}/users/12
 Content-Type: application/json
 
 ###
-PUT {{entryPoint}}/users/11
+PUT {{entryPoint}}/users/13
 Content-Type: application/json
 
 {
-    "is_active": true
+    "is_active": false
 }
 
 ###
@@ -61,7 +61,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 # ------------------------------------------------------------------
 
 ###
-PATCH {{entryPoint}}/users/2
+PATCH {{entryPoint}}/users/14
 Content-Type: application/json
 
 {
@@ -73,6 +73,11 @@ Content-Type: application/json
     "linkedin_url":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/745.jpg",
     "id": 2
 }
+
+
+###
+DELETE {{entryPoint}}/users/12
+Content-Type: application/json
 
 #* --------------------- ARTICLE
 
@@ -95,7 +100,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 }
 
 ###
-GET {{entryPoint}}/articles/1
+GET {{entryPoint}}/articles/4
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiSGVsZW5lLkxpdHRsZTg5QHlhaG9vLmNvbSIsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTY1ODU1MTA3NiwiZXhwIjoxNjU4NjM3NDc2fQ.zDRuuE6Bq3m-WJ8t-1w4NLQbtZMeHqAACuLNveyy0hU
 

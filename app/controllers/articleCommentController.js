@@ -3,7 +3,7 @@ import {ErrorApi} from '../services/errorHandler.js'
 
 //~ Import Debug 
 import debug from 'debug'; 
-const logger = debug('articleCommentController');
+const logger = debug('Controller');
 
 //~ Import Datamapper
 import { ArticleComment } from '../datamappers/index.js';

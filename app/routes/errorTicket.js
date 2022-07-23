@@ -7,16 +7,16 @@ import { createErrorTicket, fetchAllErrorTickets, fetchOneErrorTicket, updateErr
 
 //~ Authorization
 import { validateToken } from '../middlewares/validateToken.js';
-import { auth, admin, role } from '../middlewares/auth.js';
+import { auth } from '../middlewares/auth.js';
 
 //~ Routes
-router.post('/api/v1/errors', createErrorTicket);
+router.post('/api/v1/errors',[validateToken, auth], createErrorTicket);
 router.get('/api/v1/errors', fetchAllErrorTickets);
 router.get('/api/v1/errors/:errorId(\\d+)', fetchOneErrorTicket);
-router.patch('/api/v1/errors/:errorId(\\d+)', updateErrorTicket);
-router.delete('/api/v1/errors/:errorId(\\d+)', deleteErrorTicket);
+router.patch('/api/v1/errors/:errorId(\\d+)',[validateToken, auth], updateErrorTicket);
+router.delete('/api/v1/errors/:errorId(\\d+)',[validateToken, auth], deleteErrorTicket);
 
-router.post('/api/v1/errors/:errorId(\\d+)/drafts', sendErrorTicketToDraft);
+router.post('/api/v1/errors/:errorId(\\d+)/drafts',[validateToken, auth], sendErrorTicketToDraft);
 router.get('/api/v1/categories/:categoryId(\\d+)/errors', fetchAllErrorTicketsByCategory);
 router.get('/api/v1/users/:userId(\\d+)/errors', fetchAllErrorTicketsByUser);
 router.get('/api/v1/errors/last', fetchLastestErrorTickets);

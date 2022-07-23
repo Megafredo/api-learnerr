@@ -2,7 +2,7 @@
 import { ErrorApi } from '../services/errorHandler.js';
 //~ Import Debug
 import debug from 'debug';
-const logger = debug('mainController');
+const logger = debug('Controller');
 
 //~ Import Datamapper
 import { ErrorTicket } from '../datamappers/index.js';

@@ -3,7 +3,7 @@ import { Router } from 'express';
 const router = Router();
 
 //~ Import modules
-import { fetchAllUsers, fetchOneUser, updateUser, inactivateUser, doSignUp, doSignIn, doSignOut, fetchAllUserComments } from '../controllers/userController.js';
+import { fetchAllUsers, fetchOneUser, updateUser, deleteUser, inactivateUser, doSignUp, doSignIn, doSignOut, fetchAllUserComments } from '../controllers/userController.js';
 import { refreshToken } from '../services/jsonWebToken.js';
 
 //~ Import schema
@@ -12,14 +12,15 @@ import { userSignUpSchema, userSignInSchema, userInactivateSchema, userUpdateSch
 
 //~ Authorization
 import { validateToken } from '../middlewares/validateToken.js';
-import { auth, admin, role } from '../middlewares/auth.js';
+import { auth, admin } from '../middlewares/auth.js';
 
 //~ Routes
-router.get('/api/v1/users',[ validateToken, auth, admin ], fetchAllUsers);
-router.get('/api/v1/users/:userId(\\d+)', fetchOneUser);
-router.patch('/api/v1/users/:userId(\\d+)', validation.body(userUpdateSchema), updateUser);
-router.put('/api/v1/users/:userId(\\d+)', validation.body(userInactivateSchema),inactivateUser);
+router.get('/api/v1/users', fetchAllUsers);
+router.get('/api/v1/users/:userId(\\d+)',[ validateToken, auth ], fetchOneUser);
+router.patch('/api/v1/users/:userId(\\d+)', [validateToken, auth], validation.body(userUpdateSchema), updateUser);
+router.delete('/api/v1/users/:userId(\\d+)', [validateToken, auth], deleteUser);
 
+router.put('/api/v1/users/:userId(\\d+)',[ validateToken, auth, admin ], validation.body(userInactivateSchema),inactivateUser);
 router.post('/api/v1/signup', validation.body(userSignUpSchema), doSignUp);
 router.post('/api/v1/signin', validation.body(userSignInSchema), doSignIn);
 router.get('/api/v1/signout', doSignOut);

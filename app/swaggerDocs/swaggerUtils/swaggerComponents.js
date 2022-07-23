@@ -13,7 +13,7 @@ const components = {
                 }
             }
         },
-        //~ 
+        //~ All components
         Users: {
             type: 'object',
             properties: usersProperties

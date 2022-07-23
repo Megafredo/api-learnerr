@@ -8,11 +8,11 @@ import {
 
 //~ Authorization
 import { validateToken } from '../middlewares/validateToken.js';
-import { auth, admin, role } from '../middlewares/auth.js';
+import { auth, role } from '../middlewares/auth.js';
 
 //~ Routes
-router.post('/api/v1/articles', [validateToken, auth], createArticle);
-router.get('/api/v1/articles', [validateToken, auth] , fetchAllArticles);
+router.post('/api/v1/articles', [validateToken, auth, role], createArticle);
+router.get('/api/v1/articles', fetchAllArticles);
 router.get('/api/v1/articles/:articleId(\\d+)', fetchOneArticle);
 router.patch('/api/v1/articles/:articleId(\\d+)', [validateToken, auth, role], updateArticle);
 router.delete('/api/v1/articles/:articleId(\\d+)',[validateToken, auth, role], deleteArticle);

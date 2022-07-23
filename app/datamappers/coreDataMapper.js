@@ -20,7 +20,6 @@ class CoreDataMapper {
     return result.rows;
   }
 
-
   //& FindOne
   async findOne(id) {
     const preparedQuery = {
@@ -40,7 +39,6 @@ class CoreDataMapper {
 
   //& Create
   async create(inputData) {
-
     const preparedQuery = {
       text: `SELECT * FROM ${this.createFunctionName}($1);`,
       values: [inputData]
@@ -52,13 +50,12 @@ class CoreDataMapper {
 
   //& Update
   async update(inputData) {
-      
     const preparedQuery = {
-        text: `SELECT * FROM ${this.updateFunctionName}($1);`,
-        values: [inputData]
+      text: `SELECT * FROM ${this.updateFunctionName}($1);`,
+      values: [inputData]
     };
-      const result = await this.client.query(preparedQuery);
-      
+    const result = await this.client.query(preparedQuery);
+
     return result.rows;
   }
 
@@ -72,9 +69,8 @@ class CoreDataMapper {
       values: [id]
     };
 
-      const result = await this.client.query(preparedQuery);
-      console.log("result: ", result.rowCount);
-      
+    const result = await this.client.query(preparedQuery);
+
     return result.rowCount;
   }
 }

@@ -9,8 +9,6 @@ const app = express();
 import { router } from './app/routes/index.js';
 import { ErrorApi } from './app/services/errorHandler.js';
 
-// import { userConnected } from './app/middlewares/auth.js'
-
 //~ Protect API
 import helmet from 'helmet';
 app.use(helmet());
@@ -44,7 +42,8 @@ app.use((req, res, next) => {
 });
 
 //If you have your node.js behind a proxy and are using secure: true, you need to set 'trust proxy' in express
-app.set('trust proxy', 1) // trust first proxy if deploy Heroku
+app.set('trust proxy', 1)
+// trust first proxy if deploy Heroku
 
 //~ Session
 import session from 'express-session';
@@ -61,8 +60,6 @@ app.use(session({
         //expires : new Date(Date.now() + 60 * 60 * 1000) //1 hour
         }
 }));
-//& Keep the user connected !
-// app.use(userConnected);
 
 //~ Router
 app.use(router);

@@ -70,6 +70,28 @@ async function updateUser(req, res) {
   }
 }
 
+async function deleteUser(req, res) {
+  try {
+    //~ Is id a number ?
+    const userId = +req.params.userId;
+    if (isNaN(userId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
+
+    //~ User exist ?
+    const user = await User.findOne(userId);
+    if (!user) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+
+    await User.delete(userId);
+
+    //check 
+    req.user = null;
+    req.session.destroy();
+
+    return res.status(200).json(`Le compte a bien été supprimé`);
+  } catch (err) {
+    logger(err.message);
+  }
+}
+
 async function inactivateUser(req, res) {
   try {
     //~ Is id a number ?
@@ -167,4 +189,4 @@ async function fetchAllUserComments(req, res) {
   }
 }
 
-export { fetchAllUsers, fetchOneUser, updateUser, inactivateUser, doSignUp, doSignIn, doSignOut, fetchAllUserComments };
+export { fetchAllUsers, fetchOneUser, updateUser, deleteUser, inactivateUser, doSignUp, doSignIn, doSignOut, fetchAllUserComments };
