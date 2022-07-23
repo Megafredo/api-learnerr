@@ -5,6 +5,10 @@ const router = Router();
 //~ Import
 import { createCategory, fetchAllCategories, deleteCategory, fetchAllCategoriesByArticle, fetchAllCategoriesByErrorTicket } from '../controllers/categoryController.js';
 
+//~ Authorization
+import { validateToken } from '../middlewares/validateToken.js';
+import { auth, admin, author, user } from '../middlewares/auth.js';
+
 //~ Routes
 router.post('/api/v1/categories', createCategory);
 router.get('/api/v1/categories', fetchAllCategories);

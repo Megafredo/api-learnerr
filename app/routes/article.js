@@ -4,24 +4,16 @@ const router = Router();
 
 //~ Import modules
 import {
-  createArticle,
-  fetchAllArticles,
-  fetchOneArticle,
-  updateArticle,
-  deleteArticle,
-  sendArticleToDraft,
-  fetchAllArticlesByCategory,
-  fetchAllArticlesByUser,
-  fetchLastestArticles
-} from '../controllers/articleController.js';
+  createArticle,  fetchAllArticles,  fetchOneArticle,  updateArticle,  deleteArticle,  sendArticleToDraft, fetchAllArticlesByCategory,  fetchAllArticlesByUser,  fetchLastestArticles } from '../controllers/articleController.js';
 
+//~ Authorization
 import { validateToken } from '../middlewares/validateToken.js';
-import { auth, admin,user } from '../middlewares/auth.js';
+import { auth, admin, author, user } from '../middlewares/auth.js';
 
 //~ Routes
 router.post('/api/v1/articles', createArticle);
-router.get('/api/v1/articles', [validateToken, auth, user], fetchAllArticles);
-router.get('/api/v1/articles/:articleId',[validateToken, auth, user], fetchOneArticle);
+router.get('/api/v1/articles', [validateToken, auth, admin], fetchAllArticles);
+router.get('/api/v1/articles/:articleId',[validateToken, auth], fetchOneArticle);
 router.patch('/api/v1/articles/:articleId', updateArticle);
 router.delete('/api/v1/articles/:articleId', deleteArticle);
 

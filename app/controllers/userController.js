@@ -127,7 +127,7 @@ async function doSignIn(req, res) {
     //~ User already exist ?
     const userExist = await User.findUserIdentity({ email });
 
-    if (!userExist) throw new ErrorApi(`L'utilisateur n'existe pas !`, req, res, 401);
+    if (!userExist || userExist.isactive === false) throw new ErrorApi(`L'utilisateur non reconnu !`, req, res, 401);
 
     //~ Security
     const validPwd = await bcrypt.compare(password, userExist.password);
@@ -135,7 +135,6 @@ async function doSignIn(req, res) {
     if (!validPwd) throw new ErrorApi(`L'email ou le mot de passe n'est pas valide`, req, res, 401);
 
     const { ['password']: remove, ...user } = userExist;
-    console.log("user: ", user);
 
     //~ Authorization JWT
     const accessToken = generateAccessToken({ identity: user });

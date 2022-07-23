@@ -12,12 +12,11 @@ GET {{entryPoint}}/users/3
 Content-Type: application/json
 
 ###
-PUT {{entryPoint}}/users/3
+PUT {{entryPoint}}/users/11
 Content-Type: application/json
 
 {
-    "username": "ADMIN",
-    "is_active": false
+    "is_active": true
 }
 
 ###
@@ -43,10 +42,10 @@ Content-Type: application/json
 ###
 POST {{entryPoint}}/refreshToken
 Content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSGVsZW5lLkxpdHRsZTg5QHlhaG9vLmNvbSIsImlhdCI6MTY1ODUwMTU0NCwiZXhwIjoxNjU4NTAyNzQ0fQ.UTzR18BqVm5FqWhUIwE-9hV44bQ4n2AQqNLwcO3zfbM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTY1ODU1NzQyMywiZXhwIjoxNjU4NTU4NjIzfQ.CU7uWMBebVwbjwIR6UaPr9NZ9ZoxhLyRAGv5BXKUv0A
 
 {
-    "email": "Helene.Little89@yahoo.com"
+    "email": "Fredo.Little89@yahoo.com"
 }
 
 ###
@@ -68,7 +67,7 @@ Content-Type: application/json
 ###
 GET {{entryPoint}}/articles
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4NTUyNzgwLCJleHAiOjE2NTg2MzkxODB9.kFE4FiNo6xOVbj35ux60hE9vWamCUDjgetMc9f1H09A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2NTg1NTg1NzEsImV4cCI6MTY1ODY0NDk3MX0.hlhPuyPDr5aqRCgpg3g5Y21EcCpe_4MKxuZUPwWMkeU
 
 ###
 POST {{entryPoint}}/articles

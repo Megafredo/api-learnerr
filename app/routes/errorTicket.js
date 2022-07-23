@@ -5,12 +5,13 @@ const router = Router();
 //~ Import modules
 import { createErrorTicket, fetchAllErrorTickets, fetchOneErrorTicket, updateErrorTicket, deleteErrorTicket, sendErrorTicketToDraft, fetchAllErrorTicketsByCategory, fetchAllErrorTicketsByUser, fetchLastestErrorTickets, searchAllErrorTickets } from '../controllers/errorTicketController.js';
 
+//~ Authorization
 import { validateToken } from '../middlewares/validateToken.js';
-import { auth, admin,user } from '../middlewares/auth.js';
+import { auth, admin, author, user } from '../middlewares/auth.js';
 
 //~ Routes
 router.post('/api/v1/errors', createErrorTicket);
-router.get('/api/v1/errors', [validateToken, auth, user], fetchAllErrorTickets);
+router.get('/api/v1/errors', fetchAllErrorTickets);
 router.get('/api/v1/errors/:errorId', fetchOneErrorTicket);
 router.patch('/api/v1/errors/:errorId', updateErrorTicket);
 router.delete('/api/v1/errors/:errorId', deleteErrorTicket);

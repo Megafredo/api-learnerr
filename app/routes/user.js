@@ -8,7 +8,11 @@ import { refreshToken } from '../services/jsonWebToken.js';
 
 //~ Import schema
 import { validation } from '../services/validation.js';
-import { userSignUpSchema,userSignInSchema, userInactivateSchema ,userUpdateSchema } from '../schema/user.schema.js';
+import { userSignUpSchema, userSignInSchema, userInactivateSchema, userUpdateSchema } from '../schema/user.schema.js';
+
+//~ Authorization
+import { validateToken } from '../middlewares/validateToken.js';
+import { auth, admin, author, user } from '../middlewares/auth.js';
 
 //~ Routes
 router.get('/api/v1/users',fetchAllUsers);

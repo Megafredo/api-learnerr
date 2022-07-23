@@ -4,11 +4,11 @@ const router = Router();
 
 //~ Import modules
 import {
-  createArticleComment,
-  fetchAllArticleComments,
-  updateArticleComment,
-  deleteArticleComment
-} from '../controllers/articleCommentController.js';
+  createArticleComment,  fetchAllArticleComments,  updateArticleComment, deleteArticleComment } from '../controllers/articleCommentController.js';
+
+//~ Authorization
+import { validateToken } from '../middlewares/validateToken.js';
+import { auth, admin, author, user } from '../middlewares/auth.js';
 
 //~ Routes
 router.post('/api/v1/articles/:articleId/comments', createArticleComment);
