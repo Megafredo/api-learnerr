@@ -4,7 +4,10 @@ import { faker } from '@faker-js/faker/locale/en';
 // connect to db - be where dotenv is configured
 import 'dotenv/config';
 import pg from 'pg';
-const client = new pg.Client();
+const client = new pg.Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false }
+  });
 // french bad world
 import list from 'french-badwords-list';
 // techstack list
