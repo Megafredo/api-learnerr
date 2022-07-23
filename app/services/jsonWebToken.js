@@ -10,17 +10,18 @@ import {ErrorApi} from './errorHandler.js';
 
 //~  Jwt Access_Token
 function generateAccessToken(identity) {
-    return jwt.sign(identity, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' }); // 1d => one day, 60m => 60 minutes
+    return jwt.sign(identity, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' }); // 1d => one day, 60m => 60 minutes
 }
   
 function generateRefreshToken(identity, req) {
     //* -- register refresh tokens
     req.session.refreshToken = [];
     const token = req.session.refreshToken;
-  
+    
     const refreshToken = jwt.sign(identity, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '20m' }); // 1d => one day, 60m => 60 minutes
-  
+    
     token.push(refreshToken);
+    console.log("ICI GENERATE REFRESH TOKEN: ", req.session.refreshToken);
   
     return refreshToken;
 }
@@ -28,6 +29,7 @@ function generateRefreshToken(identity, req) {
 //~ Get refresh token
 function getRefreshToken(req, res, next) {
     try {
+
       //get token from header
       const authHeader = req.headers['authorization'];
   
@@ -43,7 +45,7 @@ function getRefreshToken(req, res, next) {
         }
         // reset refresh token in session
         req.session.refreshToken = [];
-  
+ 
         return refreshToken;
   
       });
@@ -69,4 +71,4 @@ function refreshToken(req, res) {
 
   }
 
-  export {generateAccessToken, generateRefreshToken, refreshToken};
+  export {generateAccessToken, generateRefreshToken, refreshToken, getRefreshToken};

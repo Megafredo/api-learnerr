@@ -7,16 +7,16 @@ import { createErrorComment, fetchAllErrorComments, updateErrorComment, deleteEr
 
 //~ Authorization
 import { validateToken } from '../middlewares/validateToken.js';
-import { auth, admin, author, user } from '../middlewares/auth.js';
+import { auth, role } from '../middlewares/auth.js';
 
 //~ Routes
-router.post('/api/v1/errors/:errorId/comments', createErrorComment);
-router.get('/api/v1/errors/:errorId/comments', fetchAllErrorComments);
-router.patch('/api/v1/errors/:errorId/comments/:commentId', updateErrorComment);
-router.delete('/api/v1/errors/:errorId/comments/:commentId', deleteErrorComment);
+router.post('/api/v1/errors/:errorId(\\d+)/comments',[validateToken, auth, role], createErrorComment);
+router.get('/api/v1/errors/:errorId(\\d+)/comments', fetchAllErrorComments);
+router.patch('/api/v1/errors/:errorId(\\d+)/comments/:commentId(\\d+)',[validateToken, auth], updateErrorComment);
+router.delete('/api/v1/errors/:errorId(\\d+)/comments/:commentId(\\d+)',[validateToken, auth], deleteErrorComment);
 
-router.get('/api/v1/users/:userId/error_comments', fetchAllErrorCommentsByUser);
-router.patch('/api/v1/errors/:errorId/solution/:solutionId', addSolutionOnErrorTicket);
+router.get('/api/v1/users/:userId(\\d+)/error_comments', fetchAllErrorCommentsByUser);
+router.patch('/api/v1/errors/:errorId(\\d+)/solution/:solutionId(\\d+)', addSolutionOnErrorTicket);
 
 //~ Export router
 export { router };

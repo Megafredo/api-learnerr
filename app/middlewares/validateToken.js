@@ -4,7 +4,7 @@ import debug from 'debug';
 const logger = debug('Jwt');
 
 function validateToken(req, res, next) {
-    try {
+  try {
       //   get token from header
       const authHeader = req.headers['authorization'];
   
@@ -18,10 +18,8 @@ function validateToken(req, res, next) {
           throw new ErrorApi('Token is invalid !', req, res, 403);
         }
         req.user = identity.identity;
-        console.log("req.user: ", req.user);
         req.session.token = accessToken;
         
-        console.log('JETON VALIDE');
         next();
       });
     } catch (err) {

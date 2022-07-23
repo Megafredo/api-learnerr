@@ -7,27 +7,30 @@ const logger = debug('Auth');
 
 //~ Authentication
 function auth(req, res, next) {
-  if (!req.user && req.user.isactive === false) throw new ErrorApi(`L'utilisateur n'est pas connecté`, req, res, 401);
+  if (!req.user && req.user?.isactive === false) throw new ErrorApi(`L'utilisateur n'est pas connecté`, req, res, 401);
 
   next();
+}
+
+function role(req, res, next) {
+  if (req.user.role === 'admin' || req.user.role === 'author') {
+    next();
+  }
+  
+  throw new ErrorApi(`Accès interdit !`, req, res, 403);
 }
 
 function admin(req, res, next) {
-  if (req.user.role !== 'admin') throw new ErrorApi(`Accès interdit, l'utilisateur n'est pas un admin`, req, res, 403);
-
-  next();
+    if (req.user.role !== 'admin') throw new ErrorApi(`Accès interdit, l'utilisateur n'est pas un admin`, req, res, 403);
+    next();
 }
 
-function author(req, res, next) {
-  if (req.user.role !== 'author') throw new ErrorApi(`Accès interdit, l'utilisateur n'est pas un auteur`, req, res, 403);
 
-  next();
-}
+// function author(req, res, next) {
+//   if (req.user.role !== 'author') throw new ErrorApi(`Accès interdit, l'utilisateur n'est pas un auteur`, req, res, 403);
 
-function user(req, res, next) {
-  if (req.user.role !== 'user') throw new ErrorApi(`Accès interdit, vous devez créer un compte pour accéder à cette donnée`, req, res, 403);
-  next();
-}
+//   next();
+// }
 
 //~ Keep user connected
 function userConnected(req, res, next) {
@@ -41,4 +44,4 @@ function userConnected(req, res, next) {
   }
 }
 
-export { auth, admin, author, user, userConnected };
+export { auth, admin, role, userConnected };

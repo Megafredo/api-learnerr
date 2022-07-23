@@ -6,6 +6,7 @@
 ###
 GET {{entryPoint}}/users
 Content-Type: application/json
+Authorization: Bearer 
 
 ###
 GET {{entryPoint}}/users/3
@@ -40,13 +41,24 @@ Content-Type: application/json
 }
 
 ###
+GET {{entryPoint}}/signout
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2NTg1NjM3NjUsImV4cCI6MTY1ODU2NDk2NX0.2JEWpAEKCQEjEU1g-QPx-cWmvdHl1BsPCZqjhSLWpEg
+
+# ------------------------------------------------------------------
+# ------------------------------------------------------------------ 
+
+###
 POST {{entryPoint}}/refreshToken
 Content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTY1ODU1NzQyMywiZXhwIjoxNjU4NTU4NjIzfQ.CU7uWMBebVwbjwIR6UaPr9NZ9ZoxhLyRAGv5BXKUv0A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJhdXRob3IifSwiaWF0IjoxNjU4NTY3NzI5LCJleHAiOjE2NTg1Njc4NDl9.vciY0crBXNgEdGDdvFJ30K83LFhLPS0CP7_k4meQWGc
 
 {
     "email": "Fredo.Little89@yahoo.com"
 }
+
+# ------------------------------------------------------------------
+# ------------------------------------------------------------------
 
 ###
 PATCH {{entryPoint}}/users/2
@@ -67,11 +79,12 @@ Content-Type: application/json
 ###
 GET {{entryPoint}}/articles
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2NTg1NTg1NzEsImV4cCI6MTY1ODY0NDk3MX0.hlhPuyPDr5aqRCgpg3g5Y21EcCpe_4MKxuZUPwWMkeU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJhdXRob3IifSwiaWF0IjoxNjU4NTY3NzI5LCJleHAiOjE2NTg1Njc3ODl9.K-EB8WKOxiTZRYho8A6N5vgjAKhnPbLpUJdVzeH_Mnk
 
 ###
 POST {{entryPoint}}/articles
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJhdXRob3IifSwiaWF0IjoxNjU4NTY3NzI5LCJleHAiOjE2NTg1Njc3ODl9.K-EB8WKOxiTZRYho8A6N5vgjAKhnPbLpUJdVzeH_Mnk
 
 {
     "title": "test",

@@ -12,19 +12,19 @@ import { userSignUpSchema, userSignInSchema, userInactivateSchema, userUpdateSch
 
 //~ Authorization
 import { validateToken } from '../middlewares/validateToken.js';
-import { auth, admin, author, user } from '../middlewares/auth.js';
+import { auth, admin, role } from '../middlewares/auth.js';
 
 //~ Routes
-router.get('/api/v1/users',fetchAllUsers);
-router.get('/api/v1/users/:userId', fetchOneUser);
-router.patch('/api/v1/users/:userId', validation.body(userUpdateSchema), updateUser);
-router.put('/api/v1/users/:userId', validation.body(userInactivateSchema),inactivateUser);
+router.get('/api/v1/users',[ validateToken, auth, admin ], fetchAllUsers);
+router.get('/api/v1/users/:userId(\\d+)', fetchOneUser);
+router.patch('/api/v1/users/:userId(\\d+)', validation.body(userUpdateSchema), updateUser);
+router.put('/api/v1/users/:userId(\\d+)', validation.body(userInactivateSchema),inactivateUser);
 
 router.post('/api/v1/signup', validation.body(userSignUpSchema), doSignUp);
 router.post('/api/v1/signin', validation.body(userSignInSchema), doSignIn);
 router.get('/api/v1/signout', doSignOut);
 
-router.get('/api/v1/users/:userId/comments', fetchAllUserComments);
+router.get('/api/v1/users/:userId(\\d+)/comments', fetchAllUserComments);
 
 router.post('/api/v1/refreshtoken', refreshToken);
 

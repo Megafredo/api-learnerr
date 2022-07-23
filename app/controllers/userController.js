@@ -11,7 +11,7 @@ import { User } from '../datamappers/index.js';
 import bcrypt from 'bcrypt';
 
 //~ Authorization
-import { generateAccessToken, generateRefreshToken } from '../services/jsonWebToken.js';
+import { generateAccessToken, generateRefreshToken, getRefreshToken } from '../services/jsonWebToken.js';
 
 //~ Controllers
 
@@ -148,6 +148,13 @@ async function doSignIn(req, res) {
 
 async function doSignOut(req, res) {
   try {
+    //check Test à vérifier avec le front
+
+    getRefreshToken(req, res);
+    req.user = null;
+    req.session.destroy();
+
+    return res.status(200).json('Disconnected');
   } catch (err) {
     logger(err.message);
   }
