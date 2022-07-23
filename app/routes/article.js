@@ -1,17 +1,27 @@
-//~ Import Router 
+//~ Import Router
 import { Router } from 'express';
 const router = Router();
 
 //~ Import modules
-import { createArticle, fetchAllArticles, fetchOneArticle, updateArticle, deleteArticle, sendArticleToDraft, fetchAllArticlesByCategory, fetchAllArticlesByUser, fetchLastestArticles } from '../controllers/articleController.js';
+import {
+  createArticle,
+  fetchAllArticles,
+  fetchOneArticle,
+  updateArticle,
+  deleteArticle,
+  sendArticleToDraft,
+  fetchAllArticlesByCategory,
+  fetchAllArticlesByUser,
+  fetchLastestArticles
+} from '../controllers/articleController.js';
 
 import { validateToken } from '../middlewares/validateToken.js';
-import { auth } from '../middlewares/auth.js';
+import { auth, admin,user } from '../middlewares/auth.js';
 
 //~ Routes
 router.post('/api/v1/articles', createArticle);
-router.get('/api/v1/articles', [validateToken, auth],fetchAllArticles);
-router.get('/api/v1/articles/:articleId', fetchOneArticle);
+router.get('/api/v1/articles', [validateToken, auth, user], fetchAllArticles);
+router.get('/api/v1/articles/:articleId',[validateToken, auth, user], fetchOneArticle);
 router.patch('/api/v1/articles/:articleId', updateArticle);
 router.delete('/api/v1/articles/:articleId', deleteArticle);
 
@@ -19,7 +29,6 @@ router.post('/api/v1/articles/:articleId/drafts', sendArticleToDraft);
 router.get('/api/v1/categories/:categoryId/articles', fetchAllArticlesByCategory);
 router.get('/api/v1/users/:userId/articles', fetchAllArticlesByUser);
 router.get('/api/v1/articles/last', fetchLastestArticles);
-
 
 //~ Export router
 export { router };

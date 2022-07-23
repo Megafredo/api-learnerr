@@ -9,6 +9,7 @@ const app = express();
 import { router } from './app/routes/index.js';
 import { ErrorApi } from './app/services/errorHandler.js';
 
+// import { userConnected } from './app/middlewares/auth.js'
 
 //~ Protect API
 import helmet from 'helmet';
@@ -60,6 +61,8 @@ app.use(session({
         //expires : new Date(Date.now() + 60 * 60 * 1000) //1 hour
         }
 }));
+//& Keep the user connected !
+// app.use(userConnected);
 
 //~ Router
 app.use(router);

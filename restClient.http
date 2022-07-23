@@ -26,7 +26,7 @@ Content-Type: application/json
 
 {
     "username": "Coucou_Heleneeeeeeeeee",
-    "email": "Helene.Little89@yahoo.com",
+    "email": "Fredo.Little89@yahoo.com",
     "password": "N6y$Ozddzt=1aa",
     "passwordConfirm": "N6y$Ozddzt=1aa"
 }
@@ -36,7 +36,7 @@ POST {{entryPoint}}/signin
 Content-Type: application/json
 
 {
-    "email": "Helene.Little89@yahoo.com",
+    "email": "Fredo.Little89@yahoo.com",
     "password": "N6y$Ozddzt=1aa"
 }
 
@@ -68,7 +68,7 @@ Content-Type: application/json
 ###
 GET {{entryPoint}}/articles
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwiZW1haWwiOiJIZWxlbmUuTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4NTAyNjY1LCJleHAiOjE2NTg1ODkwNjV9.L87n8PHMCXXrmWAeE3mhYazVE7Pec57B1NY6XCjxB0Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4NTUyNzgwLCJleHAiOjE2NTg2MzkxODB9.kFE4FiNo6xOVbj35ux60hE9vWamCUDjgetMc9f1H09A
 
 ###
 POST {{entryPoint}}/articles
@@ -85,6 +85,7 @@ Content-Type: application/json
 ###
 GET {{entryPoint}}/articles/1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiSGVsZW5lLkxpdHRsZTg5QHlhaG9vLmNvbSIsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTY1ODU1MTA3NiwiZXhwIjoxNjU4NjM3NDc2fQ.zDRuuE6Bq3m-WJ8t-1w4NLQbtZMeHqAACuLNveyy0hU
 
 
 #* --------------------- ERROR

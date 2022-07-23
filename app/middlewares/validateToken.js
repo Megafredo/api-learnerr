@@ -17,8 +17,8 @@ function validateToken(req, res, next) {
         if (err) {
           throw new ErrorApi('Token is invalid !', req, res, 403);
         }
-        req.user = identity.user;
-        console.log("identity: ", req.user);
+        req.user = identity.identity;
+        console.log("req.user: ", req.user);
         req.session.token = accessToken;
         
         console.log('JETON VALIDE');

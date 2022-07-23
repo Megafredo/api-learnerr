@@ -1,3 +1,4 @@
+-- SQLBook: Code
 -- Deploy learnerr:learnerr_v4 to pg
 
 BEGIN;
@@ -6,6 +7,7 @@ CREATE TYPE identity AS (
     id INT,
     email EMAIL,
     password PWD,
+    isActive BOOLEAN,
     role TEXT
 );
 
@@ -17,7 +19,7 @@ RETURNS SETOF identity AS $$
 BEGIN
     
 RETURN QUERY 
-    (SELECT U.id, U.email, U.password, "role".name AS role  
+    (SELECT U.id, U.email, U.password, U.is_active, "role".name AS role  
      FROM "role"
         JOIN  "user" AS U
         ON "role".id = U.role_id
