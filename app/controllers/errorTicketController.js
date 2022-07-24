@@ -83,12 +83,6 @@ async function deleteErrorTicket(req, res) {
     }
 }
 
-async function sendErrorTicketToDraft(req, res) {
-    try {
-    } catch (err) {
-        logger(err.message);
-    }
-}
 
 async function fetchAllErrorTicketsByCategory(req, res) {
     try {

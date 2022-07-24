@@ -28,4 +28,4 @@ const errorTicketUpdateSchema = Joi.object({
     .min(1)
     .max(7);
 
-export { errorTicketSchema,errorTicketUpdateSchema };
+export { errorTicketSchema, errorTicketUpdateSchema };

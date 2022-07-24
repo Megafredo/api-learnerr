@@ -7,7 +7,7 @@ import { swaggerDarkCss } from './swaggerUtils/swaggerDark.js';
 import { components } from './swaggerUtils/swaggerComponents.js';
 
 //articles
-import { articles, oneArticle, articleDrafts, articlesByCategory, articlesByUser, lastestArticles } from './swaggerEndpoints/article.js';
+import { articles, oneArticle, articlesByCategory, articlesByUser, lastestArticles } from './swaggerEndpoints/article.js';
 import { articleComments, articlesCommentsById } from './swaggerEndpoints/articleComment.js';
 
 //form
@@ -18,7 +18,7 @@ import { categories, oneCategory, allCategoriesByArticle, allCategoriesByError }
 
 //errors
 import { commentsByErrorId, oneCommentByErrorId, allErrorCommentsByUser, solutionOnError } from './swaggerEndpoints/errorComment.js';
-import { errors, oneError, errorDrafts, errorsByCategory, errorsByUser, lastestErrors, searchAllErrors } from './swaggerEndpoints/errorTicket.js';
+import { errors, oneError, errorsByCategory, errorsByUser, lastestErrors, searchAllErrors } from './swaggerEndpoints/errorTicket.js';
 
 //users
 import { users, oneUser, allCommentsByUser } from './swaggerEndpoints/user.js';
@@ -77,7 +77,6 @@ const options = {
             '/articles': articles,
             '/articles/{articleId}': oneArticle,
             
-            '/articles/{articleId}/drafts': articleDrafts,
             '/categories/{categoryId}/articles': articlesByCategory,
             '/users/{userId}/articles': articlesByUser,
             '/articles/last': lastestArticles,
@@ -86,7 +85,6 @@ const options = {
             '/errors': errors,
             '/errors/{errorId}': oneError,
             
-            '/errors/{errorId}/drafts': errorDrafts,
             '/categories/{categoryId}/errors': errorsByCategory,
             '/users/{userId}/errors': errorsByUser,
             '/errors/last': lastestErrors,

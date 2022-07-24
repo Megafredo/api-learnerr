@@ -88,12 +88,6 @@ async function deleteArticle(req, res) {
     }
 }
 
-async function sendArticleToDraft(req, res) {
-    try {
-    } catch (err) {
-        logger(err.message);
-    }
-}
 
 async function fetchAllArticlesByCategory(req, res) {
     try {
@@ -122,7 +116,6 @@ export {
     fetchOneArticle,
     updateArticle,
     deleteArticle,
-    sendArticleToDraft,
     fetchAllArticlesByCategory,
     fetchAllArticlesByUser,
     fetchLastestArticles

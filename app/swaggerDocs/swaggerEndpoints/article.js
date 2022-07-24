@@ -157,41 +157,6 @@ const oneArticle = {
     }
 };
 
-const articleDrafts = {
-    //~ Send article to draft
-    post: {
-        tags: ['Articles'],
-        summary: `Enregistrement d'un article en brouillon`,
-        parameters: [
-            {
-                name: 'articleId',
-                in: 'path',
-                required: true,
-                schema: {
-                    type: 'integer',
-                    example: 1
-                },
-                description: `Identifiant d'un article`
-            }
-        ],
-        responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: articlesProperties,
-                            example: articleExample
-                        }
-                    }
-                }
-            },
-            400: error400,
-            403: error403
-        }
-    }
-};
 
 const articlesByCategory = {
     //~ Fetch articles by category

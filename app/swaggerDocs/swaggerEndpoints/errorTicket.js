@@ -157,41 +157,6 @@ const oneError = {
     }
 };
 
-const errorDrafts = {
-    //~ Send error ticket to draft
-    post: {
-        tags: ['Errors'],
-        summary: `Mettre un ticket d'erreur en brouillon`,
-        parameters: [
-            {
-                name: 'errorId',
-                in: 'path',
-                required: true,
-                schema: {
-                    type: 'integer',
-                    example: 1
-                },
-                description: `Id pour supprimer un ticket d' erreur`
-            }
-        ],
-        responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: errorTicketsProperties,
-                            example: errorTicketExample
-                        }
-                    }
-                }
-            },
-            400: error400,
-            403: error403
-        }
-    }
-};
 
 const errorsByCategory = {
     //~ Fetch all Error tickets by category

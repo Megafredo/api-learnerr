@@ -24,12 +24,5 @@ const articleUpdateSchema = Joi.object({
     .min(1)
     .max(5);
 
-//~ Article to draft schema
-const articleToDraftSchema = Joi.object({
-    user_id: Joi.number().integer().required(),
-    status_id: Joi.number().integer()
-})
-    .min(1)
-    .max(2);
 
-export { articleSchema, articleUpdateSchema, articleToDraftSchema };
+export { articleSchema, articleUpdateSchema };
