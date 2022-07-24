@@ -208,8 +208,21 @@ GET {{entryPoint}}/categories
 Content-Type: application/json
 
 ###
-GET {{entryPoint}}/categories/1
+POST {{entryPoint}}/categories
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MzY2OSwiZXhwIjoxNjU4NjY3MjY5fQ.ezGEPf303lkcMXjcP9xT_2lDzi7hsVmO3F_ICoqttXM
+
+{
+    "name": "Yumedo"
+}
+
+###
+DELETE {{entryPoint}}/categories/332
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2NTc4NCwiZXhwIjoxNjU4NjY5Mzg0fQ.UFcu7DlEuZUiVGgrOyWeu0lJW8VNAX1UEizDLZixfDM
+
+
+###
 
 // Utilisateur
 {
