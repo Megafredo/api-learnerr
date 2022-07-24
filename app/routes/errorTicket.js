@@ -5,15 +5,20 @@ const router = Router();
 //~ Import modules
 import { createErrorTicket, fetchAllErrorTickets, fetchOneErrorTicket, updateErrorTicket, deleteErrorTicket, sendErrorTicketToDraft, fetchAllErrorTicketsByCategory, fetchAllErrorTicketsByUser, fetchLastestErrorTickets, searchAllErrorTickets } from '../controllers/errorTicketController.js';
 
+//~ Import schema
+import { validation } from '../services/validation.js';
+import { errorTicketSchema, errorTicketUpdateSchema } from '../schema/errorTicket.schema.js';
+
+
 //~ Authorization
 import { validateToken } from '../middlewares/validateToken.js';
 import { auth } from '../middlewares/auth.js';
 
 //~ Routes
-router.post('/api/v1/errors',[validateToken, auth], createErrorTicket);
+router.post('/api/v1/errors',[validateToken, auth], validation.body(errorTicketSchema), createErrorTicket);
 router.get('/api/v1/errors', fetchAllErrorTickets);
 router.get('/api/v1/errors/:errorId(\\d+)', fetchOneErrorTicket);
-router.patch('/api/v1/errors/:errorId(\\d+)',[validateToken, auth], updateErrorTicket);
+router.patch('/api/v1/errors/:errorId(\\d+)',[validateToken, auth],validation.body(errorTicketUpdateSchema), updateErrorTicket);
 router.delete('/api/v1/errors/:errorId(\\d+)',[validateToken, auth], deleteErrorTicket);
 
 router.post('/api/v1/errors/:errorId(\\d+)/drafts',[validateToken, auth], sendErrorTicketToDraft);

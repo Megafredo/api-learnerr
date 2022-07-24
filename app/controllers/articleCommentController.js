@@ -34,7 +34,6 @@ async function fetchAllArticleComments(req, res) {
     }
 }
 
-
 async function updateArticleComment(req, res) {
     try {
         

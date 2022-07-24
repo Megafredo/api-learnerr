@@ -6,8 +6,8 @@ const Joi = joi;
 const errorCommentSchema = Joi.object({
 
     content: Joi.string().required(),
-    user_id: Joi.integer().required(),
-    error_id: Joi.integer().required()
+    user_id: Joi.number().integer().required(),
+    error_id: Joi.number().integer().required()
 
 })
     .min(1)

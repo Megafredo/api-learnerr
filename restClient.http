@@ -89,7 +89,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 ###
 POST {{entryPoint}}/articles
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJhdXRob3IifSwiaWF0IjoxNjU4NTY3NzI5LCJleHAiOjE2NTg1Njc3ODl9.K-EB8WKOxiTZRYho8A6N5vgjAKhnPbLpUJdVzeH_Mnk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4NjU0Mzg5LCJleHAiOjE2NTg2NTUyODl9.qa4GIRWa_aag5lM97fNuNljudSt3CI2IxN1YkWwSRHo
 
 {
     "title": "test",
@@ -107,12 +107,37 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 
 #* --------------------- ERROR
 ###
-GET {{entryPoint}}/errors
+POST {{entryPoint}}/errors
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4NjU1MzM1LCJleHAiOjE2NTg2NTYyMzV9.LT5uBJCeXS5znFxQwFxcQ2XjQzZmRe5cbUnokxutcdA
+
+{
+    "error_snippet":"MyTest",
+    "title": "256",
+    "abstract": "256",
+    "content": "258",
+    "user_id":1,
+    "status_id":"2"
+}
 
 ###
-GET {{entryPoint}}/errors/1
+PATCH {{entryPoint}}/errors/15
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4NjU2MzYyLCJleHAiOjE2NTg2NTk5NjJ9.zph2AyFG0fMSUU4kkzUYy2P9GhHrjldhDJ9L2HqgYjI
+
+{
+    "error_snippet":"MyyyyyyyyyyyyyyyyyyyyyyyTest",
+    "title": "256",
+    "abstract": "256",
+    "content": "258",
+    "user_id":1,
+    "status_id":"2"
+}
+
+###
+DELETE {{entryPoint}}/errors/11
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4NjYxMDc5LCJleHAiOjE2NTg2NjQ2Nzl9.cZ81fAFwiEW3qVAezK2331Vw6Yv60t9qEeCFv5AB1J8
 
 
 #* --------------------- ARTICLE COMMENT

@@ -56,7 +56,7 @@ const userUpdateSchema = Joi.object({
 
 //~ User schema SignOut
 const userInactivateSchema = Joi.object({
-    id: Joi.number(),
+    id: Joi.number().integer(),
     is_active: Joi.boolean()
 })
     .required()

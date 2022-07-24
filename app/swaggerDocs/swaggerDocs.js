@@ -53,12 +53,8 @@ const options = {
                 description: 'API v1'
             },
             {
-                url: 'http://learnerr-api-dev.herokuapp.com/api/v2',
-                description: 'API v2'
-            },
-            {
-                url: 'http://heroku/api/v1',
-                description: 'API v1'
+                url: 'http://localhost:4100/api/v1',
+                description: 'API localhost v1'
             }
         ],
        

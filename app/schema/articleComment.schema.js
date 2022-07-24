@@ -6,8 +6,8 @@ const Joi = joi;
 const articleCommentSchema = Joi.object({
 
     content: Joi.string().required(),
-    user_id: Joi.integer().required(),
-    article_id: Joi.integer().required()
+    user_id: Joi.number().integer().required(),
+    article_id: Joi.number().integer().required()
 
 })
     .min(1)
