@@ -275,4 +275,4 @@ const searchAllErrors = {
     }
 };
 
-export { errors, oneError, errorDrafts, errorsByCategory, errorsByUser, lastestErrors, searchAllErrors };
+export { errors, oneError, errorsByCategory, errorsByUser, lastestErrors, searchAllErrors };

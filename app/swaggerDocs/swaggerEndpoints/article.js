@@ -252,4 +252,4 @@ const lastestArticles = {
     }
 };
 
-export { articles, oneArticle, articleDrafts, articlesByCategory, lastestArticles, articlesByUser };
+export { articles, oneArticle, articlesByCategory, lastestArticles, articlesByUser };

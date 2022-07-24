@@ -118,7 +118,6 @@ export {
     fetchOneErrorTicket,
     updateErrorTicket,
     deleteErrorTicket,
-    sendErrorTicketToDraft,
     fetchAllErrorTicketsByCategory,
     fetchAllErrorTicketsByUser,
     fetchLastestErrorTickets,
