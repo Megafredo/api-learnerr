@@ -90,6 +90,7 @@ ___
 ### Sources SQL/PostgreSQL
 
 - [Boundaries](https://stackoverflow.com/questions/3825676/postgresql-regex-word-boundaries)
+- [ILIKE with variables](https://github.com/lib/pq/issues/495)
 
 ### Sources Javascript
 
