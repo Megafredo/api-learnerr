@@ -83,6 +83,38 @@ $$ LANGUAGE plpgsql VOLATILE;
 
 
 --& Search all error ticket
+-- CREATE TYPE search_error AS(
+--     "id" INT,
+--     "snippet" TEXT,
+--     "title" TEXT,
+--     "abstract" TEXT,
+--     "content" TEXT,
+--     "created_at" TIMESTAMPTZ
+-- );
+
+-- CREATE
+-- OR REPLACE FUNCTION search_error(json) 
+-- RETURNS SETOF search_error AS $$
+
+-- DECLARE
+-- _search TEXT := ($1 ->> 'search')::TEXT;
+
+-- BEGIN
+-- -- RAISE NOTICE 'Print %', $1; 
+
+-- RETURN QUERY(
+-- SELECT E."id", E."error_snippet", E."title", E."abstract", E."content", E."created_at"
+--     FROM error AS E
+--     WHERE E."error_snippet" 
+--     ILIKE '%'|| _search ||'%'
+--     ORDER BY E.created_at DESC);
+    
+-- END
+
+-- $$ LANGUAGE plpgsql VOLATILE;
+
+--& Search all error ticket Version 2
+CREATE EXTENSION pg_trgm;
 
 CREATE TYPE search_error AS(
     "id" INT,
@@ -106,13 +138,17 @@ BEGIN
 RETURN QUERY(
 SELECT E."id", E."error_snippet", E."title", E."abstract", E."content", E."created_at"
     FROM error AS E
-    WHERE E."error_snippet" 
-    ILIKE '%'|| _search ||'%'
+    WHERE _search % 
+    ANY(STRING_TO_ARRAY(E."error_snippet", ' ')) 
     ORDER BY E.created_at DESC);
     
 END
 
 $$ LANGUAGE plpgsql VOLATILE;
 
+-- SELECT show_trgm('error data');
+
+-- search by : find matching words psql where
+-- https://www.freecodecamp.org/news/fuzzy-string-matching-with-postgresql/
 
 COMMIT;

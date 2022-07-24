@@ -5,7 +5,7 @@ import debug from 'debug';
 const logger = debug('Controller');
 
 //~ Import Datamapper
-import { ErrorTicket } from '../datamappers/index.js';
+import { ErrorTicket, Category, User } from '../datamappers/index.js';
 
 //~ Controllers
 
@@ -86,6 +86,18 @@ async function deleteErrorTicket(req, res) {
 
 async function fetchAllErrorTicketsByCategory(req, res) {
     try {
+        //~ Is id a number ?
+        const categoryId = +req.params.categoryId;
+        if (isNaN(categoryId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
+
+         //~ Category exist ?
+         const oneCategory = await Category.findOne(categoryId);
+         if (!oneCategory) throw new ErrorApi(`Aucune catégorie trouvée`, req, res, 400);
+
+        const errorTickets = await ErrorTicket.fetchByCategory(categoryId);
+        
+        return res.status(200).json(errorTickets);
+        
     } catch (err) {
         logger(err.message);
     }
@@ -93,6 +105,17 @@ async function fetchAllErrorTicketsByCategory(req, res) {
 
 async function fetchAllErrorTicketsByUser(req, res) {
     try {
+        //~ Is id a number ?
+        const userId = +req.params.userId;
+        if (isNaN(userId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
+
+         //~ Category exist ?
+         const oneUser = await User.findOne(userId);
+         if (!oneUser) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+
+        const errorTickets = await ErrorTicket.fetchByUser(userId);
+        
+        return res.status(200).json(errorTickets);
     } catch (err) {
         logger(err.message);
     }
@@ -100,6 +123,11 @@ async function fetchAllErrorTicketsByUser(req, res) {
 
 async function fetchLastestErrorTickets(req, res) {
     try {
+        const latestErrors = await ErrorTicket.fetchLastest(4);
+
+        if (latestErrors.length === 0) return res.status(204).json('Aucun contenu pour le moment');
+
+        return res.status(200).json(latestErrors);
     } catch (err) {
         logger(err.message);
     }
@@ -107,6 +135,9 @@ async function fetchLastestErrorTickets(req, res) {
 
 async function searchAllErrorTickets(req, res) {
     try {
+        const searchedErrors = await ErrorTicket.search(req.body);
+
+        return res.status(200).json(searchedErrors);
     } catch (err) {
         logger(err.message);
     }

@@ -11,4 +11,7 @@ search_error(json);
 DROP TYPE lastest_errors;
 DROP TYPE search_error;
 
+DROP EXTENSION pg_trgm;
+
+
 COMMIT;

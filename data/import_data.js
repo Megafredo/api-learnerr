@@ -4,10 +4,12 @@ import { faker } from '@faker-js/faker/locale/en';
 // connect to db - be where dotenv is configured
 import 'dotenv/config';
 import pg from 'pg';
-const client = new pg.Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
-  });
+const client = new pg.Pool(
+    {
+        // connectionString: process.env.DATABASE_URL,
+        // ssl: { rejectUnauthorized: false }
+    }
+);
 // french bad world
 import list from 'french-badwords-list';
 // techstack list
@@ -34,7 +36,6 @@ const fakeData = {
     errorHasCategory: [],
     //
     maxFakeNumber: 10,
-    
 
     //~ colums by table
     userColumns: `"username", "email", "password", "title", "presentation", "profile_pic_url", "linkedin_url", "github_url", "instagram_url", "twitter_url", "portfolio_url"`,
@@ -51,26 +52,47 @@ const fakeData = {
 
     //^ INIT
     async init() {
-        //~ generate
-        // await this.generateRandomUsers();
-        // this.generateRandomArticles();
-        // this.generateRandomErrors();
-        // this.generateRandomArticleComments();
-        // this.generateRandomErrorComments();
-        // this.generateArticleHasCategory();
-        // this.generateErrorHasCategory();
         
-        //~ import
+        //~ Fake Role
         // fakeData.importDataRole();
+
+        //~ Fake Status
         // this.importDataStatus();
+
+        //~ Fake Bad word
         // this.importDataBadWord();
+
+        //~ Fake Category
         // this.importDataCategory();
+
+        //~ Fake User
+        // await this.generateRandomUsers();
         // this.importDataUser();
+
+        //~ Fake Article
+        // this.generateRandomArticles();
         // this.importDataArticle();
+
+        //~ Fake Error
+        // this.generateRandomErrors();
         // this.importDataError();
+
+        //~ Fake Article Comment
+        // this.generateRandomArticleComments();
         // this.importDataArticleComment();
+
+        //~ Fake Error Comment
+        // this.generateRandomErrorComments();
         // this.importDataErrorComment();
+
+        //~ Fake Article Has Category
+        // this.generateRandomArticles();
+        // this.generateArticleHasCategory();
         // this.importDataArticleHasCategory(); //active generate article
+
+        //~ Fake Error Has Category
+        // this.generateRandomErrors();
+        // this.generateErrorHasCategory();
         // this.importDataErrorHasCategory(); //active generate error
         
     },
@@ -83,22 +105,21 @@ const fakeData = {
         const randomFakeNumber = Math.floor(Math.random() * fakeData.maxFakeNumber) + 1;
         return randomFakeNumber;
     },
-    
-    randomArticleId(){ 
+
+    randomArticleId() {
         const randomArticleId = Math.floor(Math.random() * fakeData.articles.length) + 1;
         return randomArticleId;
-    }, 
+    },
 
     randomErrorId() {
         const randomErrorId = Math.floor(Math.random() * fakeData.errors.length) + 1;
         return randomErrorId;
     },
-    
+
     randomCategoryId() {
         const randomCategoryId = Math.floor(Math.random() * fakeData.categories.length) + 1;
         return randomCategoryId;
     },
-
 
     //~ Random Pwd with bcrypt
     async generateRandomPwd() {
@@ -112,9 +133,7 @@ const fakeData = {
 
     //~ Random users
     async generateRandomUsers() {
-
         for (let counter = 0; counter < this.maxFakeNumber; counter++) {
-    
             fakeData.users.push({
                 username: faker.internet.userName(),
                 email: faker.internet.email(),
@@ -129,7 +148,6 @@ const fakeData = {
                 portfolio_url: faker.internet.url()
             });
         }
-        
     },
 
     //~ Random articles
@@ -140,7 +158,7 @@ const fakeData = {
                 abstract: faker.lorem.paragraphs(2),
                 content: faker.lorem.paragraphs(10),
                 user_id: fakeData.randomFakeNumber(),
-                status_id: Math.floor(Math.random() * fakeData.status.length +1)
+                status_id: Math.floor(Math.random() * fakeData.status.length + 1)
             });
         }
     },
@@ -154,7 +172,7 @@ const fakeData = {
                 abstract: faker.lorem.paragraphs(2),
                 content: faker.lorem.paragraphs(10),
                 user_id: fakeData.randomFakeNumber(),
-                status_id: Math.floor(Math.random() * fakeData.status.length +1) 
+                status_id: Math.floor(Math.random() * fakeData.status.length + 1)
             });
         }
     },
@@ -180,31 +198,26 @@ const fakeData = {
             });
         }
     },
-    
 
     //~ Article has category
     generateArticleHasCategory() {
         for (let counter = 0; counter < fakeData.articles.length; counter++) {
             fakeData.articleHasCategory.push({
                 article_id: fakeData.randomArticleId(),
-                category_id:fakeData.randomCategoryId(),
+                category_id: fakeData.randomCategoryId()
             });
         }
     },
-    
+
     //~ Error has category
-    generateErrorHasCategory(){
+    generateErrorHasCategory() {
         for (let counter = 0; counter < fakeData.errors.length; counter++) {
             fakeData.errorHasCategory.push({
                 error_id: fakeData.randomErrorId(),
-                category_id: fakeData.randomCategoryId(),
+                category_id: fakeData.randomCategoryId()
             });
         }
-        
     },
-
-
-
 
     //~ Do Import Data User
     async importDataUser() {
@@ -365,7 +378,6 @@ const fakeData = {
         // console.time('Import data');
         const errorComments = this.errorComments;
 
-        
         let query = `INSERT INTO "error_comment"(${this.errorCommentColumns}) VALUES `;
 
         query += `(
@@ -408,12 +420,12 @@ const fakeData = {
         query += ';';
 
         await client.query(query);
-        console.log('IMPORT DATA ROLE => ok')
+        console.log('IMPORT DATA ROLE => ok');
         // console.timeEnd('Import data');
 
         client.end();
     },
-    
+
     //~ Do Import Data bad words
     async importDataBadWord() {
         await client.connect();
@@ -435,7 +447,7 @@ const fakeData = {
 
         await client.query(query);
         console.log('IMPORT DATA BAD WORDS => ok');
-        
+
         // console.timeEnd('Import data');
 
         client.end();
@@ -458,7 +470,7 @@ const fakeData = {
         query += ';';
 
         await client.query(query);
-        
+
         console.log('IMPORT DATA STATUS => ok');
         // console.timeEnd('Import data');
 
@@ -475,9 +487,9 @@ const fakeData = {
         let query = `INSERT INTO "category"(${this.categoryColumns}) VALUES `;
 
         query += `('${categories[0].name}')`;
-        
-        for (let counter = 1; counter < 332 ; counter++) { 
-            if( counter !== 164){
+
+        for (let counter = 1; counter < 332; counter++) {
+            if (counter !== 164) {
                 query += `,('${categories[counter].name}')`;
             }
         }
@@ -505,7 +517,6 @@ const fakeData = {
                     '${articleHasCategory[0].article_id}',
                     '${articleHasCategory[0].category_id}'
                     )`;
-                   
 
         for (let counter = 1; counter < articleHasCategory.length; counter++) {
             query += `,(
