@@ -9,6 +9,6 @@ const articleCommentSchema = Joi.object({
     user_id: Joi.number().integer().required()
 })
     .min(1)
-    .max(3);
+    .max(2);
 
 export { articleCommentSchema };

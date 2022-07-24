@@ -6,12 +6,25 @@ import debug from 'debug';
 const logger = debug('Controller');
 
 //~ Import Datamapper
-import { ErrorComment } from '../datamappers/index.js';
+import { ErrorComment, ErrorTicket } from '../datamappers/index.js';
 
 //~ Controller
-
 async function createErrorComment(req, res) {
   try {
+    //~ Is id a number ?
+    const errorId = +req.params.errorId;
+    if (isNaN(errorId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
+
+    //~ Article exist ?
+    const errorTicketExist = await ErrorTicket.findOne(errorId);
+    if (!errorTicketExist) throw new ErrorApi(`Aucun ticket d'erreur trouvé`, req, res, 400);
+
+    //~ Create article comment
+    req.body = { ...req.body, error_id: errorId };
+
+    await ErrorComment.create(req.body);
+
+    return res.status(200).json('Commentaire créé !');
   } catch (err) {
     logger(err.message);
   }
@@ -32,6 +45,9 @@ async function fetchAllErrorComments(req, res) {
   }
 }
 
+
+
+// /api/v1/errors/:errorId(\\d+)/comments/:commentId(\\d+)
 async function updateErrorComment(req, res) {
   try {
   } catch (err) {
@@ -39,13 +55,13 @@ async function updateErrorComment(req, res) {
   }
 }
 
+// /api/v1/errors/:errorId(\\d+)/comments/:commentId(\\d+)
 async function deleteErrorComment(req, res) {
   try {
   } catch (err) {
     logger(err.message);
   }
 }
-
 
 
 

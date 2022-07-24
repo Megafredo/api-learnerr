@@ -185,8 +185,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 
 #* --------------------- ERROR COMMENT
 ###
-GET {{entryPoint}}/errors/3/comments
+GET {{entryPoint}}/errors/1/comments
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MzY2OSwiZXhwIjoxNjU4NjY3MjY5fQ.ezGEPf303lkcMXjcP9xT_2lDzi7hsVmO3F_ICoqttXM
+
+
+###
+POST {{entryPoint}}/errors/1/comments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MzY2OSwiZXhwIjoxNjU4NjY3MjY5fQ.ezGEPf303lkcMXjcP9xT_2lDzi7hsVmO3F_ICoqttXM
+
+{
+    "content": "Ceci est un deuxième commentaire",
+    "user_id":1
+
+}
 
 
 #* --------------------- CATEGORY
