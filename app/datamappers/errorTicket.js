@@ -10,7 +10,7 @@ class ErrorTicketDataMapper extends CoreDataMapper {
     errorByCategoryFunctionName = 'error_by_category';
     errorByUserFunctionName = 'error_by_user';
     lastestErrorTicketsFunctionName = 'lastest_error_tickets';
-    searchErrorFunctionName = 'search_error';
+    searchErrorsFunctionName = 'search_errors';
     
     columns = '*';
 
@@ -67,7 +67,7 @@ class ErrorTicketDataMapper extends CoreDataMapper {
     async search(inputData) {
         const preparedQuery = {
             text: `
-            SELECT ${this.columns} FROM ${this.searchErrorFunctionName}($1);
+            SELECT ${this.columns} FROM ${this.searchErrorsFunctionName}($1);
             `,
             values: [inputData]
         };

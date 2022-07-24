@@ -90,13 +90,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 ###
 POST {{entryPoint}}/articles
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MTgzNywiZXhwIjoxNjU4NjY1NDM3fQ.RX6GMcy-nUwELM7nt1l8E-z4G-5oIaxmyTq4D3bGM30
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY5MDI2MCwiZXhwIjoxNjU4NjkzODYwfQ.RPNu8UCOQ5B0fYA14OKnbnmvevciBMuGHLNNg9KF_W4
 
 {
-    "title": "test",
-    "abstract": "test",
-    "content": "test",
-    "user_id":12,
+    "title": "azerty",
+    "abstract": "azerty",
+    "content": "Ablockingoco",
+    "user_id":4,
     "status_id":1
 }
 

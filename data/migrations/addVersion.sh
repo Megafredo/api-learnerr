@@ -5,3 +5,4 @@
 # sqitch add learnerr_v3 -n "03 - Création des fonctions update"
 # sqitch add learnerr_v4 -n "04 - Création d'une fonction user_identity"
 # sqitch add learnerr_v5 -n "05 - Création de fonctions spécifiques pour error ticket"
+# sqitch add learnerr_v6 -n "06 - Création de fonctions spécifiques pour article"

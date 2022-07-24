@@ -6,7 +6,7 @@ BEGIN;
 --& Fetch all error ticket by category
 CREATE
 OR REPLACE FUNCTION error_by_category(categoryId INT) 
-RETURNS TABLE (error_ticket JSON, category_id INT, category TEXT) AS $$
+RETURNS TABLE (error_tickets JSON, category_id INT, category TEXT) AS $$
 
 BEGIN
 
@@ -33,7 +33,7 @@ $$ LANGUAGE plpgsql VOLATILE;
 --& Fetch all error ticket by user
 CREATE 
 OR REPLACE FUNCTION error_by_user(userId INT)
-RETURNS TABLE (error_ticket JSON, user_id INT, users_email EMAIL) AS $$
+RETURNS TABLE (error_tickets JSON, user_id INT, users_email EMAIL) AS $$
 
 BEGIN
 
@@ -126,7 +126,7 @@ CREATE TYPE search_error AS(
 );
 
 CREATE
-OR REPLACE FUNCTION search_error(json) 
+OR REPLACE FUNCTION search_errors(json) 
 RETURNS SETOF search_error AS $$
 
 DECLARE
