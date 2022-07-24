@@ -11,8 +11,8 @@ function auth(req, res, next) {
 function role(req, res, next) {
   if (req.user.role === 'admin' || req.user.role === 'author') {
     next();
-  }
-  throw new ErrorApi(`Accès interdit !`, req, res, 403);
+  } else {throw new ErrorApi(`Accès interdit !`, req, res, 403);}
+  
 }
 
 function admin(req, res, next) {

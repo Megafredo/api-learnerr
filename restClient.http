@@ -11,6 +11,7 @@ Authorization: Bearer
 ###
 GET {{entryPoint}}/users/12
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MTgzNywiZXhwIjoxNjU4NjY1NDM3fQ.RX6GMcy-nUwELM7nt1l8E-z4G-5oIaxmyTq4D3bGM30
 
 ###
 PUT {{entryPoint}}/users/13
@@ -84,18 +85,18 @@ Content-Type: application/json
 ###
 GET {{entryPoint}}/articles
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJhdXRob3IifSwiaWF0IjoxNjU4NTY3NzI5LCJleHAiOjE2NTg1Njc3ODl9.K-EB8WKOxiTZRYho8A6N5vgjAKhnPbLpUJdVzeH_Mnk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MTgzNywiZXhwIjoxNjU4NjY1NDM3fQ.RX6GMcy-nUwELM7nt1l8E-z4G-5oIaxmyTq4D3bGM30
 
 ###
 POST {{entryPoint}}/articles
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4NjU0Mzg5LCJleHAiOjE2NTg2NTUyODl9.qa4GIRWa_aag5lM97fNuNljudSt3CI2IxN1YkWwSRHo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MTgzNywiZXhwIjoxNjU4NjY1NDM3fQ.RX6GMcy-nUwELM7nt1l8E-z4G-5oIaxmyTq4D3bGM30
 
 {
     "title": "test",
     "abstract": "test",
     "content": "test",
-    "user_id":1,
+    "user_id":12,
     "status_id":1
 }
 
@@ -103,6 +104,27 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 GET {{entryPoint}}/articles/4
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiSGVsZW5lLkxpdHRsZTg5QHlhaG9vLmNvbSIsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTY1ODU1MTA3NiwiZXhwIjoxNjU4NjM3NDc2fQ.zDRuuE6Bq3m-WJ8t-1w4NLQbtZMeHqAACuLNveyy0hU
+
+###
+PATCH {{entryPoint}}/articles/12
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MTgzNywiZXhwIjoxNjU4NjY1NDM3fQ.RX6GMcy-nUwELM7nt1l8E-z4G-5oIaxmyTq4D3bGM30
+
+{
+    "title": "14",
+    "abstract": "4154",
+    "content": "test",
+    "user_id":12,
+    "status_id":2
+}
+
+###
+DELETE {{entryPoint}}/articles/13
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MTgzNywiZXhwIjoxNjU4NjY1NDM3fQ.RX6GMcy-nUwELM7nt1l8E-z4G-5oIaxmyTq4D3bGM30
+
+
+
 
 
 #* --------------------- ERROR

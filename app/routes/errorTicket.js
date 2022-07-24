@@ -9,7 +9,6 @@ import { createErrorTicket, fetchAllErrorTickets, fetchOneErrorTicket, updateErr
 import { validation } from '../services/validation.js';
 import { errorTicketSchema, errorTicketUpdateSchema } from '../schema/errorTicket.schema.js';
 
-
 //~ Authorization
 import { validateToken } from '../middlewares/validateToken.js';
 import { auth } from '../middlewares/auth.js';
