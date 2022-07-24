@@ -163,9 +163,23 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 
 
 #* --------------------- ARTICLE COMMENT
+
 ###
-GET {{entryPoint}}/articles/7/comments
+GET {{entryPoint}}/articles/1/comments
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MzY2OSwiZXhwIjoxNjU4NjY3MjY5fQ.ezGEPf303lkcMXjcP9xT_2lDzi7hsVmO3F_ICoqttXM
+
+
+###
+POST {{entryPoint}}/articles/1/comments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MzY2OSwiZXhwIjoxNjU4NjY3MjY5fQ.ezGEPf303lkcMXjcP9xT_2lDzi7hsVmO3F_ICoqttXM
+
+{
+    "content": "Hello super article ! vraiment top !",
+    "user_id":12
+
+}
 
 
 

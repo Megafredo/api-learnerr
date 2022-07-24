@@ -42,7 +42,7 @@ async function fetchOneArticle(req, res) {
         const articleId = +req.params.articleId;
         if (isNaN(articleId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
 
-        //~ Article ticket exist ?
+        //~ Article exist ?
         const oneArticle = await Article.findOne(articleId);
         if (!oneArticle) throw new ErrorApi(`Aucun article trouvé`, req, res, 400);
 
@@ -87,8 +87,6 @@ async function deleteArticle(req, res) {
         logger(err.message);
     }
 }
-
-
 
 async function sendArticleToDraft(req, res) {
     try {
