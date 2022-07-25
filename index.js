@@ -54,7 +54,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     cookie: { 
         httpOnly:true,
-        secure : true,
+        secure : false,
         sameSite: 'lax', // or 'strict'
         maxAge: 24 * 60 * 60 * 1000 //24 hours
         //expires : new Date(Date.now() + 60 * 60 * 1000) //1 hour
