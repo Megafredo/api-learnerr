@@ -14,6 +14,7 @@ export PGPASSWORD=learnerr
 # sqitch deploy -d learnerr learnerr_v4
 # sqitch deploy -d learnerr learnerr_v5
 # sqitch deploy -d learnerr learnerr_v6
-sqitch deploy -d learnerr learnerr_v7
+# sqitch deploy -d learnerr learnerr_v7
+# sqitch deploy -d learnerr learnerr_v8
 
 ##* PUT YOUR PASSWORD !!!!!

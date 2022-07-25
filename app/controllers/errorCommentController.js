@@ -39,7 +39,6 @@ async function fetchAllErrorComments(req, res) {
     if (!errorComments) throw new ErrorApi(`Aucun commentaire trouvé pour cette erreur`, req, res, 400);
 
     return res.status(200).json(errorComments);
-
   } catch (err) {
     logger(err.message);
   }
@@ -72,12 +71,11 @@ async function updateErrorComment(req, res) {
 
     //~ Update error
     req.body = { ...req.body, error_id: errorId, id: commentId };
-    
+
     const commentAdded = await ErrorComment.update(req.body);
     if (!commentAdded) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
     return res.status(200).json(`Le commentaire a bien été mis à jour`);
-
   } catch (err) {
     logger(err.message);
   }
@@ -121,8 +119,6 @@ async function deleteErrorComment(req, res) {
     logger(err.message);
   }
 }
-
-
 
 async function fetchAllErrorCommentsByUser(req, res) {
   try {
