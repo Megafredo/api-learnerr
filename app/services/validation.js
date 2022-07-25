@@ -1,5 +1,8 @@
-//~ Import module
-import { ErrorApi } from "./errorHandler.js";
+//~ Import Debug 
+import debug from 'debug'; 
+const logger = debug('Schema');
+//~ Import ErrorHandling
+import { ErrorApi } from './errorHandler';
 
 //~ Validation schema
 const validation = {
@@ -14,7 +17,8 @@ const validation = {
       return function(req, res, next) {
         const { error } = schemaCustom.validate(req.body);
         if (error) {
-          throw new ErrorApi(error, req, res);
+          logger(error)
+          throw new ErrorApi('Donnée non valide', req, res, 500);
         }
   
         next();

@@ -1,4 +1,5 @@
-@entryPoint = http://localhost:4100/api/v1
+@entryPoint = https://api-learnerr.herokuapp.com/api/v1
+# @entryPoint = http://localhost:4100/api/v1
 
 #* --------------------- USER
 
@@ -6,7 +7,6 @@
 ###
 GET {{entryPoint}}/users
 Content-Type: application/json
-Authorization: Bearer 
 
 ###
 GET {{entryPoint}}/users/12
@@ -26,8 +26,8 @@ POST {{entryPoint}}/signup
 Content-Type: application/json
 
 {
-    "username": "Coucou_Heleneeeeeeeeee",
-    "email": "Fredo.Little89@yahoo.com",
+    "username": "Test",
+    "email": "test.Little89@yahoo.com",
     "password": "N6y$Ozddzt=1aa",
     "passwordConfirm": "N6y$Ozddzt=1aa"
 }
