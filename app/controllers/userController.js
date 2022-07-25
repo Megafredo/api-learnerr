@@ -158,10 +158,15 @@ async function doSignIn(req, res) {
     const { ['password']: remove, ...user } = userExist;
 
     //~ Authorization JWT
-    const accessToken = generateAccessToken({ identity: user });
-    const refreshToken = generateRefreshToken({ identity: user }, req);
+    let accessToken = generateAccessToken({ identity: user });
+    let refreshToken = generateRefreshToken({ identity: user }, req);
 
-    return res.status(200).json({ message: 'Utilisateur connecté', accessToken, refreshToken });
+    delete user['isActive'];
+    delete user['role'];
+    
+    let userIdentity = { ...user, accessToken, refreshToken };
+
+    return res.status(200).json(userIdentity);
   } catch (err) {
     logger(err.message);
   }

@@ -53,11 +53,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 ###
 POST {{entryPoint}}/refreshToken
 Content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJhdXRob3IifSwiaWF0IjoxNjU4NTY3NzI5LCJleHAiOjE2NTg1Njc4NDl9.vciY0crBXNgEdGDdvFJ30K83LFhLPS0CP7_k4meQWGc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTY1ODc1NjA5MiwiZXhwIjoxNjU4NzU5NjkyfQ.AROFrdAnqXcfwILq3I6c5jcsZyc7MMt2XSfKdDBWJNk
 
-{
-    "email": "Fredo.Little89@yahoo.com"
-}
 
 # ------------------------------------------------------------------
 # ------------------------------------------------------------------

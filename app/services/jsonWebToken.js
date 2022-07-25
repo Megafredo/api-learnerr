@@ -44,6 +44,7 @@ function getRefreshToken(req, res, next) {
         }
         // reset refresh token in session
         req.session.refreshToken = [];
+        req.user = user.identity;
  
         return refreshToken;
   
@@ -58,11 +59,12 @@ function refreshToken(req, res) {
     
     getRefreshToken(req, res);
 
-    if (req.session.refreshToken?.length === 0) {
-
+  if (req.session.refreshToken?.length === 0) {
+          
+      const user = req.user.identity;
       //delete old token and replace with new token
-      const accessToken = generateAccessToken({ user: req.body.email });
-      const refreshToken = generateRefreshToken({ user: req.body.email }, req);
+      const accessToken = generateAccessToken({ user });
+      const refreshToken = generateRefreshToken({ user }, req);
   
       //generate a new accessToken and refreshToken
       return res.status(200).json({ accessToken, refreshToken });
