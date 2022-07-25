@@ -210,15 +210,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 ###
 POST {{entryPoint}}/articles/1/comments
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MzY2OSwiZXhwIjoxNjU4NjY3MjY5fQ.ezGEPf303lkcMXjcP9xT_2lDzi7hsVmO3F_ICoqttXM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQ291Y291X0hlbGVuZWVlZWVlZWVlZSIsInRpdGxlIjpudWxsLCJwcm9maWxlX3BpY191cmwiOm51bGwsImlzQWN0aXZlIjp0cnVlLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTg3NjA3NTcsImV4cCI6MTY1ODc2NDM1N30.wASgntyUZfS_JfQUwa7lE3qUM_IlQzAhqrNmnk7WPoE
+
+{
+    "content": "Hello super article ! vraiment top !",
+    "user_id":115
+
+}
+###
+PATCH {{entryPoint}}/articles/1/comments/10
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQ291Y291X0hlbGVuZWVlZWVlZWVlZSIsInRpdGxlIjpudWxsLCJwcm9maWxlX3BpY191cmwiOm51bGwsImlzQWN0aXZlIjp0cnVlLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTg3NjA3NTcsImV4cCI6MTY1ODc2NDM1N30.wASgntyUZfS_JfQUwa7lE3qUM_IlQzAhqrNmnk7WPoE
 
 {
     "content": "Hello super article ! vraiment top !",
     "user_id":12
-
 }
-
-
 
 #* --------------------- ERROR COMMENT
 ###
@@ -236,6 +243,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
     "content": "Ceci est un deuxième commentaire",
     "user_id":1
 
+}
+
+###
+PATCH {{entryPoint}}/errors/3/comments/10
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQ291Y291X0hlbGVuZWVlZWVlZWVlZSIsInRpdGxlIjpudWxsLCJwcm9maWxlX3BpY191cmwiOm51bGwsImlzQWN0aXZlIjp0cnVlLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTg3NjA3NTcsImV4cCI6MTY1ODc2NDM1N30.wASgntyUZfS_JfQUwa7lE3qUM_IlQzAhqrNmnk7WPoE
+
+{
+    "content": "Hello super article ! vraiment top !",
+    "user_id":8
 }
 
 
