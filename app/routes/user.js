@@ -6,23 +6,23 @@ const router = Router();
 import { fetchAllUsers, fetchOneUser, updateUser, deleteUser, inactivateUser, doSignUp, doSignIn, doSignOut, fetchAllUserComments } from '../controllers/userController.js';
 import { refreshToken } from '../services/jsonWebToken.js';
 
-//~ Import schema
-import { validation } from '../services/validation.js';
-import { userSignUpSchema, userSignInSchema, userInactivateSchema, userUpdateSchema } from '../schema/user.schema.js';
+// //~ Import schema
+// import { validation } from '../services/validation.js';
+// import { userSignUpSchema, userSignInSchema, userInactivateSchema, userUpdateSchema } from '../schema/user.schema.js';
 
-//~ Authorization
-import { validateToken } from '../middlewares/validateToken.js';
-import { auth, admin } from '../middlewares/auth.js';
+// //~ Authorization
+// import { validateToken } from '../middlewares/validateToken.js';
+// import { auth, admin } from '../middlewares/auth.js';
 
 //~ Routes
 router.get('/api/v1/users', fetchAllUsers);
-router.get('/api/v1/users/:userId(\\d+)',[ validateToken, auth ], fetchOneUser);
-router.patch('/api/v1/users/:userId(\\d+)', [validateToken, auth], validation.body(userUpdateSchema), updateUser);
-router.delete('/api/v1/users/:userId(\\d+)', [validateToken, auth], deleteUser);
+router.get('/api/v1/users/:userId(\\d+)', fetchOneUser);
+router.patch('/api/v1/users/:userId(\\d+)', updateUser);
+router.delete('/api/v1/users/:userId(\\d+)', deleteUser);
 
-router.put('/api/v1/users/:userId(\\d+)',[ validateToken, auth, admin ], validation.body(userInactivateSchema),inactivateUser);
-router.post('/api/v1/signup', validation.body(userSignUpSchema), doSignUp);
-router.post('/api/v1/signin', validation.body(userSignInSchema), doSignIn);
+router.put('/api/v1/users/:userId(\\d+)', inactivateUser);
+router.post('/api/v1/signup', doSignUp);
+router.post('/api/v1/signin', doSignIn);
 router.get('/api/v1/signout', doSignOut);
 
 router.get('/api/v1/users/:userId(\\d+)/comments', fetchAllUserComments);
