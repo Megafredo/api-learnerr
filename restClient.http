@@ -1,4 +1,5 @@
 @entryPoint = http://localhost:4100/api/v1
+# @entryPoint = http://learnerr-api-dev.herokuapp.com/api/v1
 
 #* --------------------- USER
 
@@ -129,7 +130,7 @@ GET {{entryPoint}}/categories/21/articles
 Content-Type: application/json
 
 ###
-GET {{entryPoint}}/users/9/articles
+GET {{entryPoint}}/users/10/articles
 Content-Type: application/json
 
 ###

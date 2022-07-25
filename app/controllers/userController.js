@@ -82,7 +82,7 @@ async function deleteUser(req, res) {
 
     await User.delete(userId);
 
-    //check 
+    //check
     req.user = null;
     req.session.destroy();
 
@@ -134,7 +134,6 @@ async function doSignUp(req, res) {
     req.body.password = password;
 
     //~ Create user
-
     await User.create(req.body);
     return res.status(201).json(`L'utilisateur a bien été créé`);
   } catch (err) {
@@ -184,9 +183,7 @@ async function doSignOut(req, res) {
 
 async function fetchAllUserComments(req, res) {
   try {
-
-    //check voir avec le front 
-
+    //check voir avec le front
   } catch (err) {
     logger(err.message);
   }
