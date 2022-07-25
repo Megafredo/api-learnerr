@@ -261,6 +261,14 @@ DELETE {{entryPoint}}/categories/332
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2NTc4NCwiZXhwIjoxNjU4NjY5Mzg0fQ.UFcu7DlEuZUiVGgrOyWeu0lJW8VNAX1UEizDLZixfDM
 
+###
+GET {{entryPoint}}/articles/9/categories
+Content-Type: application/json
+
+
+###
+GET {{entryPoint}}/errors/7/categories
+Content-Type: application/json
 
 ###
 

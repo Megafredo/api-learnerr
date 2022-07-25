@@ -107,6 +107,7 @@ class CoreDataMapper {
 
     return result.rows;
   }
+
 }
 
 export { CoreDataMapper };
