@@ -5,6 +5,7 @@ class CoreDataMapper {
   updateFunctionName;
   lastestFunctionName;
   searchFunctionName;
+  deleteCommentFunctionName;
   columns;
 
   constructor(client) {
@@ -58,7 +59,7 @@ class CoreDataMapper {
     };
     const result = await this.client.query(preparedQuery);
 
-    return result.rows;
+    return result.rowCount;
   }
 
   //& Delete
@@ -96,16 +97,32 @@ class CoreDataMapper {
   async search(inputData) {
     const preparedQuery = {
       text: `
-              SELECT ${this.columns} FROM ${this.searchFunctionName}($1);
-              `,
+      SELECT ${this.columns} FROM ${this.searchFunctionName}($1);
+      `,
       values: [inputData]
     };
-
+    
     const result = await this.client.query(preparedQuery);
-
+    
     if (!result.rows) return null;
-
+    
     return result.rows;
+  }
+
+  //& Delete comment
+  async deleteComment(inputData) {
+    const preparedQuery = {
+      text: `
+      SELECT ${this.columns} FROM ${this.deleteCommentFunctionName}($1);
+      `,
+      values: [inputData]
+    };
+    
+    const result = await this.client.query(preparedQuery);
+    
+    if (!result.rows) return null;
+    
+    return result.rowCount;
   }
 
 }

@@ -141,6 +141,7 @@ UPDATE
     "error_comment" AS EC
 SET
     "content" = COALESCE(($1 ->> 'content')::TEXT, "content"),
+    "error_id" = COALESCE(($1 ->> 'error_id')::INTEGER, "error_id"),
     "updated_at" = COALESCE(($1 ->> 'updated_at')::TIMESTAMPTZ, NOW())
     
 WHERE

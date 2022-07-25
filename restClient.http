@@ -218,13 +218,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 
 }
 ###
-PATCH {{entryPoint}}/articles/1/comments/10
+PATCH {{entryPoint}}/articles/1/comments/11
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQ291Y291X0hlbGVuZWVlZWVlZWVlZSIsInRpdGxlIjpudWxsLCJwcm9maWxlX3BpY191cmwiOm51bGwsImlzQWN0aXZlIjp0cnVlLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTg3NjA3NTcsImV4cCI6MTY1ODc2NDM1N30.wASgntyUZfS_JfQUwa7lE3qUM_IlQzAhqrNmnk7WPoE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQ291Y291X0hlbGVuZWVlZWVlZWVlZSIsInRpdGxlIjpudWxsLCJwcm9maWxlX3BpY191cmwiOm51bGwsImlzQWN0aXZlIjp0cnVlLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTg3NzQwMDcsImV4cCI6MTY1ODc3NzYwN30.YEz3FYH682RSkkUl54rB-rcqDWxpvByLezHKkLq6qNs
 
 {
     "content": "Hello super article ! vraiment top !",
-    "user_id":12
+    "user_id":1
+}
+###
+DELETE {{entryPoint}}/articles/4/comments/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQ291Y291X0hlbGVuZWVlZWVlZWVlZSIsInRpdGxlIjpudWxsLCJwcm9maWxlX3BpY191cmwiOm51bGwsImlzQWN0aXZlIjp0cnVlLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTg3Nzg3MjUsImV4cCI6MTY1ODc4MjMyNX0.jJMPovUzfTW3wp_C1nAgsZWCBK9lO9P4YVDHFZQTKT0
+
+{
+    "user_id":8
 }
 
 #* --------------------- ERROR COMMENT
@@ -246,14 +254,24 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 }
 
 ###
-PATCH {{entryPoint}}/errors/3/comments/10
+PATCH {{entryPoint}}/errors/3/comments/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQ291Y291X0hlbGVuZWVlZWVlZWVlZSIsInRpdGxlIjpudWxsLCJwcm9maWxlX3BpY191cmwiOm51bGwsImlzQWN0aXZlIjp0cnVlLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTg3NjA3NTcsImV4cCI6MTY1ODc2NDM1N30.wASgntyUZfS_JfQUwa7lE3qUM_IlQzAhqrNmnk7WPoE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQ291Y291X0hlbGVuZWVlZWVlZWVlZSIsInRpdGxlIjpudWxsLCJwcm9maWxlX3BpY191cmwiOm51bGwsImlzQWN0aXZlIjp0cnVlLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTg3NzQwMDcsImV4cCI6MTY1ODc3NzYwN30.YEz3FYH682RSkkUl54rB-rcqDWxpvByLezHKkLq6qNs
 
 {
-    "content": "Hello super article ! vraiment top !",
-    "user_id":8
+    "content": "Hello super article ! ",
+    "user_id":2
 }
+
+###
+DELETE {{entryPoint}}/errors/4/comments/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQ291Y291X0hlbGVuZWVlZWVlZWVlZSIsInRpdGxlIjpudWxsLCJwcm9maWxlX3BpY191cmwiOm51bGwsImlzQWN0aXZlIjp0cnVlLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTg3NzQwMDcsImV4cCI6MTY1ODc3NzYwN30.YEz3FYH682RSkkUl54rB-rcqDWxpvByLezHKkLq6qNs
+
+{
+    "user_id":1
+}
+
 
 
 #* --------------------- CATEGORY

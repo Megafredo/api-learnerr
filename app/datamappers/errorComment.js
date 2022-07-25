@@ -1,15 +1,15 @@
 //~ Import modules
-import { CoreDataMapper } from "./coreDataMapper.js";
+import { CoreDataMapper } from './coreDataMapper.js';
 import client from '../db/database.js';
 
-
 class ErrorCommentDataMapper extends CoreDataMapper {
-    tableName = 'error_comment';
-    createFunctionName = 'create_error_comment';
-    updateFunctionName = 'update_error_comment';
-    columns = '*';
+  tableName = 'error_comment';
+  createFunctionName = 'create_error_comment';
+  updateFunctionName = 'update_error_comment';
+  deleteCommentFunctionName = 'delete_error_comment';
+  columns = '*';
 
-    //& Find all comments for 1 error
+  //& Find all comments for 1 error
   async findAllCommentsByErrorTicket(errorId) {
     const preparedQuery = {
       text: `

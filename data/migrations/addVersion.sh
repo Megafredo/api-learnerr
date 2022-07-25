@@ -7,3 +7,4 @@
 # sqitch add learnerr_v5 -n "05 - Création de fonctions spécifiques pour error ticket"
 # sqitch add learnerr_v6 -n "06 - Création de fonctions spécifiques pour article"
 # sqitch add learnerr_v7 -n "07 - Création de fonctions spécifiques pour category"
+# sqitch add learnerr_v8 -n "08 - Création de fonctions spécifiques pour supprimer des commentaires"

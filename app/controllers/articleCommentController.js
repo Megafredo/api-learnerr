@@ -60,11 +60,9 @@ async function updateArticleComment(req, res) {
     const articleId = +req.params.articleId;
     if (isNaN(articleId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
 
-    //~ Is id a number ?
     const commentId = +req.params.commentId;
     if (isNaN(commentId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
 
-    //~ Is id a number ?
     const { user_id } = req.body;
     if (isNaN(user_id)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
 
@@ -82,10 +80,10 @@ async function updateArticleComment(req, res) {
 
     req.body = { ...req.body, article_id: articleId, id: commentId };
 
-    //~ Update article
+    //~ Update article comment
     const commentAdded = await ArticleComment.update(req.body);
 
-    if (commentAdded.length === 0) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
+    if (!commentAdded) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
     return res.status(200).json(`Le commentaire a bien été mis à jour`);
   } catch (err) {
@@ -93,7 +91,6 @@ async function updateArticleComment(req, res) {
   }
 }
 
-// /api/v1/articles/:articleId(\\d+)/comments/:commentId(\\d+)
 async function deleteArticleComment(req, res) {
   try {
     //~ Is id a number ?
@@ -102,6 +99,31 @@ async function deleteArticleComment(req, res) {
 
     const commentId = +req.params.commentId;
     if (isNaN(commentId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
+
+    const { user_id } = req.body;
+    if (isNaN(user_id)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
+
+    //~ Article exist ?
+    const articleExist = await Article.findOne(articleId);
+    if (!articleExist) throw new ErrorApi(`Aucun article trouvé`, req, res, 400);
+
+    //~ Article Comment exist ?
+    const articleCommentExist = await ArticleComment.findOne(commentId);
+    if (!articleCommentExist) throw new ErrorApi(`Aucun commentaire trouvé`, req, res, 400);
+
+    //~ User exist ?
+    const userExist = await User.findOne(user_id);
+    if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+
+    //~ Delete article comment
+    req.body = { ...req.body, article_id: articleId, id: commentId };
+
+    const commentDeleted = await ArticleComment.deleteComment(req.body);
+    console.log('commentDeleted: ', commentDeleted);
+
+    if (commentDeleted) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
+
+    return res.status(200).json(`Le commentaire a bien été supprimé`);
   } catch (err) {
     logger(err.message);
   }
