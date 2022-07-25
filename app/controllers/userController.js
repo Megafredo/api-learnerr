@@ -184,6 +184,9 @@ async function doSignOut(req, res) {
 
 async function fetchAllUserComments(req, res) {
   try {
+
+    //check voir avec le front 
+
   } catch (err) {
     logger(err.message);
   }

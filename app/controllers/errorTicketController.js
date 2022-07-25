@@ -95,6 +95,8 @@ async function fetchAllErrorTicketsByCategory(req, res) {
          if (!oneCategory) throw new ErrorApi(`Aucune catégorie trouvée`, req, res, 400);
 
         const errorTickets = await ErrorTicket.fetchByCategory(categoryId);
+
+        if(errorTickets === null) throw new ErrorApi(`Aucun ticket d'erreur trouvé dans cette catégorie`, req, res, 204);
         
         return res.status(200).json(errorTickets);
         
@@ -114,6 +116,8 @@ async function fetchAllErrorTicketsByUser(req, res) {
          if (!oneUser) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
         const errorTickets = await ErrorTicket.fetchByUser(userId);
+
+        if(errorTickets === null) throw new ErrorApi(`Aucun ticket d'erreur trouvé pour cet utilisateur`, req, res, 204);
         
         return res.status(200).json(errorTickets);
     } catch (err) {

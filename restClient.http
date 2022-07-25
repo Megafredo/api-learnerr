@@ -124,7 +124,25 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MTgzNywiZXhwIjoxNjU4NjY1NDM3fQ.RX6GMcy-nUwELM7nt1l8E-z4G-5oIaxmyTq4D3bGM30
 
 
+###
+GET {{entryPoint}}/categories/21/articles
+Content-Type: application/json
 
+###
+GET {{entryPoint}}/users/9/articles
+Content-Type: application/json
+
+###
+GET {{entryPoint}}/articles/last
+Content-Type: application/json
+
+###
+GET {{entryPoint}}/articles/search
+Content-Type: application/json
+
+{
+    "search": "veritatis"
+}
 
 
 #* --------------------- ERROR
@@ -179,10 +197,8 @@ GET {{entryPoint}}/errors/search
 Content-Type: application/json
 
 {
-    "search": "TypeError: mongo"
+    "search": "veritatis"
 }
-
-
 
 
 #* --------------------- ARTICLE COMMENT

@@ -3,6 +3,8 @@ class CoreDataMapper {
   tableName;
   createFunctionName;
   updateFunctionName;
+  lastestFunctionName;
+  searchFunctionName;
   columns;
 
   constructor(client) {
@@ -72,6 +74,38 @@ class CoreDataMapper {
     const result = await this.client.query(preparedQuery);
 
     return result.rowCount;
+  }
+
+  //& Fetch lastest
+  async fetchLastest(number) {
+    const preparedQuery = {
+      text: `
+              SELECT ${this.columns} FROM ${this.lastestFunctionName}($1);
+              `,
+      values: [number]
+    };
+
+    const result = await this.client.query(preparedQuery);
+
+    if (!result.rows) return null;
+
+    return result.rows;
+  }
+
+  //& Search all
+  async search(inputData) {
+    const preparedQuery = {
+      text: `
+              SELECT ${this.columns} FROM ${this.searchFunctionName}($1);
+              `,
+      values: [inputData]
+    };
+
+    const result = await this.client.query(preparedQuery);
+
+    if (!result.rows) return null;
+
+    return result.rows;
   }
 }
 

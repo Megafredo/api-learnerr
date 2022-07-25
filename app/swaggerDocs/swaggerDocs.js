@@ -7,7 +7,7 @@ import { swaggerDarkCss } from './swaggerUtils/swaggerDark.js';
 import { components } from './swaggerUtils/swaggerComponents.js';
 
 //articles
-import { articles, oneArticle, articlesByCategory, articlesByUser, lastestArticles } from './swaggerEndpoints/article.js';
+import { articles, oneArticle, articlesByCategory, articlesByUser, lastestArticles, searchAllArticles } from './swaggerEndpoints/article.js';
 import { articleComments, articlesCommentsById } from './swaggerEndpoints/articleComment.js';
 
 //form
@@ -80,6 +80,7 @@ const options = {
             '/categories/{categoryId}/articles': articlesByCategory,
             '/users/{userId}/articles': articlesByUser,
             '/articles/last': lastestArticles,
+            '/articles/search': searchAllArticles,
             
             //~ ERROR TICKETS
             '/errors': errors,

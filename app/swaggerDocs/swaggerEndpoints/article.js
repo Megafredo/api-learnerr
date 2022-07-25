@@ -250,6 +250,29 @@ const lastestArticles = {
             404: error404
         }
     }
+
 };
 
-export { articles, oneArticle, articlesByCategory, lastestArticles, articlesByUser };
+const searchAllArticles = {
+    //~ Search all error tickets
+    get: {
+        tags: ['Articles'],
+        summary: `Recherche de tous les articles`,
+        responses: {
+            200: {
+                description: 'Requête réussie',
+                content: {
+                    'application/json': {
+                        schema: {
+                            type: 'object',
+                            properties: articlesProperties,
+                            example: articleExample
+                        }
+                    }
+                }
+            },
+            404: error404
+        }
+    }
+};
+export { articles, oneArticle, articlesByCategory, lastestArticles, articlesByUser, searchAllArticles };
