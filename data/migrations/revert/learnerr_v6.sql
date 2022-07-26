@@ -11,6 +11,4 @@ search_articles(json);
 DROP TYPE lastest_articles;
 DROP TYPE search_article;
 
-DROP EXTENSION pg_trgm;
-
 COMMIT;
