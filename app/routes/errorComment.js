@@ -3,7 +3,7 @@ import { Router } from 'express';
 const router = Router();
 
 //~ Import modules
-import { createErrorComment, fetchAllErrorComments, updateErrorComment, deleteErrorComment, fetchAllErrorCommentsByUser, addSolutionOnErrorTicket} from '../controllers/errorCommentController.js';
+import { createErrorComment, fetchAllErrorComments, updateErrorComment, deleteErrorComment, fetchAllErrorCommentsByUser} from '../controllers/errorCommentController.js';
 
 //~ Authorization
 import { validateToken } from '../middlewares/validateToken.js';
@@ -20,7 +20,7 @@ router.patch('/api/v1/errors/:errorId(\\d+)/comments/:commentId(\\d+)',[validate
 router.delete('/api/v1/errors/:errorId(\\d+)/comments/:commentId(\\d+)',[validateToken, auth], deleteErrorComment);
 
 router.get('/api/v1/users/:userId(\\d+)/error_comments',[validateToken, auth], fetchAllErrorCommentsByUser);
-router.patch('/api/v1/errors/:errorId(\\d+)/solution/:solutionId(\\d+)',[validateToken, auth], addSolutionOnErrorTicket);
+
 
 //~ Export router
 export { router };

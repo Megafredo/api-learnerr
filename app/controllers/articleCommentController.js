@@ -119,7 +119,6 @@ async function deleteArticleComment(req, res) {
     req.body = { ...req.body, article_id: articleId, id: commentId };
 
     const commentDeleted = await ArticleComment.deleteComment(req.body);
-    console.log('commentDeleted: ', commentDeleted);
 
     if (commentDeleted) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
@@ -129,4 +128,23 @@ async function deleteArticleComment(req, res) {
   }
 }
 
-export { createArticleComment, fetchAllArticleComments, updateArticleComment, deleteArticleComment };
+async function fetchAllArticleCommentsByUser(req, res) {
+  try {
+    const userId = +req.params.userId;
+    if (isNaN(userId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
+
+    const oneUser = await User.findOne(userId);
+    if (!oneUser) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+
+    const comments = await ArticleComment.allCommentsByUser(userId);
+
+    if (comments.length === 0) throw new ErrorApi(`Aucun commentaire trouvé pour cet utilisateur`, req, res, 204);
+
+    return res.status(200).json(comments);
+
+  } catch (err) {
+      logger(err.message);
+  }
+}
+
+export { createArticleComment, fetchAllArticleComments, updateArticleComment, deleteArticleComment, fetchAllArticleCommentsByUser };

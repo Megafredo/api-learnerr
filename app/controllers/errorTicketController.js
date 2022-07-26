@@ -5,7 +5,7 @@ import debug from 'debug';
 const logger = debug('Controller');
 
 //~ Import Datamapper
-import { ErrorTicket, Category, User } from '../datamappers/index.js';
+import { ErrorTicket, Category, User, ErrorComment } from '../datamappers/index.js';
 
 //~ Controllers
 
@@ -54,8 +54,32 @@ async function updateErrorTicket(req, res) {
         if (isNaN(errorId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
 
         //~ Error ticket exist ?
-        const oneError = await ErrorTicket.findOne(errorId);
-        if (!oneError) throw new ErrorApi(`Aucun ticket d'erreur trouvé`, req, res, 400);
+        const errorExist = await ErrorTicket.findOne(errorId);
+        if (!errorExist) throw new ErrorApi(`Aucun ticket d'erreur trouvé`, req, res, 400);
+
+        const {user_id, error_comment_id} = req.body;
+
+        //check à vérifier 
+        //~ User exist ?
+        const userExist = await User.findOne(user_id);
+        if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+
+        console.log("error_comment_id: ", error_comment_id);
+        if (error_comment_id !== undefined ) {
+            //~ Is solutionId a number ?
+            const solutionId = +req.params.solutionId;
+            if (isNaN(solutionId)) throw new ErrorApi(`L'idaa doit être un nombre`, req, res, 400);
+
+            //~ Error Comment exist ?
+            const errorCommentExist = await ErrorComment.findOne(solutionId);
+            if (!errorCommentExist) throw new ErrorApi(`Aucun commentaire trouvé`, req, res, 400);
+
+            //~ Update error
+            req.body = { ...req.body, id: errorId, error_comment_id: solutionId };
+
+            await ErrorTicket.update(req.body);
+            return res.status(200).json(`Ce commentaire a bien été enregistré comme solution`);
+        }
 
         req.body = { ...req.body, id: errorId };
 
@@ -74,7 +98,7 @@ async function deleteErrorTicket(req, res) {
         const errorId = +req.params.errorId;
         if (isNaN(errorId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
 
-       //~ Delete error ticket
+        //~ Delete error ticket
         await ErrorTicket.delete(errorId);
 
         return res.status(200).json(`Le ticket d'erreur a bien été supprimé`);
@@ -83,23 +107,21 @@ async function deleteErrorTicket(req, res) {
     }
 }
 
-
 async function fetchAllErrorTicketsByCategory(req, res) {
     try {
         //~ Is id a number ?
         const categoryId = +req.params.categoryId;
         if (isNaN(categoryId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
 
-         //~ Category exist ?
-         const oneCategory = await Category.findOne(categoryId);
-         if (!oneCategory) throw new ErrorApi(`Aucune catégorie trouvée`, req, res, 400);
+        //~ Category exist ?
+        const oneCategory = await Category.findOne(categoryId);
+        if (!oneCategory) throw new ErrorApi(`Aucune catégorie trouvée`, req, res, 400);
 
         const errorTickets = await ErrorTicket.fetchByCategory(categoryId);
 
-        if(errorTickets === null) throw new ErrorApi(`Aucun ticket d'erreur trouvé dans cette catégorie`, req, res, 204);
-        
+        if (errorTickets === null) throw new ErrorApi(`Aucun ticket d'erreur trouvé dans cette catégorie`, req, res, 204);
+
         return res.status(200).json(errorTickets);
-        
     } catch (err) {
         logger(err.message);
     }
@@ -111,14 +133,14 @@ async function fetchAllErrorTicketsByUser(req, res) {
         const userId = +req.params.userId;
         if (isNaN(userId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
 
-         //~ Category exist ?
-         const oneUser = await User.findOne(userId);
-         if (!oneUser) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+        //~ Category exist ?
+        const oneUser = await User.findOne(userId);
+        if (!oneUser) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
         const errorTickets = await ErrorTicket.fetchByUser(userId);
 
-        if(errorTickets === null) throw new ErrorApi(`Aucun ticket d'erreur trouvé pour cet utilisateur`, req, res, 204);
-        
+        if (errorTickets === null) throw new ErrorApi(`Aucun ticket d'erreur trouvé pour cet utilisateur`, req, res, 204);
+
         return res.status(200).json(errorTickets);
     } catch (err) {
         logger(err.message);

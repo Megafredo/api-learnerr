@@ -7,24 +7,26 @@ class ErrorCommentDataMapper extends CoreDataMapper {
   createFunctionName = 'create_error_comment';
   updateFunctionName = 'update_error_comment';
   deleteCommentFunctionName = 'delete_error_comment';
+  allCommentsByUserFunctionName = 'user_error_comments';
   columns = '*';
 
   //& Find all comments for 1 error
   async findAllCommentsByErrorTicket(errorId) {
     const preparedQuery = {
       text: `
-            SELECT * FROM "${this.tableName}"
-            WHERE "error_id" = $1;
-            `,
+      SELECT * FROM "${this.tableName}"
+      WHERE "error_id" = $1;
+      `,
       values: [errorId]
     };
-
+    
     const result = await this.client.query(preparedQuery);
-
+    
     if (!result.rows) return null;
-
+    
     return result.rows;
   }
+  
 }
 
 const ErrorComment = new ErrorCommentDataMapper(client);

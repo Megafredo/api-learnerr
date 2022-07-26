@@ -106,7 +106,7 @@ RETURNS TABLE (updated_error_id INTEGER) AS $$
 
 BEGIN
 UPDATE
-    "error"
+    "error" AS E
 SET
     "error_snippet" = COALESCE(($1 ->> 'error_snippet')::TEXT, "error_snippet"),
     "title" = COALESCE(($1 ->> 'title')::TEXT, "title"),
@@ -118,12 +118,15 @@ SET
     "updated_at" = COALESCE(($1 ->> 'updated_at')::TIMESTAMPTZ, NOW())
     
 WHERE
-    "error"."id" = ($1->> 'id')::INT;
+    E."id" = ($1->> 'id')::INT
+AND E."user_id" = ($1->> 'user_id')::INT;
     
 RETURN QUERY 
-    (SELECT "error".id 
-        FROM "error" 
-        WHERE "error".id = ($1->> 'id')::INT);
+    (SELECT E."id" 
+        FROM "error" AS E
+        WHERE E."id" = ($1->> 'id')::INT
+        AND E."user_id" = ($1->> 'user_id')::INT
+    );
 
 END
 

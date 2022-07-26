@@ -7,6 +7,7 @@ class ArticleCommentDataMapper extends CoreDataMapper {
   createFunctionName = 'create_article_comment';
   updateFunctionName = 'update_article_comment';
   deleteCommentFunctionName = 'delete_article_comment';
+  allCommentsByUserFunctionName = 'user_article_comments';
   columns = '*';
 
   //& Find all comments for 1 article
@@ -25,6 +26,8 @@ class ArticleCommentDataMapper extends CoreDataMapper {
 
     return result.rows;
   }
+
+
 }
 
 const ArticleComment = new ArticleCommentDataMapper(client);

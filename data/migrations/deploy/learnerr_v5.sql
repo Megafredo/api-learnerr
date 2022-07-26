@@ -58,29 +58,31 @@ $$ LANGUAGE plpgsql VOLATILE;
 --& Fetch lastest error ticket
 CREATE TYPE lastest_errors AS(
 "id" INT,
-"snippet" TEXT,
+"error_snippet" TEXT,
 "title" TEXT,
 "abstract" TEXT,
 "content" TEXT,
+"user_id" INT,
 "created_at" TIMESTAMPTZ
 );
 
 
 CREATE
-OR REPLACE FUNCTION lastest_error_tickets(nb INT) 
+OR REPLACE FUNCTION lastest_error_tickets(limit_nb INT, offset_nb INT) 
 RETURNS SETOF lastest_errors AS $$
 
 BEGIN
 
 RETURN QUERY (
-    SELECT E.id, E.error_snippet, E.title, E.abstract, E.content, E.created_at 
+    SELECT E."id", E."error_snippet", E."title", E."abstract", E."content", E."user_id", E."created_at" 
     FROM "error" AS E
     ORDER BY E.created_at DESC
-    LIMIT nb::INT);
+    LIMIT limit_nb::INT
+    OFFSET offset_nb::INT);
     
 END
 
-$$ LANGUAGE plpgsql VOLATILE;
+$$ LANGUAGE plpgsql IMMUTABLE;
 
 
 --& Search all error ticket

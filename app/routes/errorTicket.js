@@ -25,6 +25,9 @@ router.get('/api/v1/users/:userId(\\d+)/errors', fetchAllErrorTicketsByUser);
 router.get('/api/v1/errors/last', fetchLastestErrorTickets);
 router.get('/api/v1/errors/search', searchAllErrorTickets);
 
+//check swagger route 
+router.patch('/api/v1/errors/:errorId(\\d+)/solution/:solutionId(\\d+)',[validateToken, auth], updateErrorTicket);
+
 
 //~ Export router
 export { router };

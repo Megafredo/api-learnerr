@@ -9,10 +9,12 @@ GET {{entryPoint}}/users
 Content-Type: application/json
 Authorization: Bearer 
 
+
 ###
 GET {{entryPoint}}/users/12
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MTgzNywiZXhwIjoxNjU4NjY1NDM3fQ.RX6GMcy-nUwELM7nt1l8E-z4G-5oIaxmyTq4D3bGM30
+
 
 ###
 PUT {{entryPoint}}/users/13
@@ -21,6 +23,7 @@ Content-Type: application/json
 {
     "is_active": false
 }
+
 
 ###
 POST {{entryPoint}}/signup
@@ -33,6 +36,7 @@ Content-Type: application/json
     "passwordConfirm": "N6y$Ozddzt=1aa"
 }
 
+
 ###
 POST {{entryPoint}}/signin
 Content-Type: application/json
@@ -42,6 +46,7 @@ Content-Type: application/json
     "password": "N6y$Ozddzt=1aa"
 }
 
+
 ###
 GET {{entryPoint}}/signout
 Content-Type: application/json
@@ -49,6 +54,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 
 # ------------------------------------------------------------------
 # ------------------------------------------------------------------ 
+
 
 ###
 POST {{entryPoint}}/refreshToken
@@ -58,6 +64,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 
 # ------------------------------------------------------------------
 # ------------------------------------------------------------------
+
 
 ###
 PATCH {{entryPoint}}/users/14
@@ -80,10 +87,12 @@ Content-Type: application/json
 
 #* --------------------- ARTICLE
 
+
 ###
 GET {{entryPoint}}/articles
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2MTgzNywiZXhwIjoxNjU4NjY1NDM3fQ.RX6GMcy-nUwELM7nt1l8E-z4G-5oIaxmyTq4D3bGM30
+
 
 ###
 POST {{entryPoint}}/articles
@@ -98,10 +107,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
     "status_id":1
 }
 
+
 ###
 GET {{entryPoint}}/articles/4
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiSGVsZW5lLkxpdHRsZTg5QHlhaG9vLmNvbSIsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTY1ODU1MTA3NiwiZXhwIjoxNjU4NjM3NDc2fQ.zDRuuE6Bq3m-WJ8t-1w4NLQbtZMeHqAACuLNveyy0hU
+
 
 ###
 PATCH {{entryPoint}}/articles/12
@@ -116,6 +127,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
     "status_id":2
 }
 
+
 ###
 DELETE {{entryPoint}}/articles/13
 Content-Type: application/json
@@ -126,13 +138,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 GET {{entryPoint}}/categories/21/articles
 Content-Type: application/json
 
+
 ###
 GET {{entryPoint}}/users/10/articles
 Content-Type: application/json
 
+
 ###
 GET {{entryPoint}}/articles/last
 Content-Type: application/json
+
 
 ###
 GET {{entryPoint}}/articles/search
@@ -144,6 +159,8 @@ Content-Type: application/json
 
 
 #* --------------------- ERROR
+
+
 ###
 POST {{entryPoint}}/errors
 Content-Type: application/json
@@ -157,6 +174,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
     "user_id":2,
     "status_id":"1"
 }
+
 
 ###
 PATCH {{entryPoint}}/errors/15
@@ -172,23 +190,28 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
     "status_id":"2"
 }
 
+
 ###
 DELETE {{entryPoint}}/errors/11
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4NjYxMDc5LCJleHAiOjE2NTg2NjQ2Nzl9.cZ81fAFwiEW3qVAezK2331Vw6Yv60t9qEeCFv5AB1J8
 
 
+
 ###
 GET {{entryPoint}}/categories/41/errors
 Content-Type: application/json
+
 
 ###
 GET {{entryPoint}}/users/1/errors
 Content-Type: application/json
 
+
 ###
 GET {{entryPoint}}/errors/last
 Content-Type: application/json
+
 
 ###
 GET {{entryPoint}}/errors/search
@@ -198,8 +221,8 @@ Content-Type: application/json
     "search": "veritatis"
 }
 
-
 #* --------------------- ARTICLE COMMENT
+
 
 ###
 GET {{entryPoint}}/articles/1/comments
@@ -217,6 +240,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
     "user_id":115
 
 }
+
+
 ###
 PATCH {{entryPoint}}/articles/1/comments/11
 Content-Type: application/json
@@ -226,6 +251,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
     "content": "Hello super article ! vraiment top !",
     "user_id":1
 }
+
+
 ###
 DELETE {{entryPoint}}/articles/4/comments/3
 Content-Type: application/json
@@ -234,6 +261,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 {
     "user_id":8
 }
+
+
+###
+GET {{entryPoint}}/users/4/article_comments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTY1ODgxODA3OSwiZXhwIjoxNjU4ODIxNjc5fQ.JkdAI_BlHaBYoXsQdP_SW6bwxAMzBc8E4S_rEn5TTX0
+
 
 #* --------------------- ERROR COMMENT
 ###
@@ -253,6 +287,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 
 }
 
+
 ###
 PATCH {{entryPoint}}/errors/3/comments/1
 Content-Type: application/json
@@ -261,6 +296,39 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
 {
     "content": "Hello super article ! ",
     "user_id":2
+}
+
+
+###
+GET {{entryPoint}}/errors
+Content-Type: application/json
+
+###
+GET {{entryPoint}}/errors/2
+Content-Type: application/json
+
+###
+PATCH {{entryPoint}}/errors/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTY1ODgxODA3OSwiZXhwIjoxNjU4ODIxNjc5fQ.JkdAI_BlHaBYoXsQdP_SW6bwxAMzBc8E4S_rEn5TTX0
+
+{
+    "error_snippet":"HELLO",
+    "title": "MyyyyyyyyyyyyyyyyyyyyyyyTest",
+    "abstract": "MyyyyyyyyyyyyyyyyyyyyyyyTest",
+    "content": "258",
+    "user_id":8,
+    "status_id":1
+}
+
+###
+PATCH {{entryPoint}}/errors/2/solution/8
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTY1ODgxODA3OSwiZXhwIjoxNjU4ODIxNjc5fQ.JkdAI_BlHaBYoXsQdP_SW6bwxAMzBc8E4S_rEn5TTX0
+
+{
+    "error_comment_id":1,
+    "user_id":4
 }
 
 ###
@@ -272,12 +340,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
     "user_id":1
 }
 
+###
+GET {{entryPoint}}/users/4/error_comments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTEsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwiaXNhY3RpdmUiOnRydWUsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTY1ODgxODA3OSwiZXhwIjoxNjU4ODIxNjc5fQ.JkdAI_BlHaBYoXsQdP_SW6bwxAMzBc8E4S_rEn5TTX0
 
 
 #* --------------------- CATEGORY
 ###
 GET {{entryPoint}}/categories
 Content-Type: application/json
+
 
 ###
 POST {{entryPoint}}/categories
@@ -288,10 +361,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZ
     "name": "Yumedo"
 }
 
+
 ###
 DELETE {{entryPoint}}/categories/332
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJpZCI6MTIsImVtYWlsIjoiRnJlZG8uTGl0dGxlODlAeWFob28uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1ODY2NTc4NCwiZXhwIjoxNjU4NjY5Mzg0fQ.UFcu7DlEuZUiVGgrOyWeu0lJW8VNAX1UEizDLZixfDM
+
 
 ###
 GET {{entryPoint}}/articles/9/categories
@@ -302,8 +377,8 @@ Content-Type: application/json
 GET {{entryPoint}}/errors/7/categories
 Content-Type: application/json
 
-###
 
+###
 // Utilisateur
 {
     "id": ,
