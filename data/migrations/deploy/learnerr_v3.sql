@@ -70,26 +70,29 @@ $$ LANGUAGE plpgsql VOLATILE;
 
 
 --& Update article comment
+
 CREATE
 OR REPLACE FUNCTION update_article_comment(json) 
-RETURNS TABLE (updated_article_comment_id INTEGER) AS $$
+RETURNS TABLE (updated_article_comment_id INT) AS $$
 
 BEGIN
 UPDATE
-    "article_comment"
+    "article_comment" AS AC
 SET
-    "content" = COALESCE(($1 ->> 'content')::TEXT,  "content"),
-    "user_id" = COALESCE(($1 ->> 'user_id')::INTEGER, "user_id"),
-    "article_id" = COALESCE(($1 ->> 'article_id')::INTEGER, "article_id"),
+    "content" = COALESCE(($1 ->> 'content')::TEXT, "content"),
     "updated_at" = COALESCE(($1 ->> 'updated_at')::TIMESTAMPTZ, NOW())
     
 WHERE
-    "article_comment"."id" = ($1->> 'id')::INT;
+    AC."id" = ($1->> 'id')::INT
+AND AC."user_id" = ($1->> 'user_id')::INT
+AND AC."article_id" = ($1->> 'article_id')::INT;
     
 RETURN QUERY 
     (SELECT AC.id 
-        FROM "article_comment" AS AC
-        WHERE AC.id = ($1->> 'id')::INT);
+        FROM "article_comment" AS AC 
+        WHERE AC.id = ($1->> 'id')::INT
+        AND AC."user_id" = ($1->> 'user_id')::INT
+        AND AC."article_id" = ($1->> 'article_id')::INT);
 
 END
 
@@ -103,7 +106,7 @@ RETURNS TABLE (updated_error_id INTEGER) AS $$
 
 BEGIN
 UPDATE
-    "error"
+    "error" AS E
 SET
     "error_snippet" = COALESCE(($1 ->> 'error_snippet')::TEXT, "error_snippet"),
     "title" = COALESCE(($1 ->> 'title')::TEXT, "title"),
@@ -115,12 +118,15 @@ SET
     "updated_at" = COALESCE(($1 ->> 'updated_at')::TIMESTAMPTZ, NOW())
     
 WHERE
-    "error"."id" = ($1->> 'id')::INT;
+    E."id" = ($1->> 'id')::INT
+AND E."user_id" = ($1->> 'user_id')::INT;
     
 RETURN QUERY 
-    (SELECT "error".id 
-        FROM "error" 
-        WHERE "error".id = ($1->> 'id')::INT);
+    (SELECT E."id" 
+        FROM "error" AS E
+        WHERE E."id" = ($1->> 'id')::INT
+        AND E."user_id" = ($1->> 'user_id')::INT
+    );
 
 END
 
@@ -128,26 +134,30 @@ $$ LANGUAGE plpgsql VOLATILE;
 
 
 --& Update error comment
+
 CREATE
 OR REPLACE FUNCTION update_error_comment(json) 
-RETURNS TABLE (updated_error_comment_id INTEGER) AS $$
+RETURNS TABLE (updated_error_comment_id INT) AS $$
 
 BEGIN
 UPDATE
-    "error_comment"
+    "error_comment" AS EC
 SET
-    "content" = COALESCE(($1 ->> 'content')::TEXT,  "content"),
-    "user_id" = COALESCE(($1 ->> 'user_id')::INTEGER, "user_id"),
-    "error_id" = COALESCE(($1 ->> 'article_id')::INTEGER, "error_id"),
+    "content" = COALESCE(($1 ->> 'content')::TEXT, "content"),
+    "error_id" = COALESCE(($1 ->> 'error_id')::INTEGER, "error_id"),
     "updated_at" = COALESCE(($1 ->> 'updated_at')::TIMESTAMPTZ, NOW())
     
 WHERE
-    "error_comment"."id" = ($1->> 'id')::INT;
+    EC."id" = ($1->> 'id')::INT
+AND EC."user_id" = ($1->> 'user_id')::INT
+AND EC."error_id" = ($1->> 'error_id')::INT;
     
 RETURN QUERY 
     (SELECT EC.id 
-        FROM "error_comment" AS EC
-        WHERE EC.id = ($1->> 'id')::INT);
+        FROM "error_comment" AS EC 
+        WHERE EC."id" = ($1->> 'id')::INT
+        AND EC."user_id" = ($1->> 'user_id')::INT
+        AND EC."error_id" = ($1->> 'error_id')::INT);
 
 END
 

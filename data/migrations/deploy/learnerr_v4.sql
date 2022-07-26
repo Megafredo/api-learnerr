@@ -4,13 +4,14 @@
 BEGIN;
 
 CREATE TYPE identity AS (
-    id INT,
-    email EMAIL,
-    password PWD,
-    isActive BOOLEAN,
-    role TEXT
+    "id" INT,
+    "username" TEXT,
+    "title" TEXT,
+    "profile_pic_url" LINK_URL,
+    "password" PWD,
+    "isActive" BOOLEAN,
+    "role" TEXT
 );
-
 
 CREATE
 OR REPLACE FUNCTION user_identity(json) 
@@ -19,7 +20,7 @@ RETURNS SETOF identity AS $$
 BEGIN
     
 RETURN QUERY 
-    (SELECT U.id, U.email, U.password, U.is_active, "role".name AS role  
+    (SELECT U.id, U.username, U.title, U.profile_pic_url, U.password, U.is_active, "role".name AS role  
      FROM "role"
         JOIN  "user" AS U
         ON "role".id = U.role_id

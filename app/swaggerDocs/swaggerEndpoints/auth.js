@@ -14,6 +14,7 @@ const signup = {
                     'application/json': {
                         schema: {
                             type: 'object',
+                            required: ['email', 'password', 'passwordConfirm'],
                             properties: usersProperties,
                             example: userExample
                         }
@@ -37,6 +38,7 @@ const signin = {
                     'application/json': {
                         schema: {
                             type: 'object',
+                            required: ['email', 'password'],
                             properties: usersProperties,
                             example: userExample
                         }
@@ -60,6 +62,7 @@ const signout = {
                     'application/json': {
                         schema: {
                             type: 'object',
+                            required: ['id', 'is_active'],
                             properties: usersProperties,
                             example: userExample
                         }

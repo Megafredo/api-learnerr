@@ -9,7 +9,7 @@ class ArticleDataMapper extends CoreDataMapper {
 
   articleByCategoryFunctionName = 'article_by_category';
   articleByUserFunctionName = 'article_by_user';
-  lastestFunctionName = 'lastest_articles';
+  onScrollFunctionName = 'lastest_articles';
   searchFunctionName = 'search_articles';
 
   columns = '*';

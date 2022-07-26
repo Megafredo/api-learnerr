@@ -3,7 +3,7 @@ import { Router } from 'express';
 const router = Router();
 
 //~ Import modules
-import { fetchAllUsers, fetchOneUser, updateUser, deleteUser, inactivateUser, doSignUp, doSignIn, doSignOut, fetchAllUserComments } from '../controllers/userController.js';
+import { fetchAllUsers, fetchOneUser, updateUser, deleteUser, inactivateUser, doSignUp, doSignIn, doSignOut, fetchPanelUser } from '../controllers/userController.js';
 import { refreshToken } from '../services/jsonWebToken.js';
 
 // //~ Import schema
@@ -25,7 +25,8 @@ router.post('/api/v1/signup', doSignUp);
 router.post('/api/v1/signin', doSignIn);
 router.get('/api/v1/signout', doSignOut);
 
-router.get('/api/v1/users/:userId(\\d+)/comments', fetchAllUserComments);
+//check swagger docs + endpoint documentation
+router.get('/api/v1/users/:userId(\\d+)/panel', [validateToken, auth], fetchPanelUser);
 
 router.post('/api/v1/refreshtoken', refreshToken);
 

@@ -1,3 +1,4 @@
+-- SQLBook: Code
 -- Deploy learnerr:learnerr_v6 to pg
 
 BEGIN;
@@ -58,25 +59,27 @@ CREATE TYPE lastest_articles AS(
 "title" TEXT,
 "abstract" TEXT,
 "content" TEXT,
+"user_id" INT,
 "created_at" TIMESTAMPTZ
 );
 
 
 CREATE
-OR REPLACE FUNCTION lastest_articles(nb INT) 
+OR REPLACE FUNCTION lastest_articles(limit_nb INT, offset_nb INT) 
 RETURNS SETOF lastest_articles AS $$
 
 BEGIN
 
 RETURN QUERY (
-    SELECT A.id, A.title, A.abstract, A.content, A.created_at 
+    SELECT A."id", A."title", A."abstract", A."content", A."user_id",A."created_at" 
     FROM "article" AS A
-    ORDER BY A.created_at DESC
-    LIMIT nb::INT);
+    ORDER BY A."created_at" DESC
+    LIMIT limit_nb::INT
+    OFFSET offset_nb::INT);
     
 END
 
-$$ LANGUAGE plpgsql VOLATILE;
+$$ LANGUAGE plpgsql IMMUTABLE;
 
 
 --& Search all articles

@@ -4,7 +4,7 @@ const router = Router();
 
 //~ Import modules
 import {
-  createArticleComment, fetchAllArticleComments, updateArticleComment, deleteArticleComment
+  createArticleComment, fetchAllArticleComments, updateArticleComment, deleteArticleComment, fetchAllArticleCommentsByUser
 } from '../controllers/articleCommentController.js';
   
 // //~ Import schema
@@ -20,6 +20,9 @@ router.post('/api/v1/articles/:articleId(\\d+)/comments', createArticleComment);
 router.get('/api/v1/articles/:articleId(\\d+)/comments', fetchAllArticleComments);
 router.patch('/api/v1/articles/:articleId(\\d+)/comments/:commentId(\\d+)', updateArticleComment);
 router.delete('/api/v1/articles/:articleId(\\d+)/comments/:commentId(\\d+)', deleteArticleComment);
+
+//check swagger route 
+router.get('/api/v1/users/:userId(\\d+)/article_comments',[validateToken, auth], fetchAllArticleCommentsByUser);
 
 //~ Export router
 export { router };

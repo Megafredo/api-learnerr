@@ -9,7 +9,7 @@ class ErrorTicketDataMapper extends CoreDataMapper {
 
   errorByCategoryFunctionName = 'error_by_category';
   errorByUserFunctionName = 'error_by_user';
-  lastestFunctionName = 'lastest_error_tickets';
+  onScrollFunctionName = 'lastest_error_tickets';
   searchFunctionName = 'search_errors';
 
   columns = '*';

@@ -6,3 +6,6 @@
 # sqitch add learnerr_v4 -n "04 - Création d'une fonction user_identity"
 # sqitch add learnerr_v5 -n "05 - Création de fonctions spécifiques pour error ticket"
 # sqitch add learnerr_v6 -n "06 - Création de fonctions spécifiques pour article"
+# sqitch add learnerr_v7 -n "07 - Création de fonctions spécifiques pour category"
+# sqitch add learnerr_v8 -n "08 - Création de fonctions spécifiques pour supprimer des commentaires"
+sqitch add learnerr_v9 -n "09 - Création de fonctions spécifiques pour trouver tous les commentaires d'un utilisateur"

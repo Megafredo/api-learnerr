@@ -52,7 +52,7 @@ const fakeData = {
 
     //^ INIT
     async init() {
-        
+
         //~ Fake Role
         // fakeData.importDataRole();
 
@@ -94,7 +94,7 @@ const fakeData = {
         // this.generateRandomErrors();
         // this.generateErrorHasCategory();
         // this.importDataErrorHasCategory(); //active generate error
-        
+
     },
 
     //^ METHODS
