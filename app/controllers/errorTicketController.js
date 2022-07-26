@@ -11,8 +11,18 @@ import { ErrorTicket, Category, User, ErrorComment } from '../datamappers/index.
 
 async function createErrorTicket(req, res) {
     try {
+        //~ Is id a number ?
+        const { user_id } = req.body;
+        if (isNaN(user_id)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
+
+        //~ User exist ?
+        const userExist = await User.findOne(user_id);
+        if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+
         //~ Create error ticket
-        await ErrorTicket.create(req.body);
+        const errorCreated = await ErrorTicket.create(req.body);
+        if (!errorCreated) throw new ErrorApi(`Aucune donnée trouvée`, req, res, 400);
+
         return res.status(201).json(`Le ticket d'erreur a bien été créé`);
     } catch (err) {
         logger(err.message);
@@ -57,17 +67,15 @@ async function updateErrorTicket(req, res) {
         const errorExist = await ErrorTicket.findOne(errorId);
         if (!errorExist) throw new ErrorApi(`Aucun ticket d'erreur trouvé`, req, res, 400);
 
-        const {user_id, error_comment_id} = req.body;
-
-        //check à vérifier 
         //~ User exist ?
+        const { user_id } = req.body;
+
         const userExist = await User.findOne(user_id);
         if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
-        console.log("error_comment_id: ", error_comment_id);
-        if (error_comment_id !== undefined ) {
+        const solutionId = +req.params.solutionId;
+        if (solutionId) {
             //~ Is solutionId a number ?
-            const solutionId = +req.params.solutionId;
             if (isNaN(solutionId)) throw new ErrorApi(`L'idaa doit être un nombre`, req, res, 400);
 
             //~ Error Comment exist ?
@@ -77,14 +85,19 @@ async function updateErrorTicket(req, res) {
             //~ Update error
             req.body = { ...req.body, id: errorId, error_comment_id: solutionId };
 
-            await ErrorTicket.update(req.body);
+            const updateErrorTicket = await ErrorTicket.update(req.body);
+
+            if (!updateErrorTicket) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
+
             return res.status(200).json(`Ce commentaire a bien été enregistré comme solution`);
         }
 
         req.body = { ...req.body, id: errorId };
 
         //~ Update error ticket
-        await ErrorTicket.update(req.body);
+        const updateErrorTicket = await ErrorTicket.update(req.body);
+
+        if (!updateErrorTicket) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
         return res.status(200).json(`Le ticket d'erreur a bien été mis à jour`);
     } catch (err) {
@@ -119,7 +132,7 @@ async function fetchAllErrorTicketsByCategory(req, res) {
 
         const errorTickets = await ErrorTicket.fetchByCategory(categoryId);
 
-        if (errorTickets === null) throw new ErrorApi(`Aucun ticket d'erreur trouvé dans cette catégorie`, req, res, 204);
+        if (errorTickets === null) throw new ErrorApi(`Aucun ticket d'erreur trouvé dans cette catégorie`, req, res, 400);
 
         return res.status(200).json(errorTickets);
     } catch (err) {
@@ -139,7 +152,7 @@ async function fetchAllErrorTicketsByUser(req, res) {
 
         const errorTickets = await ErrorTicket.fetchByUser(userId);
 
-        if (errorTickets === null) throw new ErrorApi(`Aucun ticket d'erreur trouvé pour cet utilisateur`, req, res, 204);
+        if (errorTickets === null) throw new ErrorApi(`Aucun ticket d'erreur trouvé pour cet utilisateur`, req, res, 400);
 
         return res.status(200).json(errorTickets);
     } catch (err) {
@@ -149,9 +162,13 @@ async function fetchAllErrorTicketsByUser(req, res) {
 
 async function fetchLastestErrorTickets(req, res) {
     try {
-        const latestErrors = await ErrorTicket.fetchLastest(4);
+        let { limitNb, offsetNb } = req.body;
+        if (isNaN(limitNb)) throw new ErrorApi(`Ce paramètre doit être un nombre`, req, res, 400);
+        if (isNaN(offsetNb)) throw new ErrorApi(`Ce paramètre être un nombre`, req, res, 400);
 
-        if (latestErrors.length === 0) return res.status(204).json('Aucun contenu pour le moment');
+        const latestErrors = await ErrorTicket.fetchOnScroll(limitNb, offsetNb);
+
+        if (latestErrors.length === 0) throw new ErrorApi(`Aucun contenu pour le moment`, req, res, 400);
 
         return res.status(200).json(latestErrors);
     } catch (err) {

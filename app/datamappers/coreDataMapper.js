@@ -3,7 +3,7 @@ class CoreDataMapper {
     tableName;
     createFunctionName;
     updateFunctionName;
-    lastestFunctionName;
+    onScrollFunctionName;
     searchFunctionName;
     deleteCommentFunctionName;
     allCommentsByUserFunctionName;
@@ -81,14 +81,15 @@ class CoreDataMapper {
         return result.rowCount;
     }
 
-    //& Fetch lastest
-    async fetchLastest(number) {
+
+    //& Fetch on scroll
+    async fetchOnScroll(limitNb, offsetNb) {
         const preparedQuery = {
             text: `
               SELECT ${this.columns} 
-              FROM ${this.lastestFunctionName}($1);
+              FROM ${this.onScrollFunctionName}($1,$2);
               `,
-            values: [number]
+            values: [limitNb,offsetNb]
         };
 
         const result = await this.client.query(preparedQuery);

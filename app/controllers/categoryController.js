@@ -58,6 +58,8 @@ async function fetchAllCategoriesByArticle(req, res) {
 
     const categories = await Category.byArticle(articleId);
 
+    if (categories.length === 0) throw new ErrorApi(`Aucune catégorie n'est liée à l'article pour le moment`, req, res, 400);
+
     return res.status(200).json(categories);
   } catch (err) {
     logger(err.message);
@@ -75,6 +77,9 @@ async function fetchAllCategoriesByErrorTicket(req, res) {
     if (!oneError) throw new ErrorApi(`Aucun ticket d'erreur trouvé`, req, res, 400);
 
     const categories = await Category.byError(errorId);
+
+    if (categories.length === 0) throw new ErrorApi(`Aucune catégorie n'est liée au ticket d'erreur pour le moment`, req, res, 400);
+
     return res.status(200).json(categories);
   } catch (err) {
     logger(err.message);

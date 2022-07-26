@@ -138,7 +138,7 @@ async function fetchAllArticleCommentsByUser(req, res) {
 
     const comments = await ArticleComment.allCommentsByUser(userId);
 
-    if (comments.length === 0) throw new ErrorApi(`Aucun commentaire trouvé pour cet utilisateur`, req, res, 204);
+    if (comments.length === 0) throw new ErrorApi(`Aucun commentaire trouvé pour cet utilisateur`, req, res, 400);
 
     return res.status(200).json(comments);
 

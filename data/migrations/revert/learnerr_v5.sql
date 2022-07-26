@@ -4,7 +4,7 @@ BEGIN;
 
 DROP FUNCTION 
 error_by_category(categoryId INT), 
-lastest_error_tickets(nb INT),
+lastest_error_tickets(limit_nb INT, offset_nb INT),
 error_by_user(userId INT),
 search_errors(json);
 

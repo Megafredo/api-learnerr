@@ -12,6 +12,14 @@ import { ErrorComment, ErrorTicket, User } from '../datamappers/index.js';
 async function createErrorComment(req, res) {
     try {
         //~ Is id a number ?
+        const { user_id } = req.body;
+        if (isNaN(user_id)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
+
+        //~ User exist ?
+        const userExist = await User.findOne(user_id);
+        if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+
+        //~ Is id a number ?
         const errorId = +req.params.errorId;
         if (isNaN(errorId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
 
@@ -110,7 +118,6 @@ async function deleteErrorComment(req, res) {
         req.body = { ...req.body, error_id: errorId, id: commentId };
 
         const commentDeleted = await ErrorComment.deleteComment(req.body);
-        console.log('commentDeleted: ', commentDeleted);
 
         if (commentDeleted) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
@@ -130,7 +137,7 @@ async function fetchAllErrorCommentsByUser(req, res) {
 
     const comments = await ErrorComment.allCommentsByUser(userId);
 
-    if (comments.length === 0) throw new ErrorApi(`Aucun commentaire trouvé pour cet utilisateur`, req, res, 204);
+    if (comments.length === 0) throw new ErrorApi(`Aucun commentaire trouvé pour cet utilisateur`, req, res, 400);
 
     return res.status(200).json(comments);
     } catch (err) {

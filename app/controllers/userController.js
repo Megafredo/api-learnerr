@@ -158,8 +158,8 @@ async function doSignIn(req, res) {
         const { ['password']: remove, ...user } = userExist;
 
         //~ Authorization JWT
-        let accessToken = generateAccessToken({ identity: user });
-        let refreshToken = generateRefreshToken({ identity: user }, req);
+        let accessToken = generateAccessToken({ user });
+        let refreshToken = generateRefreshToken({ user }, req);
 
         delete user['isActive'];
         delete user['role'];
@@ -186,7 +186,7 @@ async function doSignOut(req, res) {
     }
 }
 
-async function fetchAllUserComments(req, res) {
+async function fetchPanelUser(req, res) {
     try {
         //check voir avec le front
     } catch (err) {
@@ -194,4 +194,4 @@ async function fetchAllUserComments(req, res) {
     }
 }
 
-export { fetchAllUsers, fetchOneUser, updateUser, deleteUser, inactivateUser, doSignUp, doSignIn, doSignOut, fetchAllUserComments };
+export { fetchAllUsers, fetchOneUser, updateUser, deleteUser, inactivateUser, doSignUp, doSignIn, doSignOut, fetchPanelUser };
