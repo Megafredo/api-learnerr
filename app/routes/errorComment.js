@@ -19,7 +19,7 @@ router.get('/api/v1/errors/:errorId(\\d+)/comments', fetchAllErrorComments);
 router.patch('/api/v1/errors/:errorId(\\d+)/comments/:commentId(\\d+)', updateErrorComment);
 router.delete('/api/v1/errors/:errorId(\\d+)/comments/:commentId(\\d+)', deleteErrorComment);
 
-router.get('/api/v1/users/:userId(\\d+)/error_comments',[validateToken, auth], fetchAllErrorCommentsByUser);
+router.get('/api/v1/users/:userId(\\d+)/error_comments', fetchAllErrorCommentsByUser);
 
 
 //~ Export router

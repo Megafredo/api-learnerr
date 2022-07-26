@@ -22,7 +22,7 @@ router.patch('/api/v1/articles/:articleId(\\d+)/comments/:commentId(\\d+)', upda
 router.delete('/api/v1/articles/:articleId(\\d+)/comments/:commentId(\\d+)', deleteArticleComment);
 
 //check swagger route 
-router.get('/api/v1/users/:userId(\\d+)/article_comments',[validateToken, auth], fetchAllArticleCommentsByUser);
+router.get('/api/v1/users/:userId(\\d+)/article_comments', fetchAllArticleCommentsByUser);
 
 //~ Export router
 export { router };

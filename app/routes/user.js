@@ -26,7 +26,7 @@ router.post('/api/v1/signin', doSignIn);
 router.get('/api/v1/signout', doSignOut);
 
 //check swagger docs + endpoint documentation
-router.get('/api/v1/users/:userId(\\d+)/panel', [validateToken, auth], fetchPanelUser);
+router.get('/api/v1/users/:userId(\\d+)/panel', fetchPanelUser);
 
 router.post('/api/v1/refreshtoken', refreshToken);
 
