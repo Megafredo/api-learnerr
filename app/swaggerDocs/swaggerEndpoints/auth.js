@@ -1,41 +1,77 @@
 //~  IMPORTATIONS EXAMPLES / STATUS CODES
-import { usersProperties, userExample, authSignInExample,authSignInProperties, authSignUpProperties, authSignUpExample } from '../swaggerUtils/swaggerExamples.js';
-import { error400, error403, error404 } from '../swaggerUtils/swaggerStatus.js';
+//check import all
+import { usersProperties, userExample, authSignInExample,authSignInProperties, authSignUpProperties, authSignUpExample, authSignInExampleOk,authSignInPropertiesOk, authSignOutExample, authSignOutProperties, authRefreshTokenExample, authRefreshTokenProperties } from '../swaggerUtils/swaggerExamples.js';
+import { status200, status201, status204, error400, error401, error403, error404 } from '../swaggerUtils/swaggerStatus.js';
 
 const signup = {
     //~ Create user
     post: {
         tags: ['Identification'],
         summary: `Création d'un utilisateur`,
-        parameters: [
-            {
-                name: 'Body',
-                in: 'body',
-                required: true,
-                schema: {
-                    type: 'object',
-                    required: ['username','email', 'password', 'passwordConfirm'],
-                    properties: authSignUpProperties,
-                    example: authSignUpExample
-                },
-                description: 'Info body pour générer un utilisateur'
-            }
-        ],
-        responses: {
-            201: {
-                description: 'Requête réussie et utilisateur créé',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            required: ['email', 'password', 'passwordConfirm'],
-                            properties: authSignUpProperties,
-                            example: authSignUpExample
-                        }
-                    }
+        requestBody: 
+           { 
+
+            name:'Body',
+            in:'body',
+            required: true,
+          
+            content: {
+                'application/json': {
+                    schema: {
+                                    type: 'object',
+                                    required: ['username', 'email', 'password', 'passwordConfirm'],
+                                    example: authSignUpExample,
+                                    properties: authSignUpProperties
+                                },
+                                description: 'Info body pour générer un utilisateur'
+                            
                 }
-            },
-            400: error400
+            }
+        },
+
+
+        // parameters: [
+
+        //     {
+        //         name:'Username',
+        //         in: 'formData',
+        //         required: true
+        //     },
+        //     {
+        //         name:'email',
+        //         in: 'formData',
+        //         required: true
+        //     },
+        //     {
+        //         name:'password',
+        //         in: 'formData',
+        //         required: true
+        //     },
+        //     {
+        //         name:'passwordConfirm',
+        //         in: 'formData',
+        //         required: true
+        //     }
+
+
+        //     {
+        //         name: 'Body',
+        //         in: 'body',
+        //         required: true,
+        //         schema: {
+        //             type: 'object',
+        //             required: ['username', 'email', 'password', 'passwordConfirm'],
+        //             properties: authSignUpProperties,
+        //             example: authSignUpExample
+        //         },
+        //         description: 'Info body pour générer un utilisateur'
+        //     }
+        // ],
+
+        responses: {
+            201: status201,
+            400: error400,
+            401: error401
         }
     }
 };
@@ -45,35 +81,43 @@ const signin = {
     post: {
         tags: ['Identification'],
         summary: `Authentification d'un utilisateur`,
-        consumes: ['application/json'],
-        parameters: [
-            {
-                name: 'Body',
-                in: 'body',
-                required: true,
-                schema: {
-                    type: 'string',
-                    properties: authSignInProperties,
-                    example: authSignInExample
-                },
-                description: 'Info body pour connecter un utilisateur'
+
+        requestBody: 
+           { 
+
+            name:'Body',
+            in:'body',
+            required: true,
+          
+            content: {
+                'application/json': {
+                    schema: {
+                                    type: 'object',
+                                    required: ['email', 'password'],
+                                    example: authSignInExample,
+                                    properties: authSignInProperties
+                                },
+                                description: 'Info body pour connecter un utilisateur'
+                            
+                }
             }
-        ],
+        },
+
+
         responses: {
-            201: {
-                description: 'Requête réussie et utilisateur créé',
+            200: {
+                status200,
                 content: {
                     'application/json': {
                         schema: {
                             type: 'object',
-                            required: ['email', 'password'],
-                            properties: authSignInProperties,
-                            example: authSignInExample
+                            properties: authSignInPropertiesOk,
+                            example: authSignInExampleOk
                         }
                     }
                 }
             },
-            400: error400
+            401: error401
         }
     }
 };
@@ -83,20 +127,13 @@ const signout = {
     get: {
         tags: ['Identification'],
         summary: `Déconnexion d'un utilisateur`,
+        security: [
+            {
+                refreshToken: []
+             }
+        ],
         responses: {
-            201: {
-                description: 'Requête réussie et utilisateur créé',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            required: ['id', 'is_active'],
-                            properties: usersProperties,
-                            example: userExample
-                        }
-                    }
-                }
-            },
+            204: status204,
             400: error400,
             403: error403,
             404: error404
@@ -109,15 +146,33 @@ const refreshToken = {
     post: {
         tags: ['Identification'],
         summary: `Mise à jour du token d'un utilisateur`,
+        
+        // parameters: [
+
+        //     {
+        //         name:'authorization',
+        //         in: 'header',
+        //         required: true
+        //     },
+            
+        // ],
+        security: [
+            {
+                refreshToken: []
+             }
+        ],
+
+
         responses: {
+            200: status200,
             201: {
                 description: 'Requête réussie et token mis à jour',
                 content: {
                     'application/json': {
                         schema: {
                             type: 'object',
-                            properties: usersProperties,
-                            example: userExample
+                            properties: authRefreshTokenProperties,
+                            example: authRefreshTokenExample
                         }
                     }
                 }

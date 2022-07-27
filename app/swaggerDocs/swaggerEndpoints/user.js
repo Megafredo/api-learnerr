@@ -31,6 +31,11 @@ const oneUser = {
     get: {
         tags: ['Users'],
         summary: `Récupération d'un utilisateur par son Id`,
+        security: [
+            {
+                AccessToken: []
+             }
+        ],
         parameters: [
             {
                 name: 'userId',
@@ -43,6 +48,7 @@ const oneUser = {
                 description: 'Id pour récupérer un utilisateur'
             }
         ],
+        
         responses: {
             200: {
                 content: {
@@ -67,6 +73,11 @@ const oneUser = {
     patch: {
         tags: ['Users'],
         summary: `Mise à jour des informations d'un utilisateur`,
+        security: [
+            {
+                AccessToken: []
+             }
+        ],
         parameters: [
             {
                 name: 'userId',
@@ -104,6 +115,11 @@ const oneUser = {
     put: {
         tags: ['Users'],
         summary: `Désactivation d'un utilisateur`,
+        security: [
+            {
+                AccessToken: []
+             }
+        ],
         parameters: [
             {
                 name: 'userId',
@@ -141,6 +157,11 @@ const oneUser = {
      delete: {
         tags: ['Users'],
         summary: `Suppression d'un utilisateur`,
+        security: [
+            {
+                AccessToken: []
+             }
+        ],
         parameters: [
             {
                 name: 'userId',

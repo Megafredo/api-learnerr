@@ -61,18 +61,18 @@ const options = {
         // Tous les chemins ( GET / POST / PATCH / DELETE )
         paths: {
 
+            //~ AUTH
+            '/signup': signup,
+            '/signin': signin,
+            '/signout': signout,
+            '/refreshToken': refreshToken,
+
             //~ USERS
             '/users': users,
             '/users/{userId}': oneUser,
 
             '/users/{userId}/comments': allCommentsByUser,
-            
-            //~ AUTH
-            '/signup': signup,
-            '/signin': signin,
-            '/signout': signout,
-            '/refreshtoken': refreshToken,
-            
+
             //~ ARTICLES
             '/articles': articles,
             '/articles/{articleId}': oneArticle,
@@ -113,13 +113,7 @@ const options = {
         // Tous les schemas
         components,
 
-        // securitySchemes: {
-        //     api_key: {
-        //         type: 'apiKey',
-        //         name: 'api_key',
-        //         in: 'header'
-        //     },
-        // }
+        
     },
 
     apis: ['./app/routers/*.js'] 

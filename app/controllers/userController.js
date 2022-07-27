@@ -182,7 +182,7 @@ async function doSignOut(req, res) {
         req.user = null;
         req.session.destroy();
 
-        return res.status(200).json('Disconnected');
+        return res.status(204).json(`L'utilisateur a bien été déconnecté`);
     } catch (err) {
         logger(err.message);
     }
