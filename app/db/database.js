@@ -5,8 +5,13 @@ const logger = debug('Pool');
 //~ Import pg
 import pg from 'pg';
 // Deployement
+// const client = new pg.Pool({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: { rejectUnauthorized: false }
+// });
+
 const client = new pg.Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL_BIS,
   ssl: { rejectUnauthorized: false }
 });
 // const client = new pg.Pool();
