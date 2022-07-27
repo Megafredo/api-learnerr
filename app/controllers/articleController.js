@@ -32,7 +32,7 @@ async function createArticle(req, res) {
 
 async function fetchAllArticles(req, res) {
     try {
-        const articles = await Article.findAll();
+        const articles = await Article.findAllDetailed();
 
         if (!articles) throw new ErrorApi(`Aucun article trouvé`, req, res, 400);
 
@@ -49,7 +49,7 @@ async function fetchOneArticle(req, res) {
         if (isNaN(articleId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
 
         //~ Article exist ?
-        const oneArticle = await Article.findOne(articleId);
+        const oneArticle = await Article.findOneDetailed(articleId);
         if (!oneArticle) throw new ErrorApi(`Aucun article trouvé`, req, res, 400);
 
         return res.status(200).json(oneArticle);

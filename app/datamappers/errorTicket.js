@@ -4,13 +4,15 @@ import client from '../db/database.js';
 
 class ErrorTicketDataMapper extends CoreDataMapper {
   tableName = 'error';
+  // functions
   createFunctionName = 'create_error';
   updateFunctionName = 'update_error';
-
   errorByCategoryFunctionName = 'error_by_category';
   errorByUserFunctionName = 'error_by_user';
   onScrollFunctionName = 'lastest_error_tickets';
   searchFunctionName = 'search_errors';
+  // views
+  detailsViewName = 'errors_details';
 
   columns = '*';
 
@@ -45,6 +47,7 @@ class ErrorTicketDataMapper extends CoreDataMapper {
 
     return result.rows[0];
   }
+
 }
 
 const ErrorTicket = new ErrorTicketDataMapper(client);

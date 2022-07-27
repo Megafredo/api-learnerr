@@ -121,6 +121,8 @@ async function doSignUp(req, res) {
     try {
         let { email, password, passwordConfirm } = req.body;
 
+        console.log(req.body)
+
         //~ User already exist ?
         const userExist = await User.findUser(email);
 

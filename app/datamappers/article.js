@@ -4,22 +4,24 @@ import client from '../db/database.js';
 
 class ArticleDataMapper extends CoreDataMapper {
   tableName = 'article';
+  // functions
   createFunctionName = 'create_article';
   updateFunctionName = 'update_article';
-
   articleByCategoryFunctionName = 'article_by_category';
   articleByUserFunctionName = 'article_by_user';
   onScrollFunctionName = 'lastest_articles';
   searchFunctionName = 'search_articles';
+  // views
+  detailsViewName = 'articles_details';
 
   columns = '*';
 
   //& Fetch all article by category
   async fetchByCategory(categoryId) {
-
     const preparedQuery = {
       text: `
-            SELECT ${this.columns} FROM ${this.articleByCategoryFunctionName}($1);
+            SELECT ${this.columns} 
+            FROM ${this.articleByCategoryFunctionName}($1);
             `,
       values: [categoryId]
     };
@@ -35,7 +37,8 @@ class ArticleDataMapper extends CoreDataMapper {
   async fetchByUser(userId) {
     const preparedQuery = {
       text: `
-            SELECT ${this.columns} FROM ${this.articleByUserFunctionName}($1);
+            SELECT ${this.columns} 
+            FROM ${this.articleByUserFunctionName}($1);
             `,
       values: [userId]
     };
@@ -46,6 +49,7 @@ class ArticleDataMapper extends CoreDataMapper {
 
     return result.rows[0];
   }
+
 }
 
 const Article = new ArticleDataMapper(client);
