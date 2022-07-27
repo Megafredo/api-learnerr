@@ -1,5 +1,5 @@
 //~  IMPORTATIONS EXAMPLES / STATUS CODES
-import { usersProperties, userExample } from '../swaggerUtils/swaggerExamples.js';
+import { usersProperties, userExample, authSignInExample,authSignInProperties, authSignUpProperties, authSignUpExample } from '../swaggerUtils/swaggerExamples.js';
 import { error400, error403, error404 } from '../swaggerUtils/swaggerStatus.js';
 
 const signup = {
@@ -7,6 +7,20 @@ const signup = {
     post: {
         tags: ['Identification'],
         summary: `Création d'un utilisateur`,
+        parameters: [
+            {
+                name: 'Body',
+                in: 'body',
+                required: true,
+                schema: {
+                    type: 'object',
+                    required: ['username','email', 'password', 'passwordConfirm'],
+                    properties: authSignUpProperties,
+                    example: authSignUpExample
+                },
+                description: 'Info body pour générer un utilisateur'
+            }
+        ],
         responses: {
             201: {
                 description: 'Requête réussie et utilisateur créé',
@@ -15,8 +29,8 @@ const signup = {
                         schema: {
                             type: 'object',
                             required: ['email', 'password', 'passwordConfirm'],
-                            properties: usersProperties,
-                            example: userExample
+                            properties: authSignUpProperties,
+                            example: authSignUpExample
                         }
                     }
                 }
@@ -31,6 +45,20 @@ const signin = {
     post: {
         tags: ['Identification'],
         summary: `Authentification d'un utilisateur`,
+        consumes: ['application/json'],
+        parameters: [
+            {
+                name: 'Body',
+                in: 'body',
+                required: true,
+                schema: {
+                    type: 'string',
+                    properties: authSignInProperties,
+                    example: authSignInExample
+                },
+                description: 'Info body pour connecter un utilisateur'
+            }
+        ],
         responses: {
             201: {
                 description: 'Requête réussie et utilisateur créé',
@@ -39,8 +67,8 @@ const signin = {
                         schema: {
                             type: 'object',
                             required: ['email', 'password'],
-                            properties: usersProperties,
-                            example: userExample
+                            properties: authSignInProperties,
+                            example: authSignInExample
                         }
                     }
                 }

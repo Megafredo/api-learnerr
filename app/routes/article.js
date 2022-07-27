@@ -22,10 +22,10 @@ router.delete('/api/v1/articles/:articleId(\\d+)', [validateToken, auth, role], 
 
 router.get('/api/v1/categories/:categoryId(\\d+)/articles', fetchAllArticlesByCategory);
 router.get('/api/v1/users/:userId(\\d+)/articles', fetchAllArticlesByUser);
-router.get('/api/v1/articles/last', fetchLastestArticles);
+router.post('/api/v1/articles/last', fetchLastestArticles);
 
 //check schémas security input 
-router.get('/api/v1/articles/search', searchAllArticles);
+router.post('/api/v1/articles/search', searchAllArticles);
 
 //~ Export router
 export { router };

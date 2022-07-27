@@ -8,4 +8,6 @@
 # sqitch add learnerr_v6 -n "06 - Création de fonctions spécifiques pour article"
 # sqitch add learnerr_v7 -n "07 - Création de fonctions spécifiques pour category"
 # sqitch add learnerr_v8 -n "08 - Création de fonctions spécifiques pour supprimer des commentaires"
-sqitch add learnerr_v9 -n "09 - Création de fonctions spécifiques pour trouver tous les commentaires d'un utilisateur"
+# sqitch add learnerr_v9 -n "09 - Création de fonctions spécifiques pour trouver tous les commentaires d'un utilisateur"
+# sqitch add learnerr_v10 -n "10 - Création de VIEW spécifiques pour récupérer tous les détails d'articles et de commentaires"
+# sqitch add learnerr_v11 -n "11 - Création de VIEW spécifiques pour récupérer tous le détails des utilisateurs"

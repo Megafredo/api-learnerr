@@ -1,3 +1,31 @@
+
+//~ User SignUp
+const authSignUpExample = {
+  username: 'Yumedo',
+  email: 'yumedo@survivor.com',
+  password: 'N6y$Ozddzt=1aa',
+  passwordConfirm: 'N6y$Ozddzt=1aa',
+};
+
+const authSignUpProperties = {
+  username: { type: 'string' },
+  email: { type: 'string' },
+  password: { type: 'string' },
+  passwordConfirm: { type: 'string' },
+};
+
+//~ User SignIn
+const authSignInExample = {
+  email: 'yumedo@survivor.com',
+  password: 'N6y$Ozddzt=1aa',
+};
+
+const authSignInProperties = {
+  email: { type: 'string' },
+  password: { type: 'string' },
+};
+
+
 //~ Users
 
 const userExample = {
@@ -20,7 +48,7 @@ const userExample = {
 };
 
 const usersProperties = {
-  id: { type: 'integer' },
+  id: { type: 'integer'},
   username: { type: 'string' },
   email: { type: 'string' },
   password: { type: 'string' },
@@ -145,6 +173,12 @@ const categoryProperties = {
 };
 
 export {
+  authSignUpExample,
+  authSignUpProperties,
+
+  authSignInExample,
+  authSignInProperties,
+
   userExample,
   usersProperties,
   articleExample,

@@ -231,7 +231,7 @@ const errorsByUser = {
 
 const lastestErrors = {
     //~ fetch lastest error tickets
-    get: {
+    post: {
         tags: ['Errors'],
         summary: `Recherche des derniers tickets d'erreur`,
         responses: {
@@ -254,7 +254,7 @@ const lastestErrors = {
 
 const searchAllErrors = {
     //~ Search all error tickets
-    get: {
+    post: {
         tags: ['Errors'],
         summary: `Recherche de tous les tickets d'erreur`,
         responses: {

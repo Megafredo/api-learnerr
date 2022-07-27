@@ -231,7 +231,7 @@ const articlesByUser = {
 
 const lastestArticles = {
     //~ Fetch latest article
-    get: {
+    post: {
         tags: ['Articles'],
         summary: 'Récupération des derniers articles',
         responses: {
@@ -255,7 +255,7 @@ const lastestArticles = {
 
 const searchAllArticles = {
     //~ Search all error tickets
-    get: {
+    post: {
         tags: ['Articles'],
         summary: `Recherche de tous les articles`,
         responses: {
