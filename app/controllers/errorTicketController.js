@@ -31,7 +31,7 @@ async function createErrorTicket(req, res) {
 
 async function fetchAllErrorTickets(req, res) {
     try {
-        const errorTickets = await ErrorTicket.findAll();
+        const errorTickets = await ErrorTicket.findAllDetailed();
         if (!errorTickets) throw new ErrorApi(`Aucun ticket d'erreur trouvé`, req, res, 400);
 
         return res.status(200).json(errorTickets);
@@ -47,7 +47,7 @@ async function fetchOneErrorTicket(req, res) {
         if (isNaN(errorId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
 
         //~ Error ticket exist ?
-        const oneError = await ErrorTicket.findOne(errorId);
+        const oneError = await ErrorTicket.findOneDetailed(errorId);
 
         if (!oneError) throw new ErrorApi(`Aucun ticket d'erreur trouvé`, req, res, 400);
 
