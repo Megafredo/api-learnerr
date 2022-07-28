@@ -1,8 +1,8 @@
-@entryPoint = http://localhost:4100/api/v1
+@entryPoint = http://localhost:4200/api/v1
 # @entryPoint = http://learnerr-api-dev.herokuapp.com/api/v1
-@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJIZWxlbmUiLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4ODk5ODAxLCJleHAiOjE2NTg5MDM0MDF9.ZyJsjtV54Lrd1gThDety9jc8yShTeRe3ZnLISqRdjNA
+@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJIZWxlbmUiLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4OTIwMjUyLCJleHAiOjE2NTg5MjM4NTJ9.QhuEKWuMweGzzRuesPh9ZbjmHdMrFDT66j2cwFNlWAU
 
-@refreshToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJIZWxlbmUiLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4ODk5ODAxLCJleHAiOjE2NTg5MDM0MDF9.xef6kOb8CCdseAv3L9eKkoMYBlgYlAyEdQQFOgOuo50
+@refreshToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJIZWxlbmUiLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4OTIwMjUyLCJleHAiOjE2NTg5MjM4NTJ9.fJP73bN8PaeHs_UVjIB-Tt0CMPBLXkpRVmD7mfr7SvU
 
 
 #& -----------------------------------------------
@@ -65,8 +65,8 @@ POST {{entryPoint}}/signup
 Content-Type: application/json
 
 {
-    "username": "Helene",
-    "email": "Helene89@yahoo.com",
+    "username": "Test",
+    "email": "Test@yaz@eazeoo.com",
     "password": "N6y$Ozddzt=1aa",
     "passwordConfirm": "N6y$Ozddzt=1aa"
 }
@@ -80,7 +80,7 @@ Content-Type: application/json
 
 {
     "email": "Helene89@yahoo.com",
-    "password": "N6y$Ozddzt=1aa"
+    "password": "N6y$Ozeaddzt=1aa"
 }
 
 

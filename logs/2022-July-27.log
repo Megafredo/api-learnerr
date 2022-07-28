@@ -1,1 +1,6 @@
-27/07/2022 07:29:44 - /api/v1/articles - Token is invalid !27/07/2022 07:29:50 - /api/v1/signin - L'utilisateur non reconnu !27/07/2022 08:02:33 - /api/v1/users/1 - No token found27/07/2022 08:12:10 - /api/v1/users/1 - No token found
+27/07/2022 07:29:44 - /api/v1/articles - Token is invalid !
+27/07/2022 07:29:50 - /api/v1/signin - L'utilisateur non reconnu !
+27/07/2022 08:02:33 - /api/v1/users/1 - No token found
+27/07/2022 08:12:10 - /api/v1/users/1 - No token found
+27/07/2022 13:47:17 - /api/v1/signout - No token found
+27/07/2022 22:40:18 - /favicon.ico - Page not found !
