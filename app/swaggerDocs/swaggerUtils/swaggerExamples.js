@@ -25,6 +25,45 @@ const authSignInProperties = {
   password: { type: 'string' },
 };
 
+const authSignInExampleOk = {
+  id: 'integer',
+  username: 'string',
+  title: 'string',
+  profile_pic_url: 'string',
+  accessToken: 'string',
+  refreshToken: 'string',
+};
+
+const authSignInPropertiesOk = {
+  id: { type: 'integer'},
+  username: { type: 'string' },
+  title: { type: 'string' },
+  profile_pic_url: { type: 'string' },
+  accessToken: { type: 'string' },
+  refreshToken: { type: 'string' },
+};
+
+//~ User SignOut
+const authSignOutExample = {
+  refreshToken:  'string',
+}
+
+const authSignOutProperties = {
+  refreshToken: { type: 'string' },
+}
+
+//~ User refreshToken
+const authRefreshTokenExample = {
+  accessToken: 'string',
+  refreshToken: 'string',
+}
+
+const authRefreshTokenProperties = {
+  accessToken: { type: 'string' },
+  refreshToken: { type: 'string' },
+
+}
+
 
 //~ Users
 
@@ -178,6 +217,14 @@ export {
 
   authSignInExample,
   authSignInProperties,
+  authSignInExampleOk,
+  authSignInPropertiesOk,
+
+  authSignOutExample,
+  authSignOutProperties,
+
+  authRefreshTokenExample,
+  authRefreshTokenProperties,
 
   userExample,
   usersProperties,

@@ -54,7 +54,7 @@ const userUpdateSchema = Joi.object({
     .min(1)
     .max(12);
 
-//~ User schema SignOut
+//~ User schema InactivateSchema
 const userInactivateSchema = Joi.object({
     id: Joi.number().integer(),
     is_active: Joi.boolean()

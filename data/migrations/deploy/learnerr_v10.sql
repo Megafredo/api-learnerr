@@ -5,12 +5,12 @@ BEGIN;
 --& Create view articles details
 CREATE VIEW articles_details AS
 SELECT A.id, A.title, A.abstract, A.content, A.created_at,
-    JSON_AGG(DISTINCT C.name) AS category,
+    JSON_AGG(DISTINCT C.name) AS categories,
     json_build_object('id', U.id,
-                 'username',U.username,
+                 'username', U.username,
                  'title', U.title,
                  'profile_pic_url', U.profile_pic_url) AS user,
-    (SELECT JSON_AGG(
+    COALESCE((SELECT JSON_AGG(
         json_build_object(
         'id', AC.id,
         'content', AC.content,
@@ -23,7 +23,7 @@ SELECT A.id, A.title, A.abstract, A.content, A.created_at,
         FROM "article_comment" AS AC
         JOIN "user" AS U
         ON AC.user_id = U.id
-        WHERE A.id = AC.article_id) AS comments 
+        WHERE A.id = AC.article_id), '[]') AS comments 
 FROM "article" AS A
 LEFT JOIN "article_has_category" AS AHC
     ON AHC.article_id = A.id
@@ -40,12 +40,12 @@ ORDER BY A.created_at DESC;
 
 CREATE VIEW errors_details AS
 SELECT E.id, E.title, E.abstract, E.error_snippet, E.content, E.created_at,
-    JSON_AGG(DISTINCT C.name) AS category,
+    JSON_AGG(DISTINCT C.name) AS categories,
     json_build_object('id', U.id,
                  'username',U.username,
                  'title', U.title,
                  'profile_pic_url', U.profile_pic_url) AS user,
-    (SELECT JSON_AGG(
+    COALESCE((SELECT JSON_AGG(
         json_build_object(
         'id', EC.id,
         'content', EC.content,
@@ -58,7 +58,7 @@ SELECT E.id, E.title, E.abstract, E.error_snippet, E.content, E.created_at,
         FROM "error_comment" AS EC
         JOIN "user" AS U
         ON EC.user_id = U.id
-        WHERE E.id = EC.error_id) AS comments 
+        WHERE E.id = EC.error_id),'[]') AS comments 
 FROM "error" AS E
 LEFT JOIN "error_has_category" AS EHC
     ON EHC.error_id = E.id

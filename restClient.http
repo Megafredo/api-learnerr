@@ -1,8 +1,8 @@
 @entryPoint = http://localhost:4200/api/v1
 # @entryPoint = http://learnerr-api-dev.herokuapp.com/api/v1
-@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJIZWxlbmUiLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4OTIwMjUyLCJleHAiOjE2NTg5MjM4NTJ9.QhuEKWuMweGzzRuesPh9ZbjmHdMrFDT66j2cwFNlWAU
+@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJIZWxlbmUiLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4OTI4OTA3LCJleHAiOjE2NTg5MzI1MDd9.Q6mK4aav6D3vFb4MdRJyOiEpMjl6p49gnrNjAlQxicQ
 
-@refreshToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJIZWxlbmUiLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4OTIwMjUyLCJleHAiOjE2NTg5MjM4NTJ9.fJP73bN8PaeHs_UVjIB-Tt0CMPBLXkpRVmD7mfr7SvU
+@refreshToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJIZWxlbmUiLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4OTI4OTA3LCJleHAiOjE2NTg5MzI1MDd9.rcnnj8R0SVUqkb6878vUGj5Xaq73cBMwzOHOhr6g318
 
 
 #& -----------------------------------------------
@@ -309,7 +309,7 @@ Content-Type: application/json
 
 #^ ------ fetchAllArticleComments
 ###
-GET {{entryPoint}}/articles/10/comments
+GET {{entryPoint}}/articles/3/comments
 Content-Type: application/json
 
 
