@@ -8,7 +8,7 @@ const articleSchema = Joi.object({
     abstract: Joi.string().required(),
     content: Joi.string().required(),
     user_id: Joi.number().integer().required(),
-    status_id: Joi.number().integer()
+    status_id: Joi.number().integer().required()
 })
     .min(1)
     .max(5);

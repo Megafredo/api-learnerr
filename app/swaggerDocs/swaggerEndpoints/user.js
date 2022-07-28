@@ -1,40 +1,29 @@
 //~  IMPORTATIONS EXAMPLES / STATUS CODES
-import { usersProperties, userExample } from '../swaggerUtils/swaggerExamples.js';
-import { error400, error404, error403 } from '../swaggerUtils/swaggerStatus.js';
+import {required as r, example as e, properties as p } from '../swaggerUtils/swaggerExamples.js';
+import { statusCode } from '../swaggerUtils/swaggerStatus.js';
 
 const users = {
-    //~ Fetch all users
+    //& ---------------------- fetchAllUsers
     get: {
         tags: ['Users'],
-        summary: 'Récupération des utilisateurs',
+        summary: 'Récupération de tous les utilisateurs',
+
         responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: usersProperties,
-                            example: userExample
-                        }
-                    }
-                }
-            },
-            404: error404,
-            403: error403
+            200: statusCode._200,
+            404: statusCode._404
         }
     }
 };
 
 const oneUser = {
-    //~ Fetch one user
+    //& ---------------------- fetchOneUser
     get: {
         tags: ['Users'],
-        summary: `Récupération d'un utilisateur par son Id`,
+        summary: `Récupération d'un utilisateur par son id`,
         security: [
             {
                 AccessToken: []
-             }
+            }
         ],
         parameters: [
             {
@@ -48,35 +37,22 @@ const oneUser = {
                 description: 'Id pour récupérer un utilisateur'
             }
         ],
-        
         responses: {
-            200: {
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: usersProperties,
-                            example: userExample
-                        }
-                    }
-                },
-                description: `Requête réussie`
-            },
-
-            400: error400,
-            404: error404,
-            403: error403
+            200: statusCode._200,
+            400: statusCode._400,
+            403: statusCode._403,
+            404: statusCode._404
         }
     },
 
-    //~ Update one user
+    //& ---------------------- updateUser
     patch: {
         tags: ['Users'],
         summary: `Mise à jour des informations d'un utilisateur`,
         security: [
             {
                 AccessToken: []
-             }
+            }
         ],
         parameters: [
             {
@@ -85,82 +61,43 @@ const oneUser = {
                 required: true,
                 schema: {
                     type: 'integer',
-                    example: 1
+                    example: 11
                 },
-                description: 'Id pour mettre à jour un utilisateur'
+                description: 'Id pour récupérer un utilisateur'
             }
         ],
-        responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: { message: { type: 'string' } },
-                            example: {
-                                message: 'La donnée a bien été modifiée'
-                            }
-                        }
-                    }
+        requestBody: {
+            name: 'Body',
+            in: 'body',
+            required: true,
+
+            content: {
+                'application/json': {
+                    schema: {
+                        type: 'object',
+                        properties: p.updateUser,
+                        example: e.updateUser
+                    },
+                    description: 'Info body pour générer un utilisateur'
                 }
-            },
-            400: error400,
-            404: error404,
-            403: error403
+            }
+        },
+        responses: {
+            200: statusCode._200,
+            400: statusCode._400,
+            403: statusCode._403,
+            404: statusCode._404
         }
     },
 
-    //~ Inactivate one user
-    put: {
-        tags: ['Users'],
-        summary: `Désactivation d'un utilisateur`,
-        security: [
-            {
-                AccessToken: []
-             }
-        ],
-        parameters: [
-            {
-                name: 'userId',
-                in: 'path',
-                required: true,
-                schema: {
-                    type: 'integer',
-                    example: 1
-                },
-                description: 'Id pour désactiver un utilisateur'
-            }
-        ],
-        responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: { message: { type: 'string' } },
-                            example: {
-                                message: 'La donnée a bien été modifiée'
-                            }
-                        }
-                    }
-                }
-            },
-            400: error400,
-            404: error404,
-            403: error403
-        }
-    },
-
-     //~ Delete one User
-     delete: {
+    //& ---------------------- deleteUser
+    delete: {
         tags: ['Users'],
         summary: `Suppression d'un utilisateur`,
         security: [
             {
                 AccessToken: []
-             }
+            }
         ],
         parameters: [
             {
@@ -175,32 +112,22 @@ const oneUser = {
             }
         ],
         responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: { message: { type: 'string' } },
-                            example: {
-                                message: 'La donnée a bien été supprimée'
-                            }
-                        }
-                    }
-                }
-            },
-            400: error400,
-            403: error403,
-            404: error404
+            200: statusCode._200,
+            400: statusCode._400,
+            403: statusCode._403,
+            404: statusCode._404
         }
-    }
-};
+    },
 
-//~ Fetch all comments from one user
-const allCommentsByUser = {
-    get: {
+    //& ---------------------- inactivateUser
+    put: {
         tags: ['Users'],
-        summary: `Récupération de tous les commentaires d'un utilisateur`,
+        summary: `Désactivation / Activation d'un utilisateur`,
+        security: [
+            {
+                AccessToken: []
+            }
+        ],
         parameters: [
             {
                 name: 'userId',
@@ -210,7 +137,54 @@ const allCommentsByUser = {
                     type: 'integer',
                     example: 1
                 },
-                description: `Id pour récupérer tous les commentaires d'un utilisateur`
+                description: 'Id pour désactiver / activer un utilisateur'
+            }
+        ],
+        requestBody: {
+            name: 'Body',
+            in: 'body',
+            required: true,
+
+            content: {
+                'application/json': {
+                    schema: {
+                        type: 'boolean',
+                        properties: p.inactivateUser,
+                        example: e.inactivateUser
+                    },
+                    description: 'Info body pour désactiver / activer un utilisateur'
+                }
+            }
+        },
+        responses: {
+            200: statusCode._200,
+            400: statusCode._400,
+            403: statusCode._403,
+            404: statusCode._404
+        }
+    }
+};
+
+const panelUser = {
+    //& ---------------------- fetchPanelUser
+    get: {
+        tags: ['Users'],
+        summary: `Récupération des informations pour le panel d'un utilisateur`,
+        security: [
+            {
+                AccessToken: []
+            }
+        ],
+        parameters: [
+            {
+                name: 'userId',
+                in: 'path',
+                required: true,
+                schema: {
+                    type: 'integer',
+                    example: 1
+                },
+                description: `Id pour récupérer les informations d'un utilisateur`
             }
         ],
         responses: {
@@ -220,15 +194,245 @@ const allCommentsByUser = {
                     'application/json': {
                         schema: {
                             type: 'object',
-                            properties: usersProperties,
-                            example: userExample
+                            properties: p.panelUser
                         }
                     }
                 }
             },
-            404: error404
+            400: statusCode._400,
+            403: statusCode._403,
+            404: statusCode._404
         }
     }
 };
 
-export { users, oneUser, allCommentsByUser };
+// const users = {
+//     //~ Fetch all users
+//     get: {
+//         tags: ['Users'],
+//         summary: 'Récupération des utilisateurs',
+//         responses: {
+//             200: {
+//                 description: 'Requête réussie',
+//                 content: {
+//                     'application/json': {
+//                         schema: {
+//                             type: 'object',
+//                             properties: usersProperties,
+//                             example: userExample
+//                         }
+//                     }
+//                 }
+//             },
+//             404: statusCode._404,
+//             403: statusCode._403
+//         }
+//     }
+// };
+
+// const oneUser = {
+//     //~ Fetch one user
+//     get: {
+//         tags: ['Users'],
+//         summary: `Récupération d'un utilisateur par son Id`,
+//         security: [
+//             {
+//                 AccessToken: []
+//              }
+//         ],
+//         parameters: [
+//             {
+//                 name: 'userId',
+//                 in: 'path',
+//                 required: true,
+//                 schema: {
+//                     type: 'integer',
+//                     example: 1
+//                 },
+//                 description: 'Id pour récupérer un utilisateur'
+//             }
+//         ],
+
+//         responses: {
+//             200: {
+//                 content: {
+//                     'application/json': {
+//                         schema: {
+//                             type: 'object',
+//                             properties: usersProperties,
+//                             example: userExample
+//                         }
+//                     }
+//                 },
+//                 description: `Requête réussie`
+//             },
+
+//             400: statusCode._400,
+//             404: statusCode._404,
+//             403: statusCode._403
+//         }
+//     },
+
+//     //~ Update one user
+//     patch: {
+//         tags: ['Users'],
+//         summary: `Mise à jour des informations d'un utilisateur`,
+//         security: [
+//             {
+//                 AccessToken: []
+//              }
+//         ],
+//         parameters: [
+//             {
+//                 name: 'userId',
+//                 in: 'path',
+//                 required: true,
+//                 schema: {
+//                     type: 'integer',
+//                     example: 1
+//                 },
+//                 description: 'Id pour mettre à jour un utilisateur'
+//             }
+//         ],
+//         responses: {
+//             200: {
+//                 description: 'Requête réussie',
+//                 content: {
+//                     'application/json': {
+//                         schema: {
+//                             type: 'object',
+//                             properties: { message: { type: 'string' } },
+//                             example: {
+//                                 message: 'La donnée a bien été modifiée'
+//                             }
+//                         }
+//                     }
+//                 }
+//             },
+//             400: statusCode._400,
+//             404: statusCode._404,
+//             403: statusCode._403
+//         }
+//     },
+
+//     //~ Inactivate one user
+//     put: {
+//         tags: ['Users'],
+//         summary: `Désactivation d'un utilisateur`,
+//         security: [
+//             {
+//                 AccessToken: []
+//              }
+//         ],
+//         parameters: [
+//             {
+//                 name: 'userId',
+//                 in: 'path',
+//                 required: true,
+//                 schema: {
+//                     type: 'integer',
+//                     example: 1
+//                 },
+//                 description: 'Id pour désactiver un utilisateur'
+//             }
+//         ],
+//         responses: {
+//             200: {
+//                 description: 'Requête réussie',
+//                 content: {
+//                     'application/json': {
+//                         schema: {
+//                             type: 'object',
+//                             properties: { message: { type: 'string' } },
+//                             example: {
+//                                 message: 'La donnée a bien été modifiée'
+//                             }
+//                         }
+//                     }
+//                 }
+//             },
+//             400: statusCode._400,
+//             404: statusCode._404,
+//             403: statusCode._403
+//         }
+//     },
+
+//      //~ Delete one User
+//      delete: {
+//         tags: ['Users'],
+//         summary: `Suppression d'un utilisateur`,
+//         security: [
+//             {
+//                 AccessToken: []
+//              }
+//         ],
+//         parameters: [
+//             {
+//                 name: 'userId',
+//                 in: 'path',
+//                 required: true,
+//                 schema: {
+//                     type: 'integer',
+//                     example: 1
+//                 },
+//                 description: 'Id pour supprimer un utilisateur'
+//             }
+//         ],
+//         responses: {
+//             200: {
+//                 description: 'Requête réussie',
+//                 content: {
+//                     'application/json': {
+//                         schema: {
+//                             type: 'object',
+//                             properties: { message: { type: 'string' } },
+//                             example: {
+//                                 message: 'La donnée a bien été supprimée'
+//                             }
+//                         }
+//                     }
+//                 }
+//             },
+//             400: statusCode._400,
+//             403: statusCode._403,
+//             404: statusCode._404
+//         }
+//     }
+// };
+
+// //~ Fetch all comments from one user
+// const allCommentsByUser = {
+//     get: {
+//         tags: ['Users'],
+//         summary: `Récupération de tous les commentaires d'un utilisateur`,
+//         parameters: [
+//             {
+//                 name: 'userId',
+//                 in: 'path',
+//                 required: true,
+//                 schema: {
+//                     type: 'integer',
+//                     example: 1
+//                 },
+//                 description: `Id pour récupérer tous les commentaires d'un utilisateur`
+//             }
+//         ],
+//         responses: {
+//             200: {
+//                 description: 'Requête réussie',
+//                 content: {
+//                     'application/json': {
+//                         schema: {
+//                             type: 'object',
+//                             properties: usersProperties,
+//                             example: userExample
+//                         }
+//                     }
+//                 }
+//             },
+//             404: statusCode._404
+//         }
+//     }
+// };
+
+export { users, oneUser, panelUser };

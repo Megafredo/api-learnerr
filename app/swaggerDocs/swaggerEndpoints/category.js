@@ -1,6 +1,6 @@
 //~  IMPORTATIONS EXAMPLES / STATUS CODES
 import { categoryProperties, categoryExample } from '../swaggerUtils/swaggerExamples.js';
-import { error400, error403, error404 } from '../swaggerUtils/swaggerStatus.js';
+import { statusCode } from '../swaggerUtils/swaggerStatus.js';
 
 const categories = {
     //~ Fetch all categories
@@ -20,7 +20,7 @@ const categories = {
                     }
                 }
             },
-            404: error404
+            404: statusCode._404
         }
     },
 
@@ -41,8 +41,8 @@ const categories = {
                     }
                 }
             },
-            400: error400,
-            403: error403
+            400: statusCode._400,
+            403: statusCode._403
         }
     }
 };
@@ -79,9 +79,9 @@ const oneCategory = {
                     }
                 }
             },
-            400: error400,
-            403: error403,
-            404: error404
+            400: statusCode._400,
+            403: statusCode._403,
+            404: statusCode._404
         }
     }
 };
@@ -116,7 +116,7 @@ const allCategoriesByArticle = {
                     }
                 }
             },
-            404: error404
+            404: statusCode._404
         }
     }
 };
@@ -151,7 +151,7 @@ const allCategoriesByError = {
                     }
                 }
             },
-            404: error404
+            404: statusCode._404
         }
     }
 };

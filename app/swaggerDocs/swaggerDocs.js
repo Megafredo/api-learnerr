@@ -21,7 +21,7 @@ import { commentsByErrorId, oneCommentByErrorId, allErrorCommentsByUser, solutio
 import { errors, oneError, errorsByCategory, errorsByUser, lastestErrors, searchAllErrors } from './swaggerEndpoints/errorTicket.js';
 
 //users
-import { users, oneUser, allCommentsByUser } from './swaggerEndpoints/user.js';
+import { users, oneUser, panelUser } from './swaggerEndpoints/user.js';
 
 
 
@@ -67,11 +67,13 @@ const options = {
             '/signout': signout,
             '/refreshToken': refreshToken,
 
+
             //~ USERS
             '/users': users,
             '/users/{userId}': oneUser,
 
-            '/users/{userId}/comments': allCommentsByUser,
+            '/users/{userId}/panel': panelUser,
+
 
             //~ ARTICLES
             '/articles': articles,
@@ -82,37 +84,45 @@ const options = {
             '/articles/last': lastestArticles,
             '/articles/search': searchAllArticles,
             
-            //~ ERROR TICKETS
-            '/errors': errors,
-            '/errors/{errorId}': oneError,
+
+
+
+
+            // //~ ERROR TICKETS
+            // '/errors': errors,
+            // '/errors/{errorId}': oneError,
             
-            '/categories/{categoryId}/errors': errorsByCategory,
-            '/users/{userId}/errors': errorsByUser,
-            '/errors/last': lastestErrors,
-            '/errors/search': searchAllErrors,
+            // '/categories/{categoryId}/errors': errorsByCategory,
+            // '/users/{userId}/errors': errorsByUser,
+            // '/errors/last': lastestErrors,
+            // '/errors/search': searchAllErrors,
         
-            //~ ARTICLE COMMENTS
-            '/articles/{articleId}/comments': articleComments,
-            '/articles/{articleId}/comments/{commentId}': articlesCommentsById,
+            // //~ ARTICLE COMMENTS
+            // '/articles/{articleId}/comments': articleComments,
+            // '/articles/{articleId}/comments/{commentId}': articlesCommentsById,
 
-            //~ ERROR COMMENTS
-            '/errors/{errorId}/comments': commentsByErrorId,
-            '/errors/{errorId}/comments/{commentId}': oneCommentByErrorId,
+            // //~ ERROR COMMENTS
+            // '/errors/{errorId}/comments': commentsByErrorId,
+            // '/errors/{errorId}/comments/{commentId}': oneCommentByErrorId,
 
-            '/users/{userId}/error_comments': allErrorCommentsByUser,
-            '/errors/{errorId}/solution/{solutionId}': solutionOnError,
+            // '/users/{userId}/error_comments': allErrorCommentsByUser,
+            // '/errors/{errorId}/solution/{solutionId}': solutionOnError,
             
-            //~ CATEGORIES
-            '/categories': categories,
-            '/categories/{categoryId}': oneCategory,
+            // //~ CATEGORIES
+            // '/categories': categories,
+            // '/categories/{categoryId}': oneCategory,
 
-            '/articles/{articleId}/categories': allCategoriesByArticle,
-            '/errors/{errorId}/categories': allCategoriesByError
+            // '/articles/{articleId}/categories': allCategoriesByArticle,
+            // '/errors/{errorId}/categories': allCategoriesByError
         
         },
         // Tous les schemas
         components,
-
+        
+        // security:{
+        //     ApiKeyAuth:[]
+        // }
+        
         
     },
 

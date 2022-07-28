@@ -1,6 +1,6 @@
 //~  IMPORTATIONS EXAMPLES / STATUS CODES
 import { errorTicketsProperties, errorTicketExample } from '../swaggerUtils/swaggerExamples.js';
-import { error400, error404, error403 } from '../swaggerUtils/swaggerStatus.js';
+import { statusCode } from '../swaggerUtils/swaggerStatus.js';
 
 const errors = {
     //~ Fetch all error tickets
@@ -20,7 +20,7 @@ const errors = {
                     }
                 }
             },
-            404: error404
+            404: statusCode._404
         }
     },
 
@@ -41,8 +41,8 @@ const errors = {
                     }
                 }
             },
-            400: error400,
-            403: error403
+            400: statusCode._400,
+            403: statusCode._403
         }
     }
 };
@@ -77,8 +77,8 @@ const oneError = {
                     }
                 }
             },
-            400: error400,
-            404: error404
+            400: statusCode._400,
+            404: statusCode._404
         }
     },
 
@@ -113,9 +113,9 @@ const oneError = {
                     }
                 }
             },
-            400: error400,
-            403: error403,
-            404: error404
+            400: statusCode._400,
+            403: statusCode._403,
+            404: statusCode._404
         }
     },
 
@@ -150,9 +150,9 @@ const oneError = {
                     }
                 }
             },
-            400: error400,
-            403: error403,
-            404: error404
+            400: statusCode._400,
+            403: statusCode._403,
+            404: statusCode._404
         }
     }
 };
@@ -188,7 +188,7 @@ const errorsByCategory = {
                     }
                 }
             },
-            404: error404
+            404: statusCode._404
         }
     }
 };
@@ -223,8 +223,8 @@ const errorsByUser = {
                     }
                 }
             },
-            403: error403,
-            404: error404
+            403: statusCode._403,
+            404: statusCode._404
         }
     }
 };
@@ -247,7 +247,7 @@ const lastestErrors = {
                     }
                 }
             },
-            404: error404
+            404: statusCode._404
         }
     }
 };
@@ -270,7 +270,7 @@ const searchAllErrors = {
                     }
                 }
             },
-            404: error404
+            404: statusCode._404
         }
     }
 };

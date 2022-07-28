@@ -49,10 +49,12 @@ const userUpdateSchema = Joi.object({
 
     instagram_url: Joi.string().pattern(new RegExp('((https?:\\/\\/)|(www.))[a-zA-Z0-9.@:%._+~#=]{1,}.[-a-zA-Z0-9()]{1,}\\.[-a-z]{1,6}\\b')),
 
+    twitter_url: Joi.string().pattern(new RegExp('((https?:\\/\\/)|(www.))[a-zA-Z0-9.@:%._+~#=]{1,}.[-a-zA-Z0-9()]{1,}\\.[-a-z]{1,6}\\b')),
+
     portfolio_url: Joi.string().pattern(new RegExp('((https?:\\/\\/)|(www.))[a-zA-Z0-9.@:%._+~#=]{1,}.[-a-zA-Z0-9()]{1,}\\.[-a-z]{1,6}\\b'))
 })
     .min(1)
-    .max(12);
+    .max(13);
 
 //~ User schema InactivateSchema
 const userInactivateSchema = Joi.object({

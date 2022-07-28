@@ -66,7 +66,7 @@ app.use(router);
 
 //~ Error 404 NOT Found
 app.use((req, res)=>{
-    throw new ErrorApi(`Page not found !`, req, res, 404);
+    throw new ErrorApi(`Page non trouvée !`, req, res, 404);
 });
 
 

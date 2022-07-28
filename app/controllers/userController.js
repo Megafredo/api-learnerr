@@ -61,6 +61,8 @@ async function updateUser(req, res) {
         //replace password in body
         req.body.password = password;
 
+        if (req.user.id !== userId) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
+
         //~ Update user
         await User.update(req.body);
 
@@ -80,9 +82,11 @@ async function deleteUser(req, res) {
         const user = await User.findOne(userId);
         if (!user) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
+        if (req.user.id !== userId) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
+
         await User.delete(userId);
 
-        //check 
+        //check
         req.user = null;
         req.session.destroy();
 
@@ -106,6 +110,9 @@ async function inactivateUser(req, res) {
         const { is_active } = req.body;
         req.body = { ...req.body, id: userId };
 
+        if (is_active === undefined) throw new ErrorApi(`L'information is_active doit être renseigné`, req, res, 400);
+        if (req.user.role === 'admin') throw new ErrorApi(`L'administrateur ne peut pas être bloqué`, req, res, 400);
+
         //~ Update user
         if (is_active === false) return await User.update(req.body), res.status(200).json(`L'utilisateur a bien été désactivé`);
 
@@ -121,7 +128,7 @@ async function doSignUp(req, res) {
     try {
         let { email, password, passwordConfirm } = req.body;
 
-        console.log(req.body)
+        console.log(req.body);
 
         //~ User already exist ?
         const userExist = await User.findUser(email);
@@ -164,7 +171,6 @@ async function doSignIn(req, res) {
         let refreshToken = generateRefreshToken({ user }, req);
 
         delete user['isActive'];
-        delete user['role'];
 
         let userIdentity = { ...user, accessToken, refreshToken };
 

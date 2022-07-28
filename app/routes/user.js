@@ -15,19 +15,18 @@ import { validateToken } from '../middlewares/validateToken.js';
 import { auth, admin } from '../middlewares/auth.js';
 
 //~ Routes
+router.post('/api/v1/signup', validation.body(userSignUpSchema), doSignUp);
+router.post('/api/v1/signin', validation.body(userSignInSchema), doSignIn);
+router.get('/api/v1/signout', doSignOut);
+
 router.get('/api/v1/users', fetchAllUsers);
 router.get('/api/v1/users/:userId(\\d+)',[ validateToken, auth ], fetchOneUser);
 router.patch('/api/v1/users/:userId(\\d+)', [validateToken, auth], validation.body(userUpdateSchema), updateUser);
 router.delete('/api/v1/users/:userId(\\d+)', [validateToken, auth], deleteUser);
 
 router.put('/api/v1/users/:userId(\\d+)',[ validateToken, auth, admin ], validation.body(userInactivateSchema),inactivateUser);
-router.post('/api/v1/signup', validation.body(userSignUpSchema), doSignUp);
-router.post('/api/v1/signin', validation.body(userSignInSchema), doSignIn);
-router.get('/api/v1/signout', doSignOut);
-
-//check swagger docs + endpoint documentation
+//check endpoint documentation
 router.get('/api/v1/users/:userId(\\d+)/panel', [validateToken, auth], fetchPanelUser);
-
 router.post('/api/v1/refreshtoken', refreshToken);
 
 //~ Export router

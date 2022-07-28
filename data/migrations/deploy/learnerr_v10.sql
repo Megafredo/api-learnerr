@@ -68,6 +68,7 @@ LEFT JOIN "error_comment" AS EC
     ON EC.error_id = E.id
 LEFT JOIN "user" AS U
     ON E.user_id = U.id
-GROUP BY E.id, U.id;
+GROUP BY E.id, U.id
+ORDER BY E.created_at DESC;
 
 COMMIT;
