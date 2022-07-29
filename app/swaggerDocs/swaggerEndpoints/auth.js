@@ -1,5 +1,4 @@
 //~  IMPORTATIONS EXAMPLES / STATUS CODES
-//check import all
 import { example as e, properties as p, required as r } from '../swaggerUtils/swaggerExamples.js';
 import { statusCode } from '../swaggerUtils/swaggerStatus.js';
 
@@ -64,17 +63,7 @@ const signin = {
         },
 
         responses: {
-            200: {
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: p.signInOk,
-                            example: e.signInOk
-                        }
-                    }
-                }
-            },
+            200: statusCode._200,
             401: statusCode._401,
             404: statusCode._404
         }
@@ -115,18 +104,7 @@ const refreshToken = {
         ],
 
         responses: {
-            201: {
-                description: 'Requête réussie et token mis à jour',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: p.refreshTokenOk,
-                            example: e.refreshTokenOk
-                        }
-                    }
-                }
-            },
+            201: statusCode._201,
             400: statusCode._400,
             401: statusCode._401,
             403: statusCode._403,

@@ -723,28 +723,67 @@ const infoReturn = {
     article_title: { type: 'integer' },
     article_created_at: { type: 'string' },
     comments_content: { type: 'array', items: { type: 'object', properties: { content: { type: 'string' } } } }
-  }
+  },
 
   //^ ---------------- ERROR TICKET COMMENT
-  // //~ ---------------- All Error Comments
-  // allErrorComments: {
-  //     id: { type: 'integer' },
-  //     content: { type: 'string' },
-  //     user_id: { type: 'integer' },
-  //     article_id: { type: 'integer' },
-  //     created_at: { type: 'string' },
-  //     updated_at: { type: 'string' }
-  // },
+  //~ ---------------- All Error Comments
+  allErrorComments: {
+      id: { type: 'integer' },
+      content: { type: 'string' },
+      user_id: { type: 'integer' },
+      error_id: { type: 'integer' },
+      created_at: { type: 'string' },
+      updated_at: { type: 'string' }
+  },
 
-  // //~ ---------------- All Error Comments By User
-  // allErrorCommentsByUser: {
-  //     user_id: { type: 'integer' },
-  //     username: { type: 'string' },
-  //     article_id: { type: 'integer' },
-  //     article_title: { type: 'integer' },
-  //     article_created_at: { type: 'string' },
-  //     comments_content: {  type: 'array', items: { type: 'object', properties: { content: { type: 'string'}}}}
-  // },
+  //~ ---------------- All Error Comments By User
+  allErrorCommentsByUser: {
+      user_id: { type: 'integer' },
+      username: { type: 'string' },
+      error_id: { type: 'integer' },
+      error_title: { type: 'integer' },
+      error_created_at: { type: 'string' },
+      comments_content: {  type: 'array', items: { type: 'object', properties: { content: { type: 'string'}}}}
+  },
+
+
+  //^ ---------------- CATEGORIES
+  //~ ---------------- All Categories
+  allCategories: {
+    id: { type: 'integer' },
+    name: { type: 'string' },
+    logo_svg: { type: 'string' }
+  },
+  //~ ---------------- All Categories By Article
+  allCategoriesByArticle: {
+    category: {
+        type : 'array', 
+        items: { type: 'object', 
+        properties: {
+            category_name: { type: 'string' },
+            logo: { type: 'string' }
+         }}
+    },
+    article_title: { type: 'string' },
+    article_id: { type: 'integer' },
+  },
+  //~ ---------------- All Categories By Error Ticket
+  allCategoriesByErrorTicket: {
+    category: {
+        type : 'array', 
+        items: { type: 'object', 
+        properties: {
+            category_name: { type: 'string' },
+            logo: { type: 'string' }
+         }}
+    },
+    error_title: { type: 'string' },
+    error_id: { type: 'integer' },
+  }
+
+
+
+
 };
 
 //~ Users

@@ -28,6 +28,20 @@ const errorTicketUpdateSchema = Joi.object({
     .min(1)
     .max(7);
 
-    //Check lastestErrorTickets limitNb et offestNb
-    //Check searchErrorTickets search: { type: 'string' },
-export { errorTicketSchema, errorTicketUpdateSchema };
+    //~ Offset and limit schema
+const offsetSchema = Joi.object({
+    limitNb: Joi.number().integer(),
+    offsetSchema: Joi.number().integer()
+  })
+    .required()
+    .min(1)
+    .max(2);
+  
+  //~ Offset and limit schema
+  const searchSchema = Joi.object({
+    search: Joi.string()
+  })
+    .required()
+    .max(1);
+
+export { errorTicketSchema, errorTicketUpdateSchema, offsetSchema, searchSchema};

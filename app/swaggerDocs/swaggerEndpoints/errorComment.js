@@ -104,6 +104,28 @@ const oneCommentByErrorId = {
         AccessToken: []
       }
     ],
+    parameters: [
+        {
+            name: 'errorId',
+            in: 'path',
+            required: true,
+            schema: {
+                type: 'integer',
+                example: 1
+            },
+            description: `Identifiant d'une erreur`
+        },
+        {
+            name: 'commentId',
+            in: 'path',
+            required: true,
+            schema: {
+                type: 'integer',
+                example: 1
+            },
+            description: `Identifiant d'un commentaire d'erreur`
+        }
+    ],
     responses: {
       200: statusCode._200,
       400: statusCode._400,
@@ -123,6 +145,18 @@ const allErrorCommentsByUser = {
         AccessToken: []
       }
     ],
+    parameters: [
+        {
+          name: 'userId',
+          in: 'path',
+          required: true,
+          schema: {
+            type: 'integer',
+            example: 1
+          },
+          description: `Identifiant d'un utilisateur`
+        }
+      ],
     responses: {
       200: statusCode._200,
       400: statusCode._400,
@@ -334,51 +368,4 @@ export { commentsByErrorId, oneCommentByErrorId, allErrorCommentsByUser };
 //     }
 // };
 
-// const solutionOnError = {
-//     //~ Update comments
-//     patch: {
-//         tags: ['Error comments'],
-//         summary: `Mise à jour des informations d'un commentaire`,
-//         parameters: [
-//             {
-//                 name: 'errorId',
-//                 in: 'path',
-//                 required: true,
-//                 schema: {
-//                     type: 'integer',
-//                     example: 1
-//                 },
-//                 description: `Identifiant d'une erreur`
-//             },
-//             {
-//                 name: 'solutionId',
-//                 in: 'path',
-//                 required: true,
-//                 schema: {
-//                     type: 'integer',
-//                     example: 1
-//                 },
-//                 description: `Identifiant d'un commentaire d'erreur`
-//             }
-//         ],
-//         responses: {
-//             200: {
-//                 description: 'Requête réussie',
-//                 content: {
-//                     'application/json': {
-//                         schema: {
-//                             type: 'object',
-//                             properties: { message: { type: 'string' } },
-//                             example: {
-//                                 message: 'La donnée a bien été modifiée'
-//                             }
-//                         }
-//                     }
-//                 }
-//             },
-//             400: statusCode._400,
-//             403: statusCode._403,
-//             404: statusCode._404
-//         }
-//     }
 // };

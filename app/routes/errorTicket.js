@@ -7,7 +7,7 @@ import { createErrorTicket, fetchAllErrorTickets, fetchOneErrorTicket, updateErr
 
 //~ Import schema
 import { validation } from '../services/validation.js';
-import { errorTicketSchema, errorTicketUpdateSchema } from '../schema/errorTicket.schema.js';
+import { errorTicketSchema, errorTicketUpdateSchema, offsetSchema, searchSchema } from '../schema/errorTicket.schema.js';
 
 //~ Authorization
 import { validateToken } from '../middlewares/validateToken.js';
@@ -22,11 +22,10 @@ router.delete('/api/v1/errors/:errorId(\\d+)',[validateToken, auth], deleteError
 
 router.get('/api/v1/categories/:categoryId(\\d+)/errors', fetchAllErrorTicketsByCategory);
 router.get('/api/v1/users/:userId(\\d+)/errors', fetchAllErrorTicketsByUser);
-router.post('/api/v1/errors/last', fetchLastestErrorTickets);
-//check schémas security input 
-router.post('/api/v1/errors/search', searchAllErrorTickets);
+router.post('/api/v1/errors/last', validation.body(offsetSchema), fetchLastestErrorTickets);
 
-//check swagger route 
+router.post('/api/v1/errors/search',validation.body(searchSchema),  searchAllErrorTickets);
+
 router.patch('/api/v1/errors/:errorId(\\d+)/solution/:solutionId(\\d+)',[validateToken, auth], updateErrorTicket);
 
 

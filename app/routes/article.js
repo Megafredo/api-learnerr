@@ -7,7 +7,7 @@ import {  createArticle,  fetchAllArticles,  fetchOneArticle,  updateArticle,  d
 
 //~ Import schema
 import { validation } from '../services/validation.js';
-import { articleSchema, articleUpdateSchema } from '../schema/article.schema.js';
+import { articleSchema, articleUpdateSchema, offsetSchema, searchSchema } from '../schema/article.schema.js';
 
 //~ Authorization
 import { validateToken } from '../middlewares/validateToken.js';
@@ -22,10 +22,9 @@ router.delete('/api/v1/articles/:articleId(\\d+)', [validateToken, auth, role], 
 
 router.get('/api/v1/categories/:categoryId(\\d+)/articles', fetchAllArticlesByCategory);
 router.get('/api/v1/users/:userId(\\d+)/articles', fetchAllArticlesByUser);
-router.post('/api/v1/articles/last', fetchLastestArticles);
+router.post('/api/v1/articles/last',validation.body(offsetSchema), fetchLastestArticles);
 
-//check schémas security input 
-router.post('/api/v1/articles/search', searchAllArticles);
+router.post('/api/v1/articles/search',validation.body(searchSchema), searchAllArticles);
 
 //~ Export router
 export { router };

@@ -1,4 +1,5 @@
-import { required as r, example as e, properties as p, tableSql, schemaJoi as s, infoReturn as i } from './swaggerExamples.js';
+//~  Importations examples
+import { required as r, schemaJoi as s, infoReturn as i, tableSql } from './swaggerExamples.js';
 
 const components = {
   //~ --------------------- Security token
@@ -32,10 +33,13 @@ const components = {
 
   //~ --------------------- All Schemas
   schemas: {
-    TABLE_SQL: {
+
+    //~ -------------------- TABLES_SQL
+    TABLES_SQL: {
+
       type: 'object',
       properties: {
-        //& Tables SQL
+
         User: { properties: tableSql.user },
         Article: { properties: tableSql.article },
         ErrorTicket: { properties: tableSql.error },
@@ -45,13 +49,17 @@ const components = {
         Bad_Word: { properties: tableSql.badWord },
         Status: { properties: tableSql.status },
         Category: { properties: tableSql.category }
+
       }
     },
 
+    //~ -------------------- SCHEMAS_JOI
     SCHEMAS_JOI: {
+
       type: 'object',
       properties: {
-        //& Schema Joi User
+
+        //~ ------------------
         User: {
           type: 'object',
           properties: {
@@ -62,7 +70,7 @@ const components = {
           }
         },
 
-        //& Schema Joi Article
+        //~ ------------------
         Article: {
           type: 'object',
           properties: {
@@ -70,7 +78,8 @@ const components = {
             Update_Article: { required: r.updateArticle, properties: s.updateArticle }
           }
         },
-        //& Schema Joi ErrorTicket
+
+        //~ ------------------
         ErrorTicket: {
           type: 'object',
           properties: {
@@ -78,21 +87,24 @@ const components = {
             Update_ErrorTicket: { required: r.updateErrorTicket, properties: s.updateErrorTicket }
           }
         },
-        //& Schema Joi ArticleComment
+
+        //~ ------------------
         ArticleComment: {
           type: 'object',
           properties: {
             Article_Comment: { required: r.articleComment, properties: s.articleComment }
           }
         },
-        //& Schema Joi ErrorComment
+
+        //~ ------------------
         ErrorComment: {
           type: 'object',
           properties: {
             Error_Comment: { required: r.errorComment, properties: s.errorComment }
           }
         },
-        //& Schema Joi Category
+
+        //~ ------------------
         Category: {
           type: 'object',
           properties: {
@@ -102,101 +114,113 @@ const components = {
       }
     },
 
+    //~ -------------------- INFO_RETURN
     INFO_RETURN: {
+
       type: 'object',
       properties: {
-        //& INFO USER
-        //--------------------
+
+        //~ ------------------
         User: {
           type: 'object',
           properties: {
-            //& INFO fetchAllUsers
+            // fetchAllUsers
             AllUsers: { properties: i.allUsers },
-            //& INFO fetchOneUser
+            // fetchOneUser
             OneUser: { properties: i.oneUser },
-            //& INFO doSignIn
+            // doSignIn
             SignInUser: { properties: i.signInUser },
-            //& INFO fetchPanelUser
+            // fetchPanelUser
             PanelUser: { properties: i.panelUser }
           }
         },
 
-        //& INFO ARTICLE
-        //--------------------
+        //~ ------------------
         Article: {
+
           type: 'object',
           properties: {
-            //& INFO fetchAllArticles
+
+            // fetchAllArticles
             AllArticles: { properties: i.allArticles },
-            //& INFO fetchOneArticle
+            // fetchOneArticle
             OneArticle: { properties: i.oneArticle },
-            //& INFO fetchAllArticlesByCategory
+            // fetchAllArticlesByCategory
             AllArticlesByCategory: { properties: i.allArticlesByCategory },
-            //& INFO fetchAllArticlesByUser
+            // fetchAllArticlesByUser
             AllArticlesByUser: { properties: i.allArticlesByUser },
-            //& INFO fetchLastestArticles
+            // fetchLastestArticles
             LastestArticles: { properties: i.lastestArticles },
-            //& INFO searchAllArticles
+            // searchAllArticles
             SearchArticles: { properties: i.searchArticle }
           }
         },
-
-        //& INFO ERROR TICKET
-        //--------------------
+        
+        //~ ------------------
         ErrorTicket: {
+
           type: 'object',
           properties: {
-            //& INFO fetchAllErrorTickets
+
+            // fetchAllErrorTickets
             AllErrorTickets: {},
-            //& INFO fetchOneErrorTicket
+            // fetchOneErrorTicket
             OneErrorTicket: {},
-            //& INFO fetchAllErrorTicketsByCategory
+            // fetchAllErrorTicketsByCategory
             AllErrorTicketsByCategory: {},
-            //& INFO fetchAllErrorTicketsByUser
+            // fetchAllErrorTicketsByUser
             AllErrorTicketsByUser: {},
-            //& INFO fetchLastestErrorTickets
+            // fetchLastestErrorTickets
             LastestErrorTickets: {},
-            //& INFO searchAllErrorTickets
+            // searchAllErrorTickets
             SearchErrorTicket: {}
           }
         },
-        //& INFO ARTICLE COMMENT
-        //--------------------
+
+        //~ ------------------
         ArticleComment: {
+
           type: 'object',
           properties: {
-            //& INFO fetchAllArticleComments
+
+            // fetchAllArticleComments
             AllArticleComments: { properties: i.allArticleComments },
-            //& INFO fetchAllArticleCommentsByUser
+            // fetchAllArticleCommentsByUser
             AllArticleCommentsByUser: { properties: i.allArticleCommentsByUser }
           }
         },
-        //& INFO ERROR COMMENT
-        //--------------------
+
+        //~ ------------------
         ErrorComment: {
+
           type: 'object',
           properties: {
-            //& INFO fetchAllErrorComments
+
+            // fetchAllErrorComments
             AllErrorComments: { properties: i.allErrorComments },
-            //& INFO fetchAllErrorCommentsByUser
+            // fetchAllErrorCommentsByUser
             AllErrorCommentsByUser: { properties: i.allErrorCommentsByUser }
           }
         },
-        //& INFO CATEGORY
-        //--------------------
+
+        //~ ------------------
         Category: {
+
           type: 'object',
           properties: {
-            //& INFO fetchAllCategories
-            AllCategories: {},
-            //& INFO fetchAllCategoriesByArticle
-            AllCategoriesByArticle: {},
-            //& INFO fetchAllCategoriesByErrorTicket
-            AllCategoriesByErrorTicket: {}
+
+            // fetchAllCategories
+            AllCategories: { properties: i.allCategories },
+            // fetchAllCategoriesByArticle
+            AllCategoriesByArticle: { properties: i.allCategoriesByArticle },
+            // fetchAllCategoriesByErrorTicket
+            AllCategoriesByErrorTicket: { properties: i.allCategoriesByErrorTicket }
           }
         }
       }
     },
+
+
 
     //& Class ErrorHandler
     StatusCode_Errors: {

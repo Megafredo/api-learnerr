@@ -96,14 +96,15 @@ const options = {
       '/errors/{errorId}/comments': commentsByErrorId,
       '/errors/{errorId}/comments/{commentId}': oneCommentByErrorId,
 
-      '/users/{userId}/error_comments': allErrorCommentsByUser
+      '/users/{userId}/error_comments': allErrorCommentsByUser,
 
       // //~ CATEGORIES
-      // '/categories': categories,
-      // '/categories/{categoryId}': oneCategory,
+      '/categories': categories,
+      '/categories/{categoryId}': oneCategory,
 
-      // '/articles/{articleId}/categories': allCategoriesByArticle,
-      // '/errors/{errorId}/categories': allCategoriesByError
+      '/articles/{articleId}/categories': allCategoriesByArticle,
+      '/errors/{errorId}/categories': allCategoriesByError
+
     },
     // Tous les schemas
     components

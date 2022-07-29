@@ -47,7 +47,6 @@ class ErrorTicketDataMapper extends CoreDataMapper {
 
     return result.rows[0];
   }
-
 }
 
 const ErrorTicket = new ErrorTicketDataMapper(client);
