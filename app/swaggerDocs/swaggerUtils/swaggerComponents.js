@@ -72,7 +72,7 @@ const components = {
           type: 'object',
           properties: {
             SignIn_User: { required: r.signIn, properties: s.signIn },
-            ignUp_User: { required: r.signUp, properties: s.signUp },
+            SignUp_User: { required: r.signUp, properties: s.signUp },
             Update_User: { properties: s.updateUser },
             inactivate_User: { required: r.inactivateUser, properties: s.inactivateUser }
           }
