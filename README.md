@@ -73,12 +73,11 @@ ___
 
 - Dépendances dev :
 
-    - [Debug](https://www.npmjs.com/package/debug)
-    - [Bad Words List french](https://www.npmjs.com/package/french-badwords-list)
-    - [@shiroi-shi/techstack](https://www.npmjs.com/package/@shiroi-shi/techstack)
-    - [@faker-js/faker](https://www.npmjs.com/package/@faker-js/faker)
-    - [Jest](https://www.npmjs.com/package/jest)
-
+  - [Debug](https://www.npmjs.com/package/debug)
+  - [Bad Words List french](https://www.npmjs.com/package/french-badwords-list)
+  - [@shiroi-shi/techstack](https://www.npmjs.com/package/@shiroi-shi/techstack)
+  - [@faker-js/faker](https://www.npmjs.com/package/@faker-js/faker)
+  - [Jest](https://www.npmjs.com/package/jest)
 
 ### Extensions VSCODE et logiciel
 
@@ -91,6 +90,7 @@ ___
 
 - [Boundaries](https://stackoverflow.com/questions/3825676/postgresql-regex-word-boundaries)
 - [ILIKE with variables](https://github.com/lib/pq/issues/495)
+- [JsonAgg](https://sql.tutorialink.com/how-to-specify-a-limit-on-postgres-json_agg/)
 
 ### Sources Javascript
 

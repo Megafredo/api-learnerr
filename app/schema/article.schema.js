@@ -24,5 +24,7 @@ const articleUpdateSchema = Joi.object({
     .min(1)
     .max(5);
 
+//Check lastestArticles limitNb et offestNb
+//Check searchArticles search: { type: 'string' },
 
 export { articleSchema, articleUpdateSchema };

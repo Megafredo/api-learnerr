@@ -28,4 +28,6 @@ const errorTicketUpdateSchema = Joi.object({
     .min(1)
     .max(7);
 
+    //Check lastestErrorTickets limitNb et offestNb
+    //Check searchErrorTickets search: { type: 'string' },
 export { errorTicketSchema, errorTicketUpdateSchema };
