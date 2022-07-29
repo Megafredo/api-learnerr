@@ -2,6 +2,7 @@
 
 BEGIN;
 
-
+DROP FUNCTION
+checkWord(word TEXT);
 
 COMMIT;
