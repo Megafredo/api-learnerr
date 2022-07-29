@@ -1,3 +1,4 @@
+-- SQLBook: Code
 -- Deploy learnerr:learnerr_v11 to pg
 
 BEGIN;
@@ -179,6 +180,13 @@ SELECT json_agg
                              ON ARTC.id = AHCAT.article_id
                            WHERE  ARTC.user_id = USA.id
                            AND ARTC.id = UA.id), '[]'),
+                'comments_count',
+                    COALESCE((SELECT COUNT(UAC.id)
+                           FROM "article_comment" AS UAC
+                           JOIN "article" AS UArt
+                             ON UAC.article_id = UArt.id
+                           WHERE   UArt.id = UA.id
+                           ), 0),
                 'cheers_count', 2    
             ) ORDER BY UA.created_at DESC)
             FROM "article" AS UA
@@ -216,6 +224,13 @@ SELECT json_agg
                              ON ERRC.id = EHCAT.error_id
                            WHERE  ERRC.user_id = USE.id
                            AND ERRC.id = ER.id), '[]'),
+                'comments_count',
+                    COALESCE((SELECT COUNT(UEC.id)
+                           FROM "error_comment" AS UEC
+                           JOIN "error" AS UErr
+                             ON UEC.error_id = UErr.id
+                           WHERE   UErr.id = ER.id
+                           ), 0),
                 'cheers_count', 2    
              ) ORDER BY ER.created_at DESC)
             FROM "error" AS ER

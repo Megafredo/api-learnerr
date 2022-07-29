@@ -34,20 +34,28 @@ const components = {
   //~ --------------------- All Schemas
   schemas: {
 
-    //~ -------------------- TABLES_SQL
+    //& -------------------- TABLES_SQL
     TABLES_SQL: {
 
       type: 'object',
       properties: {
 
         User: { properties: tableSql.user },
+
         Article: { properties: tableSql.article },
+
         ErrorTicket: { properties: tableSql.error },
+
         Article_Comment: { properties: tableSql.articleComment },
+
         Error_Comment: { properties: tableSql.errorComment },
+
         Role: { properties: tableSql.role },
+
         Bad_Word: { properties: tableSql.badWord },
+
         Status: { properties: tableSql.status },
+
         Category: { properties: tableSql.category }
 
       }
@@ -114,13 +122,13 @@ const components = {
       }
     },
 
-    //~ -------------------- INFO_RETURN
+    //* -------------------- INFO_RETURN
     INFO_RETURN: {
 
       type: 'object',
       properties: {
 
-        //~ ------------------
+        //* ------------------
         User: {
           type: 'object',
           properties: {
@@ -135,7 +143,7 @@ const components = {
           }
         },
 
-        //~ ------------------
+        //* ------------------
         Article: {
 
           type: 'object',
@@ -156,28 +164,28 @@ const components = {
           }
         },
         
-        //~ ------------------
+        //* ------------------
         ErrorTicket: {
 
           type: 'object',
           properties: {
 
             // fetchAllErrorTickets
-            AllErrorTickets: {},
+            AllErrorTickets: { properties: i.allErrorTickets },
             // fetchOneErrorTicket
-            OneErrorTicket: {},
+            OneErrorTicket: { properties: i.oneErrorTicket },
             // fetchAllErrorTicketsByCategory
-            AllErrorTicketsByCategory: {},
+            AllErrorTicketsByCategory: { properties: i.allErrorTicketsByCategory },
             // fetchAllErrorTicketsByUser
-            AllErrorTicketsByUser: {},
+            AllErrorTicketsByUser: {properties: i.allErrorTicketsByUser },
             // fetchLastestErrorTickets
-            LastestErrorTickets: {},
+            LastestErrorTickets: { properties: i.lastestErrorTickets },
             // searchAllErrorTickets
-            SearchErrorTicket: {}
+            SearchErrorTicket: { properties: i.searchErrorTicket }
           }
         },
 
-        //~ ------------------
+        //* ------------------
         ArticleComment: {
 
           type: 'object',
@@ -190,7 +198,7 @@ const components = {
           }
         },
 
-        //~ ------------------
+        //* ------------------
         ErrorComment: {
 
           type: 'object',
@@ -203,7 +211,7 @@ const components = {
           }
         },
 
-        //~ ------------------
+        //* ------------------
         Category: {
 
           type: 'object',
@@ -234,42 +242,6 @@ const components = {
         }
       }
     }
-
-    // Users: {
-    //     type: 'object',
-    //     required: ['email', 'password'],
-    //     properties: usersProperties,
-    //     securitySchemes: {
-    //         bearerAuth: {
-    //             type: 'http',
-    //             scheme: 'bearer',
-    //             bearerFormat: 'JWT',
-    //         }
-    //     },
-    // security: [{
-    //     bearerAuth: []
-    // }],
-    // },
-    // Articles: {
-    //     type: 'object',
-    //     properties: articlesProperties
-    // },
-    // ErrorTickets: {
-    //     type: 'object',
-    //     properties: errorTicketsProperties
-    // },
-    // ArticleComments: {
-    //     type: 'object',
-    //     properties: articleCommentsProperties
-    // },
-    // ErrorComments: {
-    //     type: 'object',
-    //     properties: errorTicketCommentsProperties
-    // },
-    // Category: {
-    //     type: 'object',
-    //     properties: categoryProperties
-    // }
   }
 };
 

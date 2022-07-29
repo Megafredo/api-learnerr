@@ -1,6 +1,6 @@
 -- SQLBook: Code
 --* VERSION 2
-
+--& Last articles detailed
 CREATE OR REPLACE FUNCTION last_articles_detailed (userId INT)
 RETURNS TABLE (A_detailed JSON) AS $$
 
@@ -68,7 +68,7 @@ SELECT json_agg(
         FROM "article" AS ART
         JOIN "article_comment" AS AComment
             ON ART.id = AComment.id
-        WHERE ART.user_id = userId
+        WHERE ART.user_id = userId --HERE
         GROUP BY ART.user_id
 );
 
@@ -76,6 +76,7 @@ END
 
 $$ LANGUAGE plpgsql VOLATILE;
 
+--& Last errors detailed
 CREATE OR REPLACE FUNCTION last_errors_detailed (userId INT)
 RETURNS TABLE (E_detailed JSON) AS $$
 
@@ -144,7 +145,7 @@ SELECT json_agg(
         FROM "error" AS ERR
         JOIN "error_comment" AS EComment
             ON ERR.id = EComment.id
-        WHERE ERR.user_id = userId 
+        WHERE ERR.user_id = userId --HERE
         GROUP BY ERR.user_id
 );
 
@@ -152,7 +153,7 @@ END
 
 $$ LANGUAGE plpgsql VOLATILE;
 
-
+--& User articles detailed
 CREATE OR REPLACE FUNCTION user_articles_detailed (userId INT)
 RETURNS TABLE (UA_detailed JSON) AS $$
 
@@ -176,19 +177,26 @@ SELECT json_agg
                              ON ARTC.id = AHCAT.article_id
                            WHERE  ARTC.user_id = USA.id
                            AND ARTC.id = UA.id), '[]'),
+                'comments_count',
+                    COALESCE((SELECT COUNT(UAC.id)
+                           FROM "article_comment" AS UAC
+                           JOIN "article" AS UArt
+                             ON UAC.article_id = UArt.id
+                           WHERE   UArt.id = UA.id
+                           ), 0),
                 'cheers_count', 2    
             ) ORDER BY UA.created_at DESC)
             FROM "article" AS UA
             JOIN "user" AS USA
                 ON UA.user_id = USA.id
-            WHERE USA.id = userId
+            WHERE USA.id = userId --HERE
 );
 
 END
 
 $$ LANGUAGE plpgsql VOLATILE;
 
-
+--& User errors detailed
 CREATE OR REPLACE FUNCTION user_errors_detailed (userId INT)
 RETURNS TABLE (UE_detailed JSON) AS $$
 
@@ -213,12 +221,19 @@ SELECT json_agg
                              ON ERRC.id = EHCAT.error_id
                            WHERE  ERRC.user_id = USE.id
                            AND ERRC.id = ER.id), '[]'),
+                'comments_count',
+                    COALESCE((SELECT COUNT(UEC.id)
+                           FROM "error_comment" AS UEC
+                           JOIN "error" AS UErr
+                             ON UEC.error_id = UErr.id
+                           WHERE   UErr.id = ER.id
+                           ), 0),
                 'cheers_count', 2    
              ) ORDER BY ER.created_at DESC)
             FROM "error" AS ER
             JOIN "user" AS USE
                 ON ER.user_id = USE.id
-            WHERE USE.id = userId
+            WHERE USE.id = userId --HERE
 );
 
 END
@@ -226,6 +241,7 @@ END
 $$ LANGUAGE plpgsql VOLATILE;
 
 
+--& Full user details
 CREATE OR REPLACE FUNCTION user_detailed (userId INT)
 RETURNS TABLE (U_detailed JSON) AS $$
 

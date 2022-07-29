@@ -10,6 +10,11 @@ import { ArticleComment, Article, User } from '../datamappers/index.js';
 
 async function createArticleComment(req, res) {
   try {
+    //~ Check bad words
+    const info = await check(req.body);
+
+    if (info.badWordFound > 0) return res.status(403).json({ WARNING: 'CE COMMENTAIRE CONTIENT DES MOTS INTERDITS !!!', message: info.message });
+    
     //~ Is id a number ?
     const articleId = +req.params.articleId;
     if (isNaN(articleId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);

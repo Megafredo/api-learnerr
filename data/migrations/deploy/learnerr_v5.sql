@@ -34,7 +34,7 @@ $$ LANGUAGE plpgsql VOLATILE;
 --& Fetch all error ticket by user
 CREATE 
 OR REPLACE FUNCTION error_by_user(userId INT)
-RETURNS TABLE (error_tickets JSON, user_id INT, users_email EMAIL) AS $$
+RETURNS TABLE (error_tickets JSON, user_id INT, user_email EMAIL) AS $$
 
 BEGIN
 

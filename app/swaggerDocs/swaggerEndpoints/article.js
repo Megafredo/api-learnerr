@@ -30,7 +30,7 @@ const articles = {
       }
     },
     responses: {
-      200: statusCode._200,
+      201: statusCode._201,
       400: statusCode._400,
       403: statusCode._403,
       404: statusCode._404
@@ -64,7 +64,7 @@ const oneArticle = {
           type: 'integer',
           example: 1
         },
-        description: 'Id pour récupérer un article'
+        description: `Identifiant d'un article`
       }
     ],
     responses: {
@@ -92,7 +92,7 @@ const oneArticle = {
           type: 'integer',
           example: 1
         },
-        description: 'Id pour mettre a jour un article'
+        description: `Identifiant d'un article`
       }
     ],
     requestBody: {
@@ -137,7 +137,7 @@ const oneArticle = {
           type: 'integer',
           example: 1
         },
-        description: 'Id pour supprimer un article'
+        description: `Identifiant d'un article`
       }
     ],
     responses: {
@@ -163,7 +163,7 @@ const articlesByCategory = {
           type: 'integer',
           example: 1
         },
-        description: `Id pour récupérer les articles d'une catégorie`
+        description: `Identifiant d'une catégorie`
       }
     ],
     responses: {
@@ -189,7 +189,7 @@ const articlesByUser = {
           type: 'integer',
           example: 1
         },
-        description: `Id pour récupérer les articles d'un utilisateur`
+        description: `Identifiant d'un utilisateur`
       }
     ],
     responses: {
@@ -215,9 +215,9 @@ const lastestArticles = {
         'application/json': {
           schema: {
             type: 'object',
-            required: r.lastestArticle,
-            properties: p.lastestArticle,
-            example: e.lastestArticle
+            required: r.lastestArticles,
+            properties: p.lastestArticles,
+            example: e.lastestArticles
           },
           description: 'Info body pour récupérer x(limit) articles tout y(offset)'
         }
@@ -236,7 +236,7 @@ const searchAllArticles = {
   //& ---------------------- searchAllArticles
   post: {
     tags: ['Articles'],
-    summary: `Recherche de tous les articles`,
+    summary: `Recherche par mot clé lié aux articles`,
     requestBody: {
       name: 'Body',
       in: 'body',
@@ -250,7 +250,7 @@ const searchAllArticles = {
             properties: p.searchArticle,
             example: e.searchArticle
           },
-          description: 'Info body pour récupérer x(limit) articles tout y(offset)'
+          description: 'Info body pour récupérer "x" article à partir de "y"'
         }
       }
     },
@@ -263,277 +263,5 @@ const searchAllArticles = {
   }
 };
 
-// const articles = {
-//     //~ Fetch all articles
-//     get: {
-//         tags: ['Articles'],
-//         summary: 'Récupération de tous les articles',
-//         responses: {
-//             200: {
-//                 description: 'Requête réussie',
-//                 content: {
-//                     'application/json': {
-//                         schema: {
-//                             type: 'object',
-//                             properties: articlesProperties,
-//                             example: articleExample
-//                         }
-//                     }
-//                 }
-//             },
-//             404: statusCode._404
-//         }
-//     },
-
-//     //~ Create articles
-//     post: {
-//         tags: ['Articles'],
-//         summary: `Création d'un article`,
-//         responses: {
-//             201: {
-//                 description: 'Requête réussie et article créé',
-//                 content: {
-//                     'application/json': {
-//                         schema: {
-//                             type: 'object',
-//                             properties: articlesProperties,
-//                             example: articleExample
-//                         }
-//                     }
-//                 }
-//             },
-//             400: statusCode._400,
-//             403: statusCode._403
-//         }
-//     }
-// };
-
-// const oneArticle = {
-//     //~ Fetch one article
-//     get: {
-//         tags: ['Articles'],
-//         summary: `Récupération de l'article par son Id`,
-//         parameters: [
-//             {
-//                 name: 'articleId',
-//                 in: 'path',
-//                 required: true,
-//                 schema: {
-//                     type: 'integer',
-//                     example: 1
-//                 },
-//                 description: `Identifiant d'un article`
-//             }
-//         ],
-//         responses: {
-//             200: {
-//                 description: 'Requête réussie',
-//                 content: {
-//                     'application/json': {
-//                         schema: {
-//                             type: 'object',
-//                             properties: articlesProperties,
-//                             example: articleExample
-//                         }
-//                     }
-//                 }
-//             },
-//             400: statusCode._400,
-//             404: statusCode._404
-//         }
-//     },
-
-//     //~ Update one article
-//     patch: {
-//         tags: ['Articles'],
-//         summary: `Mise à jour d'un article par son Id`,
-//         parameters: [
-//             {
-//                 name: 'articleId',
-//                 in: 'path',
-//                 required: true,
-//                 schema: {
-//                     type: 'integer',
-//                     example: 1
-//                 },
-//                 description: `Identifiant d'un article`
-//             }
-//         ],
-//         responses: {
-//             200: {
-//                 description: 'Requête réussie',
-//                 content: {
-//                     'application/json': {
-//                         schema: {
-//                             type: 'object',
-//                             properties: { message: { type: 'string' } },
-//                             example: {
-//                                 message: 'La donnée a bien été modifiée'
-//                             }
-//                         }
-//                     }
-//                 }
-//             },
-//             400: statusCode._400,
-//             403: statusCode._403,
-//             404: statusCode._404
-//         }
-//     },
-
-//     //~ Delete one article
-//     delete: {
-//         tags: ['Articles'],
-//         summary: `Suppression d'un article`,
-//         parameters: [
-//             {
-//                 name: 'articleId',
-//                 in: 'params',
-//                 required: true,
-//                 schema: {
-//                     type: 'integer',
-//                     example: 1
-//                 },
-//                 description: `Identifiant d'un article`
-//             }
-//         ],
-//         responses: {
-//             200: {
-//                 description: 'Requête réussie',
-//                 content: {
-//                     'application/json': {
-//                         schema: {
-//                             type: 'object',
-//                             properties: { message: { type: 'string' } },
-//                             example: {
-//                                 message: 'La donnée a bien été supprimée'
-//                             }
-//                         }
-//                     }
-//                 }
-//             },
-//             400: statusCode._400,
-//             403: statusCode._403,
-//             404: statusCode._404
-//         }
-//     }
-// };
-
-// const articlesByCategory = {
-//     //~ Fetch articles by category
-//     get: {
-//         tags: ['Articles'],
-//         summary: `Récupération de tous les articles d'une catégorie`,
-//         parameters: [
-//             {
-//                 name: 'categoryId',
-//                 in: 'path',
-//                 required: true,
-//                 schema: {
-//                     type: 'integer',
-//                     example: 1
-//                 },
-//                 description: `Identifiant d'une catégorie`
-//             }
-//         ],
-//         responses: {
-//             200: {
-//                 description: 'Requête réussie',
-//                 content: {
-//                     'application/json': {
-//                         schema: {
-//                             type: 'object',
-//                             properties: articlesProperties,
-//                             example: articleExample
-//                         }
-//                     }
-//                 }
-//             },
-//             404: statusCode._404
-//         }
-//     }
-// };
-
-// const articlesByUser = {
-//     //~ Fetch all articles by user
-
-//     get: {
-//         tags: ['Articles'],
-//         summary: `Récupération de tous les articles d'un utilisateur`,
-//         parameters: [
-//             {
-//                 name: 'userId',
-//                 in: 'path',
-//                 required: true,
-//                 schema: {
-//                     type: 'integer',
-//                     example: 1
-//                 },
-//                 description: `Identifiant d'un utilisateur`
-//             }
-//         ],
-//         responses: {
-//             200: {
-//                 description: 'Requête réussie',
-//                 content: {
-//                     'application/json': {
-//                         schema: {
-//                             type: 'object',
-//                             properties: articlesProperties,
-//                             example: articleExample
-//                         }
-//                     }
-//                 }
-//             },
-//             404: statusCode._404
-//         }
-//     }
-// };
-
-// const lastestArticles = {
-//     //~ Fetch latest article
-//     post: {
-//         tags: ['Articles'],
-//         summary: 'Récupération des derniers articles',
-//         responses: {
-//             200: {
-//                 description: 'Requête réussie',
-//                 content: {
-//                     'application/json': {
-//                         schema: {
-//                             type: 'object',
-//                             properties: articlesProperties,
-//                             example: articleExample
-//                         }
-//                     }
-//                 }
-//             },
-//             404: statusCode._404
-//         }
-//     }
-
-// };
-
-// const searchAllArticles = {
-//     //~ Search all error tickets
-//     post: {
-//         tags: ['Articles'],
-//         summary: `Recherche de tous les articles`,
-//         responses: {
-//             200: {
-//                 description: 'Requête réussie',
-//                 content: {
-//                     'application/json': {
-//                         schema: {
-//                             type: 'object',
-//                             properties: articlesProperties,
-//                             example: articleExample
-//                         }
-//                     }
-//                 }
-//             },
-//             404: statusCode._404
-//         }
-//     }
-// };
 
 export { articles, oneArticle, articlesByCategory, lastestArticles, articlesByUser, searchAllArticles };

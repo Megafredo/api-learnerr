@@ -11,3 +11,4 @@
 # sqitch add learnerr_v9 -n "09 - Création de fonctions spécifiques pour trouver tous les commentaires d'un utilisateur"
 # sqitch add learnerr_v10 -n "10 - Création de VIEW spécifiques pour récupérer tous les détails d'articles et de commentaires"
 # sqitch add learnerr_v11 -n "11 - Création de VIEW spécifiques pour récupérer tous le détails des utilisateurs"
+sqitch add learnerr_v12 -n "12 - Création d'une fonction spécifique pour checker les mots interdits"

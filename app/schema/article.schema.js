@@ -27,7 +27,7 @@ const articleUpdateSchema = Joi.object({
 //~ Offset and limit schema
 const offsetSchema = Joi.object({
   limitNb: Joi.number().integer(),
-  offsetSchema: Joi.number().integer()
+  offsetNb: Joi.number().integer()
 })
   .required()
   .min(1)

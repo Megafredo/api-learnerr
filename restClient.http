@@ -1,6 +1,6 @@
 @entryPoint = http://localhost:4100/api/v1
 # @entryPoint = http://learnerr-api-dev.herokuapp.com/api/v1
-@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxNSwidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU5MDgyOTM3LCJleHAiOjE2NTkwODY1Mzd9.HZxoo3w_ia3pbg63m2qkyxhnctrJJUTTVHZgzFXpUoU
+@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMCwidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1OTA4OTk0OCwiZXhwIjoxNjU5MDkzNTQ4fQ.9AyoqIwmTW5SOaJFyFfgH6nFlRNoHYXPO7efeJV5OtA
 
 @refreshToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxNSwidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU5MDgyOTM3LCJleHAiOjE2NTkwODY1Mzd9.IFEEVRTfBMAmlIEGIhau6EKVk7iLRjuZCyZ-wxHIpA4
 
@@ -79,7 +79,7 @@ POST {{entryPoint}}/signin
 Content-Type: application/json
 
 {
-  "email": "yumedo@survivor.com",
+  "email": "yumedo9@survivor.com",
   "password": "N6y$Ozddzt=1aa"
 }
 
@@ -187,7 +187,7 @@ POST {{entryPoint}}/articles/search
 Content-Type: application/json
 
 {
-    "search": "adada"
+    "search":"Je suis une imbécile !"
 }
 
 
@@ -287,6 +287,9 @@ Content-Type: application/json
 POST {{entryPoint}}/errors/search
 Content-Type: application/json
 
+{
+    "search":""
+}
 
 
 

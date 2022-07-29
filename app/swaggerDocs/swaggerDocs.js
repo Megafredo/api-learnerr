@@ -18,7 +18,7 @@ import { categories, oneCategory, allCategoriesByArticle, allCategoriesByError }
 
 //errors
 import { commentsByErrorId, oneCommentByErrorId, allErrorCommentsByUser } from './swaggerEndpoints/errorComment.js';
-import { errors, oneError, errorsByCategory, errorsByUser, lastestErrors, searchAllErrors } from './swaggerEndpoints/errorTicket.js';
+import { errors, oneError, errorsByCategory, errorsByUser, lastestErrors, searchAllErrors, solutionOnError } from './swaggerEndpoints/errorTicket.js';
 
 //users
 import { users, oneUser, panelUser } from './swaggerEndpoints/user.js';
@@ -62,11 +62,13 @@ const options = {
       '/signout': signout,
       '/refreshToken': refreshToken,
 
+
       //~ USERS
       '/users': users,
       '/users/{userId}': oneUser,
 
       '/users/{userId}/panel': panelUser,
+
 
       //~ ARTICLES
       '/articles': articles,
@@ -77,26 +79,30 @@ const options = {
       '/articles/last': lastestArticles,
       '/articles/search': searchAllArticles,
 
-      // //~ ERROR TICKETS
-      // '/errors': errors,
-      // '/errors/{errorId}': oneError,
-
-      // '/categories/{categoryId}/errors': errorsByCategory,
-      // '/users/{userId}/errors': errorsByUser,
-      // '/errors/last': lastestErrors,
-      // '/errors/search': searchAllErrors,
-      // '/errors/{errorId}/solution/{solutionId}': solutionOnError,
 
       //~ ARTICLE COMMENTS
       '/articles/{articleId}/comments': articleComments,
       '/articles/{articleId}/comments/{commentId}': articlesCommentsById,
       '/users/{userId}/article_comments': articlesCommentsByUser,
 
+
+      // //~ ERROR TICKETS
+      '/errors': errors,
+      '/errors/{errorId}': oneError,
+
+      '/categories/{categoryId}/errors': errorsByCategory,
+      '/users/{userId}/errors': errorsByUser,
+      '/errors/last': lastestErrors,
+      '/errors/search': searchAllErrors,
+      '/errors/{errorId}/solution/{solutionId}': solutionOnError,
+
+
       //~ ERROR COMMENTS
       '/errors/{errorId}/comments': commentsByErrorId,
       '/errors/{errorId}/comments/{commentId}': oneCommentByErrorId,
 
       '/users/{userId}/error_comments': allErrorCommentsByUser,
+
 
       // //~ CATEGORIES
       '/categories': categories,
