@@ -15,8 +15,8 @@ import { refreshToken } from '../services/jsonWebToken.js';
 // import { auth, admin } from '../middlewares/auth.js';
 
 //~ Routes
-router.post('/api/v1/signup', validation.body(userSignUpSchema), doSignUp);
-router.post('/api/v1/signin', validation.body(userSignInSchema), doSignIn);
+router.post('/api/v1/signup', doSignUp);
+router.post('/api/v1/signin', doSignIn);
 router.get('/api/v1/signout', doSignOut);
 
 router.get('/api/v1/users', fetchAllUsers);
