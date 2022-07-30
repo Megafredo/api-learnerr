@@ -2,7 +2,7 @@
 -- Deploy learnerr:learnerr_v12 to pg
 
 BEGIN;
-
+CREATE EXTENSION "unaccent";
 CREATE OR REPLACE
 FUNCTION checkWord(word TEXT) 
 RETURNS BOOLEAN AS $$ 
