@@ -21,7 +21,6 @@ router.get('/api/v1/articles/:articleId(\\d+)/comments', fetchAllArticleComments
 router.patch('/api/v1/articles/:articleId(\\d+)/comments/:commentId(\\d+)', updateArticleComment);
 router.delete('/api/v1/articles/:articleId(\\d+)/comments/:commentId(\\d+)', deleteArticleComment);
 
-//check swagger route 
 router.get('/api/v1/users/:userId(\\d+)/article_comments', fetchAllArticleCommentsByUser);
 
 //~ Export router

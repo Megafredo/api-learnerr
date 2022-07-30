@@ -1,56 +1,61 @@
-//~  IMPORTATIONS EXAMPLES / STATUS CODES
-import { errorTicketsProperties, errorTicketExample } from '../swaggerUtils/swaggerExamples.js';
-import { error400, error404, error403 } from '../swaggerUtils/swaggerStatus.js';
+//~  Importations examples / status codes
+import { required as r, example as e, properties as p } from '../swaggerUtils/swaggerExamples.js';
+import { statusCode } from '../swaggerUtils/swaggerStatus.js';
+
 
 const errors = {
-    //~ Fetch all error tickets
+    //& ---------------------- createErrorTicket
+    post: {
+        tags: ['Error Tickets'],
+        summary: `Création d'un ticket d'erreur`,
+        security: [
+            {
+              AccessToken: []
+            }
+          ],
+        requestBody: {
+            name: 'Body',
+            in: 'body',
+            required: true,
+      
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  required: r.createErrorTicket,
+                  properties: p.createErrorTicket,
+                  example: e.createErrorTicket
+                },
+                description: `Info body pour créer un ticket d'erreur`
+              }
+            }
+          },
+        responses: {
+          201: statusCode._201,
+          400: statusCode._400,
+          403: statusCode._403,
+          404: statusCode._404
+        }
+      },
+      
+    //& ---------------------- fetchAllErrorTickets
     get: {
-        tags: ['Errors'],
+        tags: ['Error Tickets'],
         summary: `Récupération de tous les tickets d'erreur`,
         responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: errorTicketsProperties,
-                            example: errorTicketExample
-                        }
-                    }
-                }
-            },
-            404: error404
+          200: statusCode._200,
+          400: statusCode._400,
+          403: statusCode._403,
+          404: statusCode._404
         }
-    },
+      }
+}
 
-    //~ Create error ticket
-    post: {
-        tags: ['Errors'],
-        summary: `Création d'une erreur`,
-        responses: {
-            201: {
-                description: `Requête réussie et ticket d'erreur créé`,
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: errorTicketsProperties,
-                            example: errorTicketExample
-                        }
-                    }
-                }
-            },
-            400: error400,
-            403: error403
-        }
-    }
-};
 
 const oneError = {
-    //~ Fetch one error ticket
+    //& ---------------------- fetchOneErrorTicket
     get: {
-        tags: ['Errors'],
+        tags: ['Error Tickets'],
         summary: `Récupération d'un ticket d'erreur par son Id`,
         parameters: [
             {
@@ -61,31 +66,26 @@ const oneError = {
                     type: 'integer',
                     example: 1
                 },
-                description: `Id pour récupérer un ticket d'erreur`
+                description: `Identifiant d'un ticket d'erreur`
             }
         ],
         responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: errorTicketsProperties,
-                            example: errorTicketExample
-                        }
-                    }
-                }
-            },
-            400: error400,
-            404: error404
+          200: statusCode._200,
+          400: statusCode._400,
+          403: statusCode._403,
+          404: statusCode._404
         }
-    },
+      },
 
-    //~ Update one error ticket
+    //& ---------------------- updateErrorTicket
     patch: {
-        tags: ['Errors'],
+        tags: ['Error Tickets'],
         summary: `Mise à jour des informations d'un ticket d'erreur`,
+        security: [
+            {
+              AccessToken: []
+            }
+          ],
         parameters: [
             {
                 name: 'errorId',
@@ -95,34 +95,43 @@ const oneError = {
                     type: 'integer',
                     example: 1
                 },
-                description: `Id pour mettre à jour un ticket d'erreur`
+                description: `Identifiant d'un ticket d'erreur`
             }
         ],
+        requestBody: {
+            name: 'Body',
+            in: 'body',
+            required: true,
+      
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  required: r.updateErrorTicket,
+                  properties: p.updateErrorTicket,
+                  example: e.updateErrorTicket
+                },
+                description: `Info body pour mettre a jourt un ticket d'erreur`
+              }
+            }
+          },
         responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: { message: { type: 'string' } },
-                            example: {
-                                message: 'La donnée a bien été modifiée'
-                            }
-                        }
-                    }
-                }
-            },
-            400: error400,
-            403: error403,
-            404: error404
+          200: statusCode._200,
+          400: statusCode._400,
+          403: statusCode._403,
+          404: statusCode._404
         }
-    },
+      },
 
-    //~ Delete one error ticket
+    //& ---------------------- deleteErrorTicket
     delete: {
-        tags: ['Errors'],
+        tags: ['Error Tickets'],
         summary: `Suppression d'un ticket d'erreur`,
+        security: [
+            {
+              AccessToken: []
+            }
+          ],
         parameters: [
             {
                 name: 'errorId',
@@ -132,36 +141,24 @@ const oneError = {
                     type: 'integer',
                     example: 1
                 },
-                description: 'Id pour supprimer une erreur'
+                description: `Identifiant d'un ticket d'erreur`
             }
         ],
         responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: { message: { type: 'string' } },
-                            example: {
-                                message: 'La donnée a bien été supprimée'
-                            }
-                        }
-                    }
-                }
-            },
-            400: error400,
-            403: error403,
-            404: error404
+          200: statusCode._200,
+          400: statusCode._400,
+          403: statusCode._403,
+          404: statusCode._404
         }
-    }
-};
+      }
+
+}
 
 
 const errorsByCategory = {
-    //~ Fetch all Error tickets by category
+    //& ---------------------- fetchAllErrorTicketsByCategory
     get: {
-        tags: ['Errors'],
+        tags: ['Error Tickets'],
         summary: `Récupération de tous les tickets d'erreur d'une catégorie`,
         parameters: [
             {
@@ -172,31 +169,23 @@ const errorsByCategory = {
                     type: 'integer',
                     example: 1
                 },
-                description: `Id pour récupérer tous les tickets d'erreur d'une catégorie`
+                description: `Identifiant d'une categorie`
             }
         ],
         responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: errorTicketsProperties,
-                            example: errorTicketExample
-                        }
-                    }
-                }
-            },
-            404: error404
+          200: statusCode._200,
+          400: statusCode._400,
+          403: statusCode._403,
+          404: statusCode._404
         }
-    }
-};
+      }
+}
+
 
 const errorsByUser = {
-    //~ Fetch all error tickets by user
+    //& ---------------------- fetchAllErrorTicketsByUser
     get: {
-        tags: ['Errors'],
+        tags: ['Error Tickets'],
         summary: `Récupération tous les tickets d'erreur d'un utilisateur`,
         parameters: [
             {
@@ -207,72 +196,123 @@ const errorsByUser = {
                     type: 'integer',
                     example: 1
                 },
-                description: `Id pour récupérer tous les tickets d'erreur d'un utilisateur`
+                description: `Identifiant d'un utilisateur`
             }
         ],
         responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: errorTicketsProperties,
-                            example: errorTicketExample
-                        }
-                    }
-                }
-            },
-            403: error403,
-            404: error404
+          200: statusCode._200,
+          400: statusCode._400,
+          403: statusCode._403,
+          404: statusCode._404
         }
-    }
-};
+      }
+}
+
 
 const lastestErrors = {
-    //~ fetch lastest error tickets
+    //& ---------------------- fetchLastestErrorTickets
     post: {
-        tags: ['Errors'],
+        tags: ['Error Tickets'],
         summary: `Recherche des derniers tickets d'erreur`,
+        requestBody: {
+            name: 'Body',
+            in: 'body',
+            required: true,
+      
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  required: r.lastestErrorTickets,
+                  properties: p.lastestErrorTickets,
+                  example: e.lastestErrorTickets
+                },
+                description: 'Info body pour récupérer x(limit) articles tout y(offset)'
+              }
+            }
+          },
         responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: errorTicketsProperties,
-                            example: errorTicketExample
-                        }
-                    }
-                }
-            },
-            404: error404
+          200: statusCode._200,
+          400: statusCode._400,
+          403: statusCode._403,
+          404: statusCode._404
         }
-    }
-};
+      }
+}
+
 
 const searchAllErrors = {
-    //~ Search all error tickets
+    //& ---------------------- searchAllErrorTickets
     post: {
-        tags: ['Errors'],
-        summary: `Recherche de tous les tickets d'erreur`,
+        tags: ['Error Tickets'],
+        summary: `Recherche par mot clé lié aux tickets d'erreur`,
+        requestBody: {
+            name: 'Body',
+            in: 'body',
+            required: true,
+      
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  required: r.searchErrorTickets,
+                  properties: p.searchErrorTickets,
+                  example: e.searchErrorTickets
+                },
+                description: 'Info body pour récupérer "x" erreur ticket à partir de "y"'
+              }
+            }
+          },
         responses: {
-            200: {
-                description: 'Requête réussie',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: errorTicketsProperties,
-                            example: errorTicketExample
-                        }
-                    }
-                }
-            },
-            404: error404
+          200: statusCode._200,
+          400: statusCode._400,
+          403: statusCode._403,
+          404: statusCode._404
         }
-    }
-};
+      }
+}
 
-export { errors, oneError, errorsByCategory, errorsByUser, lastestErrors, searchAllErrors };
+
+const solutionOnError = {
+    //& ---------------------- solutionOnError
+    patch: {
+        tags: ['Error Tickets'],
+        summary: `Mise à jour d'un commentaire d'erreur en solution`,
+        security: [
+            {
+              AccessToken: []
+            }
+          ],
+          parameters: [
+            {
+                name: 'errorId',
+                in: 'path',
+                required: true,
+                schema: {
+                    type: 'integer',
+                    example: 1
+                },
+                description: `Identifiant d'une erreur`
+            },
+            {
+                name: 'solutionId',
+                in: 'path',
+                required: true,
+                schema: {
+                    type: 'integer',
+                    example: 1
+                },
+                description: `Identifiant d'un commentaire d'erreur`
+            }
+        ],
+        responses: {
+          200: statusCode._200,
+          400: statusCode._400,
+          403: statusCode._403,
+          404: statusCode._404
+        }
+      }
+}
+
+
+export { errors, oneError, errorsByCategory, errorsByUser, lastestErrors, searchAllErrors, solutionOnError };

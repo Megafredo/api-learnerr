@@ -5,9 +5,9 @@ const router = Router();
 //~ Import modules
 import { createErrorTicket, fetchAllErrorTickets, fetchOneErrorTicket, updateErrorTicket, deleteErrorTicket, fetchAllErrorTicketsByCategory, fetchAllErrorTicketsByUser, fetchLastestErrorTickets, searchAllErrorTickets } from '../controllers/errorTicketController.js';
 
-// //~ Import schema
+//~ Import schema
 // import { validation } from '../services/validation.js';
-// import { errorTicketSchema, errorTicketUpdateSchema } from '../schema/errorTicket.schema.js';
+// import { errorTicketSchema, errorTicketUpdateSchema, offsetSchema, searchSchema } from '../schema/errorTicket.schema.js';
 
 // //~ Authorization
 // import { validateToken } from '../middlewares/validateToken.js';
@@ -23,10 +23,9 @@ router.delete('/api/v1/errors/:errorId(\\d+)', deleteErrorTicket);
 router.get('/api/v1/categories/:categoryId(\\d+)/errors', fetchAllErrorTicketsByCategory);
 router.get('/api/v1/users/:userId(\\d+)/errors', fetchAllErrorTicketsByUser);
 router.post('/api/v1/errors/last', fetchLastestErrorTickets);
-//check schémas security input 
+
 router.post('/api/v1/errors/search', searchAllErrorTickets);
 
-//check swagger route 
 router.patch('/api/v1/errors/:errorId(\\d+)/solution/:solutionId(\\d+)', updateErrorTicket);
 
 

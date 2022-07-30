@@ -1,8 +1,8 @@
 @entryPoint = http://localhost:4100/api/v1
 # @entryPoint = http://learnerr-api-dev.herokuapp.com/api/v1
-@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJIZWxlbmUiLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4ODk5ODAxLCJleHAiOjE2NTg5MDM0MDF9.ZyJsjtV54Lrd1gThDety9jc8yShTeRe3ZnLISqRdjNA
+@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1OTE2MDM1OCwiZXhwIjoxNjU5MTYzOTU4fQ.zMFX0l8vbFeF12X8g3X4bCBMfmMu3zJoXZN3nXTXyK0
 
-@refreshToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJIZWxlbmUiLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU4ODk5ODAxLCJleHAiOjE2NTg5MDM0MDF9.xef6kOb8CCdseAv3L9eKkoMYBlgYlAyEdQQFOgOuo50
+@refreshToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1OTE2MDM1OCwiZXhwIjoxNjU5MTYzOTU4fQ.ftNcrpNmYXMIqsCRD6kxLOMFJR0jaCY4-GfPuoCuaXk
 
 
 #& -----------------------------------------------
@@ -30,8 +30,8 @@ Content-Type: application/json
 {{accessToken}}
 
 {
-    "username": "Helene",
-    "email": "Helene89@yahoo.com",
+    "username": "Yumedo",
+    "email": "yumedo9@survivor.com",
     "password": "N6y$Ozddzt=1aa",
     "passwordConfirm": "N6y$Ozddzt=1aa",
     "profile_pic_url":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/940.jpg",
@@ -65,8 +65,8 @@ POST {{entryPoint}}/signup
 Content-Type: application/json
 
 {
-    "username": "Helene",
-    "email": "Helene89@yahoo.com",
+    "username": "Yumedo",
+    "email": "yumedo9@survivor.com",
     "password": "N6y$Ozddzt=1aa",
     "passwordConfirm": "N6y$Ozddzt=1aa"
 }
@@ -79,8 +79,8 @@ POST {{entryPoint}}/signin
 Content-Type: application/json
 
 {
-    "email": "Helene89@yahoo.com",
-    "password": "N6y$Ozddzt=1aa"
+  "email": "yumedo9@survivor.com",
+  "password": "N6y$Ozddzt=1aa"
 }
 
 
@@ -92,10 +92,9 @@ Content-Type: application/json
 {{refreshToken}}
 
 
-#check Non finalisé      
 #^ ------------------------ fetchPanelUser
 ###
-GET {{entryPoint}}/users/1/panel
+GET {{entryPoint}}/users/2/panel
 Content-Type: application/json
 {{accessToken}}
 
@@ -188,7 +187,7 @@ POST {{entryPoint}}/articles/search
 Content-Type: application/json
 
 {
-    "search": "adada"
+    "search":"rem"
 }
 
 
@@ -288,6 +287,9 @@ Content-Type: application/json
 POST {{entryPoint}}/errors/search
 Content-Type: application/json
 
+{
+    "search":"sint"
+}
 
 
 
@@ -309,7 +311,7 @@ Content-Type: application/json
 
 #^ ------ fetchAllArticleComments
 ###
-GET {{entryPoint}}/articles/10/comments
+GET {{entryPoint}}/articles/3/comments
 Content-Type: application/json
 
 
@@ -430,13 +432,13 @@ Content-Type: application/json
 
 #^ ------ fetchAllCategoriesByArticle
 ###
-GET {{entryPoint}}/articles/5/categories
+GET {{entryPoint}}/articles/2/categories
 Content-Type: application/json
 
 
 #^ ------ fetchAllCategoriesByErrorTicket
 ###
-GET {{entryPoint}}/errors/15/categories
+GET {{entryPoint}}/errors/10/categories
 Content-Type: application/json
 
 

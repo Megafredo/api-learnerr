@@ -8,14 +8,14 @@ function validateToken(req, res, next) {
       //   get token from header
       const authHeader = req.headers['authorization'];
   
-      if (authHeader === undefined) throw new ErrorApi('No token found', req, res, 400);
+      if (authHeader === undefined) throw new ErrorApi('Aucun token trouvé', req, res, 400);
   
       //header contains token "Bearer <token>", split the string and get the 2nd part of the array
       const accessToken = authHeader.split(' ')[1];
   
       jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) {
-          throw new ErrorApi('Token is invalid !', req, res, 403);
+          throw new ErrorApi('Le token est invalide !', req, res, 403);
         }
         req.user = user.user;
 

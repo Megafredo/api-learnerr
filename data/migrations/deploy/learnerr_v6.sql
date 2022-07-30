@@ -33,7 +33,7 @@ $$ LANGUAGE plpgsql VOLATILE;
 --& Fetch all articles by user
 CREATE 
 OR REPLACE FUNCTION article_by_user(userId INT)
-RETURNS TABLE (articles JSON, user_id INT, users_email EMAIL) AS $$
+RETURNS TABLE (articles JSON, user_id INT, user_email EMAIL) AS $$
 
 BEGIN
 

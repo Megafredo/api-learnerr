@@ -5,9 +5,9 @@ const router = Router();
 //~ Import modules
 import {  createArticle,  fetchAllArticles,  fetchOneArticle,  updateArticle,  deleteArticle, fetchAllArticlesByCategory,  fetchAllArticlesByUser,  fetchLastestArticles, searchAllArticles } from '../controllers/articleController.js';
 
-// //~ Import schema
+//~ Import schema
 // import { validation } from '../services/validation.js';
-// import { articleSchema, articleUpdateSchema } from '../schema/article.schema.js';
+// import { articleSchema, articleUpdateSchema, offsetSchema, searchSchema } from '../schema/article.schema.js';
 
 // //~ Authorization
 // import { validateToken } from '../middlewares/validateToken.js';
@@ -24,7 +24,6 @@ router.get('/api/v1/categories/:categoryId(\\d+)/articles', fetchAllArticlesByCa
 router.get('/api/v1/users/:userId(\\d+)/articles', fetchAllArticlesByUser);
 router.post('/api/v1/articles/last', fetchLastestArticles);
 
-//check schémas security input 
 router.post('/api/v1/articles/search', searchAllArticles);
 
 //~ Export router

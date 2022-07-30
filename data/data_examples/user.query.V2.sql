@@ -1,8 +1,5 @@
 -- SQLBook: Code
--- Deploy learnerr:learnerr_v11 to pg
-
-BEGIN;
-
+--* VERSION 2
 --& Last articles detailed
 CREATE OR REPLACE FUNCTION last_articles_detailed (userId INT)
 RETURNS TABLE (A_detailed JSON) AS $$
@@ -285,4 +282,4 @@ END
 
 $$ LANGUAGE plpgsql VOLATILE;
 
-COMMIT;
+EXPLAIN ANALYZE SELECT U_detailed FROM user_detailed (8);

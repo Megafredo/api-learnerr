@@ -17,5 +17,8 @@ sqitch deploy -d learnerr learnerr_v6
 sqitch deploy -d learnerr learnerr_v7
 sqitch deploy -d learnerr learnerr_v8
 sqitch deploy -d learnerr learnerr_v9
+sqitch deploy -d learnerr learnerr_v10
+sqitch deploy -d learnerr learnerr_v11
+sqitch deploy -d learnerr learnerr_v12
 
 ##* PUT YOUR PASSWORD !!!!!

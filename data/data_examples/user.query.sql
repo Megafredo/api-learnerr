@@ -1,16 +1,28 @@
 -- SQLBook: Code
--- Deploy learnerr:learnerr_v11 to pg
+--* VERSION 1
 
-BEGIN;
-
---& Last articles detailed
-CREATE OR REPLACE FUNCTION last_articles_detailed (userId INT)
-RETURNS TABLE (A_detailed JSON) AS $$
+CREATE OR REPLACE FUNCTION user_detailed_V1 (userId INT)
+RETURNS TABLE (U_detailed_V1 JSON) AS $$
 
 BEGIN
 
 RETURN QUERY (
-SELECT json_agg(
+SELECT
+json_build_object(
+    'id', U.id, 
+    'username', U.username, 
+    'title', U.title, 
+    'presentation', U.presentation, 
+    'profile_pic_url', U.profile_pic_url, 
+    'linkedin_url', U.linkedin_url,
+    'github_url', U.github_url,
+    'instagram_url', U.instagram_url,
+    'twitter_url', U.twitter_url,
+    'portfolio_url', U.portfolio_url,
+    
+    'last_4_articles_interactions',
+       (
+            SELECT json_agg(
             json_build_object(
             'id', ART.id,
             'title', ART.title,
@@ -19,7 +31,7 @@ SELECT json_agg(
             'created_at', ART.created_at,
             
             'categories', 
-                COALESCE((SELECT JSON_AGG(C.name)
+                COALESCE((SELECT JSON_AGG(DISTINCT C.name)
                    FROM "category" AS C
                    JOIN "article_has_category" AS AHCAT
                      ON AHCAT.category_id = C.id
@@ -27,7 +39,7 @@ SELECT json_agg(
                      ON ARTC.id = AHCAT.article_id
                    WHERE  ARTC.user_id = ART.user_id
                    AND ARTC.id = ART.id), '[]'),
-           
+                
             'cheers_count', 3,
            
             'user', 
@@ -67,26 +79,16 @@ SELECT json_agg(
                  WHERE AClast.article_id = ART.id
                  ORDER BY AClast.created_at DESC
                  LIMIT 1)
-        ) ORDER BY AComment.created_at) AS A_details
+        ) ORDER BY AComment.created_at)
         FROM "article" AS ART
         JOIN "article_comment" AS AComment
             ON ART.id = AComment.id
-        WHERE ART.user_id = userId --HERE
-        GROUP BY ART.user_id
-);
-
-END
-
-$$ LANGUAGE plpgsql VOLATILE;
-
---& Last errors detailed
-CREATE OR REPLACE FUNCTION last_errors_detailed (userId INT)
-RETURNS TABLE (E_detailed JSON) AS $$
-
-BEGIN
-
-RETURN QUERY (
-SELECT json_agg(
+        WHERE ART.user_id = U.id
+        GROUP BY ART.user_id 
+       ),
+    
+     'last_4_errors_interactions',    
+            (SELECT json_agg(
             json_build_object(
             'id', ERR.id,
             'title', ERR.title,
@@ -148,22 +150,12 @@ SELECT json_agg(
         FROM "error" AS ERR
         JOIN "error_comment" AS EComment
             ON ERR.id = EComment.id
-        WHERE ERR.user_id = userId --HERE
-        GROUP BY ERR.user_id
-);
-
-END
-
-$$ LANGUAGE plpgsql VOLATILE;
-
---& User articles detailed
-CREATE OR REPLACE FUNCTION user_articles_detailed (userId INT)
-RETURNS TABLE (UA_detailed JSON) AS $$
-
-BEGIN
-
-RETURN QUERY (
-SELECT json_agg
+        WHERE ERR.user_id = U.id --HERE
+        GROUP BY ERR.user_id 
+       ),
+    
+     'user_articles',
+            (SELECT json_agg
                 (json_build_object(
                 'id', UA.id,
                 'title', UA.title,
@@ -180,34 +172,18 @@ SELECT json_agg
                              ON ARTC.id = AHCAT.article_id
                            WHERE  ARTC.user_id = USA.id
                            AND ARTC.id = UA.id), '[]'),
-                'comments_count',
-                    COALESCE((SELECT COUNT(UAC.id)
-                           FROM "article_comment" AS UAC
-                           JOIN "article" AS UArt
-                             ON UAC.article_id = UArt.id
-                           WHERE   UArt.id = UA.id
-                           ), 0),
                 'cheers_count', 2    
             ) ORDER BY UA.created_at DESC)
             FROM "article" AS UA
             JOIN "user" AS USA
                 ON UA.user_id = USA.id
-            WHERE USA.id = userId --HERE
-);
-
-END
-
-$$ LANGUAGE plpgsql VOLATILE;
-
---& User errors detailed
-CREATE OR REPLACE FUNCTION user_errors_detailed (userId INT)
-RETURNS TABLE (UE_detailed JSON) AS $$
-
-BEGIN
-
-RETURN QUERY (
-SELECT json_agg
-                (json_build_object(
+            WHERE USA.id = U.id --HERE
+            ), 
+    
+        'user_errors',
+            (
+            SELECT json_agg
+            (json_build_object(
                 'id', ER.id,
                 'title', ER.title,
                 'abstract', ER.abstract,
@@ -224,58 +200,16 @@ SELECT json_agg
                              ON ERRC.id = EHCAT.error_id
                            WHERE  ERRC.user_id = USE.id
                            AND ERRC.id = ER.id), '[]'),
-                'comments_count',
-                    COALESCE((SELECT COUNT(UEC.id)
-                           FROM "error_comment" AS UEC
-                           JOIN "error" AS UErr
-                             ON UEC.error_id = UErr.id
-                           WHERE   UErr.id = ER.id
-                           ), 0),
                 'cheers_count', 2    
              ) ORDER BY ER.created_at DESC)
             FROM "error" AS ER
             JOIN "user" AS USE
                 ON ER.user_id = USE.id
-            WHERE USE.id = userId --HERE
-);
-
-END
-
-$$ LANGUAGE plpgsql VOLATILE;
-
-
---& Full user details
-CREATE OR REPLACE FUNCTION user_detailed (userId INT)
-RETURNS TABLE (U_detailed JSON) AS $$
-
-BEGIN
-
-RETURN QUERY (
-SELECT
-json_build_object(
-    'id', U.id, 
-    'username', U.username, 
-    'title', U.title, 
-    'presentation', U.presentation, 
-    'profile_pic_url', U.profile_pic_url, 
-    'linkedin_url', U.linkedin_url,
-    'github_url', U.github_url,
-    'instagram_url', U.instagram_url,
-    'twitter_url', U.twitter_url,
-    'portfolio_url', U.portfolio_url,
-    
-    'last_4_articles_interactions',
-            COALESCE((SELECT A_detailed FROM last_articles_detailed(U.id)), '[]'),
-    
-    'last_4_errors_interactions',    
-            COALESCE((SELECT E_detailed FROM last_errors_detailed(U.id)), '[]'),
-    
-    'user_articles',
-            COALESCE((SELECT UA_detailed FROM user_articles_detailed(U.id)), '[]'),
-    
-    'user_errors',
-            COALESCE((SELECT UE_detailed FROM user_errors_detailed(U.id)), '[]')
-    ) AS user_details
+            WHERE USE.id = U.id --HERE
+            )
+             
+        
+ ) AS user_details
 FROM "user" AS U
 WHERE U.id = userId::INT
 GROUP BY U.id
@@ -285,4 +219,5 @@ END
 
 $$ LANGUAGE plpgsql VOLATILE;
 
-COMMIT;
+
+EXPLAIN ANALYZE SELECT U_detailed_V1 FROM user_detailed_V1(8);
