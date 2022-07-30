@@ -78,6 +78,8 @@ ___
   - [@shiroi-shi/techstack](https://www.npmjs.com/package/@shiroi-shi/techstack)
   - [@faker-js/faker](https://www.npmjs.com/package/@faker-js/faker)
   - [Jest](https://www.npmjs.com/package/jest)
+  - [@types/jest](https://www.npmjs.com/package/@types/jest)
+  - [Supertest](https://www.npmjs.com/package/supertest)
 
 ### Extensions VSCODE et logiciel
 

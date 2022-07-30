@@ -4,6 +4,8 @@ import 'dotenv/config';
 //~ Import Express 
 import express from 'express'; 
 const app = express(); 
+//! export for test JEST
+export { app };
 
 //~ Import modules
 import { router } from './app/routes/index.js';
