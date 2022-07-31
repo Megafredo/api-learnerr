@@ -97,3 +97,9 @@ ___
 ### Sources Javascript
 
 - [Destructuring](https://ultimatecourses.com/blog/remove-object-properties-destructuring)
+
+### Source TU et TDD
+
+- [Tests unitaires et intégration](https://www.testim.io/blog/unit-test-rest-api/)
+- [Tests unitaires](https://practicalprogramming.fr/tests-unitaires/)
+- [JEST custom control received type](https://www.npmjs.com/package/jest-tobetype)
