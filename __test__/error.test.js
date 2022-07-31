@@ -2,7 +2,7 @@
 import request from 'supertest';
 import { app } from '../index.js';
 
-const entryPoint = '/api/v1/articles';
+const entryPoint = '/api/v1/errors';
 const { body } = await request(app).get(`${entryPoint}`);
 import {extendToBeType} from './extend.js';
 
@@ -10,27 +10,28 @@ import {extendToBeType} from './extend.js';
 describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
 
   //? Corresponding article type
-    describe(`  \x1b[1;4;94mCorresponding articles type\x1b[0m`, () => {
-        it('Should return an array of articles objects', async () => {
+    describe(`  \x1b[1;4;94mCorresponding errors type\x1b[0m`, () => {
+        it('Should return an array of errors objects', async () => {
             expect(body).toBeType('array');
         });
     });
 
   //? Corresponding article property
-  describe(`  \x1b[1;4;94mCorresponding article property\x1b[0m`, () => {
-  it('Should return existing article property', async () => {
+  describe(`  \x1b[1;4;94mCorresponding error property\x1b[0m`, () => {
+  it('Should return existing error property', async () => {
     expect(body[0]).toBeType('object');
   });
 });
 
-  //& Article existing Properties
-    describe(`  \x1b[1;4;93mShould return existing property for article\x1b[0m`, () => {
+  //& ErrorTicket existing Properties
+    describe(`  \x1b[1;4;93mShould return existing property for errorTicket\x1b[0m`, () => {
       
       //? Corresponding existing Properties of articles
-      it('Should return existing article property', async () => {
+      it('Should return existing error property', async () => {
         expect(body[0]).toHaveProperty('id');
         expect(body[0]).toHaveProperty('title');
         expect(body[0]).toHaveProperty('abstract');
+        expect(body[0]).toHaveProperty('error_snippet');
         expect(body[0]).toHaveProperty('content');
         expect(body[0]).toHaveProperty('created_at');
         expect(body[0]).toHaveProperty('categories');
@@ -39,9 +40,9 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
       });
   });
 
-  //& Corresponding Article type of Properties
+  //& Corresponding errorTicket type of Properties
   //? Corresponding type of property
-    describe(`  \x1b[1;4;94mCorresponding type of property for an article\x1b[0m`, () => {
+    describe(`  \x1b[1;4;94mCorresponding type of property for an errorTicket\x1b[0m`, () => {
       
   it(`Should return corresponding type of number for 'id'`, async () => {
       expect(body[0].id).toBeType('number');
@@ -55,6 +56,10 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
       expect(body[0].abstract).toBeType('string'); 
   });
 
+  it(`Should return corresponding type of string for 'error_snippet'`, async () => {
+    expect(body[0].error_snippet).toBeType('string'); 
+});
+
   it(`Should return corresponding type of string for 'content'`, async () => {
       expect(body[0].content).toBeType('string');
   });
@@ -63,9 +68,9 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
       expect(body[0].created_at).toBeType('string');
   });
 
-  //& Article - categories
+  //& ErrorTicket - categories
   //? Corresponding type of property for category
-  describe(`🎯  \x1b[1;105;1m Category of an article \x1b[0m`, () => {
+  describe(`🎯  \x1b[1;105;1m Category of an error ticket \x1b[0m`, () => {
 
       //? Corresponding category type
       describe(`\x1b[1;4;96mCorresponding category type\x1b[0m`, () => {
@@ -82,13 +87,13 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
   });
     
 
-    //& Article - author
+    //& ErrorTicket - author
     //? Corresponding type of property for author
-    describe(`🎯  \x1b[1;105;1m Article author \x1b[0m`, () => {
+    describe(`🎯  \x1b[1;105;1m Error ticket author \x1b[0m`, () => {
       
  
       //? Corresponding existing Properties of author
-      describe(`\x1b[1;4;93mShould return existing property for article author\x1b[0m`, () => {
+      describe(`\x1b[1;4;93mShould return existing property for error ticket author\x1b[0m`, () => {
         it('Should return existing author property', async () => {
             expect(body[0]['user']).toHaveProperty('id');
             expect(body[0]['user']).toHaveProperty('username');
@@ -98,15 +103,15 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
       });
       
  
-      //? Corresponding type of object for article author
-      describe(`\x1b[1;4;96mCorresponding type of object for article author\x1b[0m`, () => {
+      //? Corresponding type of object for error ticket author
+      describe(`\x1b[1;4;96mCorresponding type of object for error ticket author\x1b[0m`, () => {
         it(`Should return corresponding type of object for 'author'`, async () => {
             expect(body[0]['user']).toBeType('object');
         });
 
 
-      //? Corresponding type of property of article author
-      describe(`\x1b[1;4;96mCorresponding type of property for article author\x1b[0m`, () => {
+      //? Corresponding type of property of error ticket author
+      describe(`\x1b[1;4;96mCorresponding type of property for error ticket author\x1b[0m`, () => {
 
         it(`Should return corresponding type of number for 'id'`, async () => {
           expect(body[0]['user'].id).toBeType('number');
@@ -130,13 +135,13 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
     
 
 
-  //& Article comments
-  //? Corresponding type of property for comments
-  describe(`🎯  \x1b[1;105;1m Article comments \x1b[0m`, () => {
+  //& ErrorTicket comments
+  //? Corresponding type of property for error ticket comments
+  describe(`🎯  \x1b[1;105;1m Error ticket comments \x1b[0m`, () => {
         
         
          //? Corresponding existing Properties of comments
-        describe(`\x1b[1;4;93mShould return existing article comment property\x1b[0m`, () => {
+        describe(`\x1b[1;4;93mShould return existing error comment property\x1b[0m`, () => {
           it('Should return existing comment property', async () => {
               expect(body[0]['comments'][0]).toHaveProperty('id');
               expect(body[0]['comments'][0]).toHaveProperty('content');
@@ -146,16 +151,16 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
          });
    
             
-        //? Corresponding type of property of article comment
-        describe(`\x1b[1;4;96mCorresponding type of array for article comment\x1b[0m`, () => {
-          //? Corresponding type of array for article comment
+        //? Corresponding type of property of error ticket comment
+        describe(`\x1b[1;4;96mCorresponding type of array for error ticket comment\x1b[0m`, () => {
+          //? Corresponding type of array for error ticket comment
           it(`Should return corresponding type of array for 'comments'`, async () => {
           expect(body[0]['comments']).toBeType('array');
           });
             
             
-        //? Corresponding type of property of article comment
-        describe(`\x1b[1;4;96mCorresponding type of property for article comment\x1b[0m`, () => {
+        //? Corresponding type of property of error ticket comment
+        describe(`\x1b[1;4;96mCorresponding type of property for error ticket comment\x1b[0m`, () => {
 
             it(`Should return corresponding type of number for 'id'`, async () => {
                 expect(body[0]['comments'][0].id).toBeType('number');
@@ -168,17 +173,13 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
             it(`Should return corresponding type of string for 'created_at'`, async () => {
                 expect(body[0]['comments'][0].created_at).toBeType('string');
             });
-        });     
-            
+        });         
   });
 
-
   
-  
-  
-      //& Article - comments - user
+      //& ErrorTicket - comments - user
       //? Corresponding type of property for user comment
-      describe(`🎯  \x1b[1;105;1m Article user comment \x1b[0m`, () => {
+      describe(`🎯  \x1b[1;105;1m Error ticket user comment \x1b[0m`, () => {
 
 
       //? Corresponding existing Properties of user comment
@@ -220,12 +221,8 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
       });
 
     });
-
-
+          
       });
-
-
-
 
     });
 

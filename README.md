@@ -103,3 +103,4 @@ ___
 - [Tests unitaires et intégration](https://www.testim.io/blog/unit-test-rest-api/)
 - [Tests unitaires](https://practicalprogramming.fr/tests-unitaires/)
 - [JEST custom control received type](https://www.npmjs.com/package/jest-tobetype)
+- [Configure entrypoint test](https://blog.campvanilla.com/jest-expressjs-and-the-eaddrinuse-error-bac39356c33a)
