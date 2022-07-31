@@ -366,7 +366,7 @@ Content-Type: application/json
 
 #^ ------ fetchAllErrorComments
 ###
-GET {{entryPoint}}/errors/10/comments
+GET {{entryPoint}}/errors/1/comments
 Content-Type: application/json
 
 

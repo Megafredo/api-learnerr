@@ -2,115 +2,223 @@
 import request from 'supertest';
 import { app } from '../index.js';
 
-//& -----------------------------------------------------------
-//& Tests unitaires
-//& -----------------------------------------------------------
+const entryPoint = '/api/v1/articles';
+const { body } = await request(app).get(`${entryPoint}`);
+import { extendToBeType } from './extend.js';
 
-// A unit test could assert that a method:
+//& Unit test 
+describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
 
-// Returns an expected value
-// Throws an exception under the tested condition
-// Changes the state of the system
-// Calls another function
-
-//& Custom extend expect
-expect.extend({
-  // Control received type
-  toBeType(received, argument) {
-    const initialType = typeof received;
-    const type = initialType === 'object' ? (Array.isArray(received) ? 'array' : initialType) : initialType;
-    return type === argument
-      ? {
-          message: () => `expected ${received} to be type ${argument}`,
-          pass: true
-        }
-      : { message: () => `expected ${received} to be type ${argument}`, pass: false };
-  }
-});
-
-describe('article', () => {
-  //~ createArticle
-  // POST /api/v1/articles
-  // describe('POST /api/v1/articles route', () => {
-  //     it('should verify the existence of the route', async () => {
-
-  //     });
-  // });
-
-  //~ fetchAllArticles
-  // GET /api/v1/articles
-  describe('GET /api/v1/articles route', () => {
-    describe('body is array :', () => {
-      it('should verify body is array', async () => {
-        const { body } = await request(app).get(`/api/v1/articles`);
-        expect(body).toBeType('array');
-      });
-      describe('body[0] is object :', () => {
-        it('should verify body[0] is object', async () => {
-          const { body } = await request(app).get(`/api/v1/articles`);
-          expect(body[0]).toBeType('object');
+    //? Corresponding article type
+    describe(`  \x1b[1;4;94mCorresponding articles type\x1b[0m`, () => {
+        it('Should return an array of articles objects', async () => {
+            expect(body).toBeType('array');
         });
-        describe('all properties body[0] :', () => {
-          describe('Id :', () => {
-            it('should verify body[0].id is number', async () => {
-              const { body } = await request(app).get(`/api/v1/articles`);
-              expect(body[0].id).toBeType('number');
-            });
-          });
-          describe('Title :', () => {
-            it('should verify body[0].title is string', async () => {
-              const { body } = await request(app).get(`/api/v1/articles`);
-              expect(body[0].title).toBeType('string');
-            });
-          });
-          describe('Abstract :', () => {
-            it('should verify body[0].abstract is string', async () => {
-              const { body } = await request(app).get(`/api/v1/articles`);
-              expect(body[0].abstract).toBeType('string');
-            });
-          });
-          describe('Content :', () => {
-            it('should verify body[0].content is string', async () => {
-              const { body } = await request(app).get(`/api/v1/articles`);
-              expect(body[0].content).toBeType('string');
-            });
-          });
-          describe('Created_at :', () => {
-            it('should verify body[0].created_at is string', async () => {
-              const { body } = await request(app).get(`/api/v1/articles`);
-              expect(body[0].created_at).toBeType('string');
-            });
-          });
-          describe('Categories :', () => {
-            it('should verify body[0].categories is array', async () => {
-              const { body } = await request(app).get(`/api/v1/articles`);
-              expect(body[0].categories).toBeType('array');
-            });
-            describe('type propertie categories :', () => {
-              it('should verify body[0].categories[0] is string', async () => {
-                const { body } = await request(app).get(`/api/v1/articles`);
-                console.log('--------------Body0Null----------------', typeof body[0].categories[0]);
-                console.log('--------------Body1String----------------', typeof body[1].categories[0]);
-                expect(body[1].categories[0]).toBeType('string');
-                // expect(body[0].categories[0]).toBeType('object');
-              });
-            });
-          });
-          describe('User :', () => {
-            it('should verify body[0].user is object', async () => {
-              const { body } = await request(app).get(`/api/v1/articles`);
-              expect(body[0].user).toBeType('object');
-              //   describe('type properties user :', () => {});
-            });
-          });
-          describe('Comments :', () => {
-            it('should verify body[0].comments is array', async () => {
-              const { body } = await request(app).get(`/api/v1/articles`);
-              expect(body[0].comments).toBeType('array');
-            });
-          });
-        });
-      });
     });
-  });
+
+    //? Corresponding article property
+    describe(`  \x1b[1;4;94mCorresponding article property\x1b[0m`, () => {
+        it('Should return existing article property', async () => {
+            expect(body[0]).toBeType('object');
+        });
+    });
+
+    //& Article existing Properties
+    describe(`  \x1b[1;4;93mShould return existing property for article\x1b[0m`, () => {
+
+        //? Corresponding existing Properties of articles
+        it('Should return existing article property', async () => {
+            expect(body[0]).toHaveProperty('id');
+            expect(body[0]).toHaveProperty('title');
+            expect(body[0]).toHaveProperty('abstract');
+            expect(body[0]).toHaveProperty('content');
+            expect(body[0]).toHaveProperty('created_at');
+            expect(body[0]).toHaveProperty('categories');
+            expect(body[0]).toHaveProperty('user');
+            expect(body[0]).toHaveProperty('comments');
+        });
+    });
+
+    //& Corresponding Article type of Properties
+    //? Corresponding type of property
+    describe(`  \x1b[1;4;94mCorresponding type of property for an article\x1b[0m`, () => {
+
+        it(`Should return corresponding type of number for 'id'`, async () => {
+            expect(body[0].id).toBeType('number');
+        });
+
+        it(`Should return corresponding type of string for 'title'`, async () => {
+            expect(body[0].title).toBeType('string');
+        });
+
+        it(`Should return corresponding type of string for 'abstract'`, async () => {
+            expect(body[0].abstract).toBeType('string');
+        });
+
+        it(`Should return corresponding type of string for 'content'`, async () => {
+            expect(body[0].content).toBeType('string');
+        });
+
+        it(`Should return corresponding type of string for 'created_at'`, async () => {
+            expect(body[0].created_at).toBeType('string');
+        });
+
+        //& Article - categories
+        //? Corresponding type of property for category
+        describe(`🎯  \x1b[1;105;1m Category of an article \x1b[0m`, () => {
+
+            //? Corresponding category type
+            describe(`\x1b[1;4;96mCorresponding category type\x1b[0m`, () => {
+                it(`Should return corresponding type of array for 'categories'`, async () => {
+                    expect(body[0].categories).toBeType('array');
+                });
+            });
+            //? Corresponding type of property for category
+            describe(`\x1b[1;4;96mCorresponding type of property for category\x1b[0m`, () => {
+                it(`Should return corresponding type of string for element in 'category'`, async () => {
+                    typeof body[1].categories[0] === 'undefined' ?
+                    expect(body[1].categories[0]).toBeType('undefined') :
+                    expect(body[1].categories[0]).toBeType('string');
+                });
+            });
+        });
+
+
+        //& Article - author
+        //? Corresponding type of property for author
+        describe(`🎯  \x1b[1;105;1m Article author \x1b[0m`, () => {
+
+
+            //? Corresponding type of object for article author
+            describe(`\x1b[1;4;96mCorresponding type of object for article author\x1b[0m`, () => {
+                it(`Should return corresponding type of object for 'author'`, async () => {
+                    expect(body[0]['user']).toBeType('object');
+                });
+
+                //? Corresponding existing Properties of author
+                describe(`\x1b[1;4;93mShould return existing property for article author\x1b[0m`, () => {
+                    it('Should return existing author property', async () => {
+                        expect(body[0]['user']).toHaveProperty('id');
+                        expect(body[0]['user']).toHaveProperty('username');
+                        expect(body[0]['user']).toHaveProperty('title');
+                        expect(body[0]['user']).toHaveProperty('profile_pic_url');
+                    });
+                });
+
+
+                //? Corresponding type of property of article author
+                describe(`\x1b[1;4;96mCorresponding type of property for article author\x1b[0m`, () => {
+
+                    it(`Should return corresponding type of number for 'id'`, async () => {
+                        expect(body[0]['user'].id).toBeType('number');
+                    });
+
+                    it(`Should return corresponding type of string for 'username'`, async () => {
+                        expect(body[0]['user'].username).toBeType('string');
+                    });
+
+                    it(`Should return corresponding type of string for 'title'`, async () => {
+                        expect(body[0]['user'].title).toBeType('string');
+                    });
+
+                    it(`Should return corresponding type of string for 'profile_pic_url'`, async () => {
+                        expect(body[0]['user'].profile_pic_url).toBeType('string');
+                    });
+                });
+            });
+        });
+
+
+
+        //& Article comments
+        //? Corresponding type of property for comments
+        describe(`🎯  \x1b[1;105;1m Article comments \x1b[0m`, () => {
+
+
+
+            //? Corresponding type of property of article comment
+            describe(`\x1b[1;4;96mCorresponding type of array for article comment\x1b[0m`, () => {
+                //? Corresponding type of array for article comment
+                it(`Should return corresponding type of array for 'comments'`, async () => {
+                    expect(body[0]['comments']).toBeType('array');
+                });
+
+
+
+                //? Corresponding existing Properties of comments
+                describe(`\x1b[1;4;93mShould return existing article comment property\x1b[0m`, () => {
+                    it('Should return existing comment property', async () => {
+                        expect(body[0]['comments'][0]).toHaveProperty('id');
+                        expect(body[0]['comments'][0]).toHaveProperty('content');
+                        expect(body[0]['comments'][0]).toHaveProperty('created_at');
+                        expect(body[0]['comments'][0]).toHaveProperty('user');
+                    });
+                });
+
+
+
+                //? Corresponding type of property of article comment
+                describe(`\x1b[1;4;96mCorresponding type of property for article comment\x1b[0m`, () => {
+
+                    it(`Should return corresponding type of number for 'id'`, async () => {
+                        expect(body[0]['comments'][0].id).toBeType('number');
+                    });
+
+                    it(`Should return corresponding type of string for 'content'`, async () => {
+                        expect(body[0]['comments'][0].content).toBeType('string');
+                    });
+
+                    it(`Should return corresponding type of string for 'created_at'`, async () => {
+                        expect(body[0]['comments'][0].created_at).toBeType('string');
+                    });
+                });
+
+            });
+
+
+            //& Article - comments - user
+            //? Corresponding type of property for user comment
+            describe(`🎯  \x1b[1;105;1m Article user comment \x1b[0m`, () => {
+
+                //? Corresponding type of property of user comment
+                describe(`\x1b[1;4;96mCorresponding type of object for user comment\x1b[0m`, () => {
+                    it(`Should return corresponding type of object for 'user'`, async () => {
+                        expect(body[0]['comments'][0]['user']).toBeType('object');
+                    });
+
+                    //? Corresponding existing Properties of user comment
+                    describe(`\x1b[1;4;93mShould return existing user's comment property\x1b[0m`, () => {
+
+                        it('Should return existing user comment property', async () => {
+                            expect(body[0]['comments'][0]['user']).toHaveProperty('id');
+                            expect(body[0]['comments'][0]['user']).toHaveProperty('username');
+                            expect(body[0]['comments'][0]['user']).toHaveProperty('title');
+                            expect(body[0]['comments'][0]['user']).toHaveProperty('profile_pic_url');
+                        });
+                    });
+
+
+                    //? Corresponding type of property of user comment
+                    describe(`\x1b[1;4;96mCorresponding type of property for user comment\x1b[0m`, () => {
+
+                        it(`Should return corresponding type of number for 'id'`, async () => {
+                            expect(body[0]['comments'][0]['user'].id).toBeType('number');
+                        });
+
+                        it(`Should return corresponding type of string for 'username'`, async () => {
+                            expect(body[0]['comments'][0]['user'].username).toBeType('string');
+                        });
+
+                        it(`Should return corresponding type of string for 'title'`, async () => {
+                            expect(body[0]['comments'][0]['user'].title).toBeType('string');
+                        });
+
+                        it(`Should return corresponding type of string for 'profile_pic_url'`, async () => {
+                            expect(body[0]['comments'][0]['user'].profile_pic_url).toBeType('string');
+                        });
+                    });
+                });
+            });
+        });
+    });
 });
