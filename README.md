@@ -104,3 +104,4 @@ ___
 - [Tests unitaires](https://practicalprogramming.fr/tests-unitaires/)
 - [JEST custom control received type](https://www.npmjs.com/package/jest-tobetype)
 - [Configure entrypoint test](https://blog.campvanilla.com/jest-expressjs-and-the-eaddrinuse-error-bac39356c33a)
+- [Check multiple values](https://stackoverflow.com/questions/69816466/how-to-check-for-multiple-values-in-jest-or-operator)

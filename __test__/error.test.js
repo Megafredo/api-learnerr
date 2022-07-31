@@ -81,6 +81,8 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
       //? Corresponding type of property for category
       describe(`\x1b[1;4;96mCorresponding type of property for category\x1b[0m`, () => {
         it(`Should return corresponding type of string for element in 'category'`, async () => {
+            typeof body[1].categories[0] === 'undefined' ?
+            expect(body[1].categories[0]).toBeType('undefined') :
             expect(body[1].categories[0]).toBeType('string');
         });
       });
@@ -91,7 +93,16 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
     //? Corresponding type of property for author
     describe(`🎯  \x1b[1;105;1m Error ticket author \x1b[0m`, () => {
       
+
+     
+      //? Corresponding type of object for error ticket author
+      describe(`\x1b[1;4;96mCorresponding type of object for error ticket author\x1b[0m`, () => {
+        it(`Should return corresponding type of object for 'author'`, async () => {
+            expect(body[0]['user']).toBeType('object');
+        });
+
  
+
       //? Corresponding existing Properties of author
       describe(`\x1b[1;4;93mShould return existing property for error ticket author\x1b[0m`, () => {
         it('Should return existing author property', async () => {
@@ -102,12 +113,6 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
         });
       });
       
- 
-      //? Corresponding type of object for error ticket author
-      describe(`\x1b[1;4;96mCorresponding type of object for error ticket author\x1b[0m`, () => {
-        it(`Should return corresponding type of object for 'author'`, async () => {
-            expect(body[0]['user']).toBeType('object');
-        });
 
 
       //? Corresponding type of property of error ticket author
@@ -138,7 +143,15 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
   //& ErrorTicket comments
   //? Corresponding type of property for error ticket comments
   describe(`🎯  \x1b[1;105;1m Error ticket comments \x1b[0m`, () => {
-        
+    
+             
+        //? Corresponding type of property of error ticket comment
+        describe(`\x1b[1;4;96mCorresponding type of array for error ticket comment\x1b[0m`, () => {
+            //? Corresponding type of array for error ticket comment
+            it(`Should return corresponding type of array for 'comments'`, async () => {
+            expect(body[0]['comments']).toBeType('array');
+            });
+              
         
          //? Corresponding existing Properties of comments
         describe(`\x1b[1;4;93mShould return existing error comment property\x1b[0m`, () => {
@@ -150,14 +163,7 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
           });
          });
    
-            
-        //? Corresponding type of property of error ticket comment
-        describe(`\x1b[1;4;96mCorresponding type of array for error ticket comment\x1b[0m`, () => {
-          //? Corresponding type of array for error ticket comment
-          it(`Should return corresponding type of array for 'comments'`, async () => {
-          expect(body[0]['comments']).toBeType('array');
-          });
-            
+   
             
         //? Corresponding type of property of error ticket comment
         describe(`\x1b[1;4;96mCorresponding type of property for error ticket comment\x1b[0m`, () => {
@@ -182,6 +188,13 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
       describe(`🎯  \x1b[1;105;1m Error ticket user comment \x1b[0m`, () => {
 
 
+      //? Corresponding type of property of user comment
+      describe(`\x1b[1;4;96mCorresponding type of object for user comment\x1b[0m`, () => {
+        it(`Should return corresponding type of object for 'user'`, async () => {
+            expect(body[0]['comments'][0]['user']).toBeType('object');
+        });
+
+
       //? Corresponding existing Properties of user comment
       describe(`\x1b[1;4;93mShould return existing user's comment property\x1b[0m`, () => {
 
@@ -194,13 +207,6 @@ describe(`\x1b[1;107;34m🧪  GET ${entryPoint} \x1b[0m`, () => {
       });
 
       
-
-      //? Corresponding type of property of user comment
-      describe(`\x1b[1;4;96mCorresponding type of object for user comment\x1b[0m`, () => {
-          it(`Should return corresponding type of object for 'user'`, async () => {
-              expect(body[0]['comments'][0]['user']).toBeType('object');
-          });
-
   //? Corresponding type of property of user comment
     describe(`\x1b[1;4;96mCorresponding type of property for user comment\x1b[0m`, () => {
 
