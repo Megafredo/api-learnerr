@@ -5,7 +5,7 @@ const router = Router();
 //~ Import modules
 import {  createArticle,  fetchAllArticles,  fetchOneArticle,  updateArticle,  deleteArticle, fetchAllArticlesByCategory,  fetchAllArticlesByUser,  fetchLastestArticles, searchAllArticles } from '../controllers/articleController.js';
 
-~ Import schema
+// ~ Import schema
 import { validation } from '../services/validation.js';
 import { articleSchema, articleUpdateSchema, offsetSchema, searchSchema } from '../schema/article.schema.js';
 
