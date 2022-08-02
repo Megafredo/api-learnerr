@@ -3,7 +3,6 @@ import { Word } from '../datamappers/checkWord.js';
 
 async function check(message) {
   const messageToCheck = message.content;
-  console.log("messageToCheck: ", messageToCheck);
 
   //& Split the message
   const words = messageToCheck.split(' ');

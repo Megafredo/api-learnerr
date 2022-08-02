@@ -3,7 +3,6 @@ import  client  from '../db/database.js';
 
 class Word {
   static async check(inputData) {
-    console.log("inputData: ", inputData);
 
     const preparedQuery = {
       text: `SELECT * 

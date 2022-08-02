@@ -5,6 +5,8 @@ import { ErrorApi } from '../services/errorHandler.js';
 import debug from 'debug';
 const logger = debug('Controller');
 
+import { check } from '../services/checkWord.js';
+
 //~ Import Datamapper
 import { ArticleComment, Article, User } from '../datamappers/index.js';
 
