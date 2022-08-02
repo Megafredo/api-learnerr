@@ -4,6 +4,8 @@ import 'dotenv/config';
 //~ Import Express 
 import express from 'express'; 
 const app = express(); 
+//! export for test JEST
+export { app };
 
 //~ Import modules
 import { router } from './app/routes/index.js';
@@ -70,11 +72,14 @@ app.use((req, res)=>{
 
 
 //~ Launch Server 
-const PORT = process.env.PORT ?? 3000; 
- 
-app.listen(PORT, () => { 
-logger(`🚀\x1b[1;35m Launch server on http://localhost:${PORT}\x1b[0m`); 
-});
+if (process.env.NODE_ENV !== 'test') {
+    
+    const PORT = process.env.PORT ?? 3000; 
+     
+    app.listen(PORT, () => { 
+    logger(`🚀\x1b[1;35m Launch server on http://localhost:${PORT}\x1b[0m`); 
+    });
+}
 
 
 

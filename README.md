@@ -78,6 +78,8 @@ ___
   - [@shiroi-shi/techstack](https://www.npmjs.com/package/@shiroi-shi/techstack)
   - [@faker-js/faker](https://www.npmjs.com/package/@faker-js/faker)
   - [Jest](https://www.npmjs.com/package/jest)
+  - [@types/jest](https://www.npmjs.com/package/@types/jest)
+  - [Supertest](https://www.npmjs.com/package/supertest)
 
 ### Extensions VSCODE et logiciel
 
@@ -95,3 +97,12 @@ ___
 ### Sources Javascript
 
 - [Destructuring](https://ultimatecourses.com/blog/remove-object-properties-destructuring)
+
+### Source TU et TDD Jest / Supertest
+
+- [Tests unitaires et intégration](https://www.testim.io/blog/unit-test-rest-api/)
+- [Tests unitaires](https://practicalprogramming.fr/tests-unitaires/)
+- [JEST custom control received type](https://www.npmjs.com/package/jest-tobetype)
+- [Configure entrypoint test](https://blog.campvanilla.com/jest-expressjs-and-the-eaddrinuse-error-bac39356c33a)
+- [Check multiple values](https://stackoverflow.com/questions/69816466/how-to-check-for-multiple-values-in-jest-or-operator)
+- [Test selected files](https://www.edureka.co/community/95567/how-do-i-test-a-single-file-using-jest?ranMID=42536&ranEAID=a1LgFw09t88&ranSiteID=a1LgFw09t88-ou_vSFezEnJYVJV8VQQ55Q&LSNSUBSITE=Omitted_a1LgFw09t88)

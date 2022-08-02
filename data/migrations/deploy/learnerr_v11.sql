@@ -47,6 +47,7 @@ SELECT json_agg(
                         'id', AComm.id,
                         'content', AComm.content,
                         'created_at', AComm.created_at,
+                        'cheers_count', 4,
                         'user', (json_build_object(
                                 'id', UComm.id,
                                 'username', UComm.username,
@@ -124,6 +125,7 @@ SELECT json_agg(
                         'id', EComm.id,
                         'content', EComm.content,
                         'created_at', EComm.created_at,
+                         'cheers_count', 5,
                         'user', (json_build_object(
                                 'id', UComm.id,
                                 'username', UComm.username,

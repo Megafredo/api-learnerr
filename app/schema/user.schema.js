@@ -26,7 +26,6 @@ const userSignUpSchema = Joi.object({
 
 //~ User schema Update
 const userUpdateSchema = Joi.object({
-    id: Joi.number(),
 
     username: Joi.string(),
 
@@ -54,14 +53,13 @@ const userUpdateSchema = Joi.object({
     portfolio_url: Joi.string().pattern(new RegExp('((https?:\\/\\/)|(www.))[a-zA-Z0-9.@:%._+~#=]{1,}.[-a-zA-Z0-9()]{1,}\\.[-a-z]{1,6}\\b'))
 })
     .min(1)
-    .max(13);
+    .max(12);
 
 //~ User schema InactivateSchema
 const userInactivateSchema = Joi.object({
-    id: Joi.number().integer(),
     is_active: Joi.boolean()
 })
     .required()
-    .max(2);
+    .max(1);
 
 export { userSignInSchema, userSignUpSchema, userUpdateSchema, userInactivateSchema };

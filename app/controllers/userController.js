@@ -29,7 +29,6 @@ async function fetchAllUsers(req, res) {
 
 async function fetchOneUser(req, res) {
   try {
-    /* A way to get the userId from the url. */
     const userId = +req.params.userId;
 
     const oneUser = await User.findOne(userId);
@@ -54,16 +53,18 @@ async function updateUser(req, res) {
     const user = await User.findOne(userId);
     if (!user) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
-    //~ Encrypt password if password exist
+    // //~ Encrypt password if password exist
     if (password !== passwordConfirm) throw new ErrorApi(`Les mots de passe ne sont pas identiques`, req, res, 401);
     const salt = await bcrypt.genSalt(10);
     password = await bcrypt.hash(password, salt);
-    //replace password in body
+    // replace password in body
     req.body.password = password;
-
+    
     if (req.user.id !== userId) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
-    //~ Update user
+    req.body = { ...req.body, id: userId };
+
+    // //~ Update user
     await User.update(req.body);
 
     return res.status(200).json(`Les informations ont bien été mis à jour`);
@@ -111,12 +112,12 @@ async function inactivateUser(req, res) {
     req.body = { ...req.body, id: userId };
 
     if (is_active === undefined) throw new ErrorApi(`L'information is_active doit être renseigné`, req, res, 400);
-    if (req.user.role === 'admin') throw new ErrorApi(`L'administrateur ne peut pas être bloqué`, req, res, 400);
+    // if (req.user.role === 'admin') throw new ErrorApi(`L'administrateur ne peut pas être bloqué`, req, res, 400);
 
     //~ Update user
     if (is_active === false) return await User.update(req.body), res.status(200).json(`L'utilisateur a bien été désactivé`);
 
-    await User.update(req.body);
+    // await User.update(req.body);
 
     return res.status(200).json(`L'utilisateur a bien été activé`);
   } catch (err) {
@@ -181,6 +182,7 @@ async function doSignIn(req, res) {
 async function doSignOut(req, res) {
   try {
     //check Test à vérifier avec le front
+    
 
     getRefreshToken(req, res);
     req.user = null;
