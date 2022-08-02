@@ -1,8 +1,9 @@
 @entryPoint = http://localhost:4100/api/v1
 # @entryPoint = http://learnerr-api-dev.herokuapp.com/api/v1
-@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1OTE2MDM1OCwiZXhwIjoxNjU5MTYzOTU4fQ.zMFX0l8vbFeF12X8g3X4bCBMfmMu3zJoXZN3nXTXyK0
+@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1OTM3NzQ2MiwiZXhwIjoxNjU5MzgxMDYyfQ.PuxtivqhoRcQ3rZa2GdJ7ShmRXY9z6euiAnlnj_J5Ew
 
-@refreshToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1OTE2MDM1OCwiZXhwIjoxNjU5MTYzOTU4fQ.ftNcrpNmYXMIqsCRD6kxLOMFJR0jaCY4-GfPuoCuaXk
+@refreshToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1OTM3NzQ2MiwiZXhwIjoxNjU5MzgxMDYyfQ.FN5S9Ym-hSiRz26g3mcrysZTfbAAL1WYgwvnsvZQZWM
+
 
 
 #& -----------------------------------------------
@@ -25,7 +26,7 @@ Content-Type: application/json
 
 #^ ------------------------ updateUser
 ###
-PATCH {{entryPoint}}/users/12
+PATCH {{entryPoint}}/users/11
 Content-Type: application/json
 {{accessToken}}
 
@@ -35,8 +36,7 @@ Content-Type: application/json
     "password": "N6y$Ozddzt=1aa",
     "passwordConfirm": "N6y$Ozddzt=1aa",
     "profile_pic_url":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/940.jpg",
-    "linkedin_url":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/745.jpg",
-    "id": 12
+    "linkedin_url":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/745.jpg"
 }
 
 

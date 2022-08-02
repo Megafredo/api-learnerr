@@ -14,4 +14,10 @@ const extendToBeType = expect.extend({
     }
 });
 
-export {extendToBeType};
+function exist(body,properties) {
+    for (const property of properties) {
+        expect(body).toHaveProperty(property);
+    }
+}
+
+export {extendToBeType, exist};
