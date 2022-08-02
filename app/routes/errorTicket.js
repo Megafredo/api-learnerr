@@ -6,27 +6,27 @@ const router = Router();
 import { createErrorTicket, fetchAllErrorTickets, fetchOneErrorTicket, updateErrorTicket, deleteErrorTicket, fetchAllErrorTicketsByCategory, fetchAllErrorTicketsByUser, fetchLastestErrorTickets, searchAllErrorTickets } from '../controllers/errorTicketController.js';
 
 //~ Import schema
-// import { validation } from '../services/validation.js';
-// import { errorTicketSchema, errorTicketUpdateSchema, offsetSchema, searchSchema } from '../schema/errorTicket.schema.js';
+import { validation } from '../services/validation.js';
+import { errorTicketSchema, errorTicketUpdateSchema, offsetSchema, searchSchema } from '../schema/errorTicket.schema.js';
 
-// //~ Authorization
-// import { validateToken } from '../middlewares/validateToken.js';
-// import { auth } from '../middlewares/auth.js';
+//~ Authorization
+import { validateToken } from '../middlewares/validateToken.js';
+import { auth } from '../middlewares/auth.js';
 
 //~ Routes
-router.post('/api/v1/errors', createErrorTicket);
+router.post('/api/v1/errors',[validateToken, auth], validation.body(errorTicketSchema), createErrorTicket);
 router.get('/api/v1/errors', fetchAllErrorTickets);
 router.get('/api/v1/errors/:errorId(\\d+)', fetchOneErrorTicket);
-router.patch('/api/v1/errors/:errorId(\\d+)', updateErrorTicket);
-router.delete('/api/v1/errors/:errorId(\\d+)', deleteErrorTicket);
+router.patch('/api/v1/errors/:errorId(\\d+)',[validateToken, auth],validation.body(errorTicketUpdateSchema), updateErrorTicket);
+router.delete('/api/v1/errors/:errorId(\\d+)',[validateToken, auth], deleteErrorTicket);
 
 router.get('/api/v1/categories/:categoryId(\\d+)/errors', fetchAllErrorTicketsByCategory);
 router.get('/api/v1/users/:userId(\\d+)/errors', fetchAllErrorTicketsByUser);
-router.post('/api/v1/errors/last', fetchLastestErrorTickets);
+router.post('/api/v1/errors/last', validation.body(offsetSchema), fetchLastestErrorTickets);
 
-router.post('/api/v1/errors/search', searchAllErrorTickets);
+router.post('/api/v1/errors/search',validation.body(searchSchema),  searchAllErrorTickets);
 
-router.patch('/api/v1/errors/:errorId(\\d+)/solution/:solutionId(\\d+)', updateErrorTicket);
+router.patch('/api/v1/errors/:errorId(\\d+)/solution/:solutionId(\\d+)',[validateToken, auth], updateErrorTicket);
 
 
 //~ Export router
