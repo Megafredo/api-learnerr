@@ -29,7 +29,8 @@ SELECT A.id, A.title, A.abstract, A.content, A.created_at,
                 'id', U.id,
                 'username', U.username,
                 'title', U.title,
-                'profile_pic_url', U.profile_pic_url))))
+                'profile_pic_url', U.profile_pic_url)))
+                 ORDER BY AC.created_at)
         FROM "article_comment" AS AC
         JOIN "user" AS U
         ON AC.user_id = U.id
@@ -75,11 +76,13 @@ SELECT E.id, E.title, E.abstract, E.error_snippet, E.content, E.created_at,
                 'id', U.id,
                 'username', U.username,
                 'title', U.title,
-                'profile_pic_url', U.profile_pic_url))))
+                'profile_pic_url', U.profile_pic_url)))
+                 ORDER BY EC.created_at)
         FROM "error_comment" AS EC
         JOIN "user" AS U
         ON EC.user_id = U.id
-        WHERE E.id = EC.error_id),'[]') AS comments 
+        WHERE E.id = EC.error_id
+        ),'[]') AS comments 
         
 FROM "error" AS E
 LEFT JOIN "error_has_category" AS EHC
