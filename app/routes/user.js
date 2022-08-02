@@ -1,4 +1,4 @@
-//~ Import Router 
+//~ Import Router
 import { Router } from 'express';
 const router = Router();
 
@@ -20,11 +20,11 @@ router.post('/api/v1/signin', validation.body(userSignInSchema), doSignIn);
 router.get('/api/v1/signout', doSignOut);
 
 router.get('/api/v1/users', fetchAllUsers);
-router.get('/api/v1/users/:userId(\\d+)',[ validateToken, auth ], fetchOneUser);
-router.patch('/api/v1/users/:userId(\\d+)', [validateToken, auth],  validation.body(userUpdateSchema), updateUser);
-router.delete('/api/v1/users/:userId(\\d+)',  [validateToken, auth], deleteUser);
+router.get('/api/v1/users/:userId(\\d+)', [validateToken, auth], fetchOneUser);
+router.patch('/api/v1/users/:userId(\\d+)', [validateToken, auth], validation.body(userUpdateSchema), updateUser);
+router.delete('/api/v1/users/:userId(\\d+)', [validateToken, auth], deleteUser);
 
-router.put('/api/v1/users/:userId(\\d+)',[ validateToken, auth, admin ], validation.body(userInactivateSchema), inactivateUser);
+router.put('/api/v1/users/:userId(\\d+)', [validateToken, auth, admin], validation.body(userInactivateSchema), inactivateUser);
 
 router.get('/api/v1/users/:userId(\\d+)/panel', [validateToken, auth], fetchPanelUser);
 
