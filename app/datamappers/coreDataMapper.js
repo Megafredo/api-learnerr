@@ -19,7 +19,8 @@ class CoreDataMapper {
     const preparedQuery = {
       text: `
           SELECT ${this.columns}
-          FROM "${this.tableName}";`
+          FROM "${this.tableName}"
+          ORDER BY "id";`
     };
 
     const result = await this.client.query(preparedQuery);
