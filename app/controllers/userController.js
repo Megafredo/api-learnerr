@@ -181,10 +181,7 @@ async function doSignIn(req, res) {
 
 async function doSignOut(req, res) {
   try {
-    //check Test à vérifier avec le front
-    
 
-    getRefreshToken(req, res);
     req.user = null;
     req.session.destroy();
 

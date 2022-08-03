@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS "user" (
     "is_active" BOOLEAN NOT NULL DEFAULT TRUE,
     "title" TEXT NULL,
     "presentation" TEXT NULL,
-    "profile_pic_url" LINK_URL NULL,
+    "profile_pic_url" LINK_URL NULL DEFAULT 'https://res.cloudinary.com/dkizcn12a/image/upload/v1659506766/logo_profile_pic_learnerr.png',
     "linkedin_url" LINK_URL NULL,
     "github_url" LINK_URL NULL,
     "instagram_url" LINK_URL NULL,
