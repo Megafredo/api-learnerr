@@ -4,7 +4,7 @@ const required = {
   //~ ---------------- User
   signUp: ['username', 'email', 'password', 'passwordConfirm'],
   signIn: ['email', 'password'],
-  inactivateUser: ['id', 'is_active'],
+  inactivateUser: ['is_active'],
 
 
   //~ ---------------- Article
@@ -403,7 +403,6 @@ const schemaJoi = {
 
   //~ ---------------- SchemaJoi User updateUser
   updateUser: {
-    id: { type: 'integer' },
     username: { type: 'string' },
     email: { type: 'string' },
     password: { type: 'string' },
@@ -420,7 +419,6 @@ const schemaJoi = {
 
   //~ ---------------- SchemaJoi User inactivateUser
   inactivateUser: {
-    id: { type: 'integer' },
     is_active: { type: 'boolean' }
   },
 

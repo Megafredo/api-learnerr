@@ -1,6 +1,6 @@
 @entryPoint = http://localhost:4100/api/v1
 # @entryPoint = http://learnerr-api-dev.herokuapp.com/api/v1
-@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMiwidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU5NDQ4ODcyLCJleHAiOjE2NTk0NDk3NzJ9.eruC9jP5IjTAz1c1qVONVCOKkSjY0Cd7p8BdqhIXaoc
+@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMywidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU5NTI2OTMwLCJleHAiOjE2NTk1Mjc4MzB9.xZRrh9jHZPD7vajhZL3V6-AiXD_dXQXcIGSbFAgO1EI
 
 @refreshToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1OTM3NzQ2MiwiZXhwIjoxNjU5MzgxMDYyfQ.FN5S9Ym-hSiRz26g3mcrysZTfbAAL1WYgwvnsvZQZWM
 
@@ -32,9 +32,6 @@ Content-Type: application/json
 
 {
     "username": "Yumedo",
-    "email": "yumedo9@survivor.com",
-    "password": "N6y$Ozddzt=1aa",
-    "passwordConfirm": "N6y$Ozddzt=1aa",
     "profile_pic_url":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/940.jpg",
     "linkedin_url":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/745.jpg"
 }
