@@ -381,7 +381,7 @@ const tableSql = {
   category: {
     id: { type: 'INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY' },
     name: { type: 'TEXT NOT NULL' },
-    logo_svg: { type: 'TEXT NULL' }
+    logo: { type: 'TEXT NULL' }
   }
 };
 
@@ -477,7 +477,7 @@ const schemaJoi = {
   //~ ---------------- SchemaJoi Create Category
   createCategory: {
     name: { type: 'string' },
-    logo_svg: { type: 'string' }
+    logo: { type: 'string' }
   }
 };
 
@@ -771,7 +771,28 @@ const infoReturn = {
     title: { type: 'string' },
     abstract: { type: 'string' },
     content: { type: 'string' },
-    created_at: { type: 'string' }
+    created_at: { type: 'string' },
+    categories: { type: 'array', maxItems: 3, items: { type: 'string', type: 'string', type: 'string' } },
+    user: {
+      type: 'object',
+      properties: { id: { type: 'integer' }, username: { type: 'string' }, title: { type: 'string' }, profile_pic_url: { type: 'string' } }
+    },
+    comments: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          id: { type: 'integer' },
+          content: { type: 'string' },
+          created_at: { type: 'string' },
+          cheers_count: { type: 'integer' },
+          user: {
+            type: 'object',
+            properties: { id: { type: 'integer' }, username: { type: 'string' }, title: { type: 'string' }, profile_pic_url: { type: 'string' } }
+          }
+        }
+      }
+    }
   },
 
 
@@ -864,11 +885,32 @@ const infoReturn = {
   //~ ---------------- Search Error ticket
   searchErrorTicket:{
     id: { type: 'integer' },
-    snippet: { type: 'string' },
+    error_snippet: { type: 'string' },
     title: { type: 'string' },
     abstract: { type: 'string' },
     content: { type: 'string' },
-    created_at: { type: 'string' }
+    created_at: { type: 'string' },
+    categories: { type: 'array', maxItems: 3, items: { type: 'string', type: 'string', type: 'string' } },
+    user: {
+      type: 'object',
+      properties: { id: { type: 'integer' }, username: { type: 'string' }, title: { type: 'string' }, profile_pic_url: { type: 'string' } }
+    },
+    comments: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          id: { type: 'integer' },
+          content: { type: 'string' },
+          created_at: { type: 'string' },
+          cheers_count: { type: 'integer' },
+          user: {
+            type: 'object',
+            properties: { id: { type: 'integer' }, username: { type: 'string' }, title: { type: 'string' }, profile_pic_url: { type: 'string' } }
+          }
+        }
+      }
+    }
   },
 
 
@@ -923,7 +965,7 @@ const infoReturn = {
   allCategories: {
     id: { type: 'integer' },
     name: { type: 'string' },
-    logo_svg: { type: 'string' }
+    logo: { type: 'string' }
   },
   //~ ---------------- All Categories By Article
   allCategoriesByArticle: {

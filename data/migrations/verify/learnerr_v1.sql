@@ -12,7 +12,7 @@ SELECT "id", "content", "user_id", "error_id", "created_at", "updated_at" FROM "
 SELECT "id", "name" FROM "role";
 SELECT "id", "word" FROM "bad_word";
 SELECT "id", "name" FROM "status";
-SELECT "id", "name", "logo_svg" FROM "category";
+SELECT "id", "name", "logo" FROM "category";
 SELECT "id", "error_id", "category_id" FROM "error_has_category";
 SELECT "id", "article_id", "category_id" FROM "article_has_category";
 

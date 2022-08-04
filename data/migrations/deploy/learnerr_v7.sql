@@ -12,7 +12,7 @@ RETURNS TABLE (category JSON, article_title TEXT, article_id INT) AS $$
 BEGIN
 RETURN QUERY(SELECT JSON_AGG(json_build_object(
 	'category_name', C.name,
-	'logo', C.logo_svg)), A.title, A.id
+	'logo', C.logo)), A.title, A.id
 FROM "category" AS C
     JOIN "article_has_category" AS AC
     ON C.id = AC.category_id
@@ -34,7 +34,7 @@ RETURNS TABLE (category JSON, error_title TEXT, error_id INT) AS $$
 BEGIN
 RETURN QUERY(SELECT JSON_AGG(json_build_object(
 	'category_name', C.name,
-	'logo', C.logo_svg)), E.title, E.id
+	'logo', C.logo)), E.title, E.id
 FROM "category" AS C
     JOIN "error_has_category" AS EC
     ON C.id = EC.category_id

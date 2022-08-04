@@ -28,7 +28,7 @@ describe(`\x1b[1;107;34m📡 Unit Test - GET ${entryPoint} \x1b[0m`, () => {
     describe(`  \x1b[1;4;93mShould return existing property for a category\x1b[0m`, () => {
         //? Corresponding existing Properties of category
         it('Should return existing category property', async () => {
-            const properties = ['id', 'name', 'logo_svg'];
+            const properties = ['id', 'name', 'logo'];
             exist(body[0], properties);
         });
     });
@@ -43,7 +43,7 @@ describe(`\x1b[1;107;34m📡 Unit Test - GET ${entryPoint} \x1b[0m`, () => {
             expect(body[0].name).toBeType('string');
         });
 
-        it(`Should return corresponding type of string for 'logo_svg'`, async () => {
+        it(`Should return corresponding type of string for 'logo'`, async () => {
             typeof body[0] === 'object' ? expect(body[0]).toBeType('object') : expect(body[0]).toBeType('string');
         });
     });

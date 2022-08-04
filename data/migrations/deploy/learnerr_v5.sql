@@ -121,12 +121,16 @@ CREATE EXTENSION pg_trgm;
 
 CREATE TYPE search_error AS(
     "id" INT,
-    "snippet" TEXT,
     "title" TEXT,
     "abstract" TEXT,
+    "error_snippet" TEXT,
     "content" TEXT,
-    "created_at" TIMESTAMPTZ
+    "created_at" TIMESTAMPTZ,
+    "categories" JSON,
+    "user" JSON,
+    "comments" JSON
 );
+
 
 CREATE
 OR REPLACE FUNCTION search_errors(json) 
@@ -139,11 +143,10 @@ BEGIN
 -- RAISE NOTICE 'Print %', $1; 
 
 RETURN QUERY(
-SELECT E."id", E."error_snippet", E."title", E."abstract", E."content", E."created_at"
-    FROM error AS E
+SELECT * FROM errors_details AS ED
     WHERE _search % 
-    ANY(STRING_TO_ARRAY(E."error_snippet", ' ')) 
-    ORDER BY E.created_at DESC);
+    ANY(STRING_TO_ARRAY(ED."error_snippet", ' ')) 
+    ORDER BY ED.created_at DESC);
     
 END
 

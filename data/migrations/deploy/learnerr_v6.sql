@@ -88,8 +88,13 @@ CREATE TYPE search_article AS(
     "title" TEXT,
     "abstract" TEXT,
     "content" TEXT,
-    "created_at" TIMESTAMPTZ
+    "created_at" TIMESTAMPTZ,
+    "categories" JSON,
+    "user" JSON,
+    "comments" JSON
 );
+
+
 
 CREATE
 OR REPLACE FUNCTION search_articles(json) 
@@ -101,15 +106,13 @@ _search TEXT := ($1 ->> 'search')::TEXT;
 BEGIN
 -- RAISE NOTICE 'Print %', $1; 
 
-RETURN QUERY(
-SELECT A."id", A."title", A."abstract", A."content", A."created_at"
-    FROM "article" AS A
+RETURN QUERY (SELECT * FROM articles_details AS AD
     WHERE 
-    (_search % ANY(STRING_TO_ARRAY(A."abstract", ' ')))
+    (_search % ANY(STRING_TO_ARRAY(AD."abstract", ' ')))
     OR
-    (_search % ANY(STRING_TO_ARRAY(A."title", ' ')))
-    ORDER BY A.created_at DESC);
-    
+    (_search % ANY(STRING_TO_ARRAY(AD."title", ' ')))
+    ORDER BY AD.created_at DESC);
+        
 END
 
 $$ LANGUAGE plpgsql VOLATILE;

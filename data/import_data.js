@@ -16,6 +16,8 @@ import list from 'french-badwords-list';
 import techstack from '@shiroi-shi/techstack';
 // Bcrypt
 import bcrypt from 'bcrypt';
+//fake data categories
+import fakeDataCategories from './technoJson/technoJson.json' assert {type:"json"};
 
 //
 const fakeData = {
@@ -29,7 +31,9 @@ const fakeData = {
     //
     roles: ['admin', 'author', 'user'],
     status: ['pending', 'draft', 'published', 'rejected'],
-    categories: techstack.all,
+    // categories: techstack.all,
+    // categories: [],
+    categories: fakeDataCategories,
     badWords: list.array,
     //
     articleHasCategory: [],
@@ -45,7 +49,7 @@ const fakeData = {
     errorCommentColumns: `"content", "user_id", "error_id"`,
     roleColumns: `"name"`,
     statusColumns: `"name"`,
-    categoryColumns: `"name"`,
+    categoryColumns: `"name", "logo"`,
     badWordColumns: `"word"`,
     articleHasCategoryColumns: `"article_id", "category_id"`,
     errorHasCategoryColumns: `"error_id", "category_id"`,
@@ -486,13 +490,20 @@ const fakeData = {
 
         let query = `INSERT INTO "category"(${this.categoryColumns}) VALUES `;
 
-        query += `('${categories[0].name}')`;
+        query += `('${categories[0].name}',
+                    '${categories[0].logo}')`;
 
-        for (let counter = 1; counter < 332; counter++) {
-            if (counter !== 164) {
-                query += `,('${categories[counter].name}')`;
-            }
+        for (let counter = 1; counter < categories.length; counter++) {
+        
+            query += `,('${categories[counter].name}',
+            '${categories[counter].logo}')`;
+            
         }
+        // for (let counter = 1; counter < 332; counter++) {
+        //     if (counter !== 164) {
+        //         query += `,('${categories[counter].name}')`;
+        //     }
+        // }
 
         query += ';';
 

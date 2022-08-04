@@ -1,3 +1,4 @@
+-- SQLBook: Code
 -- Deploy learnerr:learnerr_v9 to pg
 
 BEGIN;
@@ -71,4 +72,5 @@ END
 
 $$ LANGUAGE plpgsql VOLATILE;
 
+COMMIT;
 COMMIT;
