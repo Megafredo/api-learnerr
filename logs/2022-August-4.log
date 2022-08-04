@@ -9,3 +9,16 @@
 04/08/2022 08:54:28 - /api/v1/errors - Aucun utilisateur trouvé
 04/08/2022 08:55:39 - /api/v1/errors - Aucun utilisateur trouvé
 04/08/2022 09:38:14 - /api/v1/signin - L'utilisateur non reconnu !
+04/08/2022 09:38:14 - /api/v1/signin - L'utilisateur non reconnu !
+04/08/2022 08:36:53 - /api/v1/articles - Le token est invalide !
+04/08/2022 08:37:19 - /api/v1/articles - Accès interdit !
+04/08/2022 08:38:26 - /api/v1/articles - Donnée non valide
+04/08/2022 08:39:48 - /api/v1/articles - Donnée non valide
+04/08/2022 08:51:52 - /api/v1/errors - Donnée non valide
+04/08/2022 08:52:07 - /api/v1/errors - Aucun token trouvé
+04/08/2022 08:53:42 - /api/v1/errors - Le token est invalide !
+04/08/2022 08:54:05 - /api/v1/articles - Accès interdit !
+04/08/2022 08:54:28 - /api/v1/errors - Aucun utilisateur trouvé
+04/08/2022 08:55:39 - /api/v1/errors - Aucun utilisateur trouvé
+04/08/2022 09:38:14 - /api/v1/signin - L'utilisateur non reconnu !
+
