@@ -439,7 +439,7 @@ Content-Type: application/json
 
 #^ ------ fetchAllCategoriesByArticle
 ###
-GET {{entryPoint}}/articles/2/categories
+GET {{entryPoint}}/articles/11/categories
 Content-Type: application/json
 
 
