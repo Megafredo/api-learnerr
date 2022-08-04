@@ -22,6 +22,7 @@ async function createArticle(req, res) {
 
     //~ Is article created ?
     const articleCreated = await Article.createWithCategories(req.body);
+    
     if (!articleCreated) throw new ErrorApi(`Aucune donnée trouvée`, req, res, 400);
 
     return res.status(201).json('Article créé !');

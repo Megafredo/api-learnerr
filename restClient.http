@@ -1,6 +1,6 @@
 @entryPoint = http://localhost:4100/api/v1
 # @entryPoint = http://learnerr-api-dev.herokuapp.com/api/v1
-@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMywidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6InVzZXIifSwiaWF0IjoxNjU5NTI2OTMwLCJleHAiOjE2NTk1Mjc4MzB9.xZRrh9jHZPD7vajhZL3V6-AiXD_dXQXcIGSbFAgO1EI
+@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMiwidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjoiaHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZGtpemNuMTJhL2ltYWdlL3VwbG9hZC92MTY1OTUwNjc2Ni9sb2dvX3Byb2ZpbGVfcGljX2xlYXJuZXJyLnBuZyIsImlzQWN0aXZlIjp0cnVlLCJyb2xlIjoiYWRtaW4ifSwiaWF0IjoxNjU5NTk2MzAyLCJleHAiOjE2NTk1OTcyMDJ9.Q0wvyDyixJGpnd87S58GJLdqMxfV1v7-Bn1vHqjbE4c
 
 @refreshToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwidXNlcm5hbWUiOiJZdW1lZG8iLCJ0aXRsZSI6bnVsbCwicHJvZmlsZV9waWNfdXJsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY1OTM3NzQ2MiwiZXhwIjoxNjU5MzgxMDYyfQ.FN5S9Ym-hSiRz26g3mcrysZTfbAAL1WYgwvnsvZQZWM
 
@@ -117,9 +117,14 @@ Content-Type: application/json
 {
     "title": "NodeJS et Express V2",
     "abstract": "Une API comme jamais",
-    "content": "Ea exercitationem at aut velit odio aut. Autem architecto corrupti adipisci praesentium harum quia. Vel reprehenderit asperiores consequatur. Magnam non eaque. Laboriosam itaque vitae",
+    "content": "TEST",
     "user_id":12,
-    "status_id":1
+    "status_id":1,
+    "categories": [
+        {"id":1},
+        {"id":8},
+        {"id":12}
+    ]
 }
 
 
@@ -205,7 +210,12 @@ Content-Type: application/json
     "abstract": "T_T",
     "content": "T_T",
     "user_id":50,
-    "status_id":"1"
+    "status_id":"1",
+    "categories": [
+        {"id":1},
+        {"id":8},
+        {"id":12}
+    ]
 }
 
 

@@ -97,7 +97,7 @@ class CoreDataMapper {
       };
   
       const result = await this.client.query(preparedQuery);
-      return result.rows;
+      return result.rows[0];
     }
 
   //& Update
@@ -110,6 +110,17 @@ class CoreDataMapper {
 
     return result.rowCount;
   }
+
+  // TODO CreateWithCategories
+  // async updateWithCategories(inputData){
+  //   const preparedQuery = {
+  //     text: `SELECT * FROM ${this.updateWithCategoriesFunctionName}($1);`,
+  //     values: [inputData]
+  //   };
+
+  //   const result = await this.client.query(preparedQuery);
+  //   return result.rows;
+  // }
 
   //& Delete
   async delete(id) {

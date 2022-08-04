@@ -8,10 +8,11 @@ const articleSchema = Joi.object({
   abstract: Joi.string().required(),
   content: Joi.string().required(),
   user_id: Joi.number().integer().required(),
-  status_id: Joi.number().integer().required()
+  status_id: Joi.number().integer().required(),
+  categories: Joi.array(),
 })
   .min(1)
-  .max(5);
+  .max(6);
 
 //~ Update article schema
 const articleUpdateSchema = Joi.object({

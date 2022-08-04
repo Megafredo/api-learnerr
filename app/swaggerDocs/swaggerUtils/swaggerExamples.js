@@ -95,7 +95,12 @@ const example = {
     content:
       'Ea exercitationem at aut velit odio aut. Autem architecto corrupti adipisci praesentium harum quia. Vel reprehenderit asperiores consequatur. Magnam non eaque. Laboriosam itaque vitae',
     user_id: 12,
-    status_id: 1
+    status_id: 1,
+    categories: [
+      {id:1},
+      {id:2},
+      {id:3}
+    ]
   },
 
   //~ ---------------- Update Article
@@ -150,7 +155,12 @@ const example = {
     content:
       'Ea exercitationem at aut velit odio aut. Autem architecto corrupti adipisci praesentium harum quia. Vel reprehenderit asperiores consequatur. Magnam non eaque. Laboriosam itaque vitae',
     user_id: 12,
-    status_id: 1
+    status_id: 1,
+    categories: [
+      {id:1},
+      {id:2},
+      {id:3}
+    ]
   },
 
   //~ ---------------- update ErrorTickets
@@ -228,7 +238,17 @@ const properties = {
     abstract: { type: 'string' },
     content: { type: 'string' },
     user_id: { type: 'integer' },
-    status_id: { type: 'integer' }
+    status_id: { type: 'integer' },
+    comments: {
+      type: 'array',
+      maxItems: 3,
+      items: {
+        type: 'object',
+        properties: {
+          id: { type: 'integer' }
+        }
+      }
+    }  
   },
 
   //~ ---------------- Update Article
@@ -271,6 +291,16 @@ const properties = {
     content: { type: 'string' },
     user_id: { type: 'integer' },
     status_id: { type: 'integer' },
+    comments: {
+      type: 'array',
+      maxItems: 3,
+      items: {
+        type: 'object',
+        properties: {
+          id: { type: 'integer' }
+        }
+      }
+    }    
   },
 
   //~ ---------------- update ErrorTickets
@@ -280,7 +310,7 @@ const properties = {
     abstract: { type: 'string' },
     content: { type: 'string' },
     user_id: { type: 'integer' },
-    status_id: { type: 'integer' },
+    status_id: { type: 'integer' }
   },
 
   //~ ---------------- Category
