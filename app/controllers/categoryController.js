@@ -1,6 +1,6 @@
 //~ Import Error
 import { ErrorApi } from '../services/errorHandler.js';
-import { baseConvertSvg } from '../utils/baseConvertSvg.js';
+import { baseConvertSvg, baseConvertSvgByElement } from '../utils/baseConvertSvg.js';
 
 //~ Import Debug
 import debug from 'debug';
@@ -64,7 +64,9 @@ async function fetchAllCategoriesByArticle(req, res) {
 
     if (categories.length === 0) throw new ErrorApi(`Aucune catégorie n'est liée à l'article pour le moment`, req, res, 400);
 
-    return res.status(200).json(categories);
+    const result = baseConvertSvgByElement(categories);
+
+    return res.status(200).json(result);
   } catch (err) {
     logger(err.message);
   }
@@ -83,8 +85,10 @@ async function fetchAllCategoriesByErrorTicket(req, res) {
     const categories = await Category.byError(errorId);
 
     if (categories.length === 0) throw new ErrorApi(`Aucune catégorie n'est liée au ticket d'erreur pour le moment`, req, res, 400);
+    
+    const result = baseConvertSvgByElement(categories);
 
-    return res.status(200).json(categories);
+    return res.status(200).json(result);
   } catch (err) {
     logger(err.message);
   }
