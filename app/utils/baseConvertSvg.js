@@ -1,6 +1,5 @@
 
 function baseConvertSvg(categoriesLogo){
-    console.log("categoriesLogo: ", categoriesLogo);
 
     const convert = []
     for (let [k,value] of Object.entries(categoriesLogo)){

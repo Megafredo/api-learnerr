@@ -28,7 +28,6 @@ async function fetchAllCategories(req, res) {
     if (!categories) throw new ErrorApi(`Aucune catégorie trouvée`, req, res, 400);
 
     const result = baseConvertSvg(categories)
-    console.log("result: ", result);
 
     return res.status(200).json(result);
   } catch (err) {
