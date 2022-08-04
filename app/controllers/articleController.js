@@ -20,6 +20,8 @@ async function createArticle(req, res) {
     const userExist = await User.findOne(user_id);
     if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
+    if (req.user.id !== user_id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
+
     //~ Is article created ?
     const articleCreated = await Article.createWithCategories(req.body);
     
@@ -68,6 +70,8 @@ async function updateArticle(req, res) {
     //~ User exist ?
     const userExist = await User.findOne(user_id);
     if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+
+    if (req.user.id !== user_id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
     //~ Is id a number ?
     const articleId = +req.params.articleId;

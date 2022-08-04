@@ -19,6 +19,8 @@ async function createErrorTicket(req, res) {
     const userExist = await User.findOne(user_id);
     if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
+    if (req.user.id !== user_id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
+
     //~ Create error ticket
     const errorCreated = await ErrorTicket.createWithCategories(req.body);
     if (!errorCreated) throw new ErrorApi(`Aucune donnée trouvée`, req, res, 400);
@@ -72,6 +74,8 @@ async function updateErrorTicket(req, res) {
 
     const userExist = await User.findOne(user_id);
     if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+
+    if (req.user.id !== user_id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
     const solutionId = +req.params.solutionId;
     if (solutionId) {
