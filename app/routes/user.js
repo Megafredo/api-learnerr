@@ -26,7 +26,7 @@ router.delete('/api/v1/users/:userId(\\d+)', [validateToken, auth], deleteUser);
 
 router.put('/api/v1/users/:userId(\\d+)', [validateToken, auth, admin], validation.body(userInactivateSchema), inactivateUser);
 
-router.get('/api/v1/users/:userId(\\d+)/panel', [validateToken, auth], fetchPanelUser);
+router.get('/api/v1/users/:userId(\\d+)/panel', [validateToken, auth],  fetchPanelUser);
 
 router.post('/api/v1/refreshtoken', refreshToken);
 
