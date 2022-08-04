@@ -5,7 +5,7 @@ const Joi = joi;
 //~ Category schema
 const categorySchema = Joi.object({
     name: Joi.string().required(),
-    logo_svg: Joi.string()
+    logo: Joi.string()
 })
     .min(1)
     .max(2);

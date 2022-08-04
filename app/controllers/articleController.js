@@ -21,7 +21,8 @@ async function createArticle(req, res) {
     if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
     //~ Is article created ?
-    const articleCreated = await Article.create(req.body);
+    const articleCreated = await Article.createWithCategories(req.body);
+    
     if (!articleCreated) throw new ErrorApi(`Aucune donnée trouvée`, req, res, 400);
 
     return res.status(201).json('Article créé !');

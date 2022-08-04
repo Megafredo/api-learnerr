@@ -69,7 +69,7 @@ SELECT * FROM update_category(
 '
 {
     "name":"Petite description",
-    "logo_svg":"aaaaaaaaaaaaaaaaaaa",
+    "logo":"aaaaaaaaaaaaaaaaaaa",
     "id":2
 }
 '

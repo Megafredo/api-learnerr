@@ -5,12 +5,12 @@ import client from '../db/database.js';
 class ErrorTicketDataMapper extends CoreDataMapper {
   tableName = 'error';
   // functions
-  createFunctionName = 'create_error';
   updateFunctionName = 'update_error';
   errorByCategoryFunctionName = 'error_by_category';
   errorByUserFunctionName = 'error_by_user';
   onScrollFunctionName = 'lastest_error_tickets';
   searchFunctionName = 'search_errors';
+  createWithCategoriesFunctionName = 'add_category_to_error';
   // views
   detailsViewName = 'errors_details';
 

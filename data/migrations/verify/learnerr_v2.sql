@@ -63,7 +63,7 @@ SELECT * FROM create_category(
 '
 {
     "name":"Petite description",
-    "logo_svg":"lkjzndlkazndknaznazldnazlkdnazlndlzakd"
+    "logo":"lkjzndlkazndknaznazldnazlkdnazlndlzakd"
 }
 '
 );

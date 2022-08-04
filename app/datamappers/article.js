@@ -5,12 +5,12 @@ import client from '../db/database.js';
 class ArticleDataMapper extends CoreDataMapper {
   tableName = 'article';
   // functions
-  createFunctionName = 'create_article';
   updateFunctionName = 'update_article';
   articleByCategoryFunctionName = 'article_by_category';
   articleByUserFunctionName = 'article_by_user';
   onScrollFunctionName = 'lastest_articles';
   searchFunctionName = 'search_articles';
+  createWithCategoriesFunctionName = 'add_category_to_article';
   // views
   detailsViewName = 'articles_details';
 

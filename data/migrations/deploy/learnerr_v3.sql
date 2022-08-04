@@ -174,7 +174,7 @@ UPDATE
     "category"
 SET
     "name" = COALESCE(($1 ->> 'name')::TEXT, "name"),
-    "logo_svg" = COALESCE(($1 ->> 'logo_svg')::TEXT, "logo_svg")
+    "logo" = COALESCE(($1 ->> 'logo')::TEXT, "logo")
  
 WHERE
     "category"."id" = ($1->> 'id')::INT;

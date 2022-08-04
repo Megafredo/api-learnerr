@@ -1,5 +1,6 @@
 //~ Import Error
 import { ErrorApi } from '../services/errorHandler.js';
+import { baseConvertSvg } from '../utils/baseConvertSvg.js';
 
 //~ Import Debug
 import debug from 'debug';
@@ -23,9 +24,12 @@ async function createCategory(req, res) {
 async function fetchAllCategories(req, res) {
   try {
     const categories = await Category.findAll();
+   
     if (!categories) throw new ErrorApi(`Aucune catégorie trouvée`, req, res, 400);
 
-    return res.status(200).json(categories);
+    const result = baseConvertSvg(categories)
+
+    return res.status(200).json(result);
   } catch (err) {
     logger(err.message);
   }

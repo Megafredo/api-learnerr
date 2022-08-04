@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS "status" (
 CREATE TABLE IF NOT EXISTS "category" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "name" TEXT NOT NULL,
-    "logo_svg" TEXT NULL
+    "logo" TEXT NULL
 );
 
 CREATE TABLE IF NOT EXISTS "error_has_category" (

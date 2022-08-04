@@ -95,7 +95,12 @@ const example = {
     content:
       'Ea exercitationem at aut velit odio aut. Autem architecto corrupti adipisci praesentium harum quia. Vel reprehenderit asperiores consequatur. Magnam non eaque. Laboriosam itaque vitae',
     user_id: 12,
-    status_id: 1
+    status_id: 1,
+    categories: [
+      {id:1},
+      {id:2},
+      {id:3}
+    ]
   },
 
   //~ ---------------- Update Article
@@ -150,7 +155,12 @@ const example = {
     content:
       'Ea exercitationem at aut velit odio aut. Autem architecto corrupti adipisci praesentium harum quia. Vel reprehenderit asperiores consequatur. Magnam non eaque. Laboriosam itaque vitae',
     user_id: 12,
-    status_id: 1
+    status_id: 1,
+    categories: [
+      {id:1},
+      {id:2},
+      {id:3}
+    ]
   },
 
   //~ ---------------- update ErrorTickets
@@ -228,7 +238,17 @@ const properties = {
     abstract: { type: 'string' },
     content: { type: 'string' },
     user_id: { type: 'integer' },
-    status_id: { type: 'integer' }
+    status_id: { type: 'integer' },
+    comments: {
+      type: 'array',
+      maxItems: 3,
+      items: {
+        type: 'object',
+        properties: {
+          id: { type: 'integer' }
+        }
+      }
+    }  
   },
 
   //~ ---------------- Update Article
@@ -271,6 +291,16 @@ const properties = {
     content: { type: 'string' },
     user_id: { type: 'integer' },
     status_id: { type: 'integer' },
+    comments: {
+      type: 'array',
+      maxItems: 3,
+      items: {
+        type: 'object',
+        properties: {
+          id: { type: 'integer' }
+        }
+      }
+    }    
   },
 
   //~ ---------------- update ErrorTickets
@@ -280,7 +310,7 @@ const properties = {
     abstract: { type: 'string' },
     content: { type: 'string' },
     user_id: { type: 'integer' },
-    status_id: { type: 'integer' },
+    status_id: { type: 'integer' }
   },
 
   //~ ---------------- Category
@@ -381,7 +411,7 @@ const tableSql = {
   category: {
     id: { type: 'INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY' },
     name: { type: 'TEXT NOT NULL' },
-    logo_svg: { type: 'TEXT NULL' }
+    logo: { type: 'TEXT NULL' }
   }
 };
 
@@ -477,7 +507,7 @@ const schemaJoi = {
   //~ ---------------- SchemaJoi Create Category
   createCategory: {
     name: { type: 'string' },
-    logo_svg: { type: 'string' }
+    logo: { type: 'string' }
   }
 };
 
@@ -771,7 +801,28 @@ const infoReturn = {
     title: { type: 'string' },
     abstract: { type: 'string' },
     content: { type: 'string' },
-    created_at: { type: 'string' }
+    created_at: { type: 'string' },
+    categories: { type: 'array', maxItems: 3, items: { type: 'string', type: 'string', type: 'string' } },
+    user: {
+      type: 'object',
+      properties: { id: { type: 'integer' }, username: { type: 'string' }, title: { type: 'string' }, profile_pic_url: { type: 'string' } }
+    },
+    comments: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          id: { type: 'integer' },
+          content: { type: 'string' },
+          created_at: { type: 'string' },
+          cheers_count: { type: 'integer' },
+          user: {
+            type: 'object',
+            properties: { id: { type: 'integer' }, username: { type: 'string' }, title: { type: 'string' }, profile_pic_url: { type: 'string' } }
+          }
+        }
+      }
+    }
   },
 
 
@@ -864,11 +915,32 @@ const infoReturn = {
   //~ ---------------- Search Error ticket
   searchErrorTicket:{
     id: { type: 'integer' },
-    snippet: { type: 'string' },
+    error_snippet: { type: 'string' },
     title: { type: 'string' },
     abstract: { type: 'string' },
     content: { type: 'string' },
-    created_at: { type: 'string' }
+    created_at: { type: 'string' },
+    categories: { type: 'array', maxItems: 3, items: { type: 'string', type: 'string', type: 'string' } },
+    user: {
+      type: 'object',
+      properties: { id: { type: 'integer' }, username: { type: 'string' }, title: { type: 'string' }, profile_pic_url: { type: 'string' } }
+    },
+    comments: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          id: { type: 'integer' },
+          content: { type: 'string' },
+          created_at: { type: 'string' },
+          cheers_count: { type: 'integer' },
+          user: {
+            type: 'object',
+            properties: { id: { type: 'integer' }, username: { type: 'string' }, title: { type: 'string' }, profile_pic_url: { type: 'string' } }
+          }
+        }
+      }
+    }
   },
 
 
@@ -923,7 +995,7 @@ const infoReturn = {
   allCategories: {
     id: { type: 'integer' },
     name: { type: 'string' },
-    logo_svg: { type: 'string' }
+    logo: { type: 'string' }
   },
   //~ ---------------- All Categories By Article
   allCategoriesByArticle: {

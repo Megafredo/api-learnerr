@@ -8,6 +8,7 @@ class CoreDataMapper {
   deleteCommentFunctionName;
   allCommentsByUserFunctionName;
   detailsViewName;
+  createWithCategoriesFunctionName;
   columns;
 
   constructor(client) {
@@ -88,6 +89,17 @@ class CoreDataMapper {
     return result.rows;
   }
 
+    //& CreateWithCategories
+    async createWithCategories(inputData){
+      const preparedQuery = {
+        text: `SELECT * FROM ${this.createWithCategoriesFunctionName}($1);`,
+        values: [inputData]
+      };
+  
+      const result = await this.client.query(preparedQuery);
+      return result.rows[0];
+    }
+
   //& Update
   async update(inputData) {
     const preparedQuery = {
@@ -98,6 +110,17 @@ class CoreDataMapper {
 
     return result.rowCount;
   }
+
+  // TODO CreateWithCategories
+  // async updateWithCategories(inputData){
+  //   const preparedQuery = {
+  //     text: `SELECT * FROM ${this.updateWithCategoriesFunctionName}($1);`,
+  //     values: [inputData]
+  //   };
+
+  //   const result = await this.client.query(preparedQuery);
+  //   return result.rows;
+  // }
 
   //& Delete
   async delete(id) {
@@ -181,6 +204,11 @@ class CoreDataMapper {
 
     return result.rows;
   }
+
+
+
 }
+
+
 
 export { CoreDataMapper };

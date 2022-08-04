@@ -159,12 +159,12 @@ BEGIN
 INSERT INTO 
         "category" (
         "name",
-        "logo_svg"
+        "logo"
     )
 VALUES
 (
         ($1 ->> 'name')::TEXT,
-        ($1 ->> 'logo_svg')::TEXT
+        ($1 ->> 'logo')::TEXT
 );
     RETURN QUERY 
     (SELECT "category".id

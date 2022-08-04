@@ -20,7 +20,7 @@ async function createErrorTicket(req, res) {
     if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
     //~ Create error ticket
-    const errorCreated = await ErrorTicket.create(req.body);
+    const errorCreated = await ErrorTicket.createWithCategories(req.body);
     if (!errorCreated) throw new ErrorApi(`Aucune donnée trouvée`, req, res, 400);
 
     return res.status(201).json(`Le ticket d'erreur a bien été créé`);
