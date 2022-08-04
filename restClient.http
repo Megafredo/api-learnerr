@@ -91,7 +91,7 @@ Content-Type: application/json
 
 #^ ------------------------ fetchPanelUser
 ###
-GET {{entryPoint}}/users/1/panel
+GET {{entryPoint}}/users/9/panel
 Content-Type: application/json
 {{accessToken}}
 

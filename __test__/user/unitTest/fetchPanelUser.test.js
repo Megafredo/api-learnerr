@@ -2,7 +2,7 @@
 import request from 'supertest';
 import { app } from '../../../index.js';
 
-const path = '/api/v1/users/1/panel';
+const path = '/api/v1/users/11/panel';
 const { body, statusCode } = await request(app).get(`${path}`);
 
 import { extendToBeType, exist } from '../../utils/utils.js';
