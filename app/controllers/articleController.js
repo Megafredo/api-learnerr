@@ -19,8 +19,8 @@ async function createArticle(req, res) {
     //~ User exist ?
     const userExist = await User.findOne(user_id);
     if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
-
-    if (req.user.id !== user_id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
+    
+    if (req.user.id !== userExist.id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
     //~ Is article created ?
     const articleCreated = await Article.createWithCategories(req.body);
@@ -71,8 +71,6 @@ async function updateArticle(req, res) {
     const userExist = await User.findOne(user_id);
     if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
-    if (req.user.id !== user_id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
-
     //~ Is id a number ?
     const articleId = +req.params.articleId;
     if (isNaN(articleId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
@@ -80,11 +78,13 @@ async function updateArticle(req, res) {
     //~ Article exist ?
     const oneArticle = await Article.findOne(articleId);
     if (!oneArticle) throw new ErrorApi(`Aucun article trouvé`, req, res, 400);
+    
+    if (req.user.id !== oneArticle.user_id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
     req.body = { ...req.body, id: articleId };
 
     //~ Update article
-    await Article.update(req.body);
+    // await Article.update(req.body);
 
     res.status(200).json(`L'article a bien été mis à jour`);
   } catch (err) {

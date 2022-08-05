@@ -19,7 +19,7 @@ async function createErrorTicket(req, res) {
     const userExist = await User.findOne(user_id);
     if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
-    if (req.user.id !== user_id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
+    if (req.user.id !== userExist.id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
     //~ Create error ticket
     const errorCreated = await ErrorTicket.createWithCategories(req.body);
@@ -61,21 +61,21 @@ async function fetchOneErrorTicket(req, res) {
 
 async function updateErrorTicket(req, res) {
   try {
-    //~ Is id a number ?
-    const errorId = +req.params.errorId;
-    if (isNaN(errorId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
-
-    //~ Error ticket exist ?
-    const errorExist = await ErrorTicket.findOne(errorId);
-    if (!errorExist) throw new ErrorApi(`Aucun ticket d'erreur trouvé`, req, res, 400);
-
     //~ User exist ?
     const { user_id } = req.body;
 
     const userExist = await User.findOne(user_id);
     if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
-    if (req.user.id !== user_id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
+    //~ Is id a number ?
+    const errorId = +req.params.errorId;
+    if (isNaN(errorId)) throw new ErrorApi(`L'id doit être un nombre`, req, res, 400);
+    
+    //~ Error ticket exist ?
+    const errorExist = await ErrorTicket.findOne(errorId);
+    if (!errorExist) throw new ErrorApi(`Aucun ticket d'erreur trouvé`, req, res, 400);
+    
+    if (req.user.id !== errorExist.user_id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
     const solutionId = +req.params.solutionId;
     if (solutionId) {

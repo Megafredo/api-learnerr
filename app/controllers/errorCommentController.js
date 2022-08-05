@@ -26,7 +26,7 @@ async function createErrorComment(req, res) {
     const userExist = await User.findOne(user_id);
     if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
-    if (req.user.id !== user_id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
+    if (req.user.id !== userExist.id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
     //~ Is id a number ?
     const errorId = +req.params.errorId;
@@ -86,7 +86,7 @@ async function updateErrorComment(req, res) {
     const userExist = await User.findOne(user_id);
     if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
 
-    if (req.user.id !== user_id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
+    if (req.user.id !== userExist.id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
     //~ Update error
     req.body = { ...req.body, error_id: errorId, id: commentId };
@@ -124,6 +124,8 @@ async function deleteErrorComment(req, res) {
     //~ User exist ?
     const userExist = await User.findOne(user_id);
     if (!userExist) throw new ErrorApi(`Aucun utilisateur trouvé`, req, res, 400);
+
+    if (req.user.id !== userExist.id) throw new ErrorApi(`Les informations fournies ne permettent aucune modification`, req, res, 403);
 
     //~ Delete article comment
     req.body = { ...req.body, error_id: errorId, id: commentId };

@@ -144,8 +144,12 @@ BEGIN
 
 RETURN QUERY(
 SELECT * FROM errors_details AS ED
-    WHERE _search % 
-    ANY(STRING_TO_ARRAY(ED."error_snippet", ' ')) 
+    WHERE 
+    (_search % ANY(STRING_TO_ARRAY(ED."error_snippet", ' ')))
+    OR
+    (_search % ANY(STRING_TO_ARRAY(ED."title", ' '))) 
+    OR
+    (_search % ANY(STRING_TO_ARRAY(ED."abstract", ' ')))
     ORDER BY ED.created_at DESC);
     
 END
