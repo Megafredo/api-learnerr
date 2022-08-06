@@ -30,7 +30,12 @@ const options = {
     info: {
       version: '1.0.0',
       title: 'Learn(Err)',
-      description: `Ici, c'est la super description pour nos expérimentations swaggerDocs.`,
+      description: `
+      Bienvenue sur notre documentation faite grâce à Swagger pour notre API Learn(Err).
+      Vous trouverez ici tous les endpoints qui permettront la visualisation des données.
+      Nous avons mis en place un système d'identification par les tokens afin de visualiser les routes nécessitant une identification.
+      
+      Cette API a été faite avec passion, amusez-vous bien :)`,
       license: {
         name: 'MIT'
       }
