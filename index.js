@@ -37,7 +37,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,PATCH,DELETE');
 
-    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+    // res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
 
     next();
 });
@@ -55,7 +55,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     cookie: { 
         httpOnly:true,
-        secure : false,
+        secure : true,
         sameSite: 'lax', // or 'strict'
         maxAge: 24 * 60 * 60 * 1000 //24 hours
         //expires : new Date(Date.now() + 60 * 60 * 1000) //1 hour
