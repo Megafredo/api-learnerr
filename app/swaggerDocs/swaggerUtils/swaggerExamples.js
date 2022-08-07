@@ -838,6 +838,7 @@ const infoReturn = {
     error_snippet: { type: 'string' },
     content: { type: 'string' },
     created_at: { type: 'string' },
+    error_comment_id: { type: 'integer' },
     categories: { type: 'array', maxItems: 3, items: { type: 'string', type: 'string', type: 'string' } },
     user: {
       type: 'object',
@@ -868,6 +869,7 @@ const infoReturn = {
     error_snippet: { type: 'string' },
     content: { type: 'string' },
     created_at: { type: 'string' },
+    error_comment_id: { type: 'integer' },
     categories: { type: 'array', maxItems: 3, items: { type: 'string', type: 'string', type: 'string' } },
     user: {
       type: 'object',

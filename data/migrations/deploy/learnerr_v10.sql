@@ -52,7 +52,7 @@ ORDER BY A.created_at DESC;
 --& Create view errors details
 
 CREATE VIEW errors_details AS
-SELECT E.id, E.title, E.abstract, E.error_snippet, E.content, E.created_at,
+SELECT E.id, E.title, E.abstract, E.error_snippet, E.content, E.created_at, E.error_comment_id,
 
     COALESCE((SELECT JSON_AGG(DISTINCT C.name)
                    FROM "category" AS C
