@@ -111,7 +111,7 @@ const oneError = {
                   properties: p.updateErrorTicket,
                   example: e.updateErrorTicket
                 },
-                description: `Info body pour mettre a jourt un ticket d'erreur`
+                description: `Info body pour mettre a jour un ticket d'erreur`
               }
             }
           },
@@ -305,6 +305,23 @@ const solutionOnError = {
                 description: `Identifiant d'un commentaire d'erreur`
             }
         ],
+        requestBody: {
+          name: 'Body',
+          in: 'body',
+          required: true,
+    
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+                required: r.updateErrorTicketSolution,
+                properties: p.updateErrorTicketSolution,
+                example: e.updateErrorTicketSolution
+              },
+              description: `Info body pour mettre a jour un ticket d'erreur`
+            }
+          }
+        },
         responses: {
           200: statusCode._200,
           400: statusCode._400,

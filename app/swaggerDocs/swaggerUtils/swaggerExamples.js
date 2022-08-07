@@ -19,6 +19,7 @@ const required = {
   updateErrorTicket: ['user_id'],
   searchErrorTickets: ['search'],
   lastestErrorTickets: ['limitNb', 'offsetNb'],
+  updateErrorTicketSolution: ['user_id'],
 
 
   //~ ---------------- Article Comment
@@ -32,6 +33,7 @@ const required = {
   //~ ---------------- Category
   createCategory: ['name'],
   
+  //
 
 };
 
@@ -173,6 +175,11 @@ const example = {
     user_id: 12,
     status_id: 1
   },
+
+  updateErrorTicketSolution: {
+    user_id: 12
+  },
+
   //~ ---------------- Category
   createCategory: {
     name: "Yumedo"
@@ -311,6 +318,10 @@ const properties = {
     content: { type: 'string' },
     user_id: { type: 'integer' },
     status_id: { type: 'integer' }
+  },
+
+  updateErrorTicketSolution: {
+    user_id: { type: 'integer' }
   },
 
   //~ ---------------- Category
