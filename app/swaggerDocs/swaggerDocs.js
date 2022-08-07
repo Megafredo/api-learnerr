@@ -50,7 +50,7 @@ const options = {
     // Tous les serveurs
     servers: [
       {
-        url: 'https://api-learnerr.herokuapp.com/api/v1',
+        url: 'https://learnerr-api-dev.herokuapp.com/api/v1',
         description: 'API v1'
       },
       {
