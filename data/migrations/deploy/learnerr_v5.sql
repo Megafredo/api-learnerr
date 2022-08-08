@@ -126,6 +126,7 @@ CREATE TYPE search_error AS(
     "error_snippet" TEXT,
     "content" TEXT,
     "created_at" TIMESTAMPTZ,
+    "error_comment_id" INT,
     "categories" JSON,
     "user" JSON,
     "comments" JSON
